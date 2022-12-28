@@ -42,6 +42,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
     custom_control = Gtk.Template.Child()
 
     timer_screen = Gtk.Template.Child()
+    windowcontrols_start = Gtk.Template.Child()
+    windowcontrols_end = Gtk.Template.Child()
     white_timer = Gtk.Template.Child()
     black_timer = Gtk.Template.Child()
 
@@ -51,7 +53,9 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.create_action('restart', self.on_restart_action, ['<primary>r'])
 
         self.white_timer.other = self.black_timer
+        self.white_timer.windowcontrols = self.windowcontrols_start
         self.black_timer.other = self.white_timer
+        self.black_timer.windowcontrols = self.windowcontrols_end
 
         self.one_zero.connect("clicked", self.on_control, (60, 0))
         self.two_one.connect("clicked", self.on_control, (120, 1))

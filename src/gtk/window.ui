@@ -125,7 +125,7 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="custom_control">
-                    <property name="label">Custom…</property>
+                    <property name="label" translatable="yes">Custom…</property>
                     <layout>
                       <property name="column">2</property>
                       <property name="row">3</property>
@@ -141,7 +141,7 @@
             <child>
               <object class="GtkOverlay">
                 <child type="overlay">
-                  <object class="GtkWindowControls">
+                  <object class="GtkWindowControls" id="windowcontrols_start">
                     <property name="halign">start</property>
                     <property name="valign">start</property>
                     <property name="side">start</property>
@@ -152,7 +152,7 @@
                   </object>
                 </child>
                 <child type="overlay">
-                  <object class="GtkWindowControls">
+                  <object class="GtkWindowControls" id="windowcontrols_end">
                     <property name="halign">end</property>
                     <property name="valign">start</property>
                     <property name="side">end</property>

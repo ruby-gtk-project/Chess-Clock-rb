@@ -88,5 +88,15 @@ class ChessClockTimerButton(Gtk.Button):
         self.add_tick_callback(self.on_tick, None, None)
 
     def on_click(self, widget, _):
+        if not self.running and not self.other.running:
+            # Set the button that was clicked as black at the start of a game
+            self.add_css_class("black")
+            self.remove_css_class("white")
+            self.other.add_css_class("white")
+            self.other.remove_css_class("black")
+            self.windowcontrols.add_css_class("black")
+            self.windowcontrols.remove_css_class("white")
+            self.other.windowcontrols.add_css_class("white")
+            self.other.windowcontrols.remove_css_class("black")
         self.other.set_running(not self.other.running)
         self.set_running(not self.other.running)
