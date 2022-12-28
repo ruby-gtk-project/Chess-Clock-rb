@@ -43,7 +43,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
     def on_restart_action(self, widget, _):
         """Callback for the app.restart action."""
-        print('win.restart action activated')
+        self.white_timer.reset_timer()
+        self.black_timer.reset_timer()
 
     def create_action(self, name, callback, shortcuts=None):
         """Add a window action.

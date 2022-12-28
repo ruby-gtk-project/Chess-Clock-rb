@@ -20,6 +20,8 @@
 from gi.repository import Adw
 from gi.repository import Gtk, GLib
 
+from math import ceil
+
 @Gtk.Template(resource_path='/com/clarahobbs/chessclock/timerbutton.ui')
 class ChessClockTimerButton(Gtk.Button):
     __gtype_name__ = 'ChessClockTimerButton'
@@ -34,9 +36,8 @@ class ChessClockTimerButton(Gtk.Button):
         self.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.add_css_class("timerbutton")
 
-        self.set_default_control(260, 0)
+        self.set_default_control(2, 2)
         self.reset_timer()
-        self.set_sensitive(True)
 
         self.last_tick = GLib.get_monotonic_time()
         self.add_tick_callback(self.on_tick, None, None)
@@ -52,6 +53,7 @@ class ChessClockTimerButton(Gtk.Button):
         """Set the timer to the default time"""
         self.time = self.default_time
         self.set_running(False)
+        self.set_sensitive(True)
         self.update_label()
 
     def set_running(self, running):
@@ -60,12 +62,16 @@ class ChessClockTimerButton(Gtk.Button):
         if running:
             self.add_css_class("running")
             self.last_tick = GLib.get_monotonic_time()
+            # Bonus increment
+            if self.time > 0:
+                self.time += self.inc
         else:
             self.remove_css_class("running")
 
     def update_label(self):
-        minutes = max(self.time, 0) // 60_000_000
-        seconds = max(self.time, 0) % 60_000_000 // 1_000_000
+        disptime = ceil(max(self.time, 0) / 1_000_000)
+        minutes = disptime // 60
+        seconds = disptime % 60
         self.minutes.set_label(f"{minutes}")
         self.seconds.set_label(f"{seconds:02d}")
 
