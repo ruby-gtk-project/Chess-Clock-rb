@@ -36,7 +36,7 @@ class ChessClockTimerButton(Gtk.Button):
         self.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.add_css_class("timerbutton")
 
-        self.set_default_control(2, 2)
+        self.set_default_control(260, 0)
         self.reset_timer()
 
         self.last_tick = GLib.get_monotonic_time()
@@ -83,6 +83,8 @@ class ChessClockTimerButton(Gtk.Button):
             self.update_label()
         if self.time <= 0:
             self.add_css_class("expired")
+        else:
+            self.remove_css_class("expired")
         self.add_tick_callback(self.on_tick, None, None)
 
     def on_click(self, widget, _):

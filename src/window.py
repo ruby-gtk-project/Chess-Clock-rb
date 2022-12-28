@@ -26,6 +26,22 @@ from .timerbutton import ChessClockTimerButton
 class ChessClockWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'ChessClockWindow'
 
+    main_stack = Gtk.Template.Child()
+    control_chooser = Gtk.Template.Child()
+    one_zero = Gtk.Template.Child()
+    two_one = Gtk.Template.Child()
+    three_zero = Gtk.Template.Child()
+    three_two = Gtk.Template.Child()
+    five_zero = Gtk.Template.Child()
+    five_three = Gtk.Template.Child()
+    ten_zero = Gtk.Template.Child()
+    ten_five = Gtk.Template.Child()
+    fifteen_ten = Gtk.Template.Child()
+    thirty_zero = Gtk.Template.Child()
+    thirty_twenty = Gtk.Template.Child()
+    custom_control = Gtk.Template.Child()
+
+    timer_screen = Gtk.Template.Child()
     white_timer = Gtk.Template.Child()
     black_timer = Gtk.Template.Child()
 
@@ -37,9 +53,23 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.white_timer.other = self.black_timer
         self.black_timer.other = self.white_timer
 
+        self.one_zero.connect("clicked", self.on_control, (60, 0))
+        self.two_one.connect("clicked", self.on_control, (120, 1))
+        self.three_zero.connect("clicked", self.on_control, (180, 0))
+        self.three_two.connect("clicked", self.on_control, (180, 2))
+        self.five_zero.connect("clicked", self.on_control, (300, 0))
+        self.five_three.connect("clicked", self.on_control, (300, 3))
+        self.ten_zero.connect("clicked", self.on_control, (600, 0))
+        self.ten_five.connect("clicked", self.on_control, (600, 5))
+        self.fifteen_ten.connect("clicked", self.on_control, (900, 10))
+        self.thirty_zero.connect("clicked", self.on_control, (1800, 0))
+        self.thirty_twenty.connect("clicked", self.on_control, (1800, 20))
+
     def on_new_action(self, widget, _):
         """Callback for the app.new action."""
-        print('win.new action activated')
+        self.white_timer.set_running(False)
+        self.black_timer.set_running(False)
+        self.main_stack.set_visible_child(self.control_chooser)
 
     def on_restart_action(self, widget, _):
         """Callback for the app.restart action."""
@@ -60,3 +90,10 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.add_action(action)
         if shortcuts:
             self.get_application().set_accels_for_action(f"win.{name}", shortcuts)
+
+    def on_control(self, widget, data):
+        self.white_timer.set_default_control(*data)
+        self.white_timer.reset_timer()
+        self.black_timer.set_default_control(*data)
+        self.black_timer.reset_timer()
+        self.main_stack.set_visible_child(self.timer_screen)
