@@ -1,0 +1,34 @@
+button.large {
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.small-margin {
+  margin: 6px;
+}
+
+.timerbutton {
+  font-size: 70px;
+  font-feature-settings: "tnum" 1;
+  font-weight: 100;
+}
+
+.black {
+  color: #ffffff;
+}
+
+.white {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.timerbutton.black {
+  background-color: @brown_5;
+}
+
+.timerbutton.white {
+  background-color: @brown_1;
+}
+
+.timerbutton.running {
+  font-weight: 300;
+}

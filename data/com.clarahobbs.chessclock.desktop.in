@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=chess-clock
+Exec=chess-clock
+Icon=com.clarahobbs.chessclock
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="ChessClockTimerButton" parent="GtkButton">
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="halign">center</property>
+            <child>
+              <object class="GtkLabel" id="minutes">
+                <property name="label">4</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">∶</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="seconds">
+                <property name="label">20</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <style>
+          <class name="opaque"/>
+        </style>
+  </template>
+</interface>

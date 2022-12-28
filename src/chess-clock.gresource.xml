@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/clarahobbs/chessclock">
+    <file alias="window.ui" preprocess="xml-stripblanks">gtk/window.ui</file>
+    <file alias="timerbutton.ui" preprocess="xml-stripblanks">gtk/timerbutton.ui</file>
+    <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
+    <file alias="style.css">gtk/style.css</file>
+    <file alias="style-hc.css">gtk/style-hc.css</file>
+  </gresource>
+</gresources>
