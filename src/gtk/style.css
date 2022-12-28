@@ -23,12 +23,30 @@ button.large {
 
 .timerbutton.black {
   background-color: @brown_5;
+  filter: opacity(1);
 }
 
 .timerbutton.white {
   background-color: @brown_1;
+  filter: opacity(1);
 }
 
 .timerbutton.running {
   font-weight: 300;
+}
+
+.timerbutton.expired {
+  color: @light_1;
+}
+
+.timerbutton.expired.black {
+  background-color: @red_4;
+}
+
+.timerbutton.expired.white {
+  background-color: @red_3;
+}
+
+label.colon {
+  min-width: 17px;
 }

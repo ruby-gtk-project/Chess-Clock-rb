@@ -34,6 +34,9 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.create_action('new', self.on_new_action, ['<primary>n'])
         self.create_action('restart', self.on_restart_action, ['<primary>r'])
 
+        self.white_timer.other = self.black_timer
+        self.black_timer.other = self.white_timer
+
     def on_new_action(self, widget, _):
         """Callback for the app.new action."""
         print('win.new action activated')
