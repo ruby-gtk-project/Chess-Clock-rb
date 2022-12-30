@@ -35,7 +35,7 @@ button.large {
   font-weight: 300;
 }
 
-.timerbutton.expired {
+.expired {
   color: @light_1;
 }
 

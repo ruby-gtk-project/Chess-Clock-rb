@@ -83,8 +83,10 @@ class ChessClockTimerButton(Gtk.Button):
             self.update_label()
         if self.time <= 0:
             self.add_css_class("expired")
+            self.windowcontrols.add_css_class("expired")
         else:
             self.remove_css_class("expired")
+            self.windowcontrols.remove_css_class("expired")
         self.add_tick_callback(self.on_tick, None, None)
 
     def on_click(self, widget, _):
