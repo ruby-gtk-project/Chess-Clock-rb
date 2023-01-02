@@ -21,6 +21,7 @@ from gi.repository import Adw
 from gi.repository import Gtk, Gio
 
 from .timerbutton import ChessClockTimerButton
+from .customcontrol import ChessClockCustomControl
 
 @Gtk.Template(resource_path='/com/clarahobbs/chessclock/window.ui')
 class ChessClockWindow(Adw.ApplicationWindow):
@@ -70,6 +71,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.thirty_zero.connect("clicked", self.on_control, (1800, 0))
         self.thirty_twenty.connect("clicked", self.on_control, (1800, 20))
 
+        self.custom_control.start.connect("clicked", self.on_control, None)
+
         self.play_pause.connect("clicked", self.on_play_pause, None)
 
     def on_new_action(self, widget, _):
@@ -101,6 +104,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
             self.get_application().set_accels_for_action(f"win.{name}", shortcuts)
 
     def on_control(self, widget, data):
+        if data is None:
+            data = self.custom_control.get_control()
         self.white_timer.set_default_control(*data)
         self.white_timer.reset_timer()
         self.black_timer.set_default_control(*data)

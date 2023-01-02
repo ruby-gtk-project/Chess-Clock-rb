@@ -29,6 +29,7 @@ chess_clock_sources = [
   '__init__.py',
   'main.py',
   'window.py',
+  'customcontrol.py',
   'timerbutton.py',
 ]
 
