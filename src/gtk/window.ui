@@ -290,7 +290,7 @@
                   </object>
                 </child>
                 <child type="overlay">
-                  <object class="GtkButton" id="play-pause">
+                  <object class="GtkButton" id="play_pause">
                     <property name="halign">center</property>
                     <property name="valign">end</property>
                     <property name="icon-name">media-playback-pause-symbolic</property>
@@ -346,7 +346,7 @@
         <attribute name="action">win.restart</attribute>
       </item>
     </section>
-    <section>
+<!--    <section>
       <submenu>
         <attribute name="label" translatable="yes">_Increment</attribute>
         <item>
@@ -365,7 +365,7 @@
           <attribute name="target">simple</attribute>
         </item>
       </submenu>
-    </section>
+    </section>-->
     <section>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>

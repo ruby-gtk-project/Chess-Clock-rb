@@ -44,6 +44,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
     timer_screen = Gtk.Template.Child()
     windowcontrols_start = Gtk.Template.Child()
     windowcontrols_end = Gtk.Template.Child()
+    play_pause = Gtk.Template.Child()
     white_timer = Gtk.Template.Child()
     black_timer = Gtk.Template.Child()
 
@@ -68,6 +69,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.fifteen_ten.connect("clicked", self.on_control, (900, 10))
         self.thirty_zero.connect("clicked", self.on_control, (1800, 0))
         self.thirty_twenty.connect("clicked", self.on_control, (1800, 20))
+
+        self.play_pause.connect("clicked", self.on_play_pause, None)
 
     def on_new_action(self, widget, _):
         """Callback for the app.new action."""
@@ -101,3 +104,11 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.black_timer.set_default_control(*data)
         self.black_timer.reset_timer()
         self.main_stack.set_visible_child(self.timer_screen)
+
+    def on_play_pause(self, widget, _):
+        self.white_timer.paused = not self.white_timer.paused
+        self.black_timer.paused = not self.black_timer.paused
+        if self.white_timer.paused:
+            self.play_pause.set_icon_name("media-playback-start-symbolic")
+        else:
+            self.play_pause.set_icon_name("media-playback-pause-symbolic")

@@ -37,6 +37,8 @@ class ChessClockTimerButton(Gtk.Button):
         self.add_css_class("timerbutton")
 
         self.set_default_control(260, 0)
+        self.active = False
+        self.paused = False
         self.reset_timer()
 
         self.last_tick = GLib.get_monotonic_time()
@@ -52,12 +54,26 @@ class ChessClockTimerButton(Gtk.Button):
     def reset_timer(self):
         """Set the timer to the default time"""
         self.time = self.default_time
-        self.set_running(False)
+        self.running = False
         self.set_sensitive(True)
         self.update_label()
 
-    def set_running(self, running):
-        self.running = running
+    @property
+    def paused(self):
+        return self._paused
+
+    @paused.setter
+    def paused(self, paused):
+        self._paused = paused
+        self.last_tick = GLib.get_monotonic_time()
+
+    @property
+    def running(self):
+        return self.active and not self.paused
+
+    @running.setter
+    def running(self, running):
+        self.active = running
         self.set_sensitive(running)
         if running:
             self.add_css_class("running")
@@ -100,5 +116,5 @@ class ChessClockTimerButton(Gtk.Button):
             self.windowcontrols.remove_css_class("white")
             self.other.windowcontrols.add_css_class("white")
             self.other.windowcontrols.remove_css_class("black")
-        self.other.set_running(not self.other.running)
-        self.set_running(not self.other.running)
+        self.other.running = not self.other.running
+        self.running = not self.other.running
