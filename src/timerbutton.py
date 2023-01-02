@@ -65,6 +65,7 @@ class ChessClockTimerButton(Gtk.Button):
     @paused.setter
     def paused(self, paused):
         self._paused = paused
+        self.set_sensitive(not paused)
         self.last_tick = GLib.get_monotonic_time()
 
     @property

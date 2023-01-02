@@ -74,8 +74,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
     def on_new_action(self, widget, _):
         """Callback for the app.new action."""
-        self.white_timer.set_running(False)
-        self.black_timer.set_running(False)
+        self.white_timer.running = False
+        self.black_timer.running = False
         self.main_stack.set_visible_child(self.control_chooser)
 
     def on_restart_action(self, widget, _):
