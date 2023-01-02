@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=chess-clock
+Name=Chess Clock
 Exec=chess-clock
 Icon=com.clarahobbs.chessclock
 Terminal=false
