@@ -37,8 +37,6 @@ class ChessClockTimerButton(Gtk.Button):
         self.add_css_class("timerbutton")
 
         self.set_default_control(260, 0)
-        self.active = False
-        self.paused = False
         self.reset_timer()
 
         self.last_tick = GLib.get_monotonic_time()
@@ -55,6 +53,7 @@ class ChessClockTimerButton(Gtk.Button):
         """Set the timer to the default time"""
         self.time = self.default_time
         self.running = False
+        self.paused = False
         self.set_sensitive(True)
         self.update_label()
 

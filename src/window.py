@@ -77,11 +77,13 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.white_timer.running = False
         self.black_timer.running = False
         self.main_stack.set_visible_child(self.control_chooser)
+        self.play_pause.set_icon_name("media-playback-pause-symbolic")
 
     def on_restart_action(self, widget, _):
         """Callback for the app.restart action."""
         self.white_timer.reset_timer()
         self.black_timer.reset_timer()
+        self.play_pause.set_icon_name("media-playback-pause-symbolic")
 
     def create_action(self, name, callback, shortcuts=None):
         """Add a window action.
