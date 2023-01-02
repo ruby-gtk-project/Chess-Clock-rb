@@ -50,3 +50,19 @@ button.large {
 label.colon {
   min-width: 17px;
 }
+
+label.time-title {
+  font-size: 2em;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+label.custom-label {
+  font-size: 2em;
+  min-width: 0.75em;
+}
+
+spinbutton.custom-spin {
+  font-size: 2em;
+  min-width: 0.75em;
+}
