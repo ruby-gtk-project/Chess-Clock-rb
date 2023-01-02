@@ -1,4 +1,4 @@
-# window.py
+# timerbutton.py
 #
 # Copyright 2022 Clara Hobbs 🏳️‍⚧️🌹🏳‍🌈
 #

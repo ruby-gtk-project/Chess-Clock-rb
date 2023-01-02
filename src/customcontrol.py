@@ -1,4 +1,4 @@
-# window.py
+# customcontrol.py
 #
 # Copyright 2022 Clara Hobbs 🏳️‍⚧️🌹🏳‍🌈
 #
