@@ -3,7 +3,10 @@
 	<id>com.clarahobbs.chessclock.desktop</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
+  <name>Chess Clock</name>
+  <summary>Time games of over-the-board chess</summary>
 	<description>
 	  <p>No description</p>
 	</description>
+  <launchable type="desktop-id">com.clarahobbs.chessclock.desktop</launchable>
 </component>
