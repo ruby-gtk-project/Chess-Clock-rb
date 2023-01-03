@@ -13,6 +13,32 @@
 	    until the game is finished or one of the clocks reaches zero.
 	  </p>
 	</description>
+  <screenshots>
+    <screenshot>
+      <caption>The main screen, showing timers for the white and black players of a chess game.</caption>
+      <image>https://clarahobbs.com/screenshots/chess-clock-0.1-1.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The time control selection screen.</caption>
+      <image>https://clarahobbs.com/screenshots/chess-clock-0.1-2.png</image>
+    </screenshot>
+  </screenshots>
   <launchable type="desktop-id">com.clarahobbs.chessclock.desktop</launchable>
+  <developer_name>Clara Hobbs</developer_name>
+  <update_contact>clara_at_clarahobbs.com</update_contact>
+  <custom>
+    <value key="Purism::form_factor">workstation</value>
+    <value key="Purism::form_factor">mobile</value>
+  </custom>
+  <releases>
+    <release version="0.1.0" date="2023-01-02">
+      <description>
+        <p>Initial release, implementing a basic chess clock.</p>
+      </description>
+    </release>
+  </releases>
+  <kudos>
+    <kudo>ModernToolkit</kudo>
+  </kudos>
   <content_rating type="oars-1.1" />
 </component>
