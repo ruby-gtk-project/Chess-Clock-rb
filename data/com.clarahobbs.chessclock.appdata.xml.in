@@ -37,6 +37,11 @@
       </description>
     </release>
   </releases>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
   <kudos>
     <kudo>ModernToolkit</kudo>
   </kudos>
