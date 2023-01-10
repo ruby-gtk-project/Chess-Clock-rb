@@ -15,15 +15,17 @@
 	</description>
   <screenshots>
     <screenshot>
-      <caption>The main screen, showing timers for the white and black players of a chess game.</caption>
+      <caption>The main screen, showing timers for the white and black players of a chess game</caption>
       <image>https://clarahobbs.com/screenshots/chess-clock-0.1-1.png</image>
     </screenshot>
     <screenshot>
-      <caption>The time control selection screen.</caption>
+      <caption>The time control selection screen</caption>
       <image>https://clarahobbs.com/screenshots/chess-clock-0.1-2.png</image>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">com.clarahobbs.chessclock.desktop</launchable>
+  <url type="homepage">https://gitlab.gnome.org/cghobbs/chess-clock</url>
+  <url type="bugtracker">https://gitlab.gnome.org/cghobbs/chess-clock/-/issues</url>
   <developer_name>Clara Hobbs</developer_name>
   <update_contact>clara_at_clarahobbs.com</update_contact>
   <custom>
