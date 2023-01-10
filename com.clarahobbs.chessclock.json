@@ -30,7 +30,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///home/cghobbs/Projects"
+                    "url" : "https://gitlab.gnome.org/cghobbs/chess-clock.git"
                 }
             ]
         }
