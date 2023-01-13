@@ -22,6 +22,7 @@ from gi.repository import Gtk, Gio
 
 from .timerbutton import ChessClockTimerButton
 from .customcontrol import ChessClockCustomControl
+from .statemachine import ChessClockStateMachine, MachineState
 
 @Gtk.Template(resource_path='/com/clarahobbs/chessclock/window.ui')
 class ChessClockWindow(Adw.ApplicationWindow):
@@ -54,10 +55,9 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.create_action('new', self.on_new_action, ['<primary>n'])
         self.create_action('restart', self.on_restart_action, ['<primary>r'])
 
-        self.white_timer.other = self.black_timer
-        self.white_timer.windowcontrols = self.windowcontrols_start
-        self.black_timer.other = self.white_timer
-        self.black_timer.windowcontrols = self.windowcontrols_end
+        self.state_machine = ChessClockStateMachine(self)
+        self.state_machine.add_a_button(self.white_timer)
+        self.state_machine.add_b_button(self.black_timer)
 
         self.one_zero.connect("clicked", self.on_control, (60, 0))
         self.two_one.connect("clicked", self.on_control, (120, 1))
@@ -73,20 +73,19 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
         self.custom_control.start.connect("clicked", self.on_control, None)
 
-        self.play_pause.connect("clicked", self.on_play_pause, None)
+        self.play_pause.connect("clicked", self.state_machine.on_pause_clicked, None)
+        self.state_machine.connect("pause", self.on_pause)
+
+        self.add_tick_callback(self.state_machine.timer_a.on_tick, None, None)
+        self.add_tick_callback(self.state_machine.timer_b.on_tick, None, None)
 
     def on_new_action(self, widget, _):
         """Callback for the app.new action."""
-        self.white_timer.running = False
-        self.black_timer.running = False
         self.main_stack.set_visible_child(self.control_chooser)
-        self.play_pause.set_icon_name("media-playback-pause-symbolic")
 
     def on_restart_action(self, widget, _):
         """Callback for the app.restart action."""
-        self.white_timer.reset_timer()
-        self.black_timer.reset_timer()
-        self.play_pause.set_icon_name("media-playback-pause-symbolic")
+        self.state_machine.state = MachineState.START
 
     def create_action(self, name, callback, shortcuts=None):
         """Add a window action.
@@ -106,16 +105,13 @@ class ChessClockWindow(Adw.ApplicationWindow):
     def on_control(self, widget, data):
         if data is None:
             data = self.custom_control.get_control()
-        self.white_timer.set_default_control(*data)
-        self.white_timer.reset_timer()
-        self.black_timer.set_default_control(*data)
-        self.black_timer.reset_timer()
+        self.state_machine.set_time_control(*data)
+        self.state_machine.state = MachineState.START
         self.main_stack.set_visible_child(self.timer_screen)
 
-    def on_play_pause(self, widget, _):
-        self.white_timer.paused = not self.white_timer.paused
-        self.black_timer.paused = not self.black_timer.paused
-        if self.white_timer.paused:
+    def on_pause(self, _, active, paused):
+        self.play_pause.set_sensitive(active)
+        if paused:
             self.play_pause.set_icon_name("media-playback-start-symbolic")
         else:
             self.play_pause.set_icon_name("media-playback-pause-symbolic")

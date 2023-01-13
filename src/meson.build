@@ -31,6 +31,8 @@ chess_clock_sources = [
   'window.py',
   'customcontrol.py',
   'timerbutton.py',
+  'statemachine.py',
+  'timer.py',
 ]
 
 install_data(chess_clock_sources, install_dir: moduledir)

@@ -36,85 +36,28 @@ class ChessClockTimerButton(Gtk.Button):
         self.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.add_css_class("timerbutton")
 
-        self.set_default_control(260, 0)
-        self.reset_timer()
-
-        self.last_tick = GLib.get_monotonic_time()
-        self.add_tick_callback(self.on_tick, None, None)
-
-        self.connect("clicked", self.on_click, None)
-
-    def set_default_control(self, time, inc):
-        """Set the default time and increment"""
-        self.default_time = time * 1_000_000
-        self.inc = inc * 1_000_000
-
-    def reset_timer(self):
-        """Set the timer to the default time"""
-        self.time = self.default_time
-        self.running = False
-        self.paused = False
-        self.set_sensitive(True)
-        self.update_label()
-
-    @property
-    def paused(self):
-        return self._paused
-
-    @paused.setter
-    def paused(self, paused):
-        self._paused = paused
-        self.set_sensitive(not paused)
-        self.last_tick = GLib.get_monotonic_time()
-
-    @property
-    def running(self):
-        return self.active and not self.paused
-
-    @running.setter
-    def running(self, running):
-        self.active = running
-        self.set_sensitive(running)
-        if running:
-            self.add_css_class("running")
-            self.last_tick = GLib.get_monotonic_time()
-            # Bonus increment
-            if self.time > 0:
-                self.time += self.inc
-        else:
-            self.remove_css_class("running")
-
-    def update_label(self):
-        disptime = ceil(max(self.time, 0) / 1_000_000)
+    def on_changed(self, timer, time):
+        disptime = ceil(max(time, 0) / 1_000_000)
         minutes = disptime // 60
         seconds = disptime % 60
         self.minutes.set_label(f"{minutes}")
         self.seconds.set_label(f"{seconds:02d}")
-
-    def on_tick(self, widget, _, __, ___):
-        if self.running:
-            tick = GLib.get_monotonic_time()
-            self.time -= tick - self.last_tick
-            self.last_tick = tick
-            self.update_label()
-        if self.time <= 0:
+        if time <= 0:
             self.add_css_class("expired")
-            self.windowcontrols.add_css_class("expired")
         else:
             self.remove_css_class("expired")
-            self.windowcontrols.remove_css_class("expired")
-        return True
 
-    def on_click(self, widget, _):
-        if not self.running and not self.other.running:
-            # Set the button that was clicked as black at the start of a game
-            self.add_css_class("black")
-            self.remove_css_class("white")
-            self.other.add_css_class("white")
-            self.other.remove_css_class("black")
-            self.windowcontrols.add_css_class("black")
-            self.windowcontrols.remove_css_class("white")
-            self.other.windowcontrols.add_css_class("white")
-            self.other.windowcontrols.remove_css_class("black")
-        self.other.running = not self.other.running
-        self.running = not self.other.running
+    def on_white(self, _):
+        self.add_css_class("white")
+        self.remove_css_class("black")
+
+    def on_black(self, _):
+        self.add_css_class("black")
+        self.remove_css_class("white")
+
+    def on_active(self, _, active, current):
+        self.set_sensitive(active)
+        if current:
+            self.add_css_class("running")
+        else:
+            self.remove_css_class("running")
