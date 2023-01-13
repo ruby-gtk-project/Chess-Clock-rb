@@ -75,6 +75,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
         self.play_pause.connect("clicked", self.state_machine.on_pause_clicked, None)
         self.state_machine.connect("pause", self.on_pause)
+        self.state_machine.connect("awbb", self.on_awbb)
+        self.state_machine.connect("abbw", self.on_abbw)
 
         self.add_tick_callback(self.state_machine.timer_a.on_tick, None, None)
         self.add_tick_callback(self.state_machine.timer_b.on_tick, None, None)
@@ -115,3 +117,15 @@ class ChessClockWindow(Adw.ApplicationWindow):
             self.play_pause.set_icon_name("media-playback-start-symbolic")
         else:
             self.play_pause.set_icon_name("media-playback-pause-symbolic")
+
+    def on_awbb(self, _):
+        self.windowcontrols_start.add_css_class("white")
+        self.windowcontrols_start.remove_css_class("black")
+        self.windowcontrols_end.add_css_class("black")
+        self.windowcontrols_end.remove_css_class("white")
+
+    def on_abbw(self, _):
+        self.windowcontrols_start.add_css_class("black")
+        self.windowcontrols_start.remove_css_class("white")
+        self.windowcontrols_end.add_css_class("white")
+        self.windowcontrols_end.remove_css_class("black")
