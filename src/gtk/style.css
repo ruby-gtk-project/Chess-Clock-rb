@@ -11,6 +11,7 @@ button.large {
   font-size: 70px;
   font-feature-settings: "tnum" 1;
   font-weight: 100;
+  min-width: 240px;
 }
 
 .black {
@@ -19,6 +20,10 @@ button.large {
 
 .white {
   color: rgba(0, 0, 0, 0.8);
+}
+
+.inverted box {
+  transform: rotate(180deg);
 }
 
 .timerbutton.black {

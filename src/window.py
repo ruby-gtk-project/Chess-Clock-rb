@@ -44,11 +44,16 @@ class ChessClockWindow(Adw.ApplicationWindow):
     custom_control = Gtk.Template.Child()
 
     timer_screen = Gtk.Template.Child()
-    windowcontrols_start = Gtk.Template.Child()
-    windowcontrols_end = Gtk.Template.Child()
-    play_pause = Gtk.Template.Child()
-    white_timer = Gtk.Template.Child()
-    black_timer = Gtk.Template.Child()
+    windowcontrols_start_l = Gtk.Template.Child()
+    windowcontrols_end_l = Gtk.Template.Child()
+    play_pause_l = Gtk.Template.Child()
+    a_timer_l = Gtk.Template.Child()
+    b_timer_l = Gtk.Template.Child()
+    windowcontrols_start_p = Gtk.Template.Child()
+    windowcontrols_end_p = Gtk.Template.Child()
+    play_pause_p = Gtk.Template.Child()
+    a_timer_p = Gtk.Template.Child()
+    b_timer_p = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -56,8 +61,10 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.create_action('restart', self.on_restart_action, ['<primary>r'])
 
         self.state_machine = ChessClockStateMachine(self)
-        self.state_machine.add_a_button(self.white_timer)
-        self.state_machine.add_b_button(self.black_timer)
+        self.state_machine.add_a_button(self.a_timer_l)
+        self.state_machine.add_b_button(self.b_timer_l)
+        self.state_machine.add_a_button(self.a_timer_p)
+        self.state_machine.add_b_button(self.b_timer_p)
 
         self.one_zero.connect("clicked", self.on_control, (60, 0))
         self.two_one.connect("clicked", self.on_control, (120, 1))
@@ -73,7 +80,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
         self.custom_control.start.connect("clicked", self.on_control, None)
 
-        self.play_pause.connect("clicked", self.state_machine.on_pause_clicked, None)
+        self.play_pause_l.connect("clicked", self.state_machine.on_pause_clicked, None)
+        self.play_pause_p.connect("clicked", self.state_machine.on_pause_clicked, None)
         self.state_machine.connect("pause", self.on_pause)
         self.state_machine.connect("awbb", self.on_awbb)
         self.state_machine.connect("abbw", self.on_abbw)
@@ -112,20 +120,31 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.main_stack.set_visible_child(self.timer_screen)
 
     def on_pause(self, _, active, paused):
-        self.play_pause.set_sensitive(active)
+        self.play_pause_l.set_sensitive(active)
+        self.play_pause_p.set_sensitive(active)
         if paused:
-            self.play_pause.set_icon_name("media-playback-start-symbolic")
+            self.play_pause_l.set_icon_name("media-playback-start-symbolic")
+            self.play_pause_p.set_icon_name("media-playback-start-symbolic")
         else:
-            self.play_pause.set_icon_name("media-playback-pause-symbolic")
+            self.play_pause_l.set_icon_name("media-playback-pause-symbolic")
+            self.play_pause_p.set_icon_name("media-playback-pause-symbolic")
 
     def on_awbb(self, _):
-        self.windowcontrols_start.add_css_class("white")
-        self.windowcontrols_start.remove_css_class("black")
-        self.windowcontrols_end.add_css_class("black")
-        self.windowcontrols_end.remove_css_class("white")
+        self.windowcontrols_start_l.add_css_class("white")
+        self.windowcontrols_start_l.remove_css_class("black")
+        self.windowcontrols_end_l.add_css_class("black")
+        self.windowcontrols_end_l.remove_css_class("white")
+        self.windowcontrols_start_p.add_css_class("white")
+        self.windowcontrols_start_p.remove_css_class("black")
+        self.windowcontrols_end_p.add_css_class("white")
+        self.windowcontrols_end_p.remove_css_class("black")
 
     def on_abbw(self, _):
-        self.windowcontrols_start.add_css_class("black")
-        self.windowcontrols_start.remove_css_class("white")
-        self.windowcontrols_end.add_css_class("white")
-        self.windowcontrols_end.remove_css_class("black")
+        self.windowcontrols_start_l.add_css_class("black")
+        self.windowcontrols_start_l.remove_css_class("white")
+        self.windowcontrols_end_l.add_css_class("white")
+        self.windowcontrols_end_l.remove_css_class("black")
+        self.windowcontrols_start_p.add_css_class("black")
+        self.windowcontrols_start_p.remove_css_class("white")
+        self.windowcontrols_end_p.add_css_class("black")
+        self.windowcontrols_end_p.remove_css_class("white")
