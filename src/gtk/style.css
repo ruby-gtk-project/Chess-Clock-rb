@@ -12,6 +12,7 @@ button.large {
   font-feature-settings: "tnum" 1;
   font-weight: 100;
   min-width: 240px;
+  border-radius: 0;
 }
 
 .black {
