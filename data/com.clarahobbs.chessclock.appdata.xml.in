@@ -33,6 +33,16 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
+    <release version="0.2.0" date="2023-01-15">
+      <description>
+        <p>A new beta release, with a few useful additions:</p>
+        <ul>
+          <li>New portrait mode, intended for a phone laid flat on a table next to the board</li>
+          <li>Increment is given at the <emph>end</emph> of each player's turn, rather than the beginning</li>
+          <li>Screen blanking is inhibited when the timers are running</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.0" date="2023-01-02">
       <description>
         <p>Initial release, implementing a basic chess clock.</p>

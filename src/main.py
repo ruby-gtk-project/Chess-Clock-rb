@@ -53,7 +53,7 @@ class ChessClockApplication(Adw.Application):
                                 application_name='Chess Clock',
                                 application_icon='com.clarahobbs.chessclock',
                                 developer_name='Clara Hobbs 🏳️‍⚧️🌹🏳‍🌈',
-                                version='0.1.0',
+                                version='0.2.0',
                                 developers=['Clara Hobbs‍️'],
                                 copyright='© 2022 Clara Hobbs\n\nThis application comes with absolutely no warranty. See the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License, version 3 or later</a> for details.')
         about.present()
