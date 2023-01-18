@@ -677,16 +677,6 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient19581"
-       id="linearGradient19583"
-       x1="66"
-       y1="260"
-       x2="118"
-       y2="260"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(168,-352)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient19581"
        id="linearGradient26886"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(168,-352)"
@@ -712,6 +702,55 @@
        y1="214"
        x2="108"
        y2="214" />
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Blur"
+       id="filter4399"
+       x="-0.30000013"
+       y="-0.12000005"
+       width="1.6000003"
+       height="1.2400001">
+      <feGaussianBlur
+         stdDeviation="0.5 0.5"
+         result="blur"
+         id="feGaussianBlur4397" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Blur"
+       id="filter6412"
+       x="-0.059270724"
+       y="-0.069889705"
+       width="1.1185414"
+       height="1.1397794">
+      <feGaussianBlur
+         stdDeviation="0.5 0.5"
+         result="blur"
+         id="feGaussianBlur6410" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Blur"
+       id="filter7889"
+       x="-0.30000013"
+       y="-0.12000005"
+       width="1.6000003"
+       height="1.2400001">
+      <feGaussianBlur
+         stdDeviation="0.5 0.5"
+         result="blur"
+         id="feGaussianBlur7887" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient19581"
+       id="linearGradient8854"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(168,-352)"
+       x1="66"
+       y1="260"
+       x2="118"
+       y2="260" />
   </defs>
   <sodipodi:namedview
      stroke="#ef2929"
@@ -722,9 +761,9 @@
      borderopacity="0.25490196"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="45.254834"
-     inkscape:cx="174.29077"
-     inkscape:cy="23.798563"
+     inkscape:zoom="8"
+     inkscape:cx="52.3125"
+     inkscape:cy="103.125"
      inkscape:current-layer="layer9"
      showgrid="true"
      inkscape:grid-bbox="true"
@@ -2997,156 +3036,6 @@
            ry="8" />
       </g>
       <g
-         id="g26844">
-        <circle
-           style="fill:url(#linearGradient19583);fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="circle19034"
-           cx="260"
-           cy="-92"
-           r="26"
-           transform="rotate(90)" />
-        <circle
-           style="fill:#f6f5f4;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="circle3051"
-           cx="92"
-           cy="260"
-           r="24" />
-        <rect
-           style="fill:#3d3846;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect6705"
-           width="4"
-           height="2"
-           x="-114"
-           y="-261"
-           transform="scale(-1)" />
-        <rect
-           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect7005"
-           width="4"
-           height="2"
-           x="-231.67435"
-           y="-180.1666"
-           transform="rotate(-150)" />
-        <rect
-           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect7007"
-           width="4"
-           height="2"
-           x="-293.16656"
-           y="-51.325741"
-           transform="rotate(-120.00002)" />
-        <rect
-           style="fill:#3d3846;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect7009"
-           width="4"
-           height="2"
-           x="-282"
-           y="91"
-           transform="rotate(-90)" />
-        <rect
-           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect10623"
-           width="4"
-           height="2"
-           x="-201.16653"
-           y="208.67439"
-           transform="rotate(-59.999984)" />
-        <rect
-           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect10625"
-           width="4"
-           height="2"
-           x="-72.325684"
-           y="270.1666"
-           transform="rotate(-30.000003)" />
-        <rect
-           style="fill:#3d3846;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect10627"
-           width="4"
-           height="2"
-           x="70"
-           y="259" />
-        <rect
-           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect10629"
-           width="4"
-           height="2"
-           x="187.67433"
-           y="178.16661"
-           transform="rotate(29.999998)" />
-        <rect
-           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect10631"
-           width="4"
-           height="2"
-           x="249.16661"
-           y="49.325649"
-           transform="rotate(60.000003)" />
-        <rect
-           style="fill:#3d3846;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect10633"
-           width="4"
-           height="2"
-           x="238"
-           y="-93"
-           transform="rotate(90)" />
-        <rect
-           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect10635"
-           width="4"
-           height="2"
-           x="157.16661"
-           y="-210.67433"
-           transform="rotate(120)" />
-        <rect
-           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect10637"
-           width="4"
-           height="2"
-           x="28.325653"
-           y="-272.1666"
-           transform="rotate(150)" />
-        <rect
-           style="fill:#e01b24;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect17814"
-           width="2"
-           height="8"
-           x="84"
-           y="240" />
-        <circle
-           style="fill:#e01b24;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="path17818"
-           cx="85"
-           cy="240"
-           r="2" />
-        <circle
-           style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="path23264"
-           cx="92"
-           cy="260"
-           r="4" />
-        <rect
-           style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect23868"
-           width="10"
-           height="4"
-           x="-278.42761"
-           y="61.331535"
-           inkscape:transform-center-x="-0.54098212"
-           transform="rotate(-96.210862)"
-           inkscape:transform-center-y="4.9710203" />
-        <rect
-           style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect25097"
-           width="17"
-           height="2"
-           x="209.70874"
-           y="156.06238"
-           inkscape:transform-center-x="6.8898495"
-           inkscape:transform-center-y="-4.9738103"
-           transform="rotate(35.799694)" />
-      </g>
-      <g
          id="g26884"
          transform="translate(-56)">
         <circle
@@ -3257,45 +3146,59 @@
            x="28.325653"
            y="-272.1666"
            transform="rotate(150)" />
-        <rect
-           style="fill:#e01b24;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect26874"
-           width="2"
-           height="8"
-           x="84"
-           y="240" />
-        <circle
-           style="fill:#e01b24;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="circle26876"
-           cx="85"
-           cy="240"
-           r="2" />
-        <circle
-           style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="circle26878"
-           cx="92"
-           cy="260"
-           r="4" />
-        <rect
-           style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect26880"
-           width="10"
-           height="4"
-           x="-283.06589"
-           y="36.720734"
-           inkscape:transform-center-x="-0.989699"
-           transform="rotate(-101.41546)"
-           inkscape:transform-center-y="4.9014552" />
-        <rect
-           style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
-           id="rect26882"
-           width="17"
-           height="2"
-           x="161.33218"
-           y="209.38638"
-           inkscape:transform-center-x="7.9423931"
-           inkscape:transform-center-y="-3.0211103"
-           transform="rotate(20.799694)" />
+        <path
+           id="rect7515"
+           style="fill:#000000;fill-opacity:0.333333;stroke:#5bf61a;stroke-width:0;stroke-linecap:round;filter:url(#filter7889)"
+           d="M 85 238.5 A 2 2 0 0 0 83 240.5 A 2 2 0 0 0 84 242.22656 L 84 248.5 L 86 248.5 L 86 242.22656 A 2 2 0 0 0 87 240.5 A 2 2 0 0 0 85 238.5 z " />
+        <g
+           id="g1947">
+          <rect
+             style="fill:#e01b24;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="rect26874"
+             width="2"
+             height="8"
+             x="84"
+             y="240" />
+          <circle
+             style="fill:#e01b24;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="circle26876"
+             cx="85"
+             cy="240"
+             r="2" />
+        </g>
+        <path
+           id="circle6039"
+           style="fill:#000000;fill-opacity:0.333333;stroke:#5bf61a;stroke-width:0;stroke-linecap:round;filter:url(#filter6412)"
+           d="M 76.464844 253.5293 L 75.753906 255.40039 L 88.03125 260.0625 A 4 4 0 0 0 88 260.5 A 4 4 0 0 0 90.722656 264.28125 L 92.019531 270.69922 L 95.939453 269.90625 L 94.646484 263.49609 A 4 4 0 0 0 96 260.5 A 4 4 0 0 0 92 256.5 A 4 4 0 0 0 88.742188 258.19336 L 76.464844 253.5293 z " />
+        <g
+           id="g6037">
+          <circle
+             style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="circle26878"
+             cx="92"
+             cy="260"
+             r="4" />
+          <rect
+             style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="rect26880"
+             width="10"
+             height="4"
+             x="-283.06589"
+             y="36.720734"
+             inkscape:transform-center-x="-0.989699"
+             transform="rotate(-101.41546)"
+             inkscape:transform-center-y="4.9014552" />
+          <rect
+             style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="rect26882"
+             width="17"
+             height="2"
+             x="161.33218"
+             y="209.38638"
+             inkscape:transform-center-x="7.9423931"
+             inkscape:transform-center-y="-3.0211103"
+             transform="rotate(20.799694)" />
+        </g>
       </g>
       <g
          id="g31187">
@@ -3341,6 +3244,170 @@
          id="rect37406"
          style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
          d="M 162 174 L 162 177 L 161 177 C 160.446 177 160 177.446 160 178 L 160 184 C 160 184.554 160.446 185 161 185 L 175 185 C 175.554 185 176 184.554 176 184 L 176 178 C 176 177.446 175.554 177 175 177 L 174 177 L 174 176 L 172 176 L 172 177 L 164 177 L 164 174 L 162 174 z M 164 178 A 3 3 0 0 1 167 181 A 3 3 0 0 1 164 184 A 3 3 0 0 1 161 181 A 3 3 0 0 1 164 178 z M 172 178 A 3 3 0 0 1 175 181 A 3 3 0 0 1 172 184 A 3 3 0 0 1 169 181 A 3 3 0 0 1 172 178 z " />
+      <g
+         id="g8852">
+        <circle
+           style="fill:url(#linearGradient8854);fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="circle8806"
+           cx="260"
+           cy="-92"
+           r="26"
+           transform="rotate(90)" />
+        <circle
+           style="fill:#f6f5f4;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="circle8808"
+           cx="92"
+           cy="260"
+           r="24" />
+        <rect
+           style="fill:#3d3846;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8810"
+           width="4"
+           height="2"
+           x="-114"
+           y="-261"
+           transform="scale(-1)" />
+        <rect
+           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8812"
+           width="4"
+           height="2"
+           x="-231.67435"
+           y="-180.1666"
+           transform="rotate(-150)" />
+        <rect
+           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8814"
+           width="4"
+           height="2"
+           x="-293.16656"
+           y="-51.325741"
+           transform="rotate(-120.00002)" />
+        <rect
+           style="fill:#3d3846;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8816"
+           width="4"
+           height="2"
+           x="-282"
+           y="91"
+           transform="rotate(-90)" />
+        <rect
+           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8818"
+           width="4"
+           height="2"
+           x="-201.16653"
+           y="208.67439"
+           transform="rotate(-59.999984)" />
+        <rect
+           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8820"
+           width="4"
+           height="2"
+           x="-72.325684"
+           y="270.1666"
+           transform="rotate(-30.000003)" />
+        <rect
+           style="fill:#3d3846;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8822"
+           width="4"
+           height="2"
+           x="70"
+           y="259" />
+        <rect
+           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8824"
+           width="4"
+           height="2"
+           x="187.67433"
+           y="178.16661"
+           transform="rotate(29.999998)" />
+        <rect
+           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8826"
+           width="4"
+           height="2"
+           x="249.16661"
+           y="49.325649"
+           transform="rotate(60.000003)" />
+        <rect
+           style="fill:#3d3846;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8828"
+           width="4"
+           height="2"
+           x="238"
+           y="-93"
+           transform="rotate(90)" />
+        <rect
+           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8830"
+           width="4"
+           height="2"
+           x="157.16661"
+           y="-210.67433"
+           transform="rotate(120)" />
+        <rect
+           style="fill:#77767b;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+           id="rect8832"
+           width="4"
+           height="2"
+           x="28.325653"
+           y="-272.1666"
+           transform="rotate(150)" />
+        <path
+           id="path8834"
+           style="fill:#000000;fill-opacity:0.333333;stroke:#5bf61a;stroke-width:0;stroke-linecap:round;filter:url(#filter7889)"
+           d="m 85,238.5 a 2,2 0 0 0 -2,2 2,2 0 0 0 1,1.72656 V 248.5 h 2 v -6.27344 a 2,2 0 0 0 1,-1.72656 2,2 0 0 0 -2,-2 z" />
+        <g
+           id="g8840">
+          <rect
+             style="fill:#e01b24;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="rect8836"
+             width="2"
+             height="8"
+             x="84"
+             y="240" />
+          <circle
+             style="fill:#e01b24;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="circle8838"
+             cx="85"
+             cy="240"
+             r="2" />
+        </g>
+        <path
+           id="path8842"
+           style="fill:#000000;fill-opacity:0.333333;stroke:#5bf61a;stroke-width:0;stroke-linecap:round;filter:url(#filter6412)"
+           d="m 76.464844,253.5293 -0.710938,1.87109 12.277344,4.66211 A 4,4 0 0 0 88,260.5 a 4,4 0 0 0 2.722656,3.78125 l 1.296875,6.41797 3.919922,-0.79297 -1.292969,-6.41016 A 4,4 0 0 0 96,260.5 a 4,4 0 0 0 -4,-4 4,4 0 0 0 -3.257812,1.69336 z" />
+        <g
+           id="g8850">
+          <circle
+             style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="circle8844"
+             cx="92"
+             cy="260"
+             r="4" />
+          <rect
+             style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="rect8846"
+             width="10"
+             height="4"
+             x="-283.06589"
+             y="36.720734"
+             inkscape:transform-center-x="-0.989699"
+             transform="rotate(-101.41546)"
+             inkscape:transform-center-y="4.9014552" />
+          <rect
+             style="fill:#241f31;fill-opacity:1;stroke:#5bf61a;stroke-width:0;stroke-linecap:round"
+             id="rect8848"
+             width="17"
+             height="2"
+             x="161.33218"
+             y="209.38638"
+             inkscape:transform-center-x="7.9423931"
+             inkscape:transform-center-y="-3.0211103"
+             transform="rotate(20.799694)" />
+        </g>
+      </g>
     </g>
     <g
        inkscape:groupmode="layer"
