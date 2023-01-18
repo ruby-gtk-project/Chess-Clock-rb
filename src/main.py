@@ -1,6 +1,6 @@
 # main.py
 #
-# Copyright 2022 Clara Hobbs 🏳️‍⚧️🌹🏳‍🌈
+# Copyright 2022-2023 the Chess Clock contributors
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ class ChessClockApplication(Adw.Application):
                                 developer_name='Clara Hobbs 🏳️‍⚧️🌹🏳‍🌈',
                                 version='0.2.0',
                                 developers=['Clara Hobbs‍️'],
-                                copyright='© 2022 Clara Hobbs\n\nThis application comes with absolutely no warranty. See the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License, version 3 or later</a> for details.')
+                                copyright='© 2022–2023 the Chess Clock contributors\n\nThis application comes with absolutely no warranty. See the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License, version 3 or later</a> for details.')
         about.present()
 
     def create_action(self, name, callback, shortcuts=None):
