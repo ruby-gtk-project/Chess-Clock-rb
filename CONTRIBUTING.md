@@ -57,7 +57,9 @@ And create a merge request on the GitLab interface.
 
 I whole-heartedly want all contributors to be credited for their work!  As
 such, when making your first contribution, please add yourself to the
-appropriate list in the About window.  It's an
+appropriate list in the About window.  The code creating this window is located
+in `src/main.py`, in the `on_about_action` method of the
+`ChessClockApplication` class.  It's an
 [AdwAboutWindow](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/main/class.AboutWindow.html),
 which provides five lists for different types of contributor:
 
