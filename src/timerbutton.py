@@ -59,5 +59,9 @@ class ChessClockTimerButton(Gtk.Button):
         self.set_sensitive(active)
         if current:
             self.add_css_class("running")
+            # XXX: this is brittle to changes in the UI file, but it works
+            grandparent = self.get_parent().get_parent()
+            if grandparent.get_parent().get_visible_child() == grandparent:
+                self.grab_focus()
         else:
             self.remove_css_class("running")
