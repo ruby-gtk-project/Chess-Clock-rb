@@ -185,13 +185,37 @@
           </object>
         </child>
         <child>
-          <object class="GtkWindowHandle" id="timer_screen">
-            <child>
-              <object class="AdwSqueezer">
+              <object class="AdwSqueezer" id="timer_screen">
                 <property name="transition-type">crossfade</property>
                 <!-- Landscape -->
                 <child>
                   <object class="GtkOverlay">
+                    <child type="overlay">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="valign">start</property>
+                        <child>
+                          <object class="GtkRevealer" id="headerbar_revealer">
+                            <property name="reveal-child">true</property>
+                            <property name="transition-type">crossfade</property>
+                            <property name="overflow">visible</property>
+                            <child>
+                              <object class="AdwHeaderBar">
+                                <property name="overflow">visible</property>
+                                <property name="valign">start</property>
+                                <style>
+                                  <class name="transparent"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkEventControllerMotion" id="headerbar_motion">
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                     <child type="overlay">
                       <object class="GtkWindowControls" id="windowcontrols_start_l">
                         <property name="halign">start</property>
@@ -273,6 +297,32 @@
                 <child>
                   <object class="GtkOverlay">
                     <child type="overlay">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="valign">start</property>
+                        <child>
+                          <object class="GtkRevealer" id="headerbar_revealer_p">
+                            <property name="reveal-child">true</property>
+                            <property name="transition-type">crossfade</property>
+                            <property name="overflow">visible</property>
+                            <child>
+                              <object class="AdwHeaderBar">
+                                <property name="overflow">visible</property>
+                                <property name="valign">start</property>
+                                <style>
+                                  <class name="transparent"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkEventControllerMotion" id="headerbar_motion_p">
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="overlay">
                       <object class="GtkWindowControls" id="windowcontrols_start_p">
                         <property name="halign">start</property>
                         <property name="valign">start</property>
@@ -351,8 +401,6 @@
                   </object>
                 </child>
               </object>
-            </child>
-          </object>
         </child>
       </object>
     </property>

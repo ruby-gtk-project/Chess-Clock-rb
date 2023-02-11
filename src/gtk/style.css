@@ -72,3 +72,7 @@ spinbutton.custom-spin {
   font-size: 2em;
   min-width: 0.75em;
 }
+
+headerbar.transparent {
+  opacity: 0;
+}

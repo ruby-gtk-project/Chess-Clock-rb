@@ -46,6 +46,10 @@ class ChessClockWindow(Adw.ApplicationWindow):
     timer_screen = Gtk.Template.Child()
     windowcontrols_start_l = Gtk.Template.Child()
     windowcontrols_end_l = Gtk.Template.Child()
+    headerbar_revealer = Gtk.Template.Child()
+    headerbar_revealer_p = Gtk.Template.Child()
+    headerbar_motion = Gtk.Template.Child()
+    headerbar_motion_p = Gtk.Template.Child()
     play_pause_l = Gtk.Template.Child()
     a_timer_l = Gtk.Template.Child()
     b_timer_l = Gtk.Template.Child()
@@ -86,12 +90,21 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.state_machine.connect("awbb", self.on_awbb)
         self.state_machine.connect("abbw", self.on_abbw)
 
+        self.headerbar_motion.connect("enter", self.reveal_headerbar)
+        self.headerbar_motion.connect("motion", self.reveal_headerbar)
+        self.headerbar_motion.connect("leave", self.hide_headerbar)
+        self.headerbar_motion_p.connect("enter", self.reveal_headerbar)
+        self.headerbar_motion_p.connect("motion", self.reveal_headerbar)
+        self.headerbar_motion_p.connect("leave", self.hide_headerbar)
+
         self.add_tick_callback(self.state_machine.timer_a.on_tick, None, None)
         self.add_tick_callback(self.state_machine.timer_b.on_tick, None, None)
 
     def on_new_action(self, widget, _):
         """Callback for the app.new action."""
         self.main_stack.set_visible_child(self.control_chooser)
+        self.headerbar_revealer.set_reveal_child(True)
+        self.headerbar_revealer_p.set_reveal_child(True)
 
     def on_restart_action(self, widget, _):
         """Callback for the app.restart action."""
@@ -118,6 +131,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.state_machine.set_time_control(*data)
         self.state_machine.state = MachineState.START
         self.main_stack.set_visible_child(self.timer_screen)
+        self.headerbar_revealer.set_reveal_child(False)
+        self.headerbar_revealer_p.set_reveal_child(False)
 
     def on_pause(self, _, active, paused):
         self.play_pause_l.set_sensitive(active)
@@ -148,3 +163,11 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.windowcontrols_start_p.remove_css_class("white")
         self.windowcontrols_end_p.add_css_class("black")
         self.windowcontrols_end_p.remove_css_class("white")
+
+    def reveal_headerbar(self, *args):
+        self.headerbar_revealer.set_reveal_child(True)
+        self.headerbar_revealer_p.set_reveal_child(True)
+
+    def hide_headerbar(self, *args):
+        self.headerbar_revealer.set_reveal_child(False)
+        self.headerbar_revealer_p.set_reveal_child(False)
