@@ -33,12 +33,21 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
+    <release version="0.3.0" date="2023-01-15">
+      <description>
+        <p>A new release focusing on UI enhancements.</p>
+        <ul>
+          <li>Dragging the timer buttons counts as a click, so no more missed presses on a phone screen!</li>
+          <li>Clicking one button now gives the other focus, so pressing space toggles which timer is running</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.0" date="2023-01-15">
       <description>
         <p>A new beta release, with a few useful additions:</p>
         <ul>
           <li>New portrait mode, intended for a phone laid flat on a table next to the board</li>
-          <li>Increment is given at the <emph>end</emph> of each player's turn, rather than the beginning</li>
+          <li>Increment is given at the <em>end</em> of each player's turn, rather than the beginning</li>
           <li>Screen blanking is inhibited when the timers are running</li>
         </ul>
       </description>
