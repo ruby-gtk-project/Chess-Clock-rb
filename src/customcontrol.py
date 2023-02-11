@@ -17,8 +17,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from gi.repository import Adw
-from gi.repository import Gtk, GLib, GObject
+from gi.repository import Adw, Gtk, GLib, GObject, Gio
 
 from math import ceil
 
@@ -33,20 +32,29 @@ class ChessClockCustomControl(Gtk.MenuButton):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        self.settings = Gio.Settings(schema_id='com.clarahobbs.chessclock')
+        self.settings.bind('custom-control-minutes', self.minutes, 'value',
+                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('custom-control-seconds', self.seconds, 'value',
+                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('custom-control-increment', self.increment, 'value',
+                           Gio.SettingsBindFlags.DEFAULT)
+
         self.set_css_name("menubutton")
         self.set_accessible_role(Gtk.AccessibleRole.BUTTON)
 
-        self.minutes_adj = Gtk.Adjustment.new(5, 0, 999, 1, 10, 0)
+        self.minutes_adj = Gtk.Adjustment.new(self.settings['custom-control-minutes'], 0, 999, 1, 10, 0)
         self.minutes.set_adjustment(self.minutes_adj)
 
-        self.seconds_adj = Gtk.Adjustment.new(0, 0, 59, 1, 10, 0)
+        self.seconds_adj = Gtk.Adjustment.new(self.settings['custom-control-seconds'], 0, 59, 1, 10, 0)
         self.seconds.set_adjustment(self.seconds_adj)
         self.seconds.set_wrap(True)
         self.seconds.connect("wrapped", self.on_seconds_wrapped)
         self.seconds.connect("value-changed", self.on_seconds_value_changed)
         self.on_seconds_value_changed(self.seconds)
 
-        self.increment_adj = Gtk.Adjustment.new(0, 0, 999, 1, 10, 0)
+        self.increment_adj = Gtk.Adjustment.new(self.settings['custom-control-increment'], 0, 999, 1, 10, 0)
         self.increment.set_adjustment(self.increment_adj)
 
     def get_control(self):
