@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="chess-clock">
 	<schema id="com.clarahobbs.chessclock" path="/com/clarahobbs/chessclock/">
+	  <key name="custom-control-minutes" type="i">
+      <default>5</default>
+	  </key>
+	  <key name="custom-control-seconds" type="i">
+      <default>0</default>
+	  </key>
+	  <key name="custom-control-increment" type="i">
+      <default>0</default>
+	  </key>
 	</schema>
 </schemalist>
