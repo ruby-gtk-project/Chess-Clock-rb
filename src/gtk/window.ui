@@ -185,222 +185,222 @@
           </object>
         </child>
         <child>
-              <object class="AdwSqueezer" id="timer_screen">
-                <property name="transition-type">crossfade</property>
-                <!-- Landscape -->
-                <child>
-                  <object class="GtkOverlay">
-                    <child type="overlay">
-                      <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <property name="valign">start</property>
-                        <child>
-                          <object class="GtkRevealer" id="headerbar_revealer">
-                            <property name="reveal-child">true</property>
-                            <property name="transition-type">crossfade</property>
-                            <property name="overflow">visible</property>
-                            <child>
-                              <object class="AdwHeaderBar">
-                                <property name="overflow">visible</property>
-                                <property name="valign">start</property>
-                                <style>
-                                  <class name="transparent"/>
-                                </style>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkEventControllerMotion" id="headerbar_motion">
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child type="overlay">
-                      <object class="GtkWindowControls" id="windowcontrols_start_l">
-                        <property name="halign">start</property>
-                        <property name="valign">start</property>
-                        <property name="side">start</property>
-                        <style>
-                          <class name="white"/>
-                          <class name="small-margin"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child type="overlay">
-                      <object class="GtkWindowControls" id="windowcontrols_end_l">
-                        <property name="halign">end</property>
-                        <property name="valign">start</property>
-                        <property name="side">end</property>
-                        <style>
-                          <class name="black"/>
-                          <class name="small-margin"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child type="overlay">
-                      <object class="GtkMenuButton">
-                        <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="icon-name">open-menu-symbolic</property>
-                        <property name="menu-model">primary_menu</property>
-                        <style>
-                          <class name="image-button"/>
-                          <class name="circular"/>
-                          <class name="osd"/>
-                          <class name="small-margin"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child type="overlay">
-                      <object class="GtkButton" id="play_pause_l">
-                        <property name="halign">center</property>
-                        <property name="valign">end</property>
-                        <property name="icon-name">media-playback-pause-symbolic</property>
-                        <style>
-                          <class name="image-button"/>
-                          <class name="circular"/>
-                          <class name="large"/>
-                          <class name="osd"/>
-                          <class name="small-margin"/>
-                        </style>
-                      </object>
-                    </child>
+          <object class="AdwSqueezer" id="timer_screen">
+            <property name="transition-type">crossfade</property>
+            <!-- Landscape -->
+            <child>
+              <object class="GtkOverlay">
+                <child type="overlay">
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="valign">start</property>
                     <child>
-                      <object class="GtkBox">
-                        <property name="orientation">horizontal</property>
-                        <property name="homogeneous">true</property>
+                      <object class="GtkRevealer" id="headerbar_revealer">
+                        <property name="reveal-child">true</property>
+                        <property name="transition-type">crossfade</property>
+                        <property name="overflow">visible</property>
                         <child>
-                          <object class="ChessClockTimerButton" id="a_timer_l">
-                            <property name="hexpand">true</property>
+                          <object class="AdwHeaderBar">
+                            <property name="overflow">visible</property>
+                            <property name="valign">start</property>
                             <style>
-                              <class name="white"/>
+                              <class name="transparent"/>
                             </style>
                           </object>
                         </child>
                         <child>
-                          <object class="ChessClockTimerButton" id="b_timer_l">
-                            <property name="hexpand">true</property>
-                            <style>
-                              <class name="black"/>
-                            </style>
+                          <object class="GtkEventControllerMotion" id="headerbar_motion">
                           </object>
                         </child>
-                        <style>
-                          <class name="linked"/>
-                        </style>
                       </object>
                     </child>
                   </object>
                 </child>
-                <!-- Portrait -->
+                <child type="overlay">
+                  <object class="GtkWindowControls" id="windowcontrols_start_l">
+                    <property name="halign">start</property>
+                    <property name="valign">start</property>
+                    <property name="side">start</property>
+                    <style>
+                      <class name="white"/>
+                      <class name="small-margin"/>
+                    </style>
+                  </object>
+                </child>
+                <child type="overlay">
+                  <object class="GtkWindowControls" id="windowcontrols_end_l">
+                    <property name="halign">end</property>
+                    <property name="valign">start</property>
+                    <property name="side">end</property>
+                    <style>
+                      <class name="black"/>
+                      <class name="small-margin"/>
+                    </style>
+                  </object>
+                </child>
+                <child type="overlay">
+                  <object class="GtkMenuButton">
+                    <property name="halign">center</property>
+                    <property name="valign">start</property>
+                    <property name="icon-name">open-menu-symbolic</property>
+                    <property name="menu-model">primary_menu</property>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                      <class name="osd"/>
+                      <class name="small-margin"/>
+                    </style>
+                  </object>
+                </child>
+                <child type="overlay">
+                  <object class="GtkButton" id="play_pause_l">
+                    <property name="halign">center</property>
+                    <property name="valign">end</property>
+                    <property name="icon-name">media-playback-pause-symbolic</property>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                      <class name="large"/>
+                      <class name="osd"/>
+                      <class name="small-margin"/>
+                    </style>
+                  </object>
+                </child>
                 <child>
-                  <object class="GtkOverlay">
-                    <child type="overlay">
-                      <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <property name="valign">start</property>
-                        <child>
-                          <object class="GtkRevealer" id="headerbar_revealer_p">
-                            <property name="reveal-child">true</property>
-                            <property name="transition-type">crossfade</property>
-                            <property name="overflow">visible</property>
-                            <child>
-                              <object class="AdwHeaderBar">
-                                <property name="overflow">visible</property>
-                                <property name="valign">start</property>
-                                <style>
-                                  <class name="transparent"/>
-                                </style>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkEventControllerMotion" id="headerbar_motion_p">
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child type="overlay">
-                      <object class="GtkWindowControls" id="windowcontrols_start_p">
-                        <property name="halign">start</property>
-                        <property name="valign">start</property>
-                        <property name="side">start</property>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="homogeneous">true</property>
+                    <child>
+                      <object class="ChessClockTimerButton" id="a_timer_l">
+                        <property name="hexpand">true</property>
                         <style>
                           <class name="white"/>
-                          <class name="small-margin"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child type="overlay">
-                      <object class="GtkWindowControls" id="windowcontrols_end_p">
-                        <property name="halign">end</property>
-                        <property name="valign">start</property>
-                        <property name="side">end</property>
-                        <style>
-                          <class name="white"/>
-                          <class name="small-margin"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child type="overlay">
-                      <object class="GtkMenuButton">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="icon-name">open-menu-symbolic</property>
-                        <property name="menu-model">primary_menu</property>
-                        <style>
-                          <class name="image-button"/>
-                          <class name="circular"/>
-                          <class name="osd"/>
-                          <class name="small-margin"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child type="overlay">
-                      <object class="GtkButton" id="play_pause_p">
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="icon-name">media-playback-pause-symbolic</property>
-                        <style>
-                          <class name="image-button"/>
-                          <class name="circular"/>
-                          <class name="large"/>
-                          <class name="osd"/>
-                          <class name="small-margin"/>
                         </style>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <property name="homogeneous">true</property>
-                        <child>
-                          <object class="ChessClockTimerButton" id="a_timer_p">
-                            <property name="vexpand">true</property>
-                            <style>
-                              <class name="white"/>
-                              <class name="inverted"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="ChessClockTimerButton" id="b_timer_p">
-                            <property name="vexpand">true</property>
-                            <style>
-                              <class name="black"/>
-                            </style>
-                          </object>
-                        </child>
+                      <object class="ChessClockTimerButton" id="b_timer_l">
+                        <property name="hexpand">true</property>
                         <style>
-                          <class name="linked"/>
+                          <class name="black"/>
                         </style>
                       </object>
                     </child>
+                    <style>
+                      <class name="linked"/>
+                    </style>
                   </object>
                 </child>
               </object>
+            </child>
+            <!-- Portrait -->
+            <child>
+              <object class="GtkOverlay">
+                <child type="overlay">
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="valign">start</property>
+                    <child>
+                      <object class="GtkRevealer" id="headerbar_revealer_p">
+                        <property name="reveal-child">true</property>
+                        <property name="transition-type">crossfade</property>
+                        <property name="overflow">visible</property>
+                        <child>
+                          <object class="AdwHeaderBar">
+                            <property name="overflow">visible</property>
+                            <property name="valign">start</property>
+                            <style>
+                              <class name="transparent"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkEventControllerMotion" id="headerbar_motion_p">
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="overlay">
+                  <object class="GtkWindowControls" id="windowcontrols_start_p">
+                    <property name="halign">start</property>
+                    <property name="valign">start</property>
+                    <property name="side">start</property>
+                    <style>
+                      <class name="white"/>
+                      <class name="small-margin"/>
+                    </style>
+                  </object>
+                </child>
+                <child type="overlay">
+                  <object class="GtkWindowControls" id="windowcontrols_end_p">
+                    <property name="halign">end</property>
+                    <property name="valign">start</property>
+                    <property name="side">end</property>
+                    <style>
+                      <class name="white"/>
+                      <class name="small-margin"/>
+                    </style>
+                  </object>
+                </child>
+                <child type="overlay">
+                  <object class="GtkMenuButton">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="icon-name">open-menu-symbolic</property>
+                    <property name="menu-model">primary_menu</property>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                      <class name="osd"/>
+                      <class name="small-margin"/>
+                    </style>
+                  </object>
+                </child>
+                <child type="overlay">
+                  <object class="GtkButton" id="play_pause_p">
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="icon-name">media-playback-pause-symbolic</property>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                      <class name="large"/>
+                      <class name="osd"/>
+                      <class name="small-margin"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="homogeneous">true</property>
+                    <child>
+                      <object class="ChessClockTimerButton" id="a_timer_p">
+                        <property name="vexpand">true</property>
+                        <style>
+                          <class name="white"/>
+                          <class name="inverted"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ChessClockTimerButton" id="b_timer_p">
+                        <property name="vexpand">true</property>
+                        <style>
+                          <class name="black"/>
+                        </style>
+                      </object>
+                    </child>
+                    <style>
+                      <class name="linked"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
         </child>
       </object>
     </property>
