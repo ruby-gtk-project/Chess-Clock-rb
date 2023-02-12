@@ -18,3 +18,9 @@ Installation via Flathub is recommended.
 
 To contribute to Chess Clock, please see the [CONTRIBUTING.md](CONTRIBUTING.md)
 file.
+
+## Code of Conduct
+
+Chess Clock follows the GNOME
+[Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).  Everyone
+is expected to observe this code in all project spaces.
