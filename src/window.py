@@ -21,7 +21,9 @@ from gi.repository import Adw, Gtk, Gio
 
 from .timerbutton import ChessClockTimerButton
 from .customcontrol import ChessClockCustomControl
-from .statemachine import ChessClockStateMachine, MachineState
+from .statemachine import (ChessClockStateMachine,
+                           ChessClockIncrementStateMachine,
+                           MachineState)
 
 @Gtk.Template(resource_path='/com/clarahobbs/chessclock/window.ui')
 class ChessClockWindow(Adw.ApplicationWindow):
@@ -63,7 +65,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.create_action('new', self.on_new_action, ['<primary>n'])
         self.create_action('restart', self.on_restart_action, ['<primary>r'])
 
-        self.state_machine = ChessClockStateMachine(self)
+        self.state_machine = ChessClockIncrementStateMachine(self)
         self.state_machine.add_a_button(self.a_timer_l)
         self.state_machine.add_b_button(self.b_timer_l)
         self.state_machine.add_a_button(self.a_timer_p)

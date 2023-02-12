@@ -87,9 +87,6 @@ class ChessClockStateMachine(GObject.Object):
         # Reset timers
         self.timer_a.reset()
         self.timer_b.reset()
-        # Add increment
-        self.timer_a.increment(self.inc)
-        self.timer_b.increment(self.inc)
         # Set buttons active
         self.emit("a_active", True, False)
         self.emit("b_active", True, False)
@@ -106,9 +103,6 @@ class ChessClockStateMachine(GObject.Object):
             self.emit("awbb")
         self.timer_b.running = False
         self.timer_a.running = True
-        # Add increment
-        if self.state == MachineState.B_RUN:
-            self.timer_b.increment(self.inc)
         # Set buttons active
         self.emit("a_active", True, True)
         self.emit("b_active", False, False)
@@ -125,9 +119,6 @@ class ChessClockStateMachine(GObject.Object):
             self.emit("abbw")
         self.timer_a.running = False
         self.timer_b.running = True
-        # Add increment
-        if self.state == MachineState.A_RUN:
-            self.timer_a.increment(self.inc)
         # Set buttons active
         self.emit("a_active", False, False)
         self.emit("b_active", True, True)
@@ -149,7 +140,7 @@ class ChessClockStateMachine(GObject.Object):
         self.emit("pause", True, True)
 
     def to_b_pause(self):
-    self.timer_b.running = False
+        self.timer_b.running = False
         self.emit("b_active", False, True)
         # Uninhibit session idle
         if self.idle_cookie:
@@ -193,3 +184,23 @@ class ChessClockStateMachine(GObject.Object):
     @GObject.Signal
     def abbw(self):
         pass
+
+
+class ChessClockIncrementStateMachine(ChessClockStateMachine):
+    def to_start(self):
+        super().to_start()
+        # Add increment
+        self.timer_a.increment(self.inc)
+        self.timer_b.increment(self.inc)
+
+    def to_a_run(self):
+        super().to_a_run()
+        # Add increment
+        if self.state == MachineState.B_RUN:
+            self.timer_b.increment(self.inc)
+
+    def to_b_run(self):
+        super().to_b_run()
+        # Add increment
+        if self.state == MachineState.A_RUN:
+            self.timer_a.increment(self.inc)
