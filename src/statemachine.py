@@ -34,15 +34,19 @@ class MachineState(Enum):
 class ChessClockStateMachine(GObject.Object):
     __gtype_name__ = 'ChessClockStateMachine'
 
-    def __init__(self, window, **kwargs):
+    def __init__(self, window, time, inc, **kwargs):
         super().__init__(**kwargs)
         self.window = window
         self.app = self.window.get_application()
         self.idle_cookie = 0
-        self.set_time_control(260, 0)
+        self.set_time_control(time, inc)
 
         self.timer_a = ChessClockTimer(self)
         self.timer_b = ChessClockTimer(self)
+
+        self.handler_ids = []
+        self.handler_ids_ta = []
+        self.handler_ids_tb = []
 
         self.state = MachineState.START
 
@@ -52,18 +56,29 @@ class ChessClockStateMachine(GObject.Object):
         self.inc = inc * 1_000_000
 
     def add_a_button(self, button):
-        self.connect("a_active", button.on_active)
-        self.connect("awbb", button.on_white)
-        self.connect("abbw", button.on_black)
-        self.timer_a.connect("changed", button.on_changed)
+        self.handler_ids.append(self.connect("a_active", button.on_active))
+        self.handler_ids.append(self.connect("awbb", button.on_white))
+        self.handler_ids.append(self.connect("abbw", button.on_black))
+        self.handler_ids_ta.append(self.timer_a.connect("changed", button.on_changed))
         button.connect("clicked", self.on_a_clicked, None)
 
     def add_b_button(self, button):
-        self.connect("b_active", button.on_active)
-        self.connect("awbb", button.on_black)
-        self.connect("abbw", button.on_white)
-        self.timer_b.connect("changed", button.on_changed)
+        self.handler_ids.append(self.connect("b_active", button.on_active))
+        self.handler_ids.append(self.connect("awbb", button.on_black))
+        self.handler_ids.append(self.connect("abbw", button.on_white))
+        self.handler_ids_tb.append(self.timer_b.connect("changed", button.on_changed))
         button.connect("clicked", self.on_b_clicked, None)
+
+    def disconnect_all(self):
+        for i in self.handler_ids:
+            self.disconnect(i)
+        self.handler_ids = []
+        for i in self.handler_ids_ta:
+            self.timer_a.disconnect(i)
+        self.handler_ids_ta = []
+        for i in self.handler_ids_tb:
+            self.timer_b.disconnect(i)
+        self.handler_ids_tb = []
 
     @property
     def state(self):
