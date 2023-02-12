@@ -5,3 +5,11 @@
 .timerbutton.white {
   background-color: #fafafa;
 }
+
+.timerbutton.expired.black {
+  background-color: @red_4;
+}
+
+.timerbutton.expired.white {
+  background-color: @red_3;
+}
