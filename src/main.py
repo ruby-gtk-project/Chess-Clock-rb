@@ -55,6 +55,7 @@ class ChessClockApplication(Adw.Application):
                                 developer_name='Clara Hobbs 🏳️‍⚧️🌹🏳‍🌈',
                                 version='0.3.0',
                                 developers=['Clara Hobbs‍️', 'gregorni'],
+                                artists=['Brage Fuglseth'],
                                 copyright='© 2022–2023 the Chess Clock contributors\n\nThis application comes with absolutely no warranty. See the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License, version 3 or later</a> for details.')
         about.present()
 
