@@ -37,6 +37,7 @@ class ChessClockStateMachine(GObject.Object):
     def __init__(self, window, **kwargs):
         super().__init__(**kwargs)
         self.window = window
+        self.app = self.window.get_application()
         self.idle_cookie = 0
         self.set_time_control(260, 0)
 
@@ -71,76 +72,91 @@ class ChessClockStateMachine(GObject.Object):
     @state.setter
     def state(self, state):
         if state == MachineState.START:
-            # Reset timers
-            self.timer_a.reset()
-            self.timer_b.reset()
-            # Add increment
-            self.timer_a.increment(self.inc)
-            self.timer_b.increment(self.inc)
-            # Set buttons active
-            self.emit("a_active", True, False)
-            self.emit("b_active", True, False)
-            # Uninhibit session idle
-            if self.idle_cookie:
-                self.window.get_application().uninhibit(self.idle_cookie)
-            self.idle_cookie = 0
-            # Deactivate the pause button while the timers are stopped
-            self.emit("pause", False, False)
+            self.to_start()
         elif state == MachineState.A_RUN:
-            if self.state == MachineState.START:
-                # Set A white, B black
-                self.emit("awbb")
-            self.timer_b.running = False
-            self.timer_a.running = True
-            # Add increment
-            if self.state == MachineState.B_RUN:
-                self.timer_b.increment(self.inc)
-            # Set buttons active
-            self.emit("a_active", True, True)
-            self.emit("b_active", False, False)
-            if self.state != MachineState.B_RUN:
-                # Inhibit session idle
-                self.idle_cookie = self.window.get_application().inhibit(None,
-                    Gtk.ApplicationInhibitFlags.IDLE, "Game clock running")
-            # Set pause button to show a pause icon
-            self.emit("pause", True, False)
+            self.to_a_run()
         elif state == MachineState.B_RUN:
-            if self.state == MachineState.START:
-                # Set A black, B white
-                self.emit("abbw")
-            self.timer_a.running = False
-            self.timer_b.running = True
-            # Add increment
-            if self.state == MachineState.A_RUN:
-                self.timer_a.increment(self.inc)
-            # Set buttons active
-            self.emit("a_active", False, False)
-            self.emit("b_active", True, True)
-            if self.state != MachineState.A_RUN:
-                # Inhibit session idle
-                self.idle_cookie = self.window.get_application().inhibit(None,
-                    Gtk.ApplicationInhibitFlags.IDLE, "Game clock running")
-            # Set pause button to show a pause icon
-            self.emit("pause", True, False)
+            self.to_b_run()
         elif state == MachineState.A_PAUSE:
-            self.timer_a.running = False
-            self.emit("a_active", False, True)
-            # Uninhibit session idle
-            if self.idle_cookie:
-                self.window.get_application().uninhibit(self.idle_cookie)
-            self.idle_cookie = 0
-            # Set pause button to show a play icon
-            self.emit("pause", True, True)
+            self.to_a_pause()
         elif state == MachineState.B_PAUSE:
-            self.timer_b.running = False
-            self.emit("b_active", False, True)
-            # Uninhibit session idle
-            if self.idle_cookie:
-                self.window.get_application().uninhibit(self.idle_cookie)
-            self.idle_cookie = 0
-            # Set pause button to show a play icon
-            self.emit("pause", True, True)
+            self.to_b_pause()
         self._state = state
+
+    def to_start(self):
+        # Reset timers
+        self.timer_a.reset()
+        self.timer_b.reset()
+        # Add increment
+        self.timer_a.increment(self.inc)
+        self.timer_b.increment(self.inc)
+        # Set buttons active
+        self.emit("a_active", True, False)
+        self.emit("b_active", True, False)
+        # Uninhibit session idle
+        if self.idle_cookie:
+            self.app.uninhibit(self.idle_cookie)
+        self.idle_cookie = 0
+        # Deactivate the pause button while the timers are stopped
+        self.emit("pause", False, False)
+
+    def to_a_run(self):
+        if self.state == MachineState.START:
+            # Set A white, B black
+            self.emit("awbb")
+        self.timer_b.running = False
+        self.timer_a.running = True
+        # Add increment
+        if self.state == MachineState.B_RUN:
+            self.timer_b.increment(self.inc)
+        # Set buttons active
+        self.emit("a_active", True, True)
+        self.emit("b_active", False, False)
+        if self.state != MachineState.B_RUN:
+            # Inhibit session idle
+            self.idle_cookie = self.app.inhibit(None,
+                Gtk.ApplicationInhibitFlags.IDLE, "Game clock running")
+        # Set pause button to show a pause icon
+        self.emit("pause", True, False)
+
+    def to_b_run(self):
+        if self.state == MachineState.START:
+            # Set A black, B white
+            self.emit("abbw")
+        self.timer_a.running = False
+        self.timer_b.running = True
+        # Add increment
+        if self.state == MachineState.A_RUN:
+            self.timer_a.increment(self.inc)
+        # Set buttons active
+        self.emit("a_active", False, False)
+        self.emit("b_active", True, True)
+        if self.state != MachineState.A_RUN:
+            # Inhibit session idle
+            self.idle_cookie = self.app.inhibit(None,
+                Gtk.ApplicationInhibitFlags.IDLE, "Game clock running")
+        # Set pause button to show a pause icon
+        self.emit("pause", True, False)
+
+    def to_a_pause(self):
+        self.timer_a.running = False
+        self.emit("a_active", False, True)
+        # Uninhibit session idle
+        if self.idle_cookie:
+            self.app.uninhibit(self.idle_cookie)
+        self.idle_cookie = 0
+        # Set pause button to show a play icon
+        self.emit("pause", True, True)
+
+    def to_b_pause(self):
+    self.timer_b.running = False
+        self.emit("b_active", False, True)
+        # Uninhibit session idle
+        if self.idle_cookie:
+            self.app.uninhibit(self.idle_cookie)
+        self.idle_cookie = 0
+        # Set pause button to show a play icon
+        self.emit("pause", True, True)
 
     def on_a_clicked(self, widget, _):
         self.state = MachineState.B_RUN
