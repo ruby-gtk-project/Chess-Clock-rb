@@ -21,7 +21,9 @@ from gi.repository import Adw, Gtk, Gio
 
 from .timerbutton import ChessClockTimerButton
 from .customcontrol import ChessClockCustomControl
-from .statemachine import ChessClockStateMachine, MachineState
+from .statemachine import (ChessClockStateMachine,
+                           ChessClockIncrementStateMachine,
+                           MachineState)
 
 @Gtk.Template(resource_path='/com/clarahobbs/chessclock/window.ui')
 class ChessClockWindow(Adw.ApplicationWindow):
@@ -63,11 +65,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.create_action('new', self.on_new_action, ['<primary>n'])
         self.create_action('restart', self.on_restart_action, ['<primary>r'])
 
-        self.state_machine = ChessClockStateMachine(self)
-        self.state_machine.add_a_button(self.a_timer_l)
-        self.state_machine.add_b_button(self.b_timer_l)
-        self.state_machine.add_a_button(self.a_timer_p)
-        self.state_machine.add_b_button(self.b_timer_p)
+        self.link_state_machine(ChessClockIncrementStateMachine(self, 300, 0))
 
         self.one_zero.connect("clicked", self.on_control, (60, 0))
         self.two_one.connect("clicked", self.on_control, (120, 1))
@@ -83,12 +81,6 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
         self.custom_control.start.connect("clicked", self.on_control, None)
 
-        self.play_pause_l.connect("clicked", self.state_machine.on_pause_clicked, None)
-        self.play_pause_p.connect("clicked", self.state_machine.on_pause_clicked, None)
-        self.state_machine.connect("pause", self.on_pause)
-        self.state_machine.connect("awbb", self.on_awbb)
-        self.state_machine.connect("abbw", self.on_abbw)
-
         self.headerbar_motion.connect("enter", self.reveal_headerbar)
         self.headerbar_motion.connect("motion", self.reveal_headerbar)
         self.headerbar_motion.connect("leave", self.hide_headerbar)
@@ -96,8 +88,36 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.headerbar_motion_p.connect("motion", self.reveal_headerbar)
         self.headerbar_motion_p.connect("leave", self.hide_headerbar)
 
-        self.add_tick_callback(self.state_machine.timer_a.on_tick, None, None)
-        self.add_tick_callback(self.state_machine.timer_b.on_tick, None, None)
+    def link_state_machine(self, sm):
+        self.state_machine = sm
+        self.state_machine.add_a_button(self.a_timer_l)
+        self.state_machine.add_b_button(self.b_timer_l)
+        self.state_machine.add_a_button(self.a_timer_p)
+        self.state_machine.add_b_button(self.b_timer_p)
+
+        self.play_pause_l.connect("clicked", self.state_machine.on_pause_clicked, None)
+        self.play_pause_p.connect("clicked", self.state_machine.on_pause_clicked, None)
+        self.state_machine.connect("pause", self.on_pause)
+        self.state_machine.connect("awbb", self.on_awbb)
+        self.state_machine.connect("abbw", self.on_abbw)
+
+        self.a_tick = self.add_tick_callback(self.state_machine.timer_a.on_tick, None, None)
+        self.b_tick = self.add_tick_callback(self.state_machine.timer_b.on_tick, None, None)
+
+    def unlink_state_machine(self):
+        self.state_machine.disconnect_all()
+        self.a_timer_l.disconnect_by_func(self.state_machine.on_a_clicked)
+        self.b_timer_l.disconnect_by_func(self.state_machine.on_b_clicked)
+        self.a_timer_p.disconnect_by_func(self.state_machine.on_a_clicked)
+        self.b_timer_p.disconnect_by_func(self.state_machine.on_b_clicked)
+
+        self.play_pause_l.disconnect_by_func(self.state_machine.on_pause_clicked)
+        self.play_pause_p.disconnect_by_func(self.state_machine.on_pause_clicked)
+        self.state_machine.disconnect_by_func(self.on_pause)
+        self.state_machine.disconnect_by_func(self.on_awbb)
+        self.state_machine.disconnect_by_func(self.on_abbw)
+        self.remove_tick_callback(self.a_tick)
+        self.remove_tick_callback(self.b_tick)
 
     def on_new_action(self, widget, _):
         """Callback for the app.new action."""
@@ -127,7 +147,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
     def on_control(self, widget, data):
         if data is None:
             data = self.custom_control.get_control()
-        self.state_machine.set_time_control(*data)
+        self.unlink_state_machine()
+        self.link_state_machine(ChessClockIncrementStateMachine(self, *data))
         self.state_machine.state = MachineState.START
         self.main_stack.set_visible_child(self.timer_screen)
         self.headerbar_revealer.set_reveal_child(False)
