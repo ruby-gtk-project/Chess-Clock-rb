@@ -51,11 +51,13 @@ class ChessClockWindow(Adw.ApplicationWindow):
     headerbar_revealer_p = Gtk.Template.Child()
     headerbar_motion = Gtk.Template.Child()
     headerbar_motion_p = Gtk.Template.Child()
+    main_menu_l = Gtk.Template.Child()
     play_pause_l = Gtk.Template.Child()
     a_timer_l = Gtk.Template.Child()
     b_timer_l = Gtk.Template.Child()
     windowcontrols_start_p = Gtk.Template.Child()
     windowcontrols_end_p = Gtk.Template.Child()
+    main_menu_p = Gtk.Template.Child()
     play_pause_p = Gtk.Template.Child()
     a_timer_p = Gtk.Template.Child()
     b_timer_p = Gtk.Template.Child()
@@ -65,6 +67,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.create_action('new', self.on_new_action, ['<primary>n'])
         self.create_action('restart', self.on_restart_action, ['<primary>r'])
         self.create_action('close', self.on_close, ['<primary>w'])
+        self.create_action('menu', self.on_menu_popup, ['F10'])
 
         self.link_state_machine(ChessClockIncrementStateMachine(self, 300, 0))
 
@@ -147,6 +150,12 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
     def on_close(self, *args):
         self.close()
+
+    def on_menu_popup(self, *args):
+        if self.timer_screen.get_visible_child() == self.main_menu_l.get_parent():
+            self.main_menu_l.activate()
+        if self.timer_screen.get_visible_child() == self.main_menu_p.get_parent():
+            self.main_menu_p.activate()
 
     def on_control(self, widget, data):
         if data is None:

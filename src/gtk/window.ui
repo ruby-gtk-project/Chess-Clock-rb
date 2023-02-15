@@ -239,7 +239,7 @@
                   </object>
                 </child>
                 <child type="overlay">
-                  <object class="GtkMenuButton">
+                  <object class="GtkMenuButton" id="main_menu_l">
                     <property name="halign">center</property>
                     <property name="valign">start</property>
                     <property name="icon-name">open-menu-symbolic</property>
@@ -345,7 +345,7 @@
                   </object>
                 </child>
                 <child type="overlay">
-                  <object class="GtkMenuButton">
+                  <object class="GtkMenuButton" id="main_menu_p">
                     <property name="halign">end</property>
                     <property name="valign">center</property>
                     <property name="icon-name">open-menu-symbolic</property>
