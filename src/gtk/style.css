@@ -53,6 +53,19 @@ button.large {
   background-color: @red_3;
 }
 
+.timerbutton:focus-visible {
+  outline: 0 2px solid;
+  outline-offset: -20px;
+}
+
+.timerbutton.white:focus-visible {
+  outline-color: #1c71d8;
+}
+
+.timerbutton.black:focus-visible {
+  outline-color: #78aeed;
+}
+
 label.colon {
   min-width: 17px;
 }
