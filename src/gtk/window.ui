@@ -255,6 +255,7 @@
                     <property name="valign">start</property>
                     <property name="icon-name">open-menu-symbolic</property>
                     <property name="menu-model">primary_menu</property>
+                    <property name="tooltip-text" translatable="yes">Main Menu</property>
                     <style>
                       <class name="image-button"/>
                       <class name="circular"/>
@@ -268,6 +269,7 @@
                     <property name="halign">center</property>
                     <property name="valign">end</property>
                     <property name="icon-name">media-playback-pause-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Toggle Pause</property>
                     <style>
                       <class name="image-button"/>
                       <class name="circular"/>
@@ -361,6 +363,7 @@
                     <property name="valign">center</property>
                     <property name="icon-name">open-menu-symbolic</property>
                     <property name="menu-model">primary_menu</property>
+                    <property name="tooltip-text" translatable="yes">Main Menu</property>
                     <style>
                       <class name="image-button"/>
                       <class name="circular"/>
@@ -374,6 +377,7 @@
                     <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="icon-name">media-playback-pause-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Toggle Pause</property>
                     <style>
                       <class name="image-button"/>
                       <class name="circular"/>
