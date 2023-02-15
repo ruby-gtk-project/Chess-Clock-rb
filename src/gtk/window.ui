@@ -40,6 +40,7 @@
                 <child>
                   <object class="GtkButton" id="one_zero">
                     <property name="label">1+0</property>
+                    <property name="tooltip-text" translatable="yes">One minute per side, plus zero seconds per turn</property>
                     <layout>
                       <property name="column">0</property>
                       <property name="row">1</property>
@@ -52,6 +53,7 @@
                 <child>
                   <object class="GtkButton" id="two_one">
                     <property name="label">2+1</property>
+                    <property name="tooltip-text" translatable="yes">Two minutes per side, plus one second per turn</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="row">1</property>
@@ -64,6 +66,7 @@
                 <child>
                   <object class="GtkButton" id="three_zero">
                     <property name="label">3+0</property>
+                    <property name="tooltip-text" translatable="yes">Three minutes per side, plus zero seconds per turn</property>
                     <layout>
                       <property name="column">2</property>
                       <property name="row">1</property>
@@ -76,6 +79,7 @@
                 <child>
                   <object class="GtkButton" id="three_two">
                     <property name="label">3+2</property>
+                    <property name="tooltip-text" translatable="yes">Three minutes per side, plus two seconds per turn</property>
                     <layout>
                       <property name="column">0</property>
                       <property name="row">2</property>
@@ -88,6 +92,7 @@
                 <child>
                   <object class="GtkButton" id="five_zero">
                     <property name="label">5+0</property>
+                    <property name="tooltip-text" translatable="yes">Five minutes per side, plus zero seconds per turn</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="row">2</property>
@@ -100,6 +105,7 @@
                 <child>
                   <object class="GtkButton" id="five_three">
                     <property name="label">5+3</property>
+                    <property name="tooltip-text" translatable="yes">Five minutes per side, plus three seconds per turn</property>
                     <layout>
                       <property name="column">2</property>
                       <property name="row">2</property>
@@ -112,6 +118,7 @@
                 <child>
                   <object class="GtkButton" id="ten_zero">
                     <property name="label">10+0</property>
+                    <property name="tooltip-text" translatable="yes">Ten minutes per side, plus zero seconds per turn</property>
                     <layout>
                       <property name="column">0</property>
                       <property name="row">3</property>
@@ -124,6 +131,7 @@
                 <child>
                   <object class="GtkButton" id="ten_five">
                     <property name="label">10+5</property>
+                    <property name="tooltip-text" translatable="yes">Ten minutes per side, plus five seconds per turn</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="row">3</property>
@@ -136,6 +144,7 @@
                 <child>
                   <object class="GtkButton" id="fifteen_ten">
                     <property name="label">15+10</property>
+                    <property name="tooltip-text" translatable="yes">Fifteen minutes per side, plus ten seconds per turn</property>
                     <layout>
                       <property name="column">2</property>
                       <property name="row">3</property>
@@ -148,6 +157,7 @@
                 <child>
                   <object class="GtkButton" id="thirty_zero">
                     <property name="label">30+0</property>
+                    <property name="tooltip-text" translatable="yes">Thirty minutes per side, plus zero seconds per turn</property>
                     <layout>
                       <property name="column">0</property>
                       <property name="row">4</property>
@@ -160,6 +170,7 @@
                 <child>
                   <object class="GtkButton" id="thirty_twenty">
                     <property name="label">30+20</property>
+                    <property name="tooltip-text" translatable="yes">Thirty minutes per side, plus twenty seconds per turn</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="row">4</property>
