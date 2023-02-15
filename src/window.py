@@ -64,6 +64,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
         super().__init__(**kwargs)
         self.create_action('new', self.on_new_action, ['<primary>n'])
         self.create_action('restart', self.on_restart_action, ['<primary>r'])
+        self.create_action('close', self.on_close, ['<primary>w'])
 
         self.link_state_machine(ChessClockIncrementStateMachine(self, 300, 0))
 
@@ -143,6 +144,9 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.add_action(action)
         if shortcuts:
             self.get_application().set_accels_for_action(f"win.{name}", shortcuts)
+
+    def on_close(self, *args):
+        self.close()
 
     def on_control(self, widget, data):
         if data is None:

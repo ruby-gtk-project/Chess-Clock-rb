@@ -33,7 +33,7 @@ class ChessClockApplication(Adw.Application):
     def __init__(self):
         super().__init__(application_id='com.clarahobbs.chessclock',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
-        self.create_action('quit', self.quit, ['<primary>q'])
+        self.create_action('quit', self.on_quit, ['<primary>q'])
         self.create_action('about', self.on_about_action)
 
     def do_activate(self):
@@ -46,6 +46,9 @@ class ChessClockApplication(Adw.Application):
         if not win:
             win = ChessClockWindow(application=self)
         win.present()
+
+    def on_quit(self, *args):
+        self.quit()
 
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
