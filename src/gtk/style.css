@@ -73,7 +73,11 @@ label.colon {
 label.time-title {
   font-size: 2em;
   font-weight: 300;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+label.time-info{
+  margin-bottom: 20px;
 }
 
 label.custom-label {
