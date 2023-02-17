@@ -50,10 +50,12 @@ class ChessClockTimerButton(Gtk.Button):
     def on_white(self, _):
         self.add_css_class("white")
         self.remove_css_class("black")
+        self.update_property([Gtk.AccessibleProperty.LABEL], ["Player white timer"])
 
     def on_black(self, _):
         self.add_css_class("black")
         self.remove_css_class("white")
+        self.update_property([Gtk.AccessibleProperty.LABEL], ["Player black timer"])
 
     def on_active(self, _, active, current):
         self.set_sensitive(active)

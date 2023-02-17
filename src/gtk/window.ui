@@ -309,6 +309,9 @@
                     <child>
                       <object class="ChessClockTimerButton" id="a_timer_l">
                         <property name="hexpand">true</property>
+                        <accessibility>
+                          <property name="label" translatable="yes" context="a11y">Player white timer</property>
+                        </accessibility>
                         <style>
                           <class name="white"/>
                         </style>
@@ -317,6 +320,9 @@
                     <child>
                       <object class="ChessClockTimerButton" id="b_timer_l">
                         <property name="hexpand">true</property>
+                        <accessibility>
+                          <property name="label" translatable="yes" context="a11y">Player black timer</property>
+                        </accessibility>
                         <style>
                           <class name="black"/>
                         </style>
@@ -417,6 +423,9 @@
                     <child>
                       <object class="ChessClockTimerButton" id="a_timer_p">
                         <property name="vexpand">true</property>
+                        <accessibility>
+                          <property name="label" translatable="yes" context="a11y">Player white timer</property>
+                        </accessibility>
                         <style>
                           <class name="white"/>
                           <class name="inverted"/>
@@ -426,6 +435,9 @@
                     <child>
                       <object class="ChessClockTimerButton" id="b_timer_p">
                         <property name="vexpand">true</property>
+                        <accessibility>
+                          <property name="label" translatable="yes" context="a11y">Player black timer</property>
+                        </accessibility>
                         <style>
                           <class name="black"/>
                         </style>
