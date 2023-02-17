@@ -11,6 +11,9 @@
         <property name="transition-type">slide-left-right</property>
         <child>
           <object class="GtkWindowHandle" id="control_chooser">
+            <accessibility>
+              <property name="label" translatable="yes" context="a11y">Select time controls</property>
+            </accessibility>
             <child>
               <object class="GtkOverlay">
                 <child type="overlay">
@@ -221,6 +224,9 @@
         <child>
           <object class="AdwSqueezer" id="timer_screen">
             <property name="transition-type">crossfade</property>
+            <accessibility>
+              <property name="label" translatable="yes" context="a11y">Playing</property>
+            </accessibility>
             <!-- Landscape -->
             <child>
               <object class="GtkOverlay">
