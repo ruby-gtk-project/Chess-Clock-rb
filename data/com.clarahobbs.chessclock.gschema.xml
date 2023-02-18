@@ -10,5 +10,8 @@
 	  <key name="custom-control-increment" type="i">
       <default>0</default>
 	  </key>
+	  <key name="control-method" type="i">
+      <default>0</default>
+	  </key>
 	</schema>
 </schemalist>

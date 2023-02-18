@@ -87,6 +87,10 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
         self.custom_control.start.connect("clicked", self.on_control, None)
 
+        self.settings = Gio.Settings(schema_id="com.clarahobbs.chessclock")
+        self.settings.bind("control-method", self.method_chooser, "selected",
+                           Gio.SettingsBindFlags.DEFAULT)
+
         self.headerbar_motion.connect("enter", self.reveal_headerbar)
         self.headerbar_motion.connect("motion", self.reveal_headerbar)
         self.headerbar_motion.connect("leave", self.hide_headerbar)
