@@ -57,7 +57,7 @@ class ChessClockTimer(GObject.Object):
             self.emit("changed", self.time)
         return self.running
 
-    def increment(self, inc):
-        if self.time > 0:
+    def increment(self, inc, force=False):
+        if force or self.time > 0:
             self.time += inc
             self.emit("changed", self.time)

@@ -205,8 +205,8 @@ class ChessClockIncrementStateMachine(ChessClockStateMachine):
     def to_start(self):
         super().to_start()
         # Add increment
-        self.timer_a.increment(self.inc)
-        self.timer_b.increment(self.inc)
+        self.timer_a.increment(self.inc, force=True)
+        self.timer_b.increment(self.inc, force=True)
 
     def to_a_run(self):
         super().to_a_run()
@@ -219,3 +219,46 @@ class ChessClockIncrementStateMachine(ChessClockStateMachine):
         # Add increment
         if self.state == MachineState.A_RUN:
             self.timer_a.increment(self.inc)
+
+
+class ChessClockBronsteinStateMachine(ChessClockStateMachine):
+    def __init__(self, *args, **kwargs):
+        self.default_time = 0
+        self.inc_timer = ChessClockTimer(self)
+        super().__init__(*args, **kwargs)
+
+    def to_start(self):
+        super().to_start()
+        # Add increment
+        self.timer_a.increment(self.inc, force=True)
+        self.timer_b.increment(self.inc, force=True)
+        # Reset increment timer
+        self.inc_timer.reset()
+        self.inc_timer.time = self.inc
+        self.inc_timer.running = False
+
+    def to_a_run(self):
+        self.inc_timer.running = False
+        super().to_a_run()
+        # Add increment
+        if self.state == MachineState.B_RUN:
+            self.timer_b.increment(min(self.inc - self.inc_timer.time, self.inc))
+            self.inc_timer.time = self.inc
+        self.inc_timer.running = True
+
+    def to_b_run(self):
+        self.inc_timer.running = False
+        super().to_b_run()
+        # Add increment
+        if self.state == MachineState.A_RUN:
+            self.timer_a.increment(min(self.inc - self.inc_timer.time, self.inc))
+            self.inc_timer.time = self.inc
+        self.inc_timer.running = True
+
+    def to_a_pause(self):
+        self.inc_timer.running = False
+        super().to_a_pause()
+
+    def to_b_pause(self):
+        self.inc_timer.running = False
+        super().to_b_pause()
