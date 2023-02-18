@@ -490,26 +490,6 @@
         <attribute name="action">win.restart</attribute>
       </item>
     </section>
-<!--    <section>
-      <submenu>
-        <attribute name="label" translatable="yes">_Increment</attribute>
-        <item>
-          <attribute name="label" translatable="yes">_Bonus</attribute>
-          <attribute name="action">app.increment</attribute>
-          <attribute name="target">bonus</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="yes">B_ronstein</attribute>
-          <attribute name="action">app.increment</attribute>
-          <attribute name="target">bronstein</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="yes">_Simple</attribute>
-          <attribute name="action">app.increment</attribute>
-          <attribute name="target">simple</attribute>
-        </item>
-      </submenu>
-    </section>-->
     <section>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
