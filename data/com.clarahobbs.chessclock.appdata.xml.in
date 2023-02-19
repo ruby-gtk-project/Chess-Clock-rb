@@ -33,7 +33,19 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
-    <release version="0.3.0" date="2023-01-15">
+    <release version="0.3.1" date="2023-02-19">
+      <description>
+        <p>The first release as a member of GNOME Circle!</p>
+        <ul>
+          <li>Chess Clock has a shiny new icon, courtesy of Brage Fuglseth</li>
+          <li>The time control selection screen now has some explanatory text and tooltips</li>
+          <li>Fixes for screen readers, so they read out which player's button is selected</li>
+          <li>All the standard keyboard shortcuts now work</li>
+          <li>Focus indicators for the timer buttons are much more obvious</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0" date="2023-02-11">
       <description>
         <p>A new release focusing on UI enhancements.</p>
         <ul>
