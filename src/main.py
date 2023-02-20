@@ -55,6 +55,7 @@ class ChessClockApplication(Adw.Application):
         about = Adw.AboutWindow(transient_for=self.props.active_window,
                                 application_name='Chess Clock',
                                 application_icon='com.clarahobbs.chessclock',
+                                issue_url='https://gitlab.gnome.org/World/chess-clock/-/issues/new',
                                 developer_name='Clara Hobbs 🏳️‍⚧️🌹🏳‍🌈',
                                 version='0.3.1',
                                 developers=['Clara Hobbs‍️', 'gregorni'],
