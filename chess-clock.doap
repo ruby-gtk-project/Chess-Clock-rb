@@ -6,8 +6,8 @@
 
   <name xml:lang="en">Chess Clock</name>
   <shortdesc xml:lang="en">Time games of osr-the-board chess</shortdesc>
-  <homepage rdf:resource="https://gitlab.gnome.org/cghobbs/chess-clock" />
-  <bug-database rdf:resource="https://gitlab.gnome.org/cghobbs/chess-clock/-/issues/"/>
+  <homepage rdf:resource="https://gitlab.gnome.org/World/chess-clock" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/World/chess-clock/-/issues/"/>
 
   <programming-language>Python</programming-language>
   <platform>GTK 4</platform>

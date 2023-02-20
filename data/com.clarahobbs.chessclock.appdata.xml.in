@@ -24,8 +24,8 @@
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">com.clarahobbs.chessclock.desktop</launchable>
-  <url type="homepage">https://gitlab.gnome.org/cghobbs/chess-clock</url>
-  <url type="bugtracker">https://gitlab.gnome.org/cghobbs/chess-clock/-/issues</url>
+  <url type="homepage">https://gitlab.gnome.org/World/chess-clock</url>
+  <url type="bugtracker">https://gitlab.gnome.org/World/chess-clock/-/issues</url>
   <developer_name>Clara Hobbs</developer_name>
   <update_contact>clara_at_clarahobbs.com</update_contact>
   <custom>
