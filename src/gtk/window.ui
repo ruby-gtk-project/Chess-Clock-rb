@@ -215,6 +215,7 @@
                         </child>
                         <child>
                           <object class="GtkDropDown" id="method_chooser">
+                            <property name="tooltip-text" translatable="yes">Time control method</property>
                             <layout>
                               <property name="column">0</property>
                               <property name="row">4</property>
