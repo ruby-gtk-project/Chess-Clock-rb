@@ -1,6 +1,0 @@
-data/com.clarahobbs.chessclock.desktop.in
-data/com.clarahobbs.chessclock.appdata.xml.in
-data/com.clarahobbs.chessclock.gschema.xml
-src/main.py
-src/window.py
-src/window.ui

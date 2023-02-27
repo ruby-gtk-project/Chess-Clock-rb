@@ -1,0 +1,13 @@
+data/com.clarahobbs.chessclock.desktop.in
+data/com.clarahobbs.chessclock.appdata.xml.in
+data/com.clarahobbs.chessclock.gschema.xml
+src/gtk/customcontrol.ui
+src/gtk/help-overlay.ui
+src/gtk/timerbutton.ui
+src/gtk/window.ui
+src/customcontrol.py
+src/main.py
+src/statemachine.py
+src/timer.py
+src/timerbutton.py
+src/window.py
