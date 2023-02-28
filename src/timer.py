@@ -49,12 +49,19 @@ class ChessClockTimer(GObject.Object):
     def changed(self, *args):
         pass
 
+    @GObject.Signal
+    def expired(self, *args):
+        pass
+
     def on_tick(self, widget, _, __, ___):
         if self.running:
+            prev_time = self.time
             tick = GLib.get_monotonic_time()
             self.time -= tick - self.last_tick
             self.last_tick = tick
             self.emit("changed", self.time)
+            if self.time <= 0 and prev_time > 0:
+                self.emit("expired")
         return self.running
 
     def increment(self, inc, force=False):

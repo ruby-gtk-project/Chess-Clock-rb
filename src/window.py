@@ -24,6 +24,7 @@ from .customcontrol import ChessClockCustomControl
 from .statemachine import (ChessClockStateMachine,
                            ChessClockIncrementStateMachine,
                            ChessClockBronsteinStateMachine,
+                           ChessClockDelayStateMachine,
                            MachineState)
 
 @Gtk.Template(resource_path='/com/clarahobbs/chessclock/window.ui')
@@ -172,6 +173,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
             self.link_state_machine(ChessClockIncrementStateMachine(self, *data))
         elif selected == 1:
             self.link_state_machine(ChessClockBronsteinStateMachine(self, *data))
+        elif selected == 2:
+            self.link_state_machine(ChessClockDelayStateMachine(self, *data))
         self.state_machine.state = MachineState.START
         self.main_stack.set_visible_child(self.timer_screen)
         self.headerbar_revealer.set_reveal_child(False)
