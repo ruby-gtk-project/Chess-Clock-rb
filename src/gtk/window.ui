@@ -213,6 +213,25 @@
                             </style>
                           </object>
                         </child>
+                        <child>
+                          <object class="GtkDropDown" id="method_chooser">
+                            <property name="tooltip-text" translatable="yes">Time control method</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">4</property>
+                              <property name="column-span">3</property>
+                            </layout>
+                            <property name="model">
+                              <object class="GtkStringList">
+                                <items>
+                                  <item translatable="yes">Increment</item>
+                                  <item translatable="yes">Bronstein delay</item>
+                                  <item translatable="yes">Simple delay</item>
+                                </items>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -472,26 +491,6 @@
         <attribute name="action">win.restart</attribute>
       </item>
     </section>
-<!--    <section>
-      <submenu>
-        <attribute name="label" translatable="yes">_Increment</attribute>
-        <item>
-          <attribute name="label" translatable="yes">_Bonus</attribute>
-          <attribute name="action">app.increment</attribute>
-          <attribute name="target">bonus</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="yes">B_ronstein</attribute>
-          <attribute name="action">app.increment</attribute>
-          <attribute name="target">bronstein</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="yes">_Simple</attribute>
-          <attribute name="action">app.increment</attribute>
-          <attribute name="target">simple</attribute>
-        </item>
-      </submenu>
-    </section>-->
     <section>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>

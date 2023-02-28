@@ -23,6 +23,8 @@ from .timerbutton import ChessClockTimerButton
 from .customcontrol import ChessClockCustomControl
 from .statemachine import (ChessClockStateMachine,
                            ChessClockIncrementStateMachine,
+                           ChessClockBronsteinStateMachine,
+                           ChessClockDelayStateMachine,
                            MachineState)
 
 @Gtk.Template(resource_path='/com/clarahobbs/chessclock/window.ui')
@@ -43,6 +45,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
     thirty_zero = Gtk.Template.Child()
     thirty_twenty = Gtk.Template.Child()
     custom_control = Gtk.Template.Child()
+    method_chooser = Gtk.Template.Child()
 
     timer_screen = Gtk.Template.Child()
     windowcontrols_start_l = Gtk.Template.Child()
@@ -84,6 +87,10 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.thirty_twenty.connect("clicked", self.on_control, (1800, 20))
 
         self.custom_control.start.connect("clicked", self.on_control, None)
+
+        self.settings = Gio.Settings(schema_id="com.clarahobbs.chessclock")
+        self.settings.bind("control-method", self.method_chooser, "selected",
+                           Gio.SettingsBindFlags.DEFAULT)
 
         self.headerbar_motion.connect("enter", self.reveal_headerbar)
         self.headerbar_motion.connect("motion", self.reveal_headerbar)
@@ -161,7 +168,13 @@ class ChessClockWindow(Adw.ApplicationWindow):
         if data is None:
             data = self.custom_control.get_control()
         self.unlink_state_machine()
-        self.link_state_machine(ChessClockIncrementStateMachine(self, *data))
+        selected = self.method_chooser.get_selected()
+        if selected == 0:
+            self.link_state_machine(ChessClockIncrementStateMachine(self, *data))
+        elif selected == 1:
+            self.link_state_machine(ChessClockBronsteinStateMachine(self, *data))
+        elif selected == 2:
+            self.link_state_machine(ChessClockDelayStateMachine(self, *data))
         self.state_machine.state = MachineState.START
         self.main_stack.set_visible_child(self.timer_screen)
         self.headerbar_revealer.set_reveal_child(False)

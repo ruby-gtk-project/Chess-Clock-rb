@@ -205,8 +205,8 @@ class ChessClockIncrementStateMachine(ChessClockStateMachine):
     def to_start(self):
         super().to_start()
         # Add increment
-        self.timer_a.increment(self.inc)
-        self.timer_b.increment(self.inc)
+        self.timer_a.increment(self.inc, force=True)
+        self.timer_b.increment(self.inc, force=True)
 
     def to_a_run(self):
         super().to_a_run()
@@ -219,3 +219,99 @@ class ChessClockIncrementStateMachine(ChessClockStateMachine):
         # Add increment
         if self.state == MachineState.A_RUN:
             self.timer_a.increment(self.inc)
+
+
+class ChessClockBronsteinStateMachine(ChessClockStateMachine):
+    def __init__(self, *args, **kwargs):
+        self.default_time = 0
+        self.inc_timer = ChessClockTimer(self)
+        super().__init__(*args, **kwargs)
+
+    def to_start(self):
+        super().to_start()
+        # Add increment
+        self.timer_a.increment(self.inc, force=True)
+        self.timer_b.increment(self.inc, force=True)
+        # Reset increment timer
+        self.inc_timer.reset()
+        self.inc_timer.time = self.inc
+        self.inc_timer.running = False
+
+    def to_a_run(self):
+        self.inc_timer.running = False
+        super().to_a_run()
+        # Add increment
+        if self.state == MachineState.B_RUN:
+            self.timer_b.increment(min(self.inc - self.inc_timer.time, self.inc))
+            self.inc_timer.time = self.inc
+        self.inc_timer.running = True
+
+    def to_b_run(self):
+        self.inc_timer.running = False
+        super().to_b_run()
+        # Add increment
+        if self.state == MachineState.A_RUN:
+            self.timer_a.increment(min(self.inc - self.inc_timer.time, self.inc))
+            self.inc_timer.time = self.inc
+        self.inc_timer.running = True
+
+    def to_a_pause(self):
+        self.inc_timer.running = False
+        super().to_a_pause()
+
+    def to_b_pause(self):
+        self.inc_timer.running = False
+        super().to_b_pause()
+
+
+class ChessClockDelayStateMachine(ChessClockStateMachine):
+    def __init__(self, *args, **kwargs):
+        self.default_time = 0
+        self.delay_timer = ChessClockTimer(self)
+        self.delay_timer.connect("expired", self.timer_expired, None)
+        super().__init__(*args, **kwargs)
+
+    def timer_expired(self, *args):
+        if self.state == MachineState.A_RUN:
+            self.timer_a.running = True
+        if self.state == MachineState.B_RUN:
+            self.timer_b.running = True
+
+    def to_start(self):
+        super().to_start()
+        # Reset increment timer
+        self.delay_timer.reset()
+        self.delay_timer.time = self.inc
+        self.delay_timer.running = False
+
+    def to_a_run(self):
+        self.delay_timer.running = False
+        super().to_a_run()
+        # Keep A timer paused if the delay hasn't expired
+        if self.delay_timer.time > 0:
+            self.timer_a.running = False
+        # Add increment
+        if self.state == MachineState.B_RUN:
+            self.delay_timer.time = self.inc
+            self.timer_a.running = False
+        self.delay_timer.running = True
+
+    def to_b_run(self):
+        self.delay_timer.running = False
+        super().to_b_run()
+        # Keep B timer paused if the delay hasn't expired
+        if self.delay_timer.time > 0:
+            self.timer_b.running = False
+        # Add increment
+        if self.state == MachineState.A_RUN:
+            self.delay_timer.time = self.inc
+            self.timer_b.running = False
+        self.delay_timer.running = True
+
+    def to_a_pause(self):
+        self.delay_timer.running = False
+        super().to_a_pause()
+
+    def to_b_pause(self):
+        self.delay_timer.running = False
+        super().to_b_pause()
