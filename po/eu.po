@@ -1,0 +1,225 @@
+# Basque translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2023.
+#
+msgid ""
+msgstr "Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-03-04 16:16+0000\n"
+"PO-Revision-Date: 2023-03-05 06:47+0000\n"
+"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
+"Language-Team: Basque <librezale@librezale.eus>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Xake-ordularia"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "xakea;jokoa;ordularia;tenporizadorea;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Aurrez aurreko xakerako denbora-jokoak"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr "Xake-ordulari aurrez aurreko xake-jokoetan denbora kontsolatzeko aplikazio sinple bat da. Mugikorrarekin erabiltzeko pentsatuta dago. Jokalariek jokoaren denborako kontrolatzeko ezarpenak hautatu behar dituzte, eta ondoren, jokalari beltzak bere ordularia sakatzen du zuriaren tenporizadorea abiarazteko. Jokalari bakoitzaren txandaren ondoren, aurkariaren ordularia sakatzen dute denbora abiarazteko, jokoa amaitu arte edo ordularietako bat zerora iritsi arte."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr "Pantaila nagusia, xake-joko bateko jokalari zuriaren eta beltzaren tenporizadoreak erakusten dituena"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Denboraren kontrola hautatzeko pantaila"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#: src/gtk/customcontrol.ui:6
+msgid "Custom"
+msgstr "Pertsonalizatua"
+
+#: src/gtk/customcontrol.ui:21
+msgid "Main time minutes"
+msgstr "Denbora nagusiaren minutuak"
+
+#: src/gtk/customcontrol.ui:39
+msgid "Main time seconds"
+msgstr "Denbora nagusiaren segundoak"
+
+#: src/gtk/customcontrol.ui:57
+msgid "Increment seconds"
+msgstr "Gehikuntza-segundoak"
+
+#: src/gtk/customcontrol.ui:67
+msgid "Start Game"
+msgstr "Hasi jokoa"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Jokoa"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Denbora-kontrol berria"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Berrabiarazi tenporizadorea"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Orokorra"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Primary Menu"
+msgstr "Ireki menu nagusia"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Erakutsi lasterbideak"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Itxi leihoa"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Irten"
+
+#: src/gtk/window.ui:15
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Hautatu denbora-kontrolak"
+
+#: src/gtk/window.ui:38
+msgid "Welcome to Chess Clock"
+msgstr "Ongi etorri xake-ordularira"
+
+#: src/gtk/window.ui:48
+msgid "Select time controls below to get started"
+msgstr "Hautatu denbora-kontrolak, behean, jokoa abiarazteko"
+
+#: src/gtk/window.ui:65
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Minutu bat alde bakoitzeko, gehi zero segundo txandako"
+
+#: src/gtk/window.ui:78
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Bi minutu alde bakoitzeko, gehi segundo bat txandako"
+
+#: src/gtk/window.ui:91
+msgid "Three minutes per side, plus zero seconds per turn"
+msgstr "Hiru minutu alde bakoitzeko, gehi zero segundo txandako"
+
+#: src/gtk/window.ui:104
+msgid "Three minutes per side, plus two seconds per turn"
+msgstr "Hiru minutu alde bakoitzeko, gehi bi segundo txandako"
+
+#: src/gtk/window.ui:117
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Bost minutu alde bakoitzeko, gehi zero segundo txandako"
+
+#: src/gtk/window.ui:130
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Bost minutu alde bakoitzeko, gehi hiru segundo txandako"
+
+#: src/gtk/window.ui:143
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Hamar minutu alde bakoitzeko, gehi zero segundo txandako"
+
+#: src/gtk/window.ui:156
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Hamar minutu alde bakoitzeko, gehi bost segundo txandako"
+
+#: src/gtk/window.ui:169
+msgid "Fifteen minutes per side, plus ten seconds per turn"
+msgstr "Hamabost minutu alde bakoitzeko, gehi hamar segundo txandako"
+
+#: src/gtk/window.ui:182
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Hogeita hamar minutu alde bakoitzeko, gehi zero segundo txandako"
+
+#: src/gtk/window.ui:195
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Hogeita hamar minutu alde bakoitzeko, gehi hogei segundo txandako"
+
+#: src/gtk/window.ui:218
+msgid "Time control method"
+msgstr "Denbora-kontroleko metodoa"
+
+#: src/gtk/window.ui:227
+msgid "Increment"
+msgstr "Gehikuntza"
+
+#: src/gtk/window.ui:228
+msgid "Bronstein delay"
+msgstr "Bronstein atzerapena"
+
+#: src/gtk/window.ui:229
+msgid "Simple delay"
+msgstr "Atzerapen sinplea"
+
+#: src/gtk/window.ui:247
+msgctxt "a11y"
+msgid "Playing"
+msgstr "Jokatzen"
+
+#: src/gtk/window.ui:306 src/gtk/window.ui:420
+msgid "Main Menu"
+msgstr "Menu nagusia"
+
+#: src/gtk/window.ui:320 src/gtk/window.ui:434
+msgid "Toggle Pause"
+msgstr "Txandakatu pausatzea"
+
+#: src/gtk/window.ui:338 src/gtk/window.ui:452
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Jokalariaren tenporizadore zuria"
+
+#: src/gtk/window.ui:349 src/gtk/window.ui:464
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Jokalariaren tenporizadore beltza"
+
+#: src/gtk/window.ui:486
+msgid "_New Time Control"
+msgstr "Denbora-kontrol _berria"
+
+#: src/gtk/window.ui:490
+msgid "_Restart Timer"
+msgstr "Berrabiarazi _tenporizadorea"
+
+#: src/gtk/window.ui:496
+msgid "_Keyboard Shortcuts"
+msgstr "_Laster-teklak"
+
+#: src/gtk/window.ui:500
+msgid "_About Chess Clock"
+msgstr "_Xake-ordularia aplikazioari buruz"
