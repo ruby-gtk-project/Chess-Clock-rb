@@ -1,0 +1,257 @@
+# Slovenian translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Martin <miles@filmsi.net>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-03-05 09:42+0000\n"
+"PO-Revision-Date: 2023-03-05 11:56+0100\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+"Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Šahovska ura"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "šah;igra;ura;časovnik;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+#, fuzzy
+msgid "Time games of over-the-board chess"
+msgstr "Časovne igre šaha na šahovnici"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+#, fuzzy
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Šahovska ura je preprost program za zagotavljanje časovnega nadzora za "
+"šahovske igre na pravi šahovnici. Namenjena je mobilni rabi; igralci "
+"izberejo nastavitve časovnega nadzora, ki jih želijo za svojo igro, nato pa "
+"igralec s črnimi figurami tapne svojo uro za zagon časovnika igralca z "
+"belimi figurami. Po odigrani potezi se vsak igralec dotakne ure, da sproži "
+"nasprotnikov časovnik, vse dokler igra ni končana ali pa ena od ur doseže "
+"nič."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+#, fuzzy
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Glavni zaslon, ki prikazuje časovnike za igralca z belimi in črnimi "
+"figurami šahovske igre"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Zaslon za izbiro kontrolnika časa"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#: src/gtk/customcontrol.ui:6
+msgid "Custom"
+msgstr "Po meri"
+
+#: src/gtk/customcontrol.ui:21
+#, fuzzy
+msgid "Main time minutes"
+msgstr "Minute glavnega časa"
+
+#: src/gtk/customcontrol.ui:39
+#, fuzzy
+msgid "Main time seconds"
+msgstr "Sekunde glavnega časa"
+
+#: src/gtk/customcontrol.ui:57
+#, fuzzy
+msgid "Increment seconds"
+msgstr "Sekunde prirastka"
+
+#: src/gtk/customcontrol.ui:67
+msgid "Start Game"
+msgstr "Začni igro"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Igra"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Nov časovni nadzor"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Znova zaženi časovnik"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Splošno"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Primary Menu"
+msgstr "Odpri osnovni meni"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Pokaže tipkovne bližnjice"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Zapre okno"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Izhod"
+
+#: src/gtk/window.ui:15
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Izberite kontrolnike časa"
+
+#: src/gtk/window.ui:38
+msgid "Welcome to Chess Clock"
+msgstr "Dobrodošli v šahovski uri"
+
+#: src/gtk/window.ui:48
+msgid "Select time controls below to get started"
+msgstr "Izberite spodnje kontrolnike časa, da začnete"
+
+#: src/gtk/window.ui:65
+#, fuzzy
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Ena minuta na igralca, dodatnih nič sekund za tistega na vrsti"
+
+#: src/gtk/window.ui:78
+#, fuzzy
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Dve minuti na stran, plus ena sekunda na zavoj"
+
+#: src/gtk/window.ui:91
+#, fuzzy
+msgid "Three minutes per side, plus zero seconds per turn"
+msgstr "Tri minute na stran, plus nič sekund na zavoj"
+
+#: src/gtk/window.ui:104
+#, fuzzy
+msgid "Three minutes per side, plus two seconds per turn"
+msgstr "Tri minute na stran, plus dve sekundi na zavoj"
+
+#: src/gtk/window.ui:117
+#, fuzzy
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Pet minut na stran, plus nič sekund na zavoj"
+
+#: src/gtk/window.ui:130
+#, fuzzy
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Pet minut na stran, plus tri sekunde na zavoj"
+
+#: src/gtk/window.ui:143
+#, fuzzy
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Deset minut na stran, plus nič sekund na zavoj"
+
+#: src/gtk/window.ui:156
+#, fuzzy
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Deset minut na stran, plus pet sekund na zavoj"
+
+#: src/gtk/window.ui:169
+#, fuzzy
+msgid "Fifteen minutes per side, plus ten seconds per turn"
+msgstr "15 minut na stran, plus 10 sekund na zavoj"
+
+#: src/gtk/window.ui:182
+#, fuzzy
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "30 minut na stran, plus nič sekund na zavoj"
+
+#: src/gtk/window.ui:195
+#, fuzzy
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "30 minut na stran, plus 20 sekund na zavoj"
+
+#: src/gtk/window.ui:218
+msgid "Time control method"
+msgstr "Metoda nadzora časa"
+
+#: src/gtk/window.ui:227
+msgid "Increment"
+msgstr "Prirastek"
+
+#: src/gtk/window.ui:228
+#, fuzzy
+msgid "Bronstein delay"
+msgstr "Bronsteinova zamuda"
+
+#: src/gtk/window.ui:229
+#, fuzzy
+msgid "Simple delay"
+msgstr "Enostavna zamuda"
+
+#: src/gtk/window.ui:247
+msgctxt "a11y"
+msgid "Playing"
+msgstr "Predvajanje"
+
+#: src/gtk/window.ui:306 src/gtk/window.ui:420
+msgid "Main Menu"
+msgstr "Glavni meni"
+
+#: src/gtk/window.ui:320 src/gtk/window.ui:434
+msgid "Toggle Pause"
+msgstr "Ustavi/nadaljuj"
+
+#: src/gtk/window.ui:338 src/gtk/window.ui:452
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Časovnik igralca z belimi figurami"
+
+#: src/gtk/window.ui:349 src/gtk/window.ui:464
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Časovnik igralca s črnimi figurami"
+
+#: src/gtk/window.ui:486
+msgid "_New Time Control"
+msgstr "_Nov časovni nadzor"
+
+#: src/gtk/window.ui:490
+msgid "_Restart Timer"
+msgstr "_Znova zaženi časovnik"
+
+#: src/gtk/window.ui:496
+msgid "_Keyboard Shortcuts"
+msgstr "_Tipke za bližnjico"
+
+#: src/gtk/window.ui:500
+msgid "_About Chess Clock"
+msgstr "_O Šahovski uri"
