@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-05 09:42+0000\n"
-"PO-Revision-Date: 2023-03-05 11:56+0100\n"
+"POT-Creation-Date: 2023-03-05 13:09+0000\n"
+"PO-Revision-Date: 2023-03-07 19:02+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -34,7 +34,6 @@ msgid "Time games of over-the-board chess"
 msgstr "Časovne igre šaha na šahovnici"
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:9
-#, fuzzy
 msgid ""
 "Chess Clock is a simple application to provide time control for over-the-"
 "board chess games. Intended for mobile use, players select the time control "
@@ -52,13 +51,12 @@ msgstr ""
 "nič."
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:18
-#, fuzzy
 msgid ""
 "The main screen, showing timers for the white and black players of a chess "
 "game"
 msgstr ""
-"Glavni zaslon, ki prikazuje časovnike za igralca z belimi in črnimi "
-"figurami šahovske igre"
+"Glavni zaslon, ki prikazuje časovnike za igralca z belimi in črnimi figurami "
+"šahovske igre"
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:22
 msgid "The time control selection screen"
@@ -145,59 +143,48 @@ msgid "Select time controls below to get started"
 msgstr "Izberite spodnje kontrolnike časa, da začnete"
 
 #: src/gtk/window.ui:65
-#, fuzzy
 msgid "One minute per side, plus zero seconds per turn"
-msgstr "Ena minuta na igralca, dodatnih nič sekund za tistega na vrsti"
+msgstr "Ena minuta na igralca, brez dodatnih sekund za menjavo igralca"
 
 #: src/gtk/window.ui:78
-#, fuzzy
 msgid "Two minutes per side, plus one second per turn"
-msgstr "Dve minuti na stran, plus ena sekunda na zavoj"
+msgstr "Dve minuti na igralca, dodatna ena sekunda za menjavo igralca"
 
 #: src/gtk/window.ui:91
-#, fuzzy
 msgid "Three minutes per side, plus zero seconds per turn"
-msgstr "Tri minute na stran, plus nič sekund na zavoj"
+msgstr "Tri minute na igralca, brez dodatnih sekund za menjavo igralca"
 
 #: src/gtk/window.ui:104
-#, fuzzy
 msgid "Three minutes per side, plus two seconds per turn"
-msgstr "Tri minute na stran, plus dve sekundi na zavoj"
+msgstr "Tri minute na igralca, dodatni dve sekundi za menjavo igralca"
 
 #: src/gtk/window.ui:117
-#, fuzzy
 msgid "Five minutes per side, plus zero seconds per turn"
-msgstr "Pet minut na stran, plus nič sekund na zavoj"
+msgstr "Pet minut na igralca, brez dodatnih sekund za menjavo igralca"
 
 #: src/gtk/window.ui:130
-#, fuzzy
 msgid "Five minutes per side, plus three seconds per turn"
-msgstr "Pet minut na stran, plus tri sekunde na zavoj"
+msgstr "Pet minut na igralca, dodatne tri sekunde za menjavo igralca"
 
 #: src/gtk/window.ui:143
-#, fuzzy
 msgid "Ten minutes per side, plus zero seconds per turn"
-msgstr "Deset minut na stran, plus nič sekund na zavoj"
+msgstr "Deset minut na igralca, brez dodatnih sekund za menjavo igralca"
 
 #: src/gtk/window.ui:156
-#, fuzzy
 msgid "Ten minutes per side, plus five seconds per turn"
-msgstr "Deset minut na stran, plus pet sekund na zavoj"
+msgstr "Deset minut na igralca, dodatnih pet sekund za menjavo igralca"
 
 #: src/gtk/window.ui:169
-#, fuzzy
 msgid "Fifteen minutes per side, plus ten seconds per turn"
-msgstr "15 minut na stran, plus 10 sekund na zavoj"
+msgstr "15 minut na igralca, dodatnih deset sekund za menjavo igralca"
 
 #: src/gtk/window.ui:182
-#, fuzzy
 msgid "Thirty minutes per side, plus zero seconds per turn"
-msgstr "30 minut na stran, plus nič sekund na zavoj"
+msgstr "30 minut na igralca, brez dodatnih sekund za menjavo igralca"
 
 #: src/gtk/window.ui:195
-#, fuzzy
 msgid "Thirty minutes per side, plus twenty seconds per turn"
-msgstr "30 minut na stran, plus 20 sekund na zavoj"
+msgstr "30 minut na igralca, dodatnih 20 sekund za menjavo igralca"
 
 #: src/gtk/window.ui:218
 msgid "Time control method"
