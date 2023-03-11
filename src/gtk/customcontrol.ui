@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="Adw" version="1.0"/>
   <template class="ChessClockCustomControl" parent="GtkMenuButton">
-    <property name="label" translatable="yes">Custom</property>
+    <property name="label" translatable="yes" comments="Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.">Custom</property>
     <property name="direction">up</property>
     <property name="popover">
       <object class="GtkPopover">
