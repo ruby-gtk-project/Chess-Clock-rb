@@ -18,6 +18,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import sys
+from gettext import gettext as _
 import gi
 
 gi.require_version('Gtk', '4.0')
@@ -60,6 +61,7 @@ class ChessClockApplication(Adw.Application):
                                 version='0.3.1',
                                 developers=['Clara Hobbs‍️', 'gregorni'],
                                 artists=['Brage Fuglseth'],
+                                translator_credits=_("translator-credits"),
                                 copyright='© 2022–2023 the Chess Clock contributors\n\nThis application comes with absolutely no warranty. See the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License, version 3 or later</a> for details.')
         about.present()
 

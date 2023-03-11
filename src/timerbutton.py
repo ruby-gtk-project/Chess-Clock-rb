@@ -17,6 +17,8 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from gettext import gettext as _
+
 from gi.repository import Adw
 from gi.repository import Gtk, GLib
 
@@ -47,15 +49,15 @@ class ChessClockTimerButton(Gtk.Button):
         else:
             self.remove_css_class("expired")
 
-    def on_white(self, _):
+    def on_white(self, *args):
         self.add_css_class("white")
         self.remove_css_class("black")
-        self.update_property([Gtk.AccessibleProperty.LABEL], ["Player white timer"])
+        self.update_property([Gtk.AccessibleProperty.LABEL], [_("Player white timer")])
 
-    def on_black(self, _):
+    def on_black(self, *args):
         self.add_css_class("black")
         self.remove_css_class("white")
-        self.update_property([Gtk.AccessibleProperty.LABEL], ["Player black timer"])
+        self.update_property([Gtk.AccessibleProperty.LABEL], [_("Player black timer")])
 
     def on_active(self, _, active, current):
         self.set_sensitive(active)
