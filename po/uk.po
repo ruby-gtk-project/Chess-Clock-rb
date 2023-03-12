@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-05 07:02+0000\n"
-"PO-Revision-Date: 2023-03-05 11:42+0200\n"
+"POT-Creation-Date: 2023-03-11 14:03+0000\n"
+"PO-Revision-Date: 2023-03-12 19:29+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -41,12 +41,12 @@ msgid ""
 "their opponent's, until the game is finished or one of the clocks reaches "
 "zero."
 msgstr ""
-"«Шаховий годинник» є простою програмою, яка надає засоби керування часом для"
-" ігор на звичайній шаховій дошці. Програму призначено для використання на"
-" мобільних пристроях. Гравці вибирають бажані для гри параметри керування"
-" часом, потім гравець чорними запускає годинник для гравця білими. Після"
-" кожного ходу гравець запускає таймер для свого суперника, аж доки гру не"
-" буде завершено або відлік за годинником завершиться нульовим значенням."
+"«Шаховий годинник» є простою програмою, яка надає засоби керування часом для "
+"ігор на звичайній шаховій дошці. Програму призначено для використання на "
+"мобільних пристроях. Гравці вибирають бажані для гри параметри керування "
+"часом, потім гравець чорними запускає годинник для гравця білими. Після "
+"кожного ходу гравець запускає таймер для свого суперника, аж доки гру не "
+"буде завершено або відлік за годинником завершиться нульовим значенням."
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:18
 msgid ""
@@ -63,6 +63,7 @@ msgstr "Сторінка вибору керування часом"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
+#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
 #: src/gtk/customcontrol.ui:6
 msgid "Custom"
 msgstr "Нетиповий"
@@ -202,8 +203,10 @@ msgid "Playing"
 msgstr "Гра"
 
 #: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Main Menu"
-msgstr "Головне меню"
+#| msgctxt "shortcut window"
+#| msgid "Open Primary Menu"
+msgid "Primary Menu"
+msgstr "Основне меню"
 
 #: src/gtk/window.ui:320 src/gtk/window.ui:434
 msgid "Toggle Pause"
@@ -234,3 +237,22 @@ msgstr "_Клавіатурні скорочення"
 #: src/gtk/window.ui:500
 msgid "_About Chess Clock"
 msgstr "_Про «Шаховий годинник»"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2023"
+
+#: src/timerbutton.py:55
+#| msgctxt "a11y"
+#| msgid "Player white timer"
+msgid "Player white timer"
+msgstr "Таймер гравця білими"
+
+#: src/timerbutton.py:60
+#| msgctxt "a11y"
+#| msgid "Player black timer"
+msgid "Player black timer"
+msgstr "Таймер гравця чорними"
+
+#~ msgid "Main Menu"
+#~ msgstr "Головне меню"
