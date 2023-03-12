@@ -1,0 +1,252 @@
+# Swedish translation for chess-clock.
+# Copyright © 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-03-11 14:03+0000\n"
+"PO-Revision-Date: 2023-03-12 18:07+0100\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Schackklocka"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "schack;spel;klocka;timer;tidtagare;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Ta tid för schackspel över brädet"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Schackklocka är ett enkelt program som tillhandahåller tidskontroller för "
+"schackspel över brädet. Det är avsett för mobil användning, spelarna väljer "
+"tidskontrollinställningarna som önskas för deras spel, sedan knackar svart "
+"spelare på sin klocka för att starta tiden för vit spelare. Efter varje "
+"spelares tur knackar de på klockan för att starta motståndarens tid, tills "
+"spelet är slut eller en av klockarna tickat ner till noll."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Huvudskärmen som visar tidtagare för schackspelets spelare, vit och svart"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Valskärmen för tidskontroll"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
+#: src/gtk/customcontrol.ui:6
+msgid "Custom"
+msgstr "Anpassat"
+
+#: src/gtk/customcontrol.ui:21
+msgid "Main time minutes"
+msgstr "Antal minuter huvudtid"
+
+#: src/gtk/customcontrol.ui:39
+msgid "Main time seconds"
+msgstr "Antal sekunder huvudtid"
+
+#: src/gtk/customcontrol.ui:57
+msgid "Increment seconds"
+msgstr "Ökning i sekunder"
+
+#: src/gtk/customcontrol.ui:67
+msgid "Start Game"
+msgstr "Starta spel"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Spel"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Ny tidskontroll"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Starta om timer"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Allmänt"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Primary Menu"
+msgstr "Öppna primär meny"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Visa kortkommandon"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Stäng fönster"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Avsluta"
+
+#: src/gtk/window.ui:15
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Välj tidskontroller"
+
+#: src/gtk/window.ui:38
+msgid "Welcome to Chess Clock"
+msgstr "Välkommen till Schackklocka"
+
+#: src/gtk/window.ui:48
+msgid "Select time controls below to get started"
+msgstr "Välj tidskontroller nedan för att komma igång"
+
+#: src/gtk/window.ui:65
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "En minut per sida, plus noll sekunder per drag"
+
+#: src/gtk/window.ui:78
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Två minuter per sida, plus en sekund per drag"
+
+#: src/gtk/window.ui:91
+msgid "Three minutes per side, plus zero seconds per turn"
+msgstr "Tre minuter per sida, plus noll sekunder per drag"
+
+#: src/gtk/window.ui:104
+msgid "Three minutes per side, plus two seconds per turn"
+msgstr "Tre minuter per sida, plus två sekunder per drag"
+
+#: src/gtk/window.ui:117
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Fem minuter per sida, plus noll sekunder per drag"
+
+#: src/gtk/window.ui:130
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Fem minuter per sida, plus tre sekunder per drag"
+
+#: src/gtk/window.ui:143
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Tio minuter per sida, plus noll sekunder per drag"
+
+#: src/gtk/window.ui:156
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Tio minuter per sida, plus fem sekunder per drag"
+
+#: src/gtk/window.ui:169
+msgid "Fifteen minutes per side, plus ten seconds per turn"
+msgstr "Femton minuter per sida, plus tio sekunder per drag"
+
+#: src/gtk/window.ui:182
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Trettio minuter per sida, plus noll sekunder per drag"
+
+#: src/gtk/window.ui:195
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Trettio minuter per sida, plus tjugo sekunder per drag"
+
+#: src/gtk/window.ui:218
+msgid "Time control method"
+msgstr "Metod för tidskontroll"
+
+#: src/gtk/window.ui:227
+msgid "Increment"
+msgstr "Ökning"
+
+#: src/gtk/window.ui:228
+msgid "Bronstein delay"
+msgstr "Bronstein-fördröjning"
+
+#: src/gtk/window.ui:229
+msgid "Simple delay"
+msgstr "Enkel fördröjning"
+
+#: src/gtk/window.ui:247
+msgctxt "a11y"
+msgid "Playing"
+msgstr "Spelar"
+
+#: src/gtk/window.ui:306 src/gtk/window.ui:420
+msgid "Primary Menu"
+msgstr "Primär meny"
+
+#: src/gtk/window.ui:320 src/gtk/window.ui:434
+msgid "Toggle Pause"
+msgstr "Pausa/fortsätt"
+
+#: src/gtk/window.ui:338 src/gtk/window.ui:452
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Timer för vit spelare"
+
+#: src/gtk/window.ui:349 src/gtk/window.ui:464
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Timer för svart spelare"
+
+#: src/gtk/window.ui:486
+msgid "_New Time Control"
+msgstr "_Ny tidskontroll"
+
+#: src/gtk/window.ui:490
+msgid "_Restart Timer"
+msgstr "Sta_rta om timer"
+
+#: src/gtk/window.ui:496
+msgid "_Keyboard Shortcuts"
+msgstr "_Tangentbordsgenvägar"
+
+#: src/gtk/window.ui:500
+msgid "_About Chess Clock"
+msgstr "_Om Schackklocka"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr ""
+"Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"\n"
+"Skicka synpunkter på översättningen till\n"
+"<tp-sv@listor.tp-sv.se>."
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "Timer för vit spelare"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "Timer för svart spelare"
