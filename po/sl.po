@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-05 13:09+0000\n"
-"PO-Revision-Date: 2023-03-07 19:02+0100\n"
+"POT-Creation-Date: 2023-03-11 14:03+0000\n"
+"PO-Revision-Date: 2023-03-13 19:05+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -66,17 +66,16 @@ msgstr "Zaslon za izbiro kontrolnika časa"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
+#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
 #: src/gtk/customcontrol.ui:6
 msgid "Custom"
 msgstr "Po meri"
 
 #: src/gtk/customcontrol.ui:21
-#, fuzzy
 msgid "Main time minutes"
 msgstr "Minute glavnega časa"
 
 #: src/gtk/customcontrol.ui:39
-#, fuzzy
 msgid "Main time seconds"
 msgstr "Sekunde glavnega časa"
 
@@ -197,12 +196,12 @@ msgstr "Prirastek"
 #: src/gtk/window.ui:228
 #, fuzzy
 msgid "Bronstein delay"
-msgstr "Bronsteinova zamuda"
+msgstr "Bronštejnov zamik"
 
 #: src/gtk/window.ui:229
 #, fuzzy
 msgid "Simple delay"
-msgstr "Enostavna zamuda"
+msgstr "Enostavni zamik"
 
 #: src/gtk/window.ui:247
 msgctxt "a11y"
@@ -210,8 +209,8 @@ msgid "Playing"
 msgstr "Predvajanje"
 
 #: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Main Menu"
-msgstr "Glavni meni"
+msgid "Primary Menu"
+msgstr "Osnovni meni"
 
 #: src/gtk/window.ui:320 src/gtk/window.ui:434
 msgid "Toggle Pause"
@@ -242,3 +241,15 @@ msgstr "_Tipke za bližnjico"
 #: src/gtk/window.ui:500
 msgid "_About Chess Clock"
 msgstr "_O Šahovski uri"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr "Martin Srebotnjak <miles@filmsi.net>"
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "Časovnik igralca z belimi figurami"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "Časovnik igralca s črnimi figurami"
