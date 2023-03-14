@@ -1,0 +1,250 @@
+# Hungarian translation for chess-clock.
+# Copyright (C) 2023 Free Software Foundation, Inc.
+# This file is distributed under the same license as the chess-clock package.
+#
+# Balázs Meskó <mesko.balazs at fsf dot hu>, 2023.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-03-12 17:29+0000\n"
+"PO-Revision-Date: 2023-03-14 23:10+0100\n"
+"Last-Translator: Balázs Meskó <mesko.balazs at fsf dot hu>\n"
+"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Sakkóra"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "sakk;játék;óra;időzítő;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Mérje a sakkjátszmák idejét"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"A Sakkóra egy egyszerű alkalmazás, amely időzítést biztosít a "
+"sakkjátszmákhoz. Mobil használathoz ajánlott, a játékosok kiválasztják a "
+"játékhoz használandó időzítési beállításokat, majd a sötét játékos lenyomja "
+"a saját óráját, hogy a világos ideje ketyegjen. Minden játékos a köre után "
+"lenyomja az órát, és az ellenfél köre indul el, egészen addig, amíg a játék "
+"véget nem ér, vagy az óra el nem éri a nullát."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"A fő képernyő, amely a sakkjáték világos és sötét játékosainak óráit "
+"jeleníti meg"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Az időzítéskiválasztó képernyő"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
+#: src/gtk/customcontrol.ui:6
+msgid "Custom"
+msgstr "Egyéni"
+
+#: src/gtk/customcontrol.ui:21
+msgid "Main time minutes"
+msgstr "Fő idő percei"
+
+#: src/gtk/customcontrol.ui:39
+msgid "Main time seconds"
+msgstr "Fő idő másodpercei"
+
+#: src/gtk/customcontrol.ui:57
+msgid "Increment seconds"
+msgstr "Másodperc növelése"
+
+#: src/gtk/customcontrol.ui:67
+msgid "Start Game"
+msgstr "Játék indítása"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Játék"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Új időzítés"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Időzítő újraindítása"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Általános"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Primary Menu"
+msgstr "Elsődleges menü megnyitása"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Gyorsbillentyűk megjelenítése"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Ablak bezárása"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Kilépés"
+
+#: src/gtk/window.ui:15
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Időzítés kiválasztása"
+
+#: src/gtk/window.ui:38
+msgid "Welcome to Chess Clock"
+msgstr "Üdvözli a Sakkóra"
+
+#: src/gtk/window.ui:48
+msgid "Select time controls below to get started"
+msgstr "A kezdéshez válasszon alább egy időzítést"
+
+#: src/gtk/window.ui:65
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Egy perc felenként, továbbá nulla másodperc körönként"
+
+#: src/gtk/window.ui:78
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Két perc felenként, továbbá egy másodperc körönként"
+
+#: src/gtk/window.ui:91
+msgid "Three minutes per side, plus zero seconds per turn"
+msgstr "Három perc felenként, továbbá nulla másodperc körönként"
+
+#: src/gtk/window.ui:104
+msgid "Three minutes per side, plus two seconds per turn"
+msgstr "Három perc felenként, továbbá két másodperc körönként"
+
+#: src/gtk/window.ui:117
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Öt perc felenként, továbbá nulla másodperc körönként"
+
+#: src/gtk/window.ui:130
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Öt perc felenként, továbbá három másodperc körönként"
+
+#: src/gtk/window.ui:143
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Tíz perc felenként, továbbá nulla másodperc körönként"
+
+#: src/gtk/window.ui:156
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Tíz perc felenként, továbbá öt másodperc körönként"
+
+#: src/gtk/window.ui:169
+msgid "Fifteen minutes per side, plus ten seconds per turn"
+msgstr "Tizenöt perc felenként, továbbá tíz másodperc körönként"
+
+#: src/gtk/window.ui:182
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Harminc perc felenként, továbbá nulla másodperc körönként"
+
+#: src/gtk/window.ui:195
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Harminc perc felenként, továbbá húsz másodperc körönként"
+
+#: src/gtk/window.ui:218
+msgid "Time control method"
+msgstr "Időzítés módja"
+
+#: src/gtk/window.ui:227
+msgid "Increment"
+msgstr "Növekmény"
+
+#: src/gtk/window.ui:228
+msgid "Bronstein delay"
+msgstr "Bronstein-késleltetés"
+
+#: src/gtk/window.ui:229
+msgid "Simple delay"
+msgstr "Egyszerű késleltetés"
+
+#: src/gtk/window.ui:247
+msgctxt "a11y"
+msgid "Playing"
+msgstr "Játékban"
+
+#: src/gtk/window.ui:306 src/gtk/window.ui:420
+msgid "Primary Menu"
+msgstr "Elsődleges menü"
+
+#: src/gtk/window.ui:320 src/gtk/window.ui:434
+msgid "Toggle Pause"
+msgstr "Szünet ki- és bekapcsolása"
+
+#: src/gtk/window.ui:338 src/gtk/window.ui:452
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Világos játékos időzítője"
+
+#: src/gtk/window.ui:349 src/gtk/window.ui:464
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Sötét játékos időzítője"
+
+#: src/gtk/window.ui:486
+msgid "_New Time Control"
+msgstr "Ú_j időzítés"
+
+#: src/gtk/window.ui:490
+msgid "_Restart Timer"
+msgstr "Időzítő új_raindítása"
+
+#: src/gtk/window.ui:496
+msgid "_Keyboard Shortcuts"
+msgstr "_Gyorsbillentyűk"
+
+#: src/gtk/window.ui:500
+msgid "_About Chess Clock"
+msgstr "A Sakkóra _névjegye"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr "Meskó Balázs <mesko dot balazs at fsf dot hu>, 2023."
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "Világos játékos időzítője"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "Sötét játékos időzítője"
