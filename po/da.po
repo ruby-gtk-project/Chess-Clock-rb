@@ -1,0 +1,253 @@
+# Danish translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Alan Mortensen <alanmortensen.am@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-03-11 14:03+0000\n"
+"PO-Revision-Date: 2023-03-14 18:37+0100\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Skakur"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "skak;spil;ur;minutur;timer;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Skakur til fysiske skakspil"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Skakur er et simpelt program til at styre tiden for fysiske skakspil. "
+"Skakur er beregnet på mobilt brug, og spillerne vælger den ønskede "
+"tidsstyring af deres spil, hvorefter den sorte spiller trykker på sit ur "
+"for at starte hvids minutur. Efter hver spillers tur trykker de på uret for "
+"at starte modstanderens ur, indtil spillet er slut, eller et af urene når "
+"nul."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr "Hovedskærmen med minuture for sort og hvid i et skakspil"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Skærmen til indstilling af tidsstyringen"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
+#: src/gtk/customcontrol.ui:6
+msgid "Custom"
+msgstr "Tilpasset"
+
+# Denne og de to næste er for at tilpasse tiden i stedet for at bruge en af de foruddefinerede
+#: src/gtk/customcontrol.ui:21
+msgid "Main time minutes"
+msgstr "Minutter"
+
+#: src/gtk/customcontrol.ui:39
+msgid "Main time seconds"
+msgstr "Sekunder"
+
+# Svarende til de ekstra sekunder der bliver lagt til pr. tur
+#: src/gtk/customcontrol.ui:57
+msgid "Increment seconds"
+msgstr "Tillægssekunder"
+
+#: src/gtk/customcontrol.ui:67
+msgid "Start Game"
+msgstr "Start spil"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Spil"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Ny tidsstyring"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Genstart minutur"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Generelle"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Primary Menu"
+msgstr "Åbn primær menu"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Vis genveje"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Luk vindue"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afslut"
+
+#: src/gtk/window.ui:15
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Vælg tidsstyringer"
+
+#: src/gtk/window.ui:38
+msgid "Welcome to Chess Clock"
+msgstr "Velkommen til Skakur"
+
+#: src/gtk/window.ui:48
+msgid "Select time controls below to get started"
+msgstr "Vælg tidsstyringer nedenfor for at komme i gang"
+
+#: src/gtk/window.ui:65
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Et minut pr. spiller plus nul sekunder pr. tur"
+
+#: src/gtk/window.ui:78
+msgid "Two minutes per side, plus one second per turn"
+msgstr "To minutter pr. spiller plus et sekund pr. tur"
+
+#: src/gtk/window.ui:91
+msgid "Three minutes per side, plus zero seconds per turn"
+msgstr "Tre minutter pr. spiller plus nul sekunder pr. tur"
+
+#: src/gtk/window.ui:104
+msgid "Three minutes per side, plus two seconds per turn"
+msgstr "Tre minutter pr. spiller plus to sekunder pr. tur"
+
+#: src/gtk/window.ui:117
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Fem minutter pr. spiller plus nul sekunder pr. tur"
+
+#: src/gtk/window.ui:130
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Fem minutter pr. spiller plus tre sekunder pr. tur"
+
+#: src/gtk/window.ui:143
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Ti minutter pr. spiller plus nul sekunder pr. tur"
+
+#: src/gtk/window.ui:156
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Ti minutter pr. spiller plus fem sekunder pr. tur"
+
+#: src/gtk/window.ui:169
+msgid "Fifteen minutes per side, plus ten seconds per turn"
+msgstr "Femten minutter pr. spiller plus ti sekunder pr. tur"
+
+#: src/gtk/window.ui:182
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Tredive minutter pr. spiller plus nul sekunder pr. tur"
+
+#: src/gtk/window.ui:195
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Tredive minutter pr. spiller plus tyve sekunder pr. tur"
+
+#: src/gtk/window.ui:218
+msgid "Time control method"
+msgstr "Tidsstyringsmetode"
+
+#: src/gtk/window.ui:227
+msgid "Increment"
+msgstr "Forøgelse"
+
+#: src/gtk/window.ui:228
+msgid "Bronstein delay"
+msgstr "Bronstein-forsinkelse"
+
+#: src/gtk/window.ui:229
+msgid "Simple delay"
+msgstr "Simpel forsinkelse"
+
+#: src/gtk/window.ui:247
+msgctxt "a11y"
+msgid "Playing"
+msgstr "Spiller"
+
+#: src/gtk/window.ui:306 src/gtk/window.ui:420
+msgid "Primary Menu"
+msgstr "Primær menu"
+
+#: src/gtk/window.ui:320 src/gtk/window.ui:434
+msgid "Toggle Pause"
+msgstr "Pause til/fra"
+
+#: src/gtk/window.ui:338 src/gtk/window.ui:452
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Hvids minutur"
+
+#: src/gtk/window.ui:349 src/gtk/window.ui:464
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Sorts minutur"
+
+#: src/gtk/window.ui:486
+msgid "_New Time Control"
+msgstr "_Ny tidsstyring"
+
+#: src/gtk/window.ui:490
+msgid "_Restart Timer"
+msgstr "_Genstart minutur"
+
+#: src/gtk/window.ui:496
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastaturgenveje"
+
+#: src/gtk/window.ui:500
+msgid "_About Chess Clock"
+msgstr "_Om skakur"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr ""
+"Alan Mortensen\n"
+"\n"
+"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
+"Mere info: http://www.dansk-gruppen.dk"
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "Hvids minutur"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "Sorts minutur"
