@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-11 14:03+0000\n"
-"PO-Revision-Date: 2023-03-13 19:05+0100\n"
+"POT-Creation-Date: 2023-03-13 18:06+0000\n"
+"PO-Revision-Date: 2023-03-14 09:26+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -29,9 +29,8 @@ msgid "chess;game;clock;timer;"
 msgstr "šah;igra;ura;časovnik;"
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:7
-#, fuzzy
 msgid "Time games of over-the-board chess"
-msgstr "Časovne igre šaha na šahovnici"
+msgstr "Časovno pogojene igre šaha na pravi šahovnici"
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:9
 msgid ""
@@ -80,7 +79,6 @@ msgid "Main time seconds"
 msgstr "Sekunde glavnega časa"
 
 #: src/gtk/customcontrol.ui:57
-#, fuzzy
 msgid "Increment seconds"
 msgstr "Sekunde prirastka"
 
@@ -194,12 +192,10 @@ msgid "Increment"
 msgstr "Prirastek"
 
 #: src/gtk/window.ui:228
-#, fuzzy
 msgid "Bronstein delay"
 msgstr "Bronštejnov zamik"
 
 #: src/gtk/window.ui:229
-#, fuzzy
 msgid "Simple delay"
 msgstr "Enostavni zamik"
 
