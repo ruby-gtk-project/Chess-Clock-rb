@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-05 13:09+0000\n"
-"PO-Revision-Date: 2023-03-07 14:45+0000\n"
+"POT-Creation-Date: 2023-03-11 14:03+0000\n"
+"PO-Revision-Date: 2023-03-15 00:02+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
@@ -42,11 +42,11 @@ msgid ""
 msgstr ""
 "O Relógio de Xadrez é uma aplicação simples que permite o controlo do tempo "
 "para jogos de xadrez de tabuleiro. Destinado à utilização móvel, os "
-"jogadores selecionam as definições de controlo de tempo desejadas para o "
-"seu jogo, depois o jogador de peças pretas bate o seu relógio para iniciar "
-"o temporizador do jogador de peças brancas. Após a vez de cada jogador, "
-"batem no relógio para iniciar o do adversário, até o jogo estar terminado "
-"ou até um dos relógios chegar a zero."
+"jogadores selecionam as definições de controlo de tempo desejadas para o seu "
+"jogo, depois o jogador de peças pretas bate o seu relógio para iniciar o "
+"temporizador do jogador de peças brancas. Após a vez de cada jogador, batem "
+"no relógio para iniciar o do adversário, até o jogo estar terminado ou até "
+"um dos relógios chegar a zero."
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:18
 msgid ""
@@ -64,6 +64,7 @@ msgstr "O ecrã de seleção do controlo de tempo"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
+#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
 #: src/gtk/customcontrol.ui:6
 msgid "Custom"
 msgstr "Personalizar"
@@ -203,7 +204,7 @@ msgid "Playing"
 msgstr "A jogar"
 
 #: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Main Menu"
+msgid "Primary Menu"
 msgstr "Menu principal"
 
 #: src/gtk/window.ui:320 src/gtk/window.ui:434
@@ -235,3 +236,18 @@ msgstr "_Teclas de atalho"
 #: src/gtk/window.ui:500
 msgid "_About Chess Clock"
 msgstr "_Acerca do Relógio de Xadrez"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "Temporizador de jogador de peças brancas"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "Temporizador de jogador de peças pretas"
+
+#~ msgid "Main Menu"
+#~ msgstr "Menu principal"
