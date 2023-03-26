@@ -58,7 +58,7 @@ class ChessClockApplication(Adw.Application):
                                 application_icon='com.clarahobbs.chessclock',
                                 issue_url='https://gitlab.gnome.org/World/chess-clock/-/issues/new',
                                 developer_name='Clara Hobbs 🏳️‍⚧️🌹🏳‍🌈',
-                                version='0.4.0',
+                                version='0.4.1',
                                 developers=['Clara Hobbs‍️', 'gregorni'],
                                 artists=['Brage Fuglseth'],
                                 translator_credits=_("translator-credits"),

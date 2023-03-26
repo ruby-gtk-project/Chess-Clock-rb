@@ -33,6 +33,13 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
+    <release version="0.4.1" date="2023-03-26">
+      <description>
+        <ul>
+          <li>Minor bugfix release, fixing the broken about window in 0.4.0</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.4.0" date="2023-03-26">
       <description>
         <ul>
