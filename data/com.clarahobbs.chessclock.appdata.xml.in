@@ -33,6 +33,14 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
+    <release version="0.4.0" date="2023-03-26">
+      <description>
+        <ul>
+          <li>Added Bronstein and simple delay timing methods</li>
+          <li>We now support 16 languages!  Big thanks to all the translators for this release</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.1" date="2023-02-19">
       <description>
         <p>The first release as a member of GNOME Circle!</p>
