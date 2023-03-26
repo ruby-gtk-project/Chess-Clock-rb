@@ -1,0 +1,251 @@
+# Dutch translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Philip Goto <Philip.goto@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-03-15 00:03+0000\n"
+"PO-Revision-Date: 2023-03-26 15:42+0200\n"
+"Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
+"Language-Team: Dutch <https://matrix.to/#/#nl:gnome.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Schaakklok"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "chess;game;clock;timer;schaak;schaken;spel;klok;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Houd de bedenktijd van schaakspellen bij"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Schaakklok is een eenvoudige toepassing voor tijdsbediening van "
+"schaakspellen, en is bedoeld voor mobiel gebruik. Spelers selecteren de "
+"gewenste tijdsbedieningsinstellingen voor hun spel, waarna de zwarte speler "
+"op de klok drukt om de timer van wit te starten. Na de beurt van elke "
+"speler, drukken ze op de klok om die van hun tegenstander te starten, totdat "
+"het spel is afgelopen of een van de klokken nul bereikt."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Het hoofdscherm, met timers voor de witte en zwarte spelers van een "
+"schaakspel"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Het selectiescherm voor de tijdsbediening"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
+#: src/gtk/customcontrol.ui:6
+msgid "Custom"
+msgstr "Aangepast"
+
+#: src/gtk/customcontrol.ui:21
+msgid "Main time minutes"
+msgstr "Starttijd (minuten)"
+
+#: src/gtk/customcontrol.ui:39
+msgid "Main time seconds"
+msgstr "Starttijd (seconden)"
+
+#: src/gtk/customcontrol.ui:57
+msgid "Increment seconds"
+msgstr "Toename (seconden)"
+
+#: src/gtk/customcontrol.ui:67
+msgid "Start Game"
+msgstr "Spel starten"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Spel"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Nieuwe tijdsbediening"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Timer herstarten"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Algemeen"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Primary Menu"
+msgstr "Primair menu openen"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Sneltoetsen tonen"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Venster sluiten"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Sluiten"
+
+#: src/gtk/window.ui:15
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Tijdsbediening selecteren"
+
+#: src/gtk/window.ui:38
+msgid "Welcome to Chess Clock"
+msgstr "Welkom bij Schaakklok"
+
+#: src/gtk/window.ui:48
+msgid "Select time controls below to get started"
+msgstr "Selecteer een tijdsbediening hieronder om te beginnen"
+
+#: src/gtk/window.ui:65
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Eén minuut per kant, plus nul seconden per beurt"
+
+#: src/gtk/window.ui:78
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Twee minuten per kant, plus één seconde per beurt"
+
+#: src/gtk/window.ui:91
+msgid "Three minutes per side, plus zero seconds per turn"
+msgstr "Drie minuten per kant, plus nul seconden per beurt"
+
+#: src/gtk/window.ui:104
+msgid "Three minutes per side, plus two seconds per turn"
+msgstr "Drie minuten per kant, plus twee seconden per beurt"
+
+#: src/gtk/window.ui:117
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Vijf minuten per kant, plus nul seconden per beurt"
+
+#: src/gtk/window.ui:130
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Vijf minuten per kant, plus drie seconden per beurt"
+
+#: src/gtk/window.ui:143
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Tien minuten per kant, plus nul seconden per beurt"
+
+#: src/gtk/window.ui:156
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Tien minuten per kant, plus vijf seconden per beurt"
+
+#: src/gtk/window.ui:169
+msgid "Fifteen minutes per side, plus ten seconds per turn"
+msgstr "Vijftien minuten per kant, plus tien seconden per beurt"
+
+#: src/gtk/window.ui:182
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Dertig minuten per kant, plus nul seconden per beurt"
+
+#: src/gtk/window.ui:195
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Dertig minuten per kant, plus twintig seconden per beurt"
+
+#: src/gtk/window.ui:218
+msgid "Time control method"
+msgstr "Methode voor tijdsbediening"
+
+#: src/gtk/window.ui:227
+msgid "Increment"
+msgstr "Toename"
+
+#: src/gtk/window.ui:228
+msgid "Bronstein delay"
+msgstr "Bronstein-vertraging"
+
+#: src/gtk/window.ui:229
+msgid "Simple delay"
+msgstr "Eenvoudige vertraging"
+
+#: src/gtk/window.ui:247
+msgctxt "a11y"
+msgid "Playing"
+msgstr "Aan het afspelen"
+
+#: src/gtk/window.ui:306 src/gtk/window.ui:420
+msgid "Primary Menu"
+msgstr "Primair menu"
+
+#: src/gtk/window.ui:320 src/gtk/window.ui:434
+msgid "Toggle Pause"
+msgstr "Pauze omschakelen"
+
+#: src/gtk/window.ui:338 src/gtk/window.ui:452
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Timer van witte speler"
+
+#: src/gtk/window.ui:349 src/gtk/window.ui:464
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Timer van zwarte speler"
+
+#: src/gtk/window.ui:486
+msgid "_New Time Control"
+msgstr "_Nieuwe tijdsbediening"
+
+#: src/gtk/window.ui:490
+msgid "_Restart Timer"
+msgstr "Timer he_rstarten"
+
+#: src/gtk/window.ui:496
+msgid "_Keyboard Shortcuts"
+msgstr "Snel_toetsen"
+
+#: src/gtk/window.ui:500
+msgid "_About Chess Clock"
+msgstr "_Over Schaakklok"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr ""
+"Philip Goto <philip.goto@gmail.com>\n"
+"Meer info over GNOME-NL https://nl.gnome.org"
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "Timer van witte speler"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "Timer van zwarte speler"
