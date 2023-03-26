@@ -6,8 +6,8 @@
 msgid ""
 msgstr "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-04 16:16+0000\n"
-"PO-Revision-Date: 2023-03-05 06:47+0000\n"
+"POT-Creation-Date: 2023-03-11 14:03+0000\n"
+"PO-Revision-Date: 2023-03-26 06:47+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -52,6 +52,7 @@ msgstr "Denboraren kontrola hautatzeko pantaila"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
+#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
 #: src/gtk/customcontrol.ui:6
 msgid "Custom"
 msgstr "Pertsonalizatua"
@@ -191,7 +192,7 @@ msgid "Playing"
 msgstr "Jokatzen"
 
 #: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Main Menu"
+msgid "Primary Menu"
 msgstr "Menu nagusia"
 
 #: src/gtk/window.ui:320 src/gtk/window.ui:434
@@ -223,3 +224,18 @@ msgstr "_Laster-teklak"
 #: src/gtk/window.ui:500
 msgid "_About Chess Clock"
 msgstr "_Xake-ordularia aplikazioari buruz"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr "translator-credits"
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "Jokalariaren tenporizadore zuria"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "Jokalariaren tenporizadore beltza"
+
+#~ msgid "Main Menu"
+#~ msgstr "Menu nagusia"
