@@ -51,7 +51,7 @@ class ChessClockApplication(Adw.Application):
     def on_quit(self, *args):
         self.quit()
 
-    def on_about_action(self, widget, _):
+    def on_about_action(self, widget, __):
         """Callback for the app.about action."""
         about = Adw.AboutWindow(transient_for=self.props.active_window,
                                 application_name='Chess Clock',
