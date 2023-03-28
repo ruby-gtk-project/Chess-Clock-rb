@@ -16,11 +16,21 @@ button.large {
 }
 
 .black {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .white {
   color: rgba(0, 0, 0, 0.8);
+}
+
+.black:backdrop {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 200ms ease-in;
+}
+
+.white:backdrop {
+  color: rgba(0, 0, 0, 0.6);
+  transition: color 200ms ease-in;
 }
 
 .inverted box {
@@ -35,6 +45,16 @@ button.large {
 .timerbutton.white {
   background-color: @brown_1;
   filter: opacity(1);
+}
+
+.timerbutton.black:backdrop {
+  filter: opacity(0.8);
+  transition: filter 200ms ease-in;
+}
+
+.timerbutton.white:backdrop {
+  filter: opacity(0.8);
+  transition: filter 200ms ease-in;
 }
 
 .timerbutton.running {
