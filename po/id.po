@@ -1,0 +1,248 @@
+# Indonesian translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-03-15 00:03+0000\n"
+"PO-Revision-Date: 2023-03-28 08:15+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Jam Catur"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "catur;permainan;jam;pewaktu;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Permainan waktu catur di atas papan"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Jam Catur adalah aplikasi sederhana untuk menyediakan kontrol waktu untuk "
+"permainan catur di atas papan. Ditujukan untuk penggunaan seluler, pemain "
+"memilih pengaturan kontrol waktu yang diinginkan untuk permainan mereka, "
+"lalu pemain hitam mengetuk jamnya untuk memulai pengatur waktu putih. "
+"Setelah giliran masing-masing pemain, mereka mengetuk jam untuk memulai "
+"lawan mereka, hingga permainan selesai atau salah satu jam mencapai nol."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Layar utama, menampilkan pewaktu untuk pemain putih dan hitam dari "
+"permainan catur"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Layar pemilihan kontrol waktu"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
+#: src/gtk/customcontrol.ui:6
+msgid "Custom"
+msgstr "Ubahan"
+
+#: src/gtk/customcontrol.ui:21
+msgid "Main time minutes"
+msgstr "Menit waktu utama"
+
+#: src/gtk/customcontrol.ui:39
+msgid "Main time seconds"
+msgstr "Detik waktu utama"
+
+#: src/gtk/customcontrol.ui:57
+msgid "Increment seconds"
+msgstr "Penambahan detik"
+
+#: src/gtk/customcontrol.ui:67
+msgid "Start Game"
+msgstr "Mulai Permainan"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Permainan"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Kontrol Waktu Baru"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Mulai Ulang Pewaktu"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Umum"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Primary Menu"
+msgstr "Buka Menu Utama"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Tampilkan Pintasan"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Tutup Jendela"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Keluar"
+
+#: src/gtk/window.ui:15
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Pilih kontrol waktu"
+
+#: src/gtk/window.ui:38
+msgid "Welcome to Chess Clock"
+msgstr "Selamat Datang di Jam Catur"
+
+#: src/gtk/window.ui:48
+msgid "Select time controls below to get started"
+msgstr "Pilih kontrol waktu di bawah ini untuk memulai"
+
+#: src/gtk/window.ui:65
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Satu menit per sisi, ditambah nol detik per belokan"
+
+#: src/gtk/window.ui:78
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Dua menit per sisi, ditambah satu detik per belokan"
+
+#: src/gtk/window.ui:91
+msgid "Three minutes per side, plus zero seconds per turn"
+msgstr "Tiga menit per sisi, ditambah nol detik per belokan"
+
+#: src/gtk/window.ui:104
+msgid "Three minutes per side, plus two seconds per turn"
+msgstr "Tiga menit per sisi, ditambah dua detik per belokan"
+
+#: src/gtk/window.ui:117
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Lima menit per sisi, ditambah nol detik per belokan"
+
+#: src/gtk/window.ui:130
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Lima menit per sisi, ditambah tiga detik per belokan"
+
+#: src/gtk/window.ui:143
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Sepuluh menit per sisi, ditambah nol detik per belokan"
+
+#: src/gtk/window.ui:156
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Sepuluh menit per sisi, ditambah lima detik per belokan"
+
+#: src/gtk/window.ui:169
+msgid "Fifteen minutes per side, plus ten seconds per turn"
+msgstr "Lima belas menit per sisi, ditambah sepuluh detik per belokan"
+
+#: src/gtk/window.ui:182
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Tiga puluh menit per sisi, ditambah nol detik per belokan"
+
+#: src/gtk/window.ui:195
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Tiga puluh menit per sisi, ditambah dua puluh detik per belokan"
+
+#: src/gtk/window.ui:218
+msgid "Time control method"
+msgstr "Metode kontrol waktu"
+
+#: src/gtk/window.ui:227
+msgid "Increment"
+msgstr "Kenaikan"
+
+#: src/gtk/window.ui:228
+msgid "Bronstein delay"
+msgstr "Penundaan Bronstein"
+
+#: src/gtk/window.ui:229
+msgid "Simple delay"
+msgstr "Penundaan sederhana"
+
+#: src/gtk/window.ui:247
+msgctxt "a11y"
+msgid "Playing"
+msgstr "Bermain"
+
+#: src/gtk/window.ui:306 src/gtk/window.ui:420
+msgid "Primary Menu"
+msgstr "Menu Utama"
+
+#: src/gtk/window.ui:320 src/gtk/window.ui:434
+msgid "Toggle Pause"
+msgstr "Jungkitkan Jeda"
+
+#: src/gtk/window.ui:338 src/gtk/window.ui:452
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Pewaktu putih pemain"
+
+#: src/gtk/window.ui:349 src/gtk/window.ui:464
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Pewaktu hitam pemain"
+
+#: src/gtk/window.ui:486
+msgid "_New Time Control"
+msgstr "Ko_ntrol Waktu Baru"
+
+#: src/gtk/window.ui:490
+msgid "_Restart Timer"
+msgstr "Mulai Ulang _Pewaktu"
+
+#: src/gtk/window.ui:496
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan Ti_k"
+
+#: src/gtk/window.ui:500
+msgid "_About Chess Clock"
+msgstr "_Tent_ang Jam Catur"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023."
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "Pewaktu putih pemain"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "Pewaktu hitam pemain"
