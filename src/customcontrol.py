@@ -51,8 +51,8 @@ class ChessClockCustomControl(Gtk.MenuButton):
         self.seconds.set_adjustment(self.seconds_adj)
         self.seconds.set_wrap(True)
         self.seconds.connect("wrapped", self.on_seconds_wrapped)
-        self.seconds.connect("value-changed", self.on_seconds_value_changed)
-        self.on_seconds_value_changed(self.seconds)
+        self.seconds.connect("output", self.on_seconds_output)
+        self.on_seconds_output(self.seconds)
 
         self.increment_adj = Gtk.Adjustment.new(self.settings['custom-control-increment'], 0, 999, 1, 10, 0)
         self.increment.set_adjustment(self.increment_adj)
@@ -67,6 +67,7 @@ class ChessClockCustomControl(Gtk.MenuButton):
         else:
             self.minutes_adj.set_value(self.minutes_adj.get_value() + 1)
 
-    def on_seconds_value_changed(self, widget):
+    def on_seconds_output(self, widget):
         val = int(widget.get_value())
         widget.set_text(f"{val:02d}")
+        return True
