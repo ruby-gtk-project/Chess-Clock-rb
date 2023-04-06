@@ -25,79 +25,77 @@
                   <object class="GtkScrolledWindow">
                     <property name="hscrollbar-policy">never</property>
                     <property name="vexpand">true</property>
-                <child>
-                  <object class="AdwClamp">
-                    <child>
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <property name="valign">center</property>
-                    <property name="margin-top">24</property>
-                    <property name="margin-bottom">24</property>
-                    <property name="margin-start">12</property>
-                    <property name="margin-end">12</property>
-                    <property name="spacing">12</property>
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">vertical</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="margin-top">42</property>
+                        <property name="margin-bottom">36</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="spacing">24</property>
                         <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="true">Welcome to Chess Clock</property>
-                            <property name="valign">center</property>
-                            <property name="vexpand">false</property>
-                            <style>
-                              <class name="title-1"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="true">Select time controls below to get started</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="AdwPreferencesGroup">
-                        <child>
-                          <object class="AdwPreferencesRow">
-                            <property name="activatable">false</property>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">12</property>
                             <child>
-                              <object class="ChessClockTimeControlEntry" id="custom_control">
+                              <object class="GtkLabel">
+                                <property name="label" translatable="true">Welcome to Chess Clock</property>
+                                <property name="valign">center</property>
+                                <property name="vexpand">false</property>
+                                <style>
+                                  <class name="title-1"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="true">Select time controls below to get started</property>
                               </object>
                             </child>
                           </object>
                         </child>
                         <child>
-                          <object class="AdwComboRow" id="method_chooser">
-                            <property name="title" translatable="yes">Time control method</property>
-                            <property name="model">
-                              <object class="GtkStringList">
-                                <items>
-                                  <item translatable="yes">Increment</item>
-                                  <item translatable="yes">Bronstein delay</item>
-                                  <item translatable="yes">Simple delay</item>
-                                </items>
+                          <object class="AdwPreferencesGroup">
+                            <child>
+                              <object class="AdwPreferencesRow">
+                                <property name="activatable">false</property>
+                                <child>
+                                  <object class="ChessClockTimeControlEntry" id="custom_control">
+                                  </object>
+                                </child>
                               </object>
-                            </property>
+                            </child>
+                            <child>
+                              <object class="AdwComboRow" id="method_chooser">
+                                <property name="title" translatable="yes">Time control method</property>
+                                <property name="model">
+                                  <object class="GtkStringList">
+                                    <items>
+                                      <item translatable="yes">Increment</item>
+                                      <item translatable="yes">Bronstein delay</item>
+                                      <item translatable="yes">Simple delay</item>
+                                    </items>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="start_game">
+                            <property name="halign">center</property>
+                            <property name="hexpand">false</property>
+                            <property name="label" translatable="yes">Start Game</property>
+                            <style>
+                              <class name="pill"/>
+                              <class name="suggested-action"/>
+                            </style>
                           </object>
                         </child>
                       </object>
                     </child>
-                    <child>
-                      <object class="GtkButton" id="start_game">
-                        <property name="halign">center</property>
-                        <property name="hexpand">false</property>
-                        <property name="label" translatable="yes">Start Game</property>
-                        <style>
-                          <class name="pill"/>
-                          <class name="suggested-action"/>
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                    </child>
-                  </object>
-                </child>
                   </object>
                 </child>
               </object>
