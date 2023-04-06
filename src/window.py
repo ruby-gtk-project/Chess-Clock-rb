@@ -20,7 +20,7 @@
 from gi.repository import Adw, Gtk, Gio
 
 from .timerbutton import ChessClockTimerButton
-from .customcontrol import ChessClockCustomControl
+from .timecontrolentry import ChessClockTimeControlEntry
 from .statemachine import (ChessClockStateMachine,
                            ChessClockIncrementStateMachine,
                            ChessClockBronsteinStateMachine,
@@ -33,19 +33,10 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
     main_stack = Gtk.Template.Child()
     control_chooser = Gtk.Template.Child()
-    one_zero = Gtk.Template.Child()
-    two_one = Gtk.Template.Child()
-    three_zero = Gtk.Template.Child()
-    three_two = Gtk.Template.Child()
-    five_zero = Gtk.Template.Child()
-    five_three = Gtk.Template.Child()
-    ten_zero = Gtk.Template.Child()
-    ten_five = Gtk.Template.Child()
-    fifteen_ten = Gtk.Template.Child()
-    thirty_zero = Gtk.Template.Child()
-    thirty_twenty = Gtk.Template.Child()
+    control_chooser_scroll = Gtk.Template.Child()
     custom_control = Gtk.Template.Child()
     method_chooser = Gtk.Template.Child()
+    start_game = Gtk.Template.Child()
 
     timer_screen = Gtk.Template.Child()
     windowcontrols_start_l = Gtk.Template.Child()
@@ -74,23 +65,11 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
         self.link_state_machine(ChessClockIncrementStateMachine(self, 300, 0))
 
-        self.one_zero.connect("clicked", self.on_control, (60, 0))
-        self.two_one.connect("clicked", self.on_control, (120, 1))
-        self.three_zero.connect("clicked", self.on_control, (180, 0))
-        self.three_two.connect("clicked", self.on_control, (180, 2))
-        self.five_zero.connect("clicked", self.on_control, (300, 0))
-        self.five_three.connect("clicked", self.on_control, (300, 3))
-        self.ten_zero.connect("clicked", self.on_control, (600, 0))
-        self.ten_five.connect("clicked", self.on_control, (600, 5))
-        self.fifteen_ten.connect("clicked", self.on_control, (900, 10))
-        self.thirty_zero.connect("clicked", self.on_control, (1800, 0))
-        self.thirty_twenty.connect("clicked", self.on_control, (1800, 20))
-
-        self.custom_control.start.connect("clicked", self.on_control, None)
-
         self.settings = Gio.Settings(schema_id="com.clarahobbs.chessclock")
         self.settings.bind("control-method", self.method_chooser, "selected",
                            Gio.SettingsBindFlags.DEFAULT)
+
+        self.start_game.connect("clicked", self.on_start_game)
 
         self.headerbar_motion.connect("enter", self.reveal_headerbar)
         self.headerbar_motion.connect("motion", self.reveal_headerbar)
@@ -133,6 +112,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
     def on_new_action(self, widget, _):
         """Callback for the app.new action."""
         self.main_stack.set_visible_child(self.control_chooser)
+        self.control_chooser_scroll.get_vadjustment().set_value(0)
         self.headerbar_revealer.set_reveal_child(True)
         self.headerbar_revealer_p.set_reveal_child(True)
 
@@ -164,9 +144,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
         if self.timer_screen.get_visible_child() == self.main_menu_p.get_parent():
             self.main_menu_p.activate()
 
-    def on_control(self, widget, data):
-        if data is None:
-            data = self.custom_control.get_control()
+    def on_start_game(self, widget):
+        data = self.custom_control.get_control()
         self.unlink_state_machine()
         selected = self.method_chooser.get_selected()
         if selected == 0:

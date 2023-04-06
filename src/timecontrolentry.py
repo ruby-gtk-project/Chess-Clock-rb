@@ -21,17 +21,34 @@ from gi.repository import Adw, Gtk, GLib, GObject, Gio
 
 from math import ceil
 
-@Gtk.Template(resource_path='/com/clarahobbs/chessclock/customcontrol.ui')
-class ChessClockCustomControl(Gtk.MenuButton):
-    __gtype_name__ = 'ChessClockCustomControl'
+@Gtk.Template(resource_path='/com/clarahobbs/chessclock/timecontrolentry.ui')
+class ChessClockTimeControlEntry(Gtk.Box):
+    __gtype_name__ = 'ChessClockTimeControlEntry'
+
+    two_zero = Gtk.Template.Child()
+    two_one = Gtk.Template.Child()
+    five_zero = Gtk.Template.Child()
+    five_three = Gtk.Template.Child()
+    ten_zero = Gtk.Template.Child()
+    ten_five = Gtk.Template.Child()
+    thirty_zero = Gtk.Template.Child()
+    thirty_twenty = Gtk.Template.Child()
 
     minutes = Gtk.Template.Child()
     seconds = Gtk.Template.Child()
     increment = Gtk.Template.Child()
-    start = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        self.two_zero.connect("clicked", self.set_control, 2, 0, 0)
+        self.two_one.connect("clicked", self.set_control, 2, 0, 1)
+        self.five_zero.connect("clicked", self.set_control, 5, 0, 0)
+        self.five_three.connect("clicked", self.set_control, 5, 0, 3)
+        self.ten_zero.connect("clicked", self.set_control, 10, 0, 0)
+        self.ten_five.connect("clicked", self.set_control, 10, 0, 5)
+        self.thirty_zero.connect("clicked", self.set_control, 30, 0, 0)
+        self.thirty_twenty.connect("clicked", self.set_control, 30, 0, 20)
 
         self.settings = Gio.Settings(schema_id='com.clarahobbs.chessclock')
         self.settings.bind('custom-control-minutes', self.minutes, 'value',
@@ -40,9 +57,6 @@ class ChessClockCustomControl(Gtk.MenuButton):
                            Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('custom-control-increment', self.increment, 'value',
                            Gio.SettingsBindFlags.DEFAULT)
-
-        self.set_css_name("menubutton")
-        self.set_accessible_role(Gtk.AccessibleRole.BUTTON)
 
         self.minutes_adj = Gtk.Adjustment.new(self.settings['custom-control-minutes'], 0, 999, 1, 10, 0)
         self.minutes.set_adjustment(self.minutes_adj)
@@ -60,6 +74,11 @@ class ChessClockCustomControl(Gtk.MenuButton):
     def get_control(self):
         return (self.minutes_adj.get_value()*60 + self.seconds_adj.get_value(),
                 self.increment_adj.get_value())
+
+    def set_control(self, widget, minutes, seconds, increment):
+        self.minutes_adj.set_value(minutes)
+        self.seconds_adj.set_value(seconds)
+        self.increment_adj.set_value(increment)
 
     def on_seconds_wrapped(self, widget):
         if widget.get_value() > 30:

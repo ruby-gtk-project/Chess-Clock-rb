@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="ChessClockTimeControlEntry" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <property name="spacing">6</property>
+    <property name="margin-top">6</property>
+    <property name="margin-bottom">6</property>
+    <property name="margin-start">6</property>
+    <property name="margin-end">6</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="vexpand">false</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">6</property>
+        <property name="column_homogeneous">true</property>
+        <child>
+          <object class="GtkButton" id="two_zero">
+            <property name="label">2+0</property>
+            <property name="tooltip-text" translatable="yes">Two minutes per side, plus zero seconds per turn</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
+            <style>
+              <class name="time-button"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="two_one">
+            <property name="label">2+1</property>
+            <property name="tooltip-text" translatable="yes">Two minutes per side, plus one second per turn</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">1</property>
+            </layout>
+            <style>
+              <class name="time-button"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="five_zero">
+            <property name="label">5+0</property>
+            <property name="tooltip-text" translatable="yes">Five minutes per side, plus zero seconds per turn</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">0</property>
+            </layout>
+            <style>
+              <class name="time-button"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="five_three">
+            <property name="label">5+3</property>
+            <property name="tooltip-text" translatable="yes">Five minutes per side, plus three seconds per turn</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">1</property>
+            </layout>
+            <style>
+              <class name="time-button"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="ten_zero">
+            <property name="label">10+0</property>
+            <property name="tooltip-text" translatable="yes">Ten minutes per side, plus zero seconds per turn</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">0</property>
+            </layout>
+            <style>
+              <class name="time-button"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="ten_five">
+            <property name="label">10+5</property>
+            <property name="tooltip-text" translatable="yes">Ten minutes per side, plus five seconds per turn</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">1</property>
+            </layout>
+            <style>
+              <class name="time-button"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="thirty_zero">
+            <property name="label">30+0</property>
+            <property name="tooltip-text" translatable="yes">Thirty minutes per side, plus zero seconds per turn</property>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">0</property>
+            </layout>
+            <style>
+              <class name="time-button"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="thirty_twenty">
+            <property name="label">30+20</property>
+            <property name="tooltip-text" translatable="yes">Thirty minutes per side, plus twenty seconds per turn</property>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">1</property>
+            </layout>
+            <style>
+              <class name="time-button"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">horizontal</property>
+        <property name="halign">center</property>
+        <child>
+          <object class="GtkSpinButton" id="minutes">
+            <property name="orientation">vertical</property>
+            <property name="value">5</property>
+            <property name="tooltip-text" translatable="yes">Main time minutes</property>
+            <style>
+              <class name="custom-spin"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="label">∶</property>
+            <style>
+              <class name="custom-label"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="seconds">
+            <property name="orientation">vertical</property>
+            <property name="value">0</property>
+            <property name="width-chars">3</property>
+            <property name="tooltip-text" translatable="yes">Main time seconds</property>
+            <style>
+              <class name="custom-spin"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="label">+</property>
+            <style>
+              <class name="custom-label"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="increment">
+            <property name="orientation">vertical</property>
+            <property name="value">0</property>
+            <property name="tooltip-text" translatable="yes">Increment seconds</property>
+            <style>
+              <class name="custom-spin"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
