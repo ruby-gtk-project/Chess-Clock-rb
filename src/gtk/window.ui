@@ -17,16 +17,23 @@
             <child>
               <object class="GtkOverlay">
                 <child type="overlay">
-                  <object class="AdwHeaderBar">
+                  <object class="GtkWindowControls">
+                    <property name="halign">start</property>
                     <property name="valign">start</property>
+                    <property name="side">start</property>
                     <style>
-                      <class name="flat"/>
+                      <class name="small-margin"/>
                     </style>
-                    <child type="title">
-                      <object class="GtkBox">
-                        <property name="visible">false</property>
-                      </object>
-                    </child>
+                  </object>
+                </child>
+                <child type="overlay">
+                  <object class="GtkWindowControls">
+                    <property name="halign">end</property>
+                    <property name="valign">start</property>
+                    <property name="side">end</property>
+                    <style>
+                      <class name="small-margin"/>
+                    </style>
                   </object>
                 </child>
                 <child>
