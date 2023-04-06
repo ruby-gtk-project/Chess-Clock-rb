@@ -95,6 +95,11 @@ label.custom-label {
   min-width: 0.75em;
 }
 
+button.time-button {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 spinbutton.custom-spin {
   font-size: 3em;
   min-width: 0.75em;
