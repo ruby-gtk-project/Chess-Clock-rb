@@ -90,23 +90,13 @@ label.colon {
   min-width: 17px;
 }
 
-label.time-title {
-  font-size: 2em;
-  font-weight: 300;
-  margin-bottom: 8px;
-}
-
-label.time-info{
-  margin-bottom: 20px;
-}
-
 label.custom-label {
-  font-size: 2em;
+  font-size: 3em;
   min-width: 0.75em;
 }
 
 spinbutton.custom-spin {
-  font-size: 2em;
+  font-size: 3em;
   min-width: 0.75em;
 }
 
