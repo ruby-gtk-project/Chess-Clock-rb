@@ -33,6 +33,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
     main_stack = Gtk.Template.Child()
     control_chooser = Gtk.Template.Child()
+    control_chooser_scroll = Gtk.Template.Child()
     custom_control = Gtk.Template.Child()
     method_chooser = Gtk.Template.Child()
     start_game = Gtk.Template.Child()
@@ -111,6 +112,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
     def on_new_action(self, widget, _):
         """Callback for the app.new action."""
         self.main_stack.set_visible_child(self.control_chooser)
+        self.control_chooser_scroll.get_vadjustment().set_value(0)
         self.headerbar_revealer.set_reveal_child(True)
         self.headerbar_revealer_p.set_reveal_child(True)
 
