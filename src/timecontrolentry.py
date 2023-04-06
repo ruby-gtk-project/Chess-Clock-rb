@@ -25,7 +25,7 @@ from math import ceil
 class ChessClockTimeControlEntry(Gtk.Box):
     __gtype_name__ = 'ChessClockTimeControlEntry'
 
-    two_zero = Gtk.Template.Child()
+    one_zero = Gtk.Template.Child()
     two_one = Gtk.Template.Child()
     five_zero = Gtk.Template.Child()
     five_three = Gtk.Template.Child()
@@ -41,7 +41,7 @@ class ChessClockTimeControlEntry(Gtk.Box):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.two_zero.connect("clicked", self.set_control, 2, 0, 0)
+        self.one_zero.connect("clicked", self.set_control, 1, 0, 0)
         self.two_one.connect("clicked", self.set_control, 2, 0, 1)
         self.five_zero.connect("clicked", self.set_control, 5, 0, 0)
         self.five_three.connect("clicked", self.set_control, 5, 0, 3)

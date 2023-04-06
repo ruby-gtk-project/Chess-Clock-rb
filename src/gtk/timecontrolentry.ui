@@ -18,9 +18,9 @@
         <property name="column_spacing">6</property>
         <property name="column_homogeneous">true</property>
         <child>
-          <object class="GtkButton" id="two_zero">
-            <property name="label">2+0</property>
-            <property name="tooltip-text" translatable="yes">Two minutes per side, plus zero seconds per turn</property>
+          <object class="GtkButton" id="one_zero">
+            <property name="label">1+0</property>
+            <property name="tooltip-text" translatable="yes">One minute per side, plus zero seconds per turn</property>
             <layout>
               <property name="column">0</property>
               <property name="row">0</property>
