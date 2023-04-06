@@ -16,11 +16,11 @@
   <screenshots>
     <screenshot>
       <caption>The main screen, showing timers for the white and black players of a chess game</caption>
-      <image>https://clarahobbs.com/screenshots/chess-clock-0.1-1.png</image>
+      <image>https://clarahobbs.com/screenshots/chess-clock-0.5-1.png</image>
     </screenshot>
     <screenshot>
       <caption>The time control selection screen</caption>
-      <image>https://clarahobbs.com/screenshots/chess-clock-0.1-2.png</image>
+      <image>https://clarahobbs.com/screenshots/chess-clock-0.5-2.png</image>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">com.clarahobbs.chessclock.desktop</launchable>
@@ -33,6 +33,15 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
+    <release version="0.5.0" date="2023-04-06">
+      <description>
+        <p>A new release focusing on UX enhancements.</p>
+        <ul>
+          <li>The time control selection screen got a major overhaul, with a bigger focus on the time entry, and a single button to start the game</li>
+          <li>The main screen now dims slightly when the window is unfocused</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.4.1" date="2023-03-26">
       <description>
         <ul>
