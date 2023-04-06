@@ -15,30 +15,16 @@
               <property name="label" translatable="yes" context="a11y">Select time controls</property>
             </accessibility>
             <child>
-              <object class="GtkOverlay">
-                <child type="overlay">
-                  <object class="GtkWindowControls">
-                    <property name="halign">start</property>
-                    <property name="valign">start</property>
-                    <property name="side">start</property>
-                    <style>
-                      <class name="small-margin"/>
-                    </style>
-                  </object>
-                </child>
-                <child type="overlay">
-                  <object class="GtkWindowControls">
-                    <property name="halign">end</property>
-                    <property name="valign">start</property>
-                    <property name="side">end</property>
-                    <style>
-                      <class name="small-margin"/>
-                    </style>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkHeaderBar">
                   </object>
                 </child>
                 <child>
                   <object class="GtkScrolledWindow">
                     <property name="hscrollbar-policy">never</property>
+                    <property name="vexpand">true</property>
                 <child>
                   <object class="AdwClamp">
                     <child>
