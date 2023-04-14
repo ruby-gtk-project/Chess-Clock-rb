@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-11 14:03+0000\n"
-"PO-Revision-Date: 2023-03-11 18:16+0300\n"
+"POT-Creation-Date: 2023-04-14 02:25+0000\n"
+"PO-Revision-Date: 2023-04-14 17:24+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
 msgid "Chess Clock"
-msgstr "Chess Clock"
+msgstr "Шахматные часы"
 
 #: data/com.clarahobbs.chessclock.desktop.in:9
 msgid "chess;game;clock;timer;"
@@ -41,20 +41,20 @@ msgid ""
 "their opponent's, until the game is finished or one of the clocks reaches "
 "zero."
 msgstr ""
-"Chess Clock - это простое приложение для контроля времени в шахматных "
+"Шахматные часы - это простое приложение для контроля времени в шахматных "
 "партиях за доской. Предназначено для мобильного использования, игроки "
-"выбирают настройки контроля времени, необходимые для их игры, затем черный "
-"игрок нажимает на свои часы, чтобы запустить таймер белых. После хода "
-"каждого игрока он нажимает на часы, чтобы запустить таймер противника, и так "
-"до тех пор, пока игра не будет завершена или пока одни из часов не достигнут "
-"нуля."
+"выбирают настройки контроля времени, необходимые для их игры, затем игрок "
+"черными нажимает на свои часы, чтобы запустить таймер игрока белыми. После "
+"каждого хода игрок нажимает на часы, чтобы запустить таймер противника, и "
+"так до тех пор, пока игра не будет завершена или пока одни из часов не "
+"достигнут нуля."
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:18
 msgid ""
 "The main screen, showing timers for the white and black players of a chess "
 "game"
 msgstr ""
-"Главный экран, показывающий таймеры для белого и черного игроков в шахматной "
+"Главный экран, показывающий таймеры для игроков белыми и черными в шахматной "
 "партии"
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:22
@@ -65,26 +65,49 @@ msgstr "Экран выбора контроля времени"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
-#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
-#: src/gtk/customcontrol.ui:6
-msgid "Custom"
-msgstr "Другое"
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Одна минута на сторону, плюс ноль секунд на переход"
 
-#: src/gtk/customcontrol.ui:21
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Две минуты на сторону, плюс одна секунда на переход"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Пять минут на сторону, плюс ноль секунд на переход"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Пять минут на сторону, плюс три секунды на переход"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Десять минут на сторону, плюс ноль секунд на переход"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Десять минут на сторону, плюс пять секунд на переход"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Тридцать минут на сторону, плюс ноль секунд на переход"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Тридцать минут на сторону, плюс двадцать секунд на переход"
+
+#: src/gtk/timecontrolentry.ui:134
 msgid "Main time minutes"
 msgstr "Минуты основного времени"
 
-#: src/gtk/customcontrol.ui:39
+#: src/gtk/timecontrolentry.ui:153
 msgid "Main time seconds"
 msgstr "Секунды основного времени"
 
-#: src/gtk/customcontrol.ui:57
+#: src/gtk/timecontrolentry.ui:171
 msgid "Increment seconds"
 msgstr "Секунды прибавления"
-
-#: src/gtk/customcontrol.ui:67
-msgid "Start Game"
-msgstr "Начать игру"
 
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -108,7 +131,7 @@ msgstr "Общие"
 
 #: src/gtk/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Open Primary Menu"
+msgid "Open Main Menu"
 msgstr "Открыть главное меню"
 
 #: src/gtk/help-overlay.ui:37
@@ -131,110 +154,70 @@ msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Выбрать контроль времени"
 
-#: src/gtk/window.ui:38
+#: src/gtk/window.ui:44
 msgid "Welcome to Chess Clock"
-msgstr "Добро пожаловать в Chess Clock"
+msgstr "Добро пожаловать в Шахматные часы"
 
-#: src/gtk/window.ui:48
+#: src/gtk/window.ui:54
 msgid "Select time controls below to get started"
 msgstr "Выберите контроль времени ниже, чтобы начать"
 
-#: src/gtk/window.ui:65
-msgid "One minute per side, plus zero seconds per turn"
-msgstr "Одна минута на сторону, плюс ноль секунд на переход"
-
-#: src/gtk/window.ui:78
-msgid "Two minutes per side, plus one second per turn"
-msgstr "Две минуты на сторону, плюс одна секунда на переход"
-
-#: src/gtk/window.ui:91
-msgid "Three minutes per side, plus zero seconds per turn"
-msgstr "Три минуты на сторону, плюс ноль секунд на переход"
-
-#: src/gtk/window.ui:104
-msgid "Three minutes per side, plus two seconds per turn"
-msgstr "Три минуты на сторону, плюс две секунды на переход"
-
-#: src/gtk/window.ui:117
-msgid "Five minutes per side, plus zero seconds per turn"
-msgstr "Пять минут на сторону, плюс ноль секунд на переход"
-
-#: src/gtk/window.ui:130
-msgid "Five minutes per side, plus three seconds per turn"
-msgstr "Пять минут на сторону, плюс три секунды на переход"
-
-#: src/gtk/window.ui:143
-msgid "Ten minutes per side, plus zero seconds per turn"
-msgstr "Десять минут на сторону, плюс ноль секунд на переход"
-
-#: src/gtk/window.ui:156
-msgid "Ten minutes per side, plus five seconds per turn"
-msgstr "Десять минут на сторону, плюс пять секунд на переход"
-
-#: src/gtk/window.ui:169
-msgid "Fifteen minutes per side, plus ten seconds per turn"
-msgstr "Пятнадцать минут на сторону, плюс десять секунд на переход"
-
-#: src/gtk/window.ui:182
-msgid "Thirty minutes per side, plus zero seconds per turn"
-msgstr "Тридцать минут на сторону, плюс ноль секунд на переход"
-
-#: src/gtk/window.ui:195
-msgid "Thirty minutes per side, plus twenty seconds per turn"
-msgstr "Тридцать минут на сторону, плюс двадцать секунд на переход"
-
-#: src/gtk/window.ui:218
+#: src/gtk/window.ui:72
 msgid "Time control method"
 msgstr "Метод контроля времени"
 
-#: src/gtk/window.ui:227
+#: src/gtk/window.ui:76
 msgid "Increment"
 msgstr "Прибавление"
 
-#: src/gtk/window.ui:228
+#: src/gtk/window.ui:77
 msgid "Bronstein delay"
 msgstr "Задержка Бронштейна"
 
-#: src/gtk/window.ui:229
+#: src/gtk/window.ui:78
 msgid "Simple delay"
 msgstr "Простая задержка"
 
-#: src/gtk/window.ui:247
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Начать игру"
+
+#: src/gtk/window.ui:109
 msgctxt "a11y"
 msgid "Playing"
 msgstr "Игра"
 
-#: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Primary Menu"
+#: src/gtk/window.ui:168 src/gtk/window.ui:282
+msgid "Main Menu"
 msgstr "Главное меню"
 
-#: src/gtk/window.ui:320 src/gtk/window.ui:434
+#: src/gtk/window.ui:182 src/gtk/window.ui:296
 msgid "Toggle Pause"
 msgstr "Переключить паузу"
 
-#: src/gtk/window.ui:338 src/gtk/window.ui:452
+#: src/gtk/window.ui:200 src/gtk/window.ui:314
 msgctxt "a11y"
 msgid "Player white timer"
-msgstr "Таймер белого игрока"
+msgstr "Таймер игрока белыми"
 
-#: src/gtk/window.ui:349 src/gtk/window.ui:464
+#: src/gtk/window.ui:211 src/gtk/window.ui:326
 msgctxt "a11y"
 msgid "Player black timer"
-msgstr "Таймер черного игрока"
+msgstr "Таймер игрока черными"
 
-#: src/gtk/window.ui:486
+#: src/gtk/window.ui:348
 msgid "_New Time Control"
 msgstr "_Новый контроль времени"
 
-#: src/gtk/window.ui:490
+#: src/gtk/window.ui:352
 msgid "_Restart Timer"
 msgstr "_Перезапустить таймер"
 
-#: src/gtk/window.ui:496
+#: src/gtk/window.ui:358
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиш"
 
-#: src/gtk/window.ui:500
+#: src/gtk/window.ui:362
 msgid "_About Chess Clock"
 msgstr "_О приложении"
 
@@ -244,11 +227,27 @@ msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 
 #: src/timerbutton.py:55
 msgid "Player white timer"
-msgstr "Таймер белого игрока"
+msgstr "Таймер игрока белыми"
 
 #: src/timerbutton.py:60
 msgid "Player black timer"
-msgstr "Таймер черного игрока"
+msgstr "Таймер игрока черными"
 
-#~ msgid "Main Menu"
+#~ msgid "Custom"
+#~ msgstr "Другое"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Open Primary Menu"
+#~ msgstr "Открыть главное меню"
+
+#~ msgid "Three minutes per side, plus zero seconds per turn"
+#~ msgstr "Три минуты на сторону, плюс ноль секунд на переход"
+
+#~ msgid "Three minutes per side, plus two seconds per turn"
+#~ msgstr "Три минуты на сторону, плюс две секунды на переход"
+
+#~ msgid "Fifteen minutes per side, plus ten seconds per turn"
+#~ msgstr "Пятнадцать минут на сторону, плюс десять секунд на переход"
+
+#~ msgid "Primary Menu"
 #~ msgstr "Главное меню"
