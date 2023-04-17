@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-11 14:03+0000\n"
-"PO-Revision-Date: 2023-03-11 20:47+0300\n"
+"POT-Creation-Date: 2023-04-14 02:25+0000\n"
+"PO-Revision-Date: 2023-04-16 22:12+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -65,26 +65,49 @@ msgstr "Zaman seçim ekranı"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
-#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
-#: src/gtk/customcontrol.ui:6
-msgid "Custom"
-msgstr "Özel"
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Her oyuncu için 1 dakika ve her tur için 0 saniye"
 
-#: src/gtk/customcontrol.ui:21
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Her oyuncu için 2 dakika ve her tur için 1 saniye"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Her oyuncu için 5 dakika ve her tur için 0 saniye"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Her oyuncu için 5 dakika ve her tur için 3 saniye"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Her oyuncu için 10 dakika ve her tur için 0 saniye"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Her oyuncu için 10 dakika ve her tur için 5 saniye"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Her oyuncu için 30 dakika ve her tur için 0 saniye"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Her oyuncu için 30 dakika ve her tur için 20 saniye"
+
+#: src/gtk/timecontrolentry.ui:134
 msgid "Main time minutes"
 msgstr "Ana zaman dakikası"
 
-#: src/gtk/customcontrol.ui:39
+#: src/gtk/timecontrolentry.ui:153
 msgid "Main time seconds"
 msgstr "Ana zaman saniyesi"
 
-#: src/gtk/customcontrol.ui:57
+#: src/gtk/timecontrolentry.ui:171
 msgid "Increment seconds"
 msgstr "Saniyeyi artır"
-
-#: src/gtk/customcontrol.ui:67
-msgid "Start Game"
-msgstr "Oyunu Başlat"
 
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -108,7 +131,7 @@ msgstr "Genel"
 
 #: src/gtk/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Open Primary Menu"
+msgid "Open Main Menu"
 msgstr "Ana Menüyü Aç"
 
 #: src/gtk/help-overlay.ui:37
@@ -131,110 +154,70 @@ msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Zaman denetimlerini seç"
 
-#: src/gtk/window.ui:38
+#: src/gtk/window.ui:44
 msgid "Welcome to Chess Clock"
 msgstr "Satranç Saati’ne Hoş Geldiniz"
 
-#: src/gtk/window.ui:48
+#: src/gtk/window.ui:54
 msgid "Select time controls below to get started"
 msgstr "Başlamak için aşağıdan zaman denetimi seçin"
 
-#: src/gtk/window.ui:65
-msgid "One minute per side, plus zero seconds per turn"
-msgstr "Her oyuncu için 1 dakika ve her tur için 0 saniye"
-
-#: src/gtk/window.ui:78
-msgid "Two minutes per side, plus one second per turn"
-msgstr "Her oyuncu için 2 dakika ve her tur için 1 saniye"
-
-#: src/gtk/window.ui:91
-msgid "Three minutes per side, plus zero seconds per turn"
-msgstr "Her oyuncu için 3 dakika ve her tur için 0 saniye"
-
-#: src/gtk/window.ui:104
-msgid "Three minutes per side, plus two seconds per turn"
-msgstr "Her oyuncu için 3 dakika ve her tur için 2 saniye"
-
-#: src/gtk/window.ui:117
-msgid "Five minutes per side, plus zero seconds per turn"
-msgstr "Her oyuncu için 5 dakika ve her tur için 0 saniye"
-
-#: src/gtk/window.ui:130
-msgid "Five minutes per side, plus three seconds per turn"
-msgstr "Her oyuncu için 5 dakika ve her tur için 3 saniye"
-
-#: src/gtk/window.ui:143
-msgid "Ten minutes per side, plus zero seconds per turn"
-msgstr "Her oyuncu için 10 dakika ve her tur için 0 saniye"
-
-#: src/gtk/window.ui:156
-msgid "Ten minutes per side, plus five seconds per turn"
-msgstr "Her oyuncu için 10 dakika ve her tur için 5 saniye"
-
-#: src/gtk/window.ui:169
-msgid "Fifteen minutes per side, plus ten seconds per turn"
-msgstr "Her oyuncu için 15 dakika ve her tur için 10 saniye"
-
-#: src/gtk/window.ui:182
-msgid "Thirty minutes per side, plus zero seconds per turn"
-msgstr "Her oyuncu için 30 dakika ve her tur için 0 saniye"
-
-#: src/gtk/window.ui:195
-msgid "Thirty minutes per side, plus twenty seconds per turn"
-msgstr "Her oyuncu için 30 dakika ve her tur için 20 saniye"
-
-#: src/gtk/window.ui:218
+#: src/gtk/window.ui:72
 msgid "Time control method"
 msgstr "Zaman denetim yöntemi"
 
-#: src/gtk/window.ui:227
+#: src/gtk/window.ui:76
 msgid "Increment"
 msgstr "Artır"
 
-#: src/gtk/window.ui:228
+#: src/gtk/window.ui:77
 msgid "Bronstein delay"
 msgstr "Bronstein gecikmesi"
 
-#: src/gtk/window.ui:229
+#: src/gtk/window.ui:78
 msgid "Simple delay"
 msgstr "Basit gecikme"
 
-#: src/gtk/window.ui:247
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Oyunu Başlat"
+
+#: src/gtk/window.ui:109
 msgctxt "a11y"
 msgid "Playing"
 msgstr "Oynuyor"
 
-#: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Primary Menu"
+#: src/gtk/window.ui:168 src/gtk/window.ui:282
+msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: src/gtk/window.ui:320 src/gtk/window.ui:434
+#: src/gtk/window.ui:182 src/gtk/window.ui:296
 msgid "Toggle Pause"
 msgstr "Durdur/Başlat"
 
-#: src/gtk/window.ui:338 src/gtk/window.ui:452
+#: src/gtk/window.ui:200 src/gtk/window.ui:314
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Beyaz oyuncu zamanlayıcısı"
 
-#: src/gtk/window.ui:349 src/gtk/window.ui:464
+#: src/gtk/window.ui:211 src/gtk/window.ui:326
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Siyah oyuncu zamanlayıcısı"
 
-#: src/gtk/window.ui:486
+#: src/gtk/window.ui:348
 msgid "_New Time Control"
 msgstr "_Yeni Zaman Denetimi"
 
-#: src/gtk/window.ui:490
+#: src/gtk/window.ui:352
 msgid "_Restart Timer"
 msgstr "Zamanlayıcıyı _Yeniden Başlat"
 
-#: src/gtk/window.ui:496
+#: src/gtk/window.ui:358
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: src/gtk/window.ui:500
+#: src/gtk/window.ui:362
 msgid "_About Chess Clock"
 msgstr "Satranç Saati _Hakkında"
 
@@ -252,5 +235,21 @@ msgstr "Beyaz oyuncu zamanlayıcısı"
 msgid "Player black timer"
 msgstr "Siyah oyuncu zamanlayıcısı"
 
-#~ msgid "Main Menu"
+#~ msgid "Custom"
+#~ msgstr "Özel"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Open Primary Menu"
+#~ msgstr "Ana Menüyü Aç"
+
+#~ msgid "Three minutes per side, plus zero seconds per turn"
+#~ msgstr "Her oyuncu için 3 dakika ve her tur için 0 saniye"
+
+#~ msgid "Three minutes per side, plus two seconds per turn"
+#~ msgstr "Her oyuncu için 3 dakika ve her tur için 2 saniye"
+
+#~ msgid "Fifteen minutes per side, plus ten seconds per turn"
+#~ msgstr "Her oyuncu için 15 dakika ve her tur için 10 saniye"
+
+#~ msgid "Primary Menu"
 #~ msgstr "Ana Menü"
