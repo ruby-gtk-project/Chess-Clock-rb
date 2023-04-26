@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-12 17:29+0000\n"
-"PO-Revision-Date: 2023-03-14 23:10+0100\n"
-"Last-Translator: Balázs Meskó <mesko.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"POT-Creation-Date: 2023-04-14 02:25+0000\n"
+"PO-Revision-Date: 2023-04-26 23:41+0200\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -64,26 +64,49 @@ msgstr "Az időzítéskiválasztó képernyő"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
-#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
-#: src/gtk/customcontrol.ui:6
-msgid "Custom"
-msgstr "Egyéni"
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Egy perc felenként, továbbá nulla másodperc körönként"
 
-#: src/gtk/customcontrol.ui:21
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Két perc felenként, továbbá egy másodperc körönként"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Öt perc felenként, továbbá nulla másodperc körönként"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Öt perc felenként, továbbá három másodperc körönként"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Tíz perc felenként, továbbá nulla másodperc körönként"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Tíz perc felenként, továbbá öt másodperc körönként"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Harminc perc felenként, továbbá nulla másodperc körönként"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Harminc perc felenként, továbbá húsz másodperc körönként"
+
+#: src/gtk/timecontrolentry.ui:134
 msgid "Main time minutes"
 msgstr "Fő idő percei"
 
-#: src/gtk/customcontrol.ui:39
+#: src/gtk/timecontrolentry.ui:153
 msgid "Main time seconds"
 msgstr "Fő idő másodpercei"
 
-#: src/gtk/customcontrol.ui:57
+#: src/gtk/timecontrolentry.ui:171
 msgid "Increment seconds"
 msgstr "Másodperc növelése"
-
-#: src/gtk/customcontrol.ui:67
-msgid "Start Game"
-msgstr "Játék indítása"
 
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -107,8 +130,8 @@ msgstr "Általános"
 
 #: src/gtk/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Open Primary Menu"
-msgstr "Elsődleges menü megnyitása"
+msgid "Open Main Menu"
+msgstr "Főmenü megnyitása"
 
 #: src/gtk/help-overlay.ui:37
 msgctxt "shortcut window"
@@ -130,110 +153,70 @@ msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Időzítés kiválasztása"
 
-#: src/gtk/window.ui:38
+#: src/gtk/window.ui:44
 msgid "Welcome to Chess Clock"
 msgstr "Üdvözli a Sakkóra"
 
-#: src/gtk/window.ui:48
+#: src/gtk/window.ui:54
 msgid "Select time controls below to get started"
 msgstr "A kezdéshez válasszon alább egy időzítést"
 
-#: src/gtk/window.ui:65
-msgid "One minute per side, plus zero seconds per turn"
-msgstr "Egy perc felenként, továbbá nulla másodperc körönként"
-
-#: src/gtk/window.ui:78
-msgid "Two minutes per side, plus one second per turn"
-msgstr "Két perc felenként, továbbá egy másodperc körönként"
-
-#: src/gtk/window.ui:91
-msgid "Three minutes per side, plus zero seconds per turn"
-msgstr "Három perc felenként, továbbá nulla másodperc körönként"
-
-#: src/gtk/window.ui:104
-msgid "Three minutes per side, plus two seconds per turn"
-msgstr "Három perc felenként, továbbá két másodperc körönként"
-
-#: src/gtk/window.ui:117
-msgid "Five minutes per side, plus zero seconds per turn"
-msgstr "Öt perc felenként, továbbá nulla másodperc körönként"
-
-#: src/gtk/window.ui:130
-msgid "Five minutes per side, plus three seconds per turn"
-msgstr "Öt perc felenként, továbbá három másodperc körönként"
-
-#: src/gtk/window.ui:143
-msgid "Ten minutes per side, plus zero seconds per turn"
-msgstr "Tíz perc felenként, továbbá nulla másodperc körönként"
-
-#: src/gtk/window.ui:156
-msgid "Ten minutes per side, plus five seconds per turn"
-msgstr "Tíz perc felenként, továbbá öt másodperc körönként"
-
-#: src/gtk/window.ui:169
-msgid "Fifteen minutes per side, plus ten seconds per turn"
-msgstr "Tizenöt perc felenként, továbbá tíz másodperc körönként"
-
-#: src/gtk/window.ui:182
-msgid "Thirty minutes per side, plus zero seconds per turn"
-msgstr "Harminc perc felenként, továbbá nulla másodperc körönként"
-
-#: src/gtk/window.ui:195
-msgid "Thirty minutes per side, plus twenty seconds per turn"
-msgstr "Harminc perc felenként, továbbá húsz másodperc körönként"
-
-#: src/gtk/window.ui:218
+#: src/gtk/window.ui:72
 msgid "Time control method"
 msgstr "Időzítés módja"
 
-#: src/gtk/window.ui:227
+#: src/gtk/window.ui:76
 msgid "Increment"
 msgstr "Növekmény"
 
-#: src/gtk/window.ui:228
+#: src/gtk/window.ui:77
 msgid "Bronstein delay"
 msgstr "Bronstein-késleltetés"
 
-#: src/gtk/window.ui:229
+#: src/gtk/window.ui:78
 msgid "Simple delay"
 msgstr "Egyszerű késleltetés"
 
-#: src/gtk/window.ui:247
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Játék indítása"
+
+#: src/gtk/window.ui:109
 msgctxt "a11y"
 msgid "Playing"
 msgstr "Játékban"
 
-#: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Primary Menu"
-msgstr "Elsődleges menü"
+#: src/gtk/window.ui:168 src/gtk/window.ui:282
+msgid "Main Menu"
+msgstr "Főmenü"
 
-#: src/gtk/window.ui:320 src/gtk/window.ui:434
+#: src/gtk/window.ui:182 src/gtk/window.ui:296
 msgid "Toggle Pause"
 msgstr "Szünet ki- és bekapcsolása"
 
-#: src/gtk/window.ui:338 src/gtk/window.ui:452
+#: src/gtk/window.ui:200 src/gtk/window.ui:314
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Világos játékos időzítője"
 
-#: src/gtk/window.ui:349 src/gtk/window.ui:464
+#: src/gtk/window.ui:211 src/gtk/window.ui:326
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Sötét játékos időzítője"
 
-#: src/gtk/window.ui:486
+#: src/gtk/window.ui:348
 msgid "_New Time Control"
 msgstr "Ú_j időzítés"
 
-#: src/gtk/window.ui:490
+#: src/gtk/window.ui:352
 msgid "_Restart Timer"
 msgstr "Időzítő új_raindítása"
 
-#: src/gtk/window.ui:496
+#: src/gtk/window.ui:358
 msgid "_Keyboard Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
-#: src/gtk/window.ui:500
+#: src/gtk/window.ui:362
 msgid "_About Chess Clock"
 msgstr "A Sakkóra _névjegye"
 
