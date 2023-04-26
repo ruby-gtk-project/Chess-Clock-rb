@@ -65,8 +65,14 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
         self.link_state_machine(ChessClockIncrementStateMachine(self, 300, 0))
 
-        self.settings = Gio.Settings(schema_id="com.clarahobbs.chessclock")
-        self.settings.bind("control-method", self.method_chooser, "selected",
+        settings = Gio.Settings(schema_id="com.clarahobbs.chessclock")
+        settings.bind("control-method", self.method_chooser, "selected",
+                           Gio.SettingsBindFlags.DEFAULT)
+        settings.bind("width", self, "default-width",
+                           Gio.SettingsBindFlags.DEFAULT)
+        settings.bind("height", self, "default-height",
+                           Gio.SettingsBindFlags.DEFAULT)
+        settings.bind("is-maximized", self, "maximized",
                            Gio.SettingsBindFlags.DEFAULT)
 
         self.start_game.connect("clicked", self.on_start_game)
