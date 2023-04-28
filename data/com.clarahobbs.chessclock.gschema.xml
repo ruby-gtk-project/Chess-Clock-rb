@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="chess-clock">
 	<schema id="com.clarahobbs.chessclock" path="/com/clarahobbs/chessclock/">
+	  <key name="width" type="i">
+      <default>640</default>
+    </key>
+    <key name="height" type="i">
+      <default>480</default>
+    </key>
+    <key name="is-maximized" type="b">
+      <default>false</default>
+    </key>
 	  <key name="custom-control-minutes" type="i">
       <default>5</default>
 	  </key>
