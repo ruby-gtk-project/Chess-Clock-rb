@@ -17,7 +17,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from gi.repository import Adw, Gtk, Gio
+from gi.repository import Adw, Gtk, Gio, GLib
 
 from .timerbutton import ChessClockTimerButton
 from .timecontrolentry import ChessClockTimeControlEntry
@@ -62,6 +62,12 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.create_action('restart', self.on_restart_action, ['<primary>r'])
         self.create_action('close', self.on_close, ['<primary>w'])
         self.create_action('menu', self.on_menu_popup, ['F10'])
+
+        mute_action = Gio.SimpleAction(name="muted",
+                                        state=GLib.Variant.new_boolean(False))
+        mute_action.connect("activate", self.toggle_muted)
+        mute_action.connect("change-state", self.change_muted)
+        self.add_action(mute_action)
 
         self.link_state_machine(ChessClockIncrementStateMachine(self, 300, 0))
 
@@ -119,6 +125,16 @@ class ChessClockWindow(Adw.ApplicationWindow):
     def on_restart_action(self, widget, _):
         """Callback for the app.restart action."""
         self.state_machine.state = MachineState.START
+
+    def toggle_muted(self, action, _):
+        """Connection of mute stateful action with activate signal."""
+        state = action.get_state()
+        self.state_machine.muted = not state.get_boolean()
+        action.change_state(GLib.Variant.new_boolean(self.state_machine.muted))
+
+    def change_muted(self, action, new_state):
+        """Connection of mute stateful action with change-state signal."""
+        action.set_state(new_state)
 
     def create_action(self, name, callback, shortcuts=None):
         """Add a window action.

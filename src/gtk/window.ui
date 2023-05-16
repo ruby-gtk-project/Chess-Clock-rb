@@ -355,6 +355,12 @@
     </section>
     <section>
       <item>
+        <attribute name="label" translatable="yes">_Mute Alert Sound</attribute>
+        <attribute name="action">win.muted</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>

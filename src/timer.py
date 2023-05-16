@@ -68,7 +68,7 @@ class ChessClockTimer(GObject.Object):
             self.emit("changed", self.time)
             if self.time <= 0 and prev_time > 0:
                 self.emit("expired")
-            if self.time <= max(self.machine.default_time*0.1, MINIMUM_ALERT_TIME) and prev_time > 0 and not self.is_alerted:
+            if self.time <= max(int(self.machine.default_time*0.1), MINIMUM_ALERT_TIME) and not self.is_alerted:
                 self.emit("alerted")
                 self.is_alerted = True
         return self.running

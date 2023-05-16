@@ -53,6 +53,7 @@ class ChessClockStateMachine(GObject.Object):
         self.state = MachineState.START
         self.sound = GSound.Context()
         self.sound.init()
+        self.muted = False
 
     def set_time_control(self, time, inc):
         """Set the default time and increment"""
@@ -60,7 +61,8 @@ class ChessClockStateMachine(GObject.Object):
         self.inc = inc * 1_000_000
 
     def timer_alerted(self, *args):
-        self.sound.play_simple({GSound.ATTR_EVENT_ID: "dialog-warning",
+        if not self.muted:
+            self.sound.play_simple({GSound.ATTR_EVENT_ID: "dialog-warning",
                          GSound.ATTR_CANBERRA_VOLUME: "1"})
 
     def add_a_button(self, button):
