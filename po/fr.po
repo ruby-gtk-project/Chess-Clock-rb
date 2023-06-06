@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-11 14:03+0000\n"
-"PO-Revision-Date: 2023-03-13 11:41+0100\n"
-"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
+"POT-Creation-Date: 2023-04-14 02:25+0000\n"
+"PO-Revision-Date: 2023-06-06 12:08+0900\n"
+"Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -70,26 +70,49 @@ msgstr "L’écran de sélection du contrôle du temps"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
-#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
-#: src/gtk/customcontrol.ui:6
-msgid "Custom"
-msgstr "Personnalisé"
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Une minute par joueur, plus zéro secondes par tour"
 
-#: src/gtk/customcontrol.ui:21
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Deux minutes par joueur, plus une seconde par tour"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Cinq minutes par joueur, plus zéro secondes par tour"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Cinq minutes par joueur, plus trois secondes par tour"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Dix minutes par joueur, plus zéro secondes par tour"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Dix minutes par joueur, plus cinq secondes par tour"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Trente minutes par joueur, plus zéro secondes par tour"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Trente minutes par joueur, plus vingt secondes par tour"
+
+#: src/gtk/timecontrolentry.ui:134
 msgid "Main time minutes"
 msgstr "Minutes du temps principal"
 
-#: src/gtk/customcontrol.ui:39
+#: src/gtk/timecontrolentry.ui:153
 msgid "Main time seconds"
 msgstr "Secondes du temps principal"
 
-#: src/gtk/customcontrol.ui:57
+#: src/gtk/timecontrolentry.ui:171
 msgid "Increment seconds"
 msgstr "Secondes additionnelles"
-
-#: src/gtk/customcontrol.ui:67
-msgid "Start Game"
-msgstr "Lancer la partie"
 
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -113,8 +136,8 @@ msgstr "Général"
 
 #: src/gtk/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Open Primary Menu"
-msgstr "Ouvrir le menu primaire"
+msgid "Open Main Menu"
+msgstr "Ouvrir le menu principal"
 
 #: src/gtk/help-overlay.ui:37
 msgctxt "shortcut window"
@@ -136,110 +159,70 @@ msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Sélectionner les contrôles du temps"
 
-#: src/gtk/window.ui:38
+#: src/gtk/window.ui:44
 msgid "Welcome to Chess Clock"
 msgstr "Bienvenue dans Pendule d’échecs"
 
-#: src/gtk/window.ui:48
+#: src/gtk/window.ui:54
 msgid "Select time controls below to get started"
 msgstr "Sélectionnez vos contrôles du temps ci-dessous pour commencer"
 
-#: src/gtk/window.ui:65
-msgid "One minute per side, plus zero seconds per turn"
-msgstr "Une minute par joueur, plus zéro secondes par tour"
-
-#: src/gtk/window.ui:78
-msgid "Two minutes per side, plus one second per turn"
-msgstr "Deux minutes par joueur, plus une seconde par tour"
-
-#: src/gtk/window.ui:91
-msgid "Three minutes per side, plus zero seconds per turn"
-msgstr "Trois minutes par joueur, plus zéro secondes par tour"
-
-#: src/gtk/window.ui:104
-msgid "Three minutes per side, plus two seconds per turn"
-msgstr "Trois minutes par joueur, plus deux secondes par tour"
-
-#: src/gtk/window.ui:117
-msgid "Five minutes per side, plus zero seconds per turn"
-msgstr "Cinq minutes par joueur, plus zéro secondes par tour"
-
-#: src/gtk/window.ui:130
-msgid "Five minutes per side, plus three seconds per turn"
-msgstr "Cinq minutes par joueur, plus trois secondes par tour"
-
-#: src/gtk/window.ui:143
-msgid "Ten minutes per side, plus zero seconds per turn"
-msgstr "Dix minutes par joueur, plus zéro secondes par tour"
-
-#: src/gtk/window.ui:156
-msgid "Ten minutes per side, plus five seconds per turn"
-msgstr "Dix minutes par joueur, plus cinq secondes par tour"
-
-#: src/gtk/window.ui:169
-msgid "Fifteen minutes per side, plus ten seconds per turn"
-msgstr "Quinze minutes par joueur, plus dix secondes par tour"
-
-#: src/gtk/window.ui:182
-msgid "Thirty minutes per side, plus zero seconds per turn"
-msgstr "Trente minutes par joueur, plus zéro secondes par tour"
-
-#: src/gtk/window.ui:195
-msgid "Thirty minutes per side, plus twenty seconds per turn"
-msgstr "Trente minutes par joueur, plus vingt secondes par tour"
-
-#: src/gtk/window.ui:218
+#: src/gtk/window.ui:72
 msgid "Time control method"
 msgstr "Méthode de contrôle du temps"
 
-#: src/gtk/window.ui:227
+#: src/gtk/window.ui:76
 msgid "Increment"
 msgstr "Incrémentale"
 
-#: src/gtk/window.ui:228
+#: src/gtk/window.ui:77
 msgid "Bronstein delay"
 msgstr "Délai de Bronstein"
 
-#: src/gtk/window.ui:229
+#: src/gtk/window.ui:78
 msgid "Simple delay"
 msgstr "Délai simple"
 
-#: src/gtk/window.ui:247
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Lancer la partie"
+
+#: src/gtk/window.ui:109
 msgctxt "a11y"
 msgid "Playing"
 msgstr "En train de jouer"
 
-#: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Primary Menu"
-msgstr "Ouvrir le menu principal"
+#: src/gtk/window.ui:168 src/gtk/window.ui:282
+msgid "Main Menu"
+msgstr "Menu principal"
 
-#: src/gtk/window.ui:320 src/gtk/window.ui:434
+#: src/gtk/window.ui:182 src/gtk/window.ui:296
 msgid "Toggle Pause"
 msgstr "Mettre en pause"
 
-#: src/gtk/window.ui:338 src/gtk/window.ui:452
+#: src/gtk/window.ui:200 src/gtk/window.ui:314
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Minuteur du joueur blanc"
 
-#: src/gtk/window.ui:349 src/gtk/window.ui:464
+#: src/gtk/window.ui:211 src/gtk/window.ui:326
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Minuteur du joueur noir"
 
-#: src/gtk/window.ui:486
+#: src/gtk/window.ui:348
 msgid "_New Time Control"
 msgstr "_Nouveau contrôle du temps"
 
-#: src/gtk/window.ui:490
+#: src/gtk/window.ui:352
 msgid "_Restart Timer"
 msgstr "_Réinitialiser le minuteur"
 
-#: src/gtk/window.ui:496
+#: src/gtk/window.ui:358
 msgid "_Keyboard Shortcuts"
 msgstr "Raccourcis _clavier"
 
-#: src/gtk/window.ui:500
+#: src/gtk/window.ui:362
 msgid "_About Chess Clock"
 msgstr "À _propos de Pendule d’échecs"
 
@@ -255,5 +238,21 @@ msgstr "Minuteur du joueur blanc"
 msgid "Player black timer"
 msgstr "Minuteur du joueur noir"
 
-#~ msgid "Main Menu"
-#~ msgstr "Menu principal"
+#~ msgid "Custom"
+#~ msgstr "Personnalisé"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Open Primary Menu"
+#~ msgstr "Ouvrir le menu primaire"
+
+#~ msgid "Three minutes per side, plus zero seconds per turn"
+#~ msgstr "Trois minutes par joueur, plus zéro secondes par tour"
+
+#~ msgid "Three minutes per side, plus two seconds per turn"
+#~ msgstr "Trois minutes par joueur, plus deux secondes par tour"
+
+#~ msgid "Fifteen minutes per side, plus ten seconds per turn"
+#~ msgstr "Quinze minutes par joueur, plus dix secondes par tour"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Ouvrir le menu principal"
