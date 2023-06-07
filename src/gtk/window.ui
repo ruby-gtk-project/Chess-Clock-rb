@@ -41,7 +41,7 @@
                             <property name="spacing">12</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="label" translatable="true">Welcome to Chess Clock</property>
+                                <property name="label" translatable="yes">Welcome to Chess Clock</property>
                                 <property name="valign">center</property>
                                 <property name="vexpand">false</property>
                                 <style>
@@ -51,7 +51,7 @@
                             </child>
                             <child>
                               <object class="GtkLabel">
-                                <property name="label" translatable="true">Select time controls below to get started</property>
+                                <property name="label" translatable="yes">Select time controls below to get started</property>
                               </object>
                             </child>
                           </object>
