@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-04-14 02:25+0000\n"
-"PO-Revision-Date: 2023-04-14 23:02+0300\n"
+"POT-Creation-Date: 2023-07-02 16:17+0000\n"
+"PO-Revision-Date: 2023-07-02 21:39+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -128,7 +128,6 @@ msgid "General"
 msgstr "Загальне"
 
 #: src/gtk/help-overlay.ui:31
-#| msgid "Main Menu"
 msgctxt "shortcut window"
 msgid "Open Main Menu"
 msgstr "Відкрити головне меню"
@@ -213,10 +212,14 @@ msgid "_Restart Timer"
 msgstr "П_ерезапустити таймер"
 
 #: src/gtk/window.ui:358
+msgid "_Mute Alert Sound"
+msgstr "_Вимкнути звук попередження"
+
+#: src/gtk/window.ui:364
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: src/gtk/window.ui:362
+#: src/gtk/window.ui:368
 msgid "_About Chess Clock"
 msgstr "_Про «Шаховий годинник»"
 
