@@ -19,7 +19,9 @@
 
 from enum import Enum
 
-from gi.repository import GObject, Gtk
+import gi
+gi.require_version('GSound', '1.0')
+from gi.repository import GObject, Gtk, GSound
 
 from .timer import ChessClockTimer
 
@@ -49,11 +51,19 @@ class ChessClockStateMachine(GObject.Object):
         self.handler_ids_tb = []
 
         self.state = MachineState.START
+        self.sound = GSound.Context()
+        self.sound.init()
+        self.muted = False
 
     def set_time_control(self, time, inc):
         """Set the default time and increment"""
         self.default_time = time * 1_000_000
         self.inc = inc * 1_000_000
+
+    def timer_alerted(self, *args):
+        if not self.muted:
+            self.sound.play_simple({GSound.ATTR_EVENT_ID: "dialog-warning",
+                         GSound.ATTR_CANBERRA_VOLUME: "1"})
 
     def add_a_button(self, button):
         self.handler_ids.append(self.connect("a_active", button.on_active))
@@ -61,6 +71,7 @@ class ChessClockStateMachine(GObject.Object):
         self.handler_ids.append(self.connect("abbw", button.on_black))
         self.handler_ids_ta.append(self.timer_a.connect("changed", button.on_changed))
         button.connect("clicked", self.on_a_clicked, None)
+        self.handler_ids_ta.append(self.timer_a.connect("alerted", self.timer_alerted))
 
     def add_b_button(self, button):
         self.handler_ids.append(self.connect("b_active", button.on_active))
@@ -68,6 +79,7 @@ class ChessClockStateMachine(GObject.Object):
         self.handler_ids.append(self.connect("abbw", button.on_white))
         self.handler_ids_tb.append(self.timer_b.connect("changed", button.on_changed))
         button.connect("clicked", self.on_b_clicked, None)
+        self.handler_ids_tb.append(self.timer_b.connect("alerted", self.timer_alerted))
 
     def disconnect_all(self):
         for i in self.handler_ids:

@@ -19,6 +19,7 @@
 
 from gi.repository import GObject, GLib
 
+MINIMUM_ALERT_TIME = 10_000_000
 
 class ChessClockTimer(GObject.Object):
     __gtype_name__ = 'ChessClockTimer'
@@ -33,6 +34,7 @@ class ChessClockTimer(GObject.Object):
         self.time = self.machine.default_time
         self.emit("changed", self.time)
         self.running = False
+        self.is_alerted = False
 
     @property
     def running(self):
@@ -53,6 +55,10 @@ class ChessClockTimer(GObject.Object):
     def expired(self, *args):
         pass
 
+    @GObject.Signal
+    def alerted(self, *args):
+        pass
+
     def on_tick(self, widget, _, __, ___):
         if self.running:
             prev_time = self.time
@@ -62,6 +68,9 @@ class ChessClockTimer(GObject.Object):
             self.emit("changed", self.time)
             if self.time <= 0 and prev_time > 0:
                 self.emit("expired")
+            if self.time <= max(int(self.machine.default_time*0.1), MINIMUM_ALERT_TIME) and not self.is_alerted:
+                self.emit("alerted")
+                self.is_alerted = True
         return self.running
 
     def increment(self, inc, force=False):
