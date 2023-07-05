@@ -71,15 +71,23 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
         self.link_state_machine(ChessClockIncrementStateMachine(self, 300, 0))
 
-        settings = Gio.Settings(schema_id="com.clarahobbs.chessclock")
-        settings.bind("control-method", self.method_chooser, "selected",
+        self.settings = Gio.Settings(schema_id="com.clarahobbs.chessclock")
+        self.settings.bind("control-method", self.method_chooser, "selected",
                            Gio.SettingsBindFlags.DEFAULT)
-        settings.bind("width", self, "default-width",
+        self.settings.bind("width", self, "default-width",
                            Gio.SettingsBindFlags.DEFAULT)
-        settings.bind("height", self, "default-height",
+        self.settings.bind("height", self, "default-height",
                            Gio.SettingsBindFlags.DEFAULT)
-        settings.bind("is-maximized", self, "maximized",
+        self.settings.bind("is-maximized", self, "maximized",
                            Gio.SettingsBindFlags.DEFAULT)
+
+        muted = self.settings.get_boolean("muted")
+
+        mute_action = Gio.SimpleAction(name="muted",
+                                       state=GLib.Variant.new_boolean(muted))
+        mute_action.connect("activate", self.toggle_muted)
+        mute_action.connect("change-state", self.change_muted)
+        self.add_action(mute_action)
 
         self.start_game.connect("clicked", self.on_start_game)
 
@@ -140,7 +148,9 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
     def change_muted(self, action, new_state):
         """Connection of mute stateful action with change-state signal."""
+        muted = new_state.get_boolean()
         action.set_state(new_state)
+        self.settings.set_boolean("muted", muted)
 
     def create_action(self, name, callback, shortcuts=None):
         """Add a window action.
