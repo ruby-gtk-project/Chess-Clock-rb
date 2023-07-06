@@ -42,19 +42,11 @@ class ChessClockWindow(Adw.ApplicationWindow):
     windowcontrols_start_l = Gtk.Template.Child()
     windowcontrols_end_l = Gtk.Template.Child()
     headerbar_revealer = Gtk.Template.Child()
-    headerbar_revealer_p = Gtk.Template.Child()
     headerbar_motion = Gtk.Template.Child()
-    headerbar_motion_p = Gtk.Template.Child()
     main_menu_l = Gtk.Template.Child()
     play_pause_l = Gtk.Template.Child()
     a_timer_l = Gtk.Template.Child()
     b_timer_l = Gtk.Template.Child()
-    windowcontrols_start_p = Gtk.Template.Child()
-    windowcontrols_end_p = Gtk.Template.Child()
-    main_menu_p = Gtk.Template.Child()
-    play_pause_p = Gtk.Template.Child()
-    a_timer_p = Gtk.Template.Child()
-    b_timer_p = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -86,19 +78,13 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.headerbar_motion.connect("enter", self.reveal_headerbar)
         self.headerbar_motion.connect("motion", self.reveal_headerbar)
         self.headerbar_motion.connect("leave", self.hide_headerbar)
-        self.headerbar_motion_p.connect("enter", self.reveal_headerbar)
-        self.headerbar_motion_p.connect("motion", self.reveal_headerbar)
-        self.headerbar_motion_p.connect("leave", self.hide_headerbar)
 
     def link_state_machine(self, sm):
         self.state_machine = sm
         self.state_machine.add_a_button(self.a_timer_l)
         self.state_machine.add_b_button(self.b_timer_l)
-        self.state_machine.add_a_button(self.a_timer_p)
-        self.state_machine.add_b_button(self.b_timer_p)
 
         self.play_pause_l.connect("clicked", self.state_machine.on_pause_clicked, None)
-        self.play_pause_p.connect("clicked", self.state_machine.on_pause_clicked, None)
         self.state_machine.connect("pause", self.on_pause)
         self.state_machine.connect("awbb", self.on_awbb)
         self.state_machine.connect("abbw", self.on_abbw)
@@ -110,11 +96,8 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.state_machine.disconnect_all()
         self.a_timer_l.disconnect_by_func(self.state_machine.on_a_clicked)
         self.b_timer_l.disconnect_by_func(self.state_machine.on_b_clicked)
-        self.a_timer_p.disconnect_by_func(self.state_machine.on_a_clicked)
-        self.b_timer_p.disconnect_by_func(self.state_machine.on_b_clicked)
 
         self.play_pause_l.disconnect_by_func(self.state_machine.on_pause_clicked)
-        self.play_pause_p.disconnect_by_func(self.state_machine.on_pause_clicked)
         self.state_machine.disconnect_by_func(self.on_pause)
         self.state_machine.disconnect_by_func(self.on_awbb)
         self.state_machine.disconnect_by_func(self.on_abbw)
@@ -126,7 +109,6 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.main_stack.set_visible_child(self.control_chooser)
         self.control_chooser_scroll.get_vadjustment().set_value(0)
         self.headerbar_revealer.set_reveal_child(True)
-        self.headerbar_revealer_p.set_reveal_child(True)
 
     def on_restart_action(self, widget, _):
         """Callback for the app.restart action."""
@@ -163,8 +145,6 @@ class ChessClockWindow(Adw.ApplicationWindow):
     def on_menu_popup(self, *args):
         if self.timer_screen.get_visible_child() == self.main_menu_l.get_parent():
             self.main_menu_l.activate()
-        if self.timer_screen.get_visible_child() == self.main_menu_p.get_parent():
-            self.main_menu_p.activate()
 
     def on_start_game(self, widget):
         data = self.custom_control.get_control()
@@ -179,42 +159,28 @@ class ChessClockWindow(Adw.ApplicationWindow):
         self.state_machine.state = MachineState.START
         self.main_stack.set_visible_child(self.timer_screen)
         self.headerbar_revealer.set_reveal_child(False)
-        self.headerbar_revealer_p.set_reveal_child(False)
 
     def on_pause(self, _, active, paused):
         self.play_pause_l.set_sensitive(active)
-        self.play_pause_p.set_sensitive(active)
         if paused:
             self.play_pause_l.set_icon_name("media-playback-start-symbolic")
-            self.play_pause_p.set_icon_name("media-playback-start-symbolic")
         else:
             self.play_pause_l.set_icon_name("media-playback-pause-symbolic")
-            self.play_pause_p.set_icon_name("media-playback-pause-symbolic")
 
     def on_awbb(self, _):
         self.windowcontrols_start_l.add_css_class("white")
         self.windowcontrols_start_l.remove_css_class("black")
         self.windowcontrols_end_l.add_css_class("black")
         self.windowcontrols_end_l.remove_css_class("white")
-        self.windowcontrols_start_p.add_css_class("white")
-        self.windowcontrols_start_p.remove_css_class("black")
-        self.windowcontrols_end_p.add_css_class("white")
-        self.windowcontrols_end_p.remove_css_class("black")
 
     def on_abbw(self, _):
         self.windowcontrols_start_l.add_css_class("black")
         self.windowcontrols_start_l.remove_css_class("white")
         self.windowcontrols_end_l.add_css_class("white")
         self.windowcontrols_end_l.remove_css_class("black")
-        self.windowcontrols_start_p.add_css_class("black")
-        self.windowcontrols_start_p.remove_css_class("white")
-        self.windowcontrols_end_p.add_css_class("black")
-        self.windowcontrols_end_p.remove_css_class("white")
 
     def reveal_headerbar(self, *args):
         self.headerbar_revealer.set_reveal_child(True)
-        self.headerbar_revealer_p.set_reveal_child(True)
 
     def hide_headerbar(self, *args):
         self.headerbar_revealer.set_reveal_child(False)
-        self.headerbar_revealer_p.set_reveal_child(False)
