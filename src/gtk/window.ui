@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <requires lib="Adw" version="1.0"/>
+  <requires lib="Adw" version="1.4"/>
   <template class="ChessClockWindow" parent="AdwApplicationWindow">
     <property name="title" translatable="yes">Chess Clock</property>
     <property name="default-width">600</property>
@@ -15,16 +15,14 @@
               <property name="label" translatable="yes" context="a11y">Select time controls</property>
             </accessibility>
             <child>
-              <object class="GtkBox">
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkHeaderBar">
+              <object class="AdwToolbarView">
+                <child type="top">
+                  <object class="AdwHeaderBar">
                   </object>
                 </child>
-                <child>
+                <property name="content">
                   <object class="GtkScrolledWindow" id="control_chooser_scroll">
                     <property name="hscrollbar-policy">never</property>
-                    <property name="vexpand">true</property>
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">vertical</property>
@@ -97,7 +95,7 @@
                       </object>
                     </child>
                   </object>
-                </child>
+                </property>
               </object>
             </child>
           </object>
