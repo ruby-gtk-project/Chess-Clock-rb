@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-04-14 02:25+0000\n"
-"PO-Revision-Date: 2023-04-17 09:30+0700\n"
+"POT-Creation-Date: 2023-07-02 16:17+0000\n"
+"PO-Revision-Date: 2023-07-06 19:19+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -211,10 +211,14 @@ msgid "_Restart Timer"
 msgstr "Mulai Ulang _Pewaktu"
 
 #: src/gtk/window.ui:358
+msgid "_Mute Alert Sound"
+msgstr "Senyapkan Suara Peringata_n"
+
+#: src/gtk/window.ui:364
 msgid "_Keyboard Shortcuts"
 msgstr "Pintasan Papan Ti_k"
 
-#: src/gtk/window.ui:362
+#: src/gtk/window.ui:368
 msgid "_About Chess Clock"
 msgstr "_Tent_ang Jam Catur"
 
