@@ -131,7 +131,7 @@
               </object>
             </child>
             <child type="overlay">
-              <object class="GtkWindowControls" id="windowcontrols_start_l">
+              <object class="GtkWindowControls" id="windowcontrols_start">
                 <property name="halign">start</property>
                 <property name="valign">start</property>
                 <property name="side">start</property>
@@ -142,7 +142,7 @@
               </object>
             </child>
             <child type="overlay">
-              <object class="GtkWindowControls" id="windowcontrols_end_l">
+              <object class="GtkWindowControls" id="windowcontrols_end">
                 <property name="halign">end</property>
                 <property name="valign">start</property>
                 <property name="side">end</property>
@@ -153,7 +153,7 @@
               </object>
             </child>
             <child type="overlay">
-              <object class="GtkMenuButton" id="main_menu_l">
+              <object class="GtkMenuButton" id="main_menu">
                 <property name="halign">center</property>
                 <property name="valign">start</property>
                 <property name="icon-name">open-menu-symbolic</property>
@@ -168,7 +168,7 @@
               </object>
             </child>
             <child type="overlay">
-              <object class="GtkButton" id="play_pause_l">
+              <object class="GtkButton" id="play_pause">
                 <property name="halign">center</property>
                 <property name="valign">end</property>
                 <property name="icon-name">media-playback-pause-symbolic</property>
@@ -187,7 +187,7 @@
                 <property name="orientation">horizontal</property>
                 <property name="homogeneous">true</property>
                 <child>
-                  <object class="ChessClockTimerButton" id="a_timer_l">
+                  <object class="ChessClockTimerButton" id="a_timer">
                     <property name="hexpand">true</property>
                     <accessibility>
                       <property name="label" translatable="yes" context="a11y">Player white timer</property>
@@ -198,7 +198,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="ChessClockTimerButton" id="b_timer_l">
+                  <object class="ChessClockTimerButton" id="b_timer">
                     <property name="hexpand">true</property>
                     <accessibility>
                       <property name="label" translatable="yes" context="a11y">Player black timer</property>
@@ -221,10 +221,10 @@
       <object class="AdwBreakpoint">
         <condition>max-aspect-ratio: 1/1 or (max-width: 520px and max-height: 520px)</condition>
         <setter object="timer_box" property="orientation">vertical</setter>
-        <setter object="main_menu_l" property="halign">end</setter>
-        <setter object="main_menu_l" property="valign">center</setter>
-        <setter object="play_pause_l" property="halign">start</setter>
-        <setter object="play_pause_l" property="valign">center</setter>
+        <setter object="main_menu" property="halign">end</setter>
+        <setter object="main_menu" property="valign">center</setter>
+        <setter object="play_pause" property="halign">start</setter>
+        <setter object="play_pause" property="valign">center</setter>
       </object>
     </child>
   </template>
