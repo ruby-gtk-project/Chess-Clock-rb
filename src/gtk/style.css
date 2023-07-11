@@ -3,10 +3,6 @@ button.large {
   min-height: 48px;
 }
 
-.small-margin {
-  margin: 6px;
-}
-
 .timerbutton {
   font-size: 70px;
   font-feature-settings: "tnum" 1;

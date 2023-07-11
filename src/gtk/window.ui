@@ -134,10 +134,11 @@
               <object class="GtkWindowControls" id="windowcontrols_start">
                 <property name="halign">start</property>
                 <property name="valign">start</property>
+                <property name="margin-start">6</property>
+                <property name="margin-top">6</property>
                 <property name="side">start</property>
                 <style>
                   <class name="white"/>
-                  <class name="small-margin"/>
                 </style>
               </object>
             </child>
@@ -145,10 +146,11 @@
               <object class="GtkWindowControls" id="windowcontrols_end">
                 <property name="halign">end</property>
                 <property name="valign">start</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
                 <property name="side">end</property>
                 <style>
                   <class name="black"/>
-                  <class name="small-margin"/>
                 </style>
               </object>
             </child>
@@ -156,6 +158,10 @@
               <object class="GtkMenuButton" id="main_menu">
                 <property name="halign">center</property>
                 <property name="valign">start</property>
+                <property name="margin-bottom">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-start">6</property>
+                <property name="margin-top">6</property>
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">primary_menu</property>
                 <property name="tooltip-text" translatable="yes">Main Menu</property>
@@ -163,7 +169,6 @@
                   <class name="image-button"/>
                   <class name="circular"/>
                   <class name="osd"/>
-                  <class name="small-margin"/>
                 </style>
               </object>
             </child>
@@ -171,6 +176,10 @@
               <object class="GtkButton" id="play_pause">
                 <property name="halign">center</property>
                 <property name="valign">end</property>
+                <property name="margin-bottom">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-start">6</property>
+                <property name="margin-top">6</property>
                 <property name="icon-name">media-playback-pause-symbolic</property>
                 <property name="tooltip-text" translatable="yes">Toggle Pause</property>
                 <style>
@@ -178,7 +187,6 @@
                   <class name="circular"/>
                   <class name="large"/>
                   <class name="osd"/>
-                  <class name="small-margin"/>
                 </style>
               </object>
             </child>
