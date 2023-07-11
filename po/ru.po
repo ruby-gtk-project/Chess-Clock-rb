@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-04-14 02:25+0000\n"
-"PO-Revision-Date: 2023-04-14 17:24+0300\n"
-"Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
+"POT-Creation-Date: 2023-07-02 16:17+0000\n"
+"PO-Revision-Date: 2023-07-07 01:10+1000\n"
+"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -214,10 +214,14 @@ msgid "_Restart Timer"
 msgstr "_Перезапустить таймер"
 
 #: src/gtk/window.ui:358
+msgid "_Mute Alert Sound"
+msgstr "Отк_лючить звук предупреждения"
+
+#: src/gtk/window.ui:364
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиш"
 
-#: src/gtk/window.ui:362
+#: src/gtk/window.ui:368
 msgid "_About Chess Clock"
 msgstr "_О приложении"
 
