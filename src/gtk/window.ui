@@ -143,6 +143,19 @@
               </object>
             </child>
             <child type="overlay">
+              <object class="GtkWindowControls" id="windowcontrols_start_end">
+                <property name="halign">end</property>
+                <property name="valign">start</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
+                <property name="side">end</property>
+                <property name="visible">false</property>
+                <style>
+                  <class name="white"/>
+                </style>
+              </object>
+            </child>
+            <child type="overlay">
               <object class="GtkWindowControls" id="windowcontrols_end">
                 <property name="halign">end</property>
                 <property name="valign">start</property>
@@ -233,6 +246,8 @@
         <setter object="main_menu" property="valign">center</setter>
         <setter object="play_pause" property="halign">start</setter>
         <setter object="play_pause" property="valign">center</setter>
+        <setter object="windowcontrols_start_end" property="visible">true</setter>
+        <setter object="windowcontrols_end" property="visible">false</setter>
         <setter object="a_timer" property="inverted">true</setter>
       </object>
     </child>

@@ -40,6 +40,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
     timer_screen = Gtk.Template.Child()
     windowcontrols_start = Gtk.Template.Child()
+    windowcontrols_start_end = Gtk.Template.Child()
     windowcontrols_end = Gtk.Template.Child()
     headerbar_revealer = Gtk.Template.Child()
     headerbar_motion = Gtk.Template.Child()
@@ -170,12 +171,16 @@ class ChessClockWindow(Adw.ApplicationWindow):
     def on_awbb(self, _):
         self.windowcontrols_start.add_css_class("white")
         self.windowcontrols_start.remove_css_class("black")
+        self.windowcontrols_start_end.add_css_class("white")
+        self.windowcontrols_start_end.remove_css_class("black")
         self.windowcontrols_end.add_css_class("black")
         self.windowcontrols_end.remove_css_class("white")
 
     def on_abbw(self, _):
         self.windowcontrols_start.add_css_class("black")
         self.windowcontrols_start.remove_css_class("white")
+        self.windowcontrols_start_end.add_css_class("black")
+        self.windowcontrols_start_end.remove_css_class("white")
         self.windowcontrols_end.add_css_class("white")
         self.windowcontrols_end.remove_css_class("black")
 
