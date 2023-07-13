@@ -47,7 +47,7 @@ class ChessClockTimer(GObject.Object):
             self.machine.window.add_tick_callback(self.on_tick, None, None)
         self._running = running
 
-    @GObject.Signal(arg_types=(int,))
+    @GObject.Signal(arg_types=(GObject.TYPE_UINT64,))
     def changed(self, *args):
         pass
 
