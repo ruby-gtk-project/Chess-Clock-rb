@@ -9,10 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-04-14 02:25+0000\n"
-"PO-Revision-Date: 2023-04-16 22:12+0300\n"
+"POT-Creation-Date: 2023-07-02 16:17+0000\n"
+"PO-Revision-Date: 2023-07-17 03:40+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -214,10 +214,14 @@ msgid "_Restart Timer"
 msgstr "Zamanlayıcıyı _Yeniden Başlat"
 
 #: src/gtk/window.ui:358
+msgid "_Mute Alert Sound"
+msgstr "Alarm Sesini _Kapat"
+
+#: src/gtk/window.ui:364
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: src/gtk/window.ui:362
+#: src/gtk/window.ui:368
 msgid "_About Chess Clock"
 msgstr "Satranç Saati _Hakkında"
 
@@ -235,6 +239,13 @@ msgstr "Beyaz oyuncu zamanlayıcısı"
 msgid "Player black timer"
 msgstr "Siyah oyuncu zamanlayıcısı"
 
+#, fuzzy
+#~| msgid "The time control selection screen"
+#~ msgid ""
+#~ "The time control selection screen now has some explanatory text and "
+#~ "tooltips"
+#~ msgstr "Zaman seçim ekranı"
+
 #~ msgid "Custom"
 #~ msgstr "Özel"
 
@@ -250,6 +261,3 @@ msgstr "Siyah oyuncu zamanlayıcısı"
 
 #~ msgid "Fifteen minutes per side, plus ten seconds per turn"
 #~ msgstr "Her oyuncu için 15 dakika ve her tur için 10 saniye"
-
-#~ msgid "Primary Menu"
-#~ msgstr "Ana Menü"
