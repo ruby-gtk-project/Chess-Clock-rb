@@ -1,0 +1,232 @@
+# Chinese (China) translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# lumingzh <lumingzh@qq.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-08-11 11:30+0000\n"
+"PO-Revision-Date: 2023-08-12 16:38+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Gtranslator 42.0\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "棋赛计时器"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "chess;game;clock;timer;象棋;下棋;游戏;时钟;计时;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "面对面实战的象棋游戏计时"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"棋赛计时器是为面对面象棋游戏实战提供计时控制的简单应用程序。目标为移动应用，"
+"玩家为游戏选择想要的计时控制设置，然后黑棋玩家轻拍计时器开始白棋玩家的计时。"
+"在每个玩家回合之后，他们轻拍计时器开始其对手的计时，直到游戏结束或其中一方计"
+"时器到零。"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr "主屏幕，为象棋游戏的白棋和黑棋玩家显示计时"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "显示计时控制选择的屏幕"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "每边 1 分钟，每回合加 0 秒"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "每边 2 分钟，每回合加 1 秒"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "每边 5 分钟，每回合加 0 秒"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "每边 5 分钟，每回合加 3 秒"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "每边 10 分钟，每回合加 0 秒"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "每边 10 分钟，每回合加 5 秒"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "每边 30 分钟，每回合加 0 秒"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "每边 30 分钟，每回合加 20 秒"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "主计时（分）"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "主计时（秒）"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "增量（秒）"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "游戏"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "新建计时控制"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "重启计时"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "常规"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "打开主菜单"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "显示快捷键"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "关闭窗口"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "退出"
+
+#: src/gtk/window.ui:15
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "选择计时控制"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "欢迎使用棋赛计时器"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "选择下面的计时控制来开始比赛"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "计时控制方式"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "增量"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "布朗斯坦延时"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "简单延时"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "开始游戏"
+
+#: src/gtk/window.ui:109
+msgctxt "a11y"
+msgid "Playing"
+msgstr "比赛中"
+
+#: src/gtk/window.ui:168 src/gtk/window.ui:282
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: src/gtk/window.ui:182 src/gtk/window.ui:296
+msgid "Toggle Pause"
+msgstr "切换暂停"
+
+#: src/gtk/window.ui:200 src/gtk/window.ui:314
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "白棋玩家计时"
+
+#: src/gtk/window.ui:211 src/gtk/window.ui:326
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "黑棋玩家计时"
+
+#: src/gtk/window.ui:348
+msgid "_New Time Control"
+msgstr "新建计时控制(_N)"
+
+#: src/gtk/window.ui:352
+msgid "_Restart Timer"
+msgstr "重启计时(_R)"
+
+#: src/gtk/window.ui:358
+msgid "_Mute Alert Sound"
+msgstr "静音警告声(_M)"
+
+#: src/gtk/window.ui:364
+msgid "_Keyboard Shortcuts"
+msgstr "键盘快捷键(_K)"
+
+#: src/gtk/window.ui:368
+msgid "_About Chess Clock"
+msgstr "关于棋赛计时器(_A)"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr "lumingzh <lumingzh@qq.com>, 2023"
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "白棋玩家计时"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "黑棋玩家计时"
