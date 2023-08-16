@@ -1,0 +1,236 @@
+# Galician translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Fran Dieguez <frandieguez@gnome.org>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-08-12 19:51+0000\n"
+"PO-Revision-Date: 2023-08-16 02:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: Galician <gnome-gl-list@gnome.org>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Reloxo de xadrez"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "xadrez;xogo;reloxo;temporizador;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Xogos de tempo de xadrez"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"O reloxo de xadrez é unha aplicación sinxela para fornecer un control de "
+"tempo para os xogos de xadrez. Pensado para o uso en móbiles, os xogadores "
+"deben seleccionar a configuración de control de tempo desexada para o seu "
+"xogo, entón o xogador negro toca o seu reloxo para comezar o temporizador "
+"do branco. Despois da quenda de cada xogador, os xogadores tocan o reloxo "
+"para comezar o tempo do seu rival, ata que o xogo remate ou un dos reloxos "
+"chegue a cero."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"A pantalla principal, onde se mostran os temporizadores para os xogadores "
+"de cor branco e negro dun xogo de xadrez"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "A pantalla de selección de control de tempo"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Un minuto por lado, ademais de cero segundos por quenda"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Dous minutos por lado, máis un segundo por quenda"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Cinco minutos por lado, ademais de cero segundos por quenda"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Cinco minutos por lado, máis tres segundos por quenda"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Dez minutos por lado, ademais de cero segundos por quenda"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Dez minutos por lado, máis cinco segundos por quenda"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Trinta minutos por lado, ademais de cero segundos por quenda"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Trinta minutos por lado, máis vinte segundos por quenda"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Minutos de tempo principais"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Segundos de tempo principal"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Incrementar segundos"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Xogo"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Novo control de tempo"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Reiniciar temporizador"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Xeral"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Abrir o menú principal"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostrar atallos"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Pecha xanela"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Saír"
+
+#: src/gtk/window.ui:15
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Seleccionar os controis de tempo"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Benvida ao Reloxo de xadrez"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Seleccione os controis de tempo embaixo para comezar"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Método de control de tempo"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Incrementar"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Atraso de Bronstein"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Atraso simple"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Comeza o xogo"
+
+#: src/gtk/window.ui:109
+msgctxt "a11y"
+msgid "Playing"
+msgstr "Xogando"
+
+#: src/gtk/window.ui:168 src/gtk/window.ui:282
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: src/gtk/window.ui:182 src/gtk/window.ui:296
+msgid "Toggle Pause"
+msgstr "Trocar pausa"
+
+#: src/gtk/window.ui:200 src/gtk/window.ui:314
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Temporizador do xogador branco"
+
+#: src/gtk/window.ui:211 src/gtk/window.ui:326
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Temporizador do xogador negro"
+
+#: src/gtk/window.ui:348
+msgid "_New Time Control"
+msgstr "_Novo control de tempo"
+
+#: src/gtk/window.ui:352
+msgid "_Restart Timer"
+msgstr "_Reiniciar temporizador"
+
+#: src/gtk/window.ui:358
+msgid "_Mute Alert Sound"
+msgstr "_Enmudecer son de alerta"
+
+#: src/gtk/window.ui:364
+msgid "_Keyboard Shortcuts"
+msgstr "Atallos de _teclado"
+
+#: src/gtk/window.ui:368
+msgid "_About Chess Clock"
+msgstr "_Sobre Reloxo de xadrez"
+
+#: src/main.py:64
+msgid "translator-credits"
+msgstr "Fran Diéguez <frandieguez@gnome.2023"
+
+#: src/timerbutton.py:55
+msgid "Player white timer"
+msgstr "Temporizador do xogador branco"
+
+#: src/timerbutton.py:60
+msgid "Player black timer"
+msgstr "Temporizador do xogador negro"
