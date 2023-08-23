@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <requires lib="Adw" version="1.0"/>
+  <requires lib="Adw" version="1.4"/>
   <template class="ChessClockTimerButton" parent="GtkButton">
-        <child>
+    <child>
+      <object class="AdwBreakpointBin">
+        <property name="width-request">240</property>
+        <property name="height-request">130</property>
+        <property name="child">
           <object class="GtkBox">
             <property name="orientation">horizontal</property>
             <property name="halign">center</property>
@@ -13,7 +17,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="colon">
                 <property name="label">∶</property>
                 <style>
                   <class name="colon"/>
@@ -26,9 +30,19 @@
               </object>
             </child>
           </object>
+        </property>
+        <child>
+          <object class="AdwBreakpoint">
+            <condition>min-width: 600px</condition>
+            <setter object="minutes" property="attributes">0 -1 size 102400</setter>
+            <setter object="colon" property="attributes">0 -1 size 102400</setter>
+            <setter object="seconds" property="attributes">0 -1 size 102400</setter>
+          </object>
         </child>
-        <style>
-          <class name="opaque"/>
-        </style>
+      </object>
+    </child>
+    <style>
+      <class name="opaque"/>
+    </style>
   </template>
 </interface>

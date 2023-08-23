@@ -20,7 +20,7 @@
 from gettext import gettext as _
 
 from gi.repository import Adw
-from gi.repository import Gtk, GLib
+from gi.repository import GObject, Gtk, GLib
 
 from math import ceil
 
@@ -37,6 +37,7 @@ class ChessClockTimerButton(Gtk.Button):
         self.set_css_name("button")
         self.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.add_css_class("timerbutton")
+        self._inverted = False
 
     def on_changed(self, timer, time):
         disptime = ceil(max(time, 0) / 1_000_000)
@@ -63,9 +64,19 @@ class ChessClockTimerButton(Gtk.Button):
         self.set_sensitive(active)
         if current:
             self.add_css_class("running")
-            # XXX: this is brittle to changes in the UI file, but it works
-            grandparent = self.get_parent().get_parent()
-            if grandparent.get_parent().get_visible_child() == grandparent:
-                self.grab_focus()
+            self.grab_focus()
         else:
             self.remove_css_class("running")
+
+    @GObject.Property(type=bool, default=False)
+    def inverted(self):
+        """Whether to display the button inverted"""
+        return self._inverted
+
+    @inverted.setter
+    def inverted(self, inv):
+        self._inverted = inv
+        if inv:
+            self.add_css_class("inverted")
+        else:
+            self.remove_css_class("inverted")
