@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-15 00:03+0000\n"
-"PO-Revision-Date: 2023-03-26 15:42+0200\n"
+"POT-Creation-Date: 2023-08-23 11:32+0000\n"
+"PO-Revision-Date: 2023-08-27 14:34+0200\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
-"Language-Team: Dutch <https://matrix.to/#/#nl:gnome.org>\n"
+"Language-Team: GNOME-NL <https://matrix.to/#/#nl:gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -63,26 +63,49 @@ msgstr "Het selectiescherm voor de tijdsbediening"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
-#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
-#: src/gtk/customcontrol.ui:6
-msgid "Custom"
-msgstr "Aangepast"
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Eén minuut per kant, plus nul seconden per beurt"
 
-#: src/gtk/customcontrol.ui:21
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Twee minuten per kant, plus één seconde per beurt"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Vijf minuten per kant, plus nul seconden per beurt"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Vijf minuten per kant, plus drie seconden per beurt"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Tien minuten per kant, plus nul seconden per beurt"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Tien minuten per kant, plus vijf seconden per beurt"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Dertig minuten per kant, plus nul seconden per beurt"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Dertig minuten per kant, plus twintig seconden per beurt"
+
+#: src/gtk/timecontrolentry.ui:134
 msgid "Main time minutes"
 msgstr "Starttijd (minuten)"
 
-#: src/gtk/customcontrol.ui:39
+#: src/gtk/timecontrolentry.ui:153
 msgid "Main time seconds"
 msgstr "Starttijd (seconden)"
 
-#: src/gtk/customcontrol.ui:57
+#: src/gtk/timecontrolentry.ui:171
 msgid "Increment seconds"
 msgstr "Toename (seconden)"
-
-#: src/gtk/customcontrol.ui:67
-msgid "Start Game"
-msgstr "Spel starten"
 
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -106,8 +129,8 @@ msgstr "Algemeen"
 
 #: src/gtk/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Open Primary Menu"
-msgstr "Primair menu openen"
+msgid "Open Main Menu"
+msgstr "Hoofdmenu openen"
 
 #: src/gtk/help-overlay.ui:37
 msgctxt "shortcut window"
@@ -124,115 +147,74 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Sluiten"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Tijdsbediening selecteren"
 
-#: src/gtk/window.ui:38
+#: src/gtk/window.ui:44
 msgid "Welcome to Chess Clock"
 msgstr "Welkom bij Schaakklok"
 
-#: src/gtk/window.ui:48
+#: src/gtk/window.ui:54
 msgid "Select time controls below to get started"
 msgstr "Selecteer een tijdsbediening hieronder om te beginnen"
 
-#: src/gtk/window.ui:65
-msgid "One minute per side, plus zero seconds per turn"
-msgstr "Eén minuut per kant, plus nul seconden per beurt"
-
-#: src/gtk/window.ui:78
-msgid "Two minutes per side, plus one second per turn"
-msgstr "Twee minuten per kant, plus één seconde per beurt"
-
-#: src/gtk/window.ui:91
-msgid "Three minutes per side, plus zero seconds per turn"
-msgstr "Drie minuten per kant, plus nul seconden per beurt"
-
-#: src/gtk/window.ui:104
-msgid "Three minutes per side, plus two seconds per turn"
-msgstr "Drie minuten per kant, plus twee seconden per beurt"
-
-#: src/gtk/window.ui:117
-msgid "Five minutes per side, plus zero seconds per turn"
-msgstr "Vijf minuten per kant, plus nul seconden per beurt"
-
-#: src/gtk/window.ui:130
-msgid "Five minutes per side, plus three seconds per turn"
-msgstr "Vijf minuten per kant, plus drie seconden per beurt"
-
-#: src/gtk/window.ui:143
-msgid "Ten minutes per side, plus zero seconds per turn"
-msgstr "Tien minuten per kant, plus nul seconden per beurt"
-
-#: src/gtk/window.ui:156
-msgid "Ten minutes per side, plus five seconds per turn"
-msgstr "Tien minuten per kant, plus vijf seconden per beurt"
-
-#: src/gtk/window.ui:169
-msgid "Fifteen minutes per side, plus ten seconds per turn"
-msgstr "Vijftien minuten per kant, plus tien seconden per beurt"
-
-#: src/gtk/window.ui:182
-msgid "Thirty minutes per side, plus zero seconds per turn"
-msgstr "Dertig minuten per kant, plus nul seconden per beurt"
-
-#: src/gtk/window.ui:195
-msgid "Thirty minutes per side, plus twenty seconds per turn"
-msgstr "Dertig minuten per kant, plus twintig seconden per beurt"
-
-#: src/gtk/window.ui:218
+#: src/gtk/window.ui:72
 msgid "Time control method"
 msgstr "Methode voor tijdsbediening"
 
-#: src/gtk/window.ui:227
+#: src/gtk/window.ui:76
 msgid "Increment"
 msgstr "Toename"
 
-#: src/gtk/window.ui:228
+#: src/gtk/window.ui:77
 msgid "Bronstein delay"
 msgstr "Bronstein-vertraging"
 
-#: src/gtk/window.ui:229
+#: src/gtk/window.ui:78
 msgid "Simple delay"
 msgstr "Eenvoudige vertraging"
 
-#: src/gtk/window.ui:247
-msgctxt "a11y"
-msgid "Playing"
-msgstr "Aan het afspelen"
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Spel starten"
 
-#: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Primary Menu"
-msgstr "Primair menu"
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Hoofdmenu"
 
-#: src/gtk/window.ui:320 src/gtk/window.ui:434
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "Pauze omschakelen"
 
-#: src/gtk/window.ui:338 src/gtk/window.ui:452
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Timer van witte speler"
 
-#: src/gtk/window.ui:349 src/gtk/window.ui:464
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Timer van zwarte speler"
 
-#: src/gtk/window.ui:486
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "_Nieuwe tijdsbediening"
 
-#: src/gtk/window.ui:490
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "Timer he_rstarten"
 
-#: src/gtk/window.ui:496
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "Waarschuwingsgeluid de_mpen"
+
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "Snel_toetsen"
 
-#: src/gtk/window.ui:500
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "_Over Schaakklok"
 
@@ -242,10 +224,29 @@ msgstr ""
 "Philip Goto <philip.goto@gmail.com>\n"
 "Meer info over GNOME-NL https://nl.gnome.org"
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:56
 msgid "Player white timer"
 msgstr "Timer van witte speler"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Timer van zwarte speler"
+
+#~ msgid "Custom"
+#~ msgstr "Aangepast"
+
+#~ msgid "Three minutes per side, plus zero seconds per turn"
+#~ msgstr "Drie minuten per kant, plus nul seconden per beurt"
+
+#~ msgid "Three minutes per side, plus two seconds per turn"
+#~ msgstr "Drie minuten per kant, plus twee seconden per beurt"
+
+#~ msgid "Fifteen minutes per side, plus ten seconds per turn"
+#~ msgstr "Vijftien minuten per kant, plus tien seconden per beurt"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "Aan het afspelen"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Primair menu"
