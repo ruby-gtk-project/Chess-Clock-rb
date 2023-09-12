@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-03-11 14:03+0000\n"
-"PO-Revision-Date: 2023-03-14 18:37+0100\n"
+"POT-Creation-Date: 2023-08-23 11:32+0000\n"
+"PO-Revision-Date: 2023-09-11 08:02+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -40,12 +40,11 @@ msgid ""
 "their opponent's, until the game is finished or one of the clocks reaches "
 "zero."
 msgstr ""
-"Skakur er et simpelt program til at styre tiden for fysiske skakspil. "
-"Skakur er beregnet på mobilt brug, og spillerne vælger den ønskede "
-"tidsstyring af deres spil, hvorefter den sorte spiller trykker på sit ur "
-"for at starte hvids minutur. Efter hver spillers tur trykker de på uret for "
-"at starte modstanderens ur, indtil spillet er slut, eller et af urene når "
-"nul."
+"Skakur er et simpelt program til at styre tiden for fysiske skakspil. Skakur "
+"er beregnet på mobilt brug, og spillerne vælger den ønskede tidsstyring af "
+"deres spil, hvorefter den sorte spiller trykker på sit ur for at starte "
+"hvids minutur. Efter hver spillers tur trykker de på uret for at starte "
+"modstanderens ur, indtil spillet er slut, eller et af urene når nul."
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:18
 msgid ""
@@ -61,28 +60,51 @@ msgstr "Skærmen til indstilling af tidsstyringen"
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
-#. Custom time control, displayed alongside all the '[x] minutes per side, plus [y] seconds per turn' buttons.
-#: src/gtk/customcontrol.ui:6
-msgid "Custom"
-msgstr "Tilpasset"
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Et minut pr. spiller plus nul sekunder pr. tur"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "To minutter pr. spiller plus et sekund pr. tur"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Fem minutter pr. spiller plus nul sekunder pr. tur"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Fem minutter pr. spiller plus tre sekunder pr. tur"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Ti minutter pr. spiller plus nul sekunder pr. tur"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Ti minutter pr. spiller plus fem sekunder pr. tur"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Tredive minutter pr. spiller plus nul sekunder pr. tur"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Tredive minutter pr. spiller plus tyve sekunder pr. tur"
 
 # Denne og de to næste er for at tilpasse tiden i stedet for at bruge en af de foruddefinerede
-#: src/gtk/customcontrol.ui:21
+#: src/gtk/timecontrolentry.ui:134
 msgid "Main time minutes"
 msgstr "Minutter"
 
-#: src/gtk/customcontrol.ui:39
+#: src/gtk/timecontrolentry.ui:153
 msgid "Main time seconds"
 msgstr "Sekunder"
 
 # Svarende til de ekstra sekunder der bliver lagt til pr. tur
-#: src/gtk/customcontrol.ui:57
+#: src/gtk/timecontrolentry.ui:171
 msgid "Increment seconds"
 msgstr "Tillægssekunder"
-
-#: src/gtk/customcontrol.ui:67
-msgid "Start Game"
-msgstr "Start spil"
 
 #: src/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -106,8 +128,8 @@ msgstr "Generelle"
 
 #: src/gtk/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Open Primary Menu"
-msgstr "Åbn primær menu"
+msgid "Open Main Menu"
+msgstr "Åbn hovedmenu"
 
 #: src/gtk/help-overlay.ui:37
 msgctxt "shortcut window"
@@ -124,115 +146,75 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Afslut"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Vælg tidsstyringer"
 
-#: src/gtk/window.ui:38
+#: src/gtk/window.ui:44
 msgid "Welcome to Chess Clock"
 msgstr "Velkommen til Skakur"
 
-#: src/gtk/window.ui:48
+#: src/gtk/window.ui:54
 msgid "Select time controls below to get started"
 msgstr "Vælg tidsstyringer nedenfor for at komme i gang"
 
-#: src/gtk/window.ui:65
-msgid "One minute per side, plus zero seconds per turn"
-msgstr "Et minut pr. spiller plus nul sekunder pr. tur"
-
-#: src/gtk/window.ui:78
-msgid "Two minutes per side, plus one second per turn"
-msgstr "To minutter pr. spiller plus et sekund pr. tur"
-
-#: src/gtk/window.ui:91
-msgid "Three minutes per side, plus zero seconds per turn"
-msgstr "Tre minutter pr. spiller plus nul sekunder pr. tur"
-
-#: src/gtk/window.ui:104
-msgid "Three minutes per side, plus two seconds per turn"
-msgstr "Tre minutter pr. spiller plus to sekunder pr. tur"
-
-#: src/gtk/window.ui:117
-msgid "Five minutes per side, plus zero seconds per turn"
-msgstr "Fem minutter pr. spiller plus nul sekunder pr. tur"
-
-#: src/gtk/window.ui:130
-msgid "Five minutes per side, plus three seconds per turn"
-msgstr "Fem minutter pr. spiller plus tre sekunder pr. tur"
-
-#: src/gtk/window.ui:143
-msgid "Ten minutes per side, plus zero seconds per turn"
-msgstr "Ti minutter pr. spiller plus nul sekunder pr. tur"
-
-#: src/gtk/window.ui:156
-msgid "Ten minutes per side, plus five seconds per turn"
-msgstr "Ti minutter pr. spiller plus fem sekunder pr. tur"
-
-#: src/gtk/window.ui:169
-msgid "Fifteen minutes per side, plus ten seconds per turn"
-msgstr "Femten minutter pr. spiller plus ti sekunder pr. tur"
-
-#: src/gtk/window.ui:182
-msgid "Thirty minutes per side, plus zero seconds per turn"
-msgstr "Tredive minutter pr. spiller plus nul sekunder pr. tur"
-
-#: src/gtk/window.ui:195
-msgid "Thirty minutes per side, plus twenty seconds per turn"
-msgstr "Tredive minutter pr. spiller plus tyve sekunder pr. tur"
-
-#: src/gtk/window.ui:218
+#: src/gtk/window.ui:72
 msgid "Time control method"
 msgstr "Tidsstyringsmetode"
 
-#: src/gtk/window.ui:227
+#: src/gtk/window.ui:76
 msgid "Increment"
 msgstr "Forøgelse"
 
-#: src/gtk/window.ui:228
+#: src/gtk/window.ui:77
 msgid "Bronstein delay"
 msgstr "Bronstein-forsinkelse"
 
-#: src/gtk/window.ui:229
+#: src/gtk/window.ui:78
 msgid "Simple delay"
 msgstr "Simpel forsinkelse"
 
-#: src/gtk/window.ui:247
-msgctxt "a11y"
-msgid "Playing"
-msgstr "Spiller"
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Start spil"
 
-#: src/gtk/window.ui:306 src/gtk/window.ui:420
-msgid "Primary Menu"
-msgstr "Primær menu"
+# Denne og de to næste er for at tilpasse tiden i stedet for at bruge en af de foruddefinerede
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Hovedmenu"
 
-#: src/gtk/window.ui:320 src/gtk/window.ui:434
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "Pause til/fra"
 
-#: src/gtk/window.ui:338 src/gtk/window.ui:452
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Hvids minutur"
 
-#: src/gtk/window.ui:349 src/gtk/window.ui:464
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Sorts minutur"
 
-#: src/gtk/window.ui:486
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "_Ny tidsstyring"
 
-#: src/gtk/window.ui:490
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "_Genstart minutur"
 
-#: src/gtk/window.ui:496
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Sluk for advarselslyd"
+
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturgenveje"
 
-#: src/gtk/window.ui:500
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "_Om skakur"
 
@@ -244,10 +226,29 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:56
 msgid "Player white timer"
 msgstr "Hvids minutur"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Sorts minutur"
+
+#~ msgid "Custom"
+#~ msgstr "Tilpasset"
+
+#~ msgid "Three minutes per side, plus zero seconds per turn"
+#~ msgstr "Tre minutter pr. spiller plus nul sekunder pr. tur"
+
+#~ msgid "Three minutes per side, plus two seconds per turn"
+#~ msgstr "Tre minutter pr. spiller plus to sekunder pr. tur"
+
+#~ msgid "Fifteen minutes per side, plus ten seconds per turn"
+#~ msgstr "Femten minutter pr. spiller plus ti sekunder pr. tur"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "Spiller"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Primær menu"
