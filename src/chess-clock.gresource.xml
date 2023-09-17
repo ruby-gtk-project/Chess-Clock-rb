@@ -7,5 +7,6 @@
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <file alias="style.css">gtk/style.css</file>
     <file alias="style-hc.css">gtk/style-hc.css</file>
+    <file alias="com.clarahobbs.chessclock.appdata.xml" preprocess="xml-stripblanks">../data/com.clarahobbs.chessclock.appdata.xml.in</file>
   </gresource>
 </gresources>
