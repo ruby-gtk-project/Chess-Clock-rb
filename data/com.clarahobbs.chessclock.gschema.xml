@@ -22,5 +22,8 @@
 	  <key name="control-method" type="i">
       <default>0</default>
 	  </key>
-	</schema>
+	  <key name="muted" type="b">
+      <default>false</default>
+      </key>
+    </schema>
 </schemalist>

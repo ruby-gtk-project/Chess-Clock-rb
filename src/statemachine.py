@@ -110,6 +110,14 @@ class ChessClockStateMachine(GObject.Object):
             self.to_b_pause()
         self._state = state
 
+    @GObject.Property(type=bool, default=False)
+    def muted(self):
+        return self._muted
+
+    @muted.setter
+    def muted(self, value):
+        self._muted = value
+
     def to_start(self):
         # Reset timers
         self.timer_a.reset()
