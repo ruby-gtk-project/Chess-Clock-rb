@@ -53,12 +53,11 @@ class ChessClockApplication(Adw.Application):
 
     def on_about_action(self, widget, __):
         """Callback for the app.about action."""
-        about = Adw.AboutWindow.new_from_appdata("/com/clarahobbs/chessclock/com.clarahobbs.chessclock.appdata.xml", "0.5.0")
+        about = Adw.AboutWindow.new_from_appdata("/com/clarahobbs/chessclock/com.clarahobbs.chessclock.appdata.xml", "0.6.0")
         about.set_transient_for(self.props.active_window)
         about.set_developers(['Clara Hobbs‍️', 'gregorni', 'Mariko Ueno'])
         about.set_artists(['Brage Fuglseth'])
         about.set_translator_credits(_("translator-credits"))
-        #                        copyright='© 2022–2023 the Chess Clock contributors\n\nThis application comes with absolutely no warranty. See the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License, version 3 or later</a> for details.')
         about.present()
 
     def create_action(self, name, callback, shortcuts=None):

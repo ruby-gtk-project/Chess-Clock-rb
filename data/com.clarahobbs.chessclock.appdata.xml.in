@@ -16,11 +16,15 @@
   <screenshots>
     <screenshot>
       <caption>The main screen, showing timers for the white and black players of a chess game</caption>
-      <image>https://clarahobbs.com/screenshots/chess-clock-0.5-1.png</image>
+      <image>https://clarahobbs.com/screenshots/chess-clock-0.6-1.png</image>
     </screenshot>
     <screenshot>
       <caption>The time control selection screen</caption>
-      <image>https://clarahobbs.com/screenshots/chess-clock-0.5-2.png</image>
+      <image>https://clarahobbs.com/screenshots/chess-clock-0.6-2.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The main screen in a portrait aspect ratio, showing one timer rotated 180 degrees</caption>
+      <image>https://clarahobbs.com/screenshots/chess-clock-0.6-3.png</image>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">com.clarahobbs.chessclock.desktop</launchable>
@@ -33,6 +37,15 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
+    <release version="0.6.0" date="2023-09-27">
+      <description>
+        <p>A new release bringing adaptivity refinements and alert sounds.</p>
+        <ul>
+          <li>Thanks to Mariko Ueno, we now have alert sounds when a player's timer runs low.  These can be muted if desired via the menu.</li>
+          <li>The window adapts better to portrait aspect ratios and large screen sizes, enabling improved tablet support.</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.5.0" date="2023-04-06">
       <description>
         <p>A new release focusing on UX enhancements.</p>

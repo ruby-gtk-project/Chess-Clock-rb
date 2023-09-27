@@ -1,5 +1,5 @@
 project('chess-clock',
-          version: '0.5.0',
+          version: '0.6.0',
     meson_version: '>= 0.59.0',
   default_options: [ 'warning_level=2', 'werror=false', ],
 )
@@ -8,7 +8,7 @@ i18n = import('i18n')
 gnome = import('gnome')
 
 gsound = dependency('gsound', version: '>=1.0')
-libadwaita = dependency('libadwaita-1', version: '>=1.4.alpha')
+libadwaita = dependency('libadwaita-1', version: '>=1.4')
 
 
 
