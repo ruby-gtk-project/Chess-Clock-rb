@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-08-11 11:30+0000\n"
-"PO-Revision-Date: 2023-08-12 16:38+0800\n"
+"POT-Creation-Date: 2023-09-27 23:07+0000\n"
+"PO-Revision-Date: 2023-09-28 16:37+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 42.0\n"
+"X-Generator: Gtranslator 45.1\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -55,7 +55,13 @@ msgstr "主屏幕，为象棋游戏的白棋和黑棋玩家显示计时"
 msgid "The time control selection screen"
 msgstr "显示计时控制选择的屏幕"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr "主屏幕为竖屏比例，显示旋转了 180 度的计时器"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:33
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
@@ -143,7 +149,7 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "退出"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "选择计时控制"
@@ -176,57 +182,56 @@ msgstr "简单延时"
 msgid "Start Game"
 msgstr "开始游戏"
 
-#: src/gtk/window.ui:109
-msgctxt "a11y"
-msgid "Playing"
-msgstr "比赛中"
-
-#: src/gtk/window.ui:168 src/gtk/window.ui:282
+#: src/gtk/window.ui:180
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: src/gtk/window.ui:182 src/gtk/window.ui:296
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "切换暂停"
 
-#: src/gtk/window.ui:200 src/gtk/window.ui:314
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "白棋玩家计时"
 
-#: src/gtk/window.ui:211 src/gtk/window.ui:326
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "黑棋玩家计时"
 
-#: src/gtk/window.ui:348
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "新建计时控制(_N)"
 
-#: src/gtk/window.ui:352
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "重启计时(_R)"
 
-#: src/gtk/window.ui:358
+#: src/gtk/window.ui:268
 msgid "_Mute Alert Sound"
 msgstr "静音警告声(_M)"
 
-#: src/gtk/window.ui:364
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "键盘快捷键(_K)"
 
-#: src/gtk/window.ui:368
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "关于棋赛计时器(_A)"
 
-#: src/main.py:64
+#: src/main.py:60
 msgid "translator-credits"
 msgstr "lumingzh <lumingzh@qq.com>, 2023"
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:56
 msgid "Player white timer"
 msgstr "白棋玩家计时"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "黑棋玩家计时"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "比赛中"
