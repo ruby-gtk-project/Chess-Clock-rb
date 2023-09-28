@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-07-02 16:17+0000\n"
-"PO-Revision-Date: 2023-07-05 06:56+0200\n"
+"POT-Creation-Date: 2023-09-27 23:07+0000\n"
+"PO-Revision-Date: 2023-09-28 08:49+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -62,7 +62,15 @@ msgstr ""
 msgid "The time control selection screen"
 msgstr "Zaslon za izbiro kontrolnika časa"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"Glavni zaslon v pokončni postavitvi, ki prikazuje en časovnik, zasukan za "
+"180 stopinj"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:33
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
@@ -150,7 +158,7 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Izhod"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Izberite kontrolnike časa"
@@ -183,57 +191,52 @@ msgstr "Enostavni zamik"
 msgid "Start Game"
 msgstr "Začni igro"
 
-#: src/gtk/window.ui:109
-msgctxt "a11y"
-msgid "Playing"
-msgstr "Predvajanje"
-
-#: src/gtk/window.ui:168 src/gtk/window.ui:282
+#: src/gtk/window.ui:180
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: src/gtk/window.ui:182 src/gtk/window.ui:296
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "Ustavi/nadaljuj"
 
-#: src/gtk/window.ui:200 src/gtk/window.ui:314
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Časovnik igralca z belimi figurami"
 
-#: src/gtk/window.ui:211 src/gtk/window.ui:326
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Časovnik igralca s črnimi figurami"
 
-#: src/gtk/window.ui:348
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "_Nov časovni nadzor"
 
-#: src/gtk/window.ui:352
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "_Znova zaženi časovnik"
 
-#: src/gtk/window.ui:358
+#: src/gtk/window.ui:268
 msgid "_Mute Alert Sound"
 msgstr "_Izklopi zvok opozorila"
 
-#: src/gtk/window.ui:364
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "_Tipke za bližnjico"
 
-#: src/gtk/window.ui:368
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "_O Šahovski uri"
 
-#: src/main.py:64
+#: src/main.py:60
 msgid "translator-credits"
 msgstr "Martin Srebotnjak <miles@filmsi.net>"
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:56
 msgid "Player white timer"
 msgstr "Časovnik igralca z belimi figurami"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Časovnik igralca s črnimi figurami"
