@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-07-02 16:17+0000\n"
-"PO-Revision-Date: 2023-07-17 03:40+0300\n"
+"POT-Creation-Date: 2023-09-27 23:07+0000\n"
+"PO-Revision-Date: 2023-10-11 15:09+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -61,7 +61,15 @@ msgstr ""
 msgid "The time control selection screen"
 msgstr "Zaman seçim ekranı"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"Dikey en boy oranındaki ana ekran, 180 derece döndürülmüş zamanlayıcıyı "
+"gösteriyor"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:33
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
@@ -149,7 +157,7 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Çık"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Zaman denetimlerini seç"
@@ -182,82 +190,54 @@ msgstr "Basit gecikme"
 msgid "Start Game"
 msgstr "Oyunu Başlat"
 
-#: src/gtk/window.ui:109
-msgctxt "a11y"
-msgid "Playing"
-msgstr "Oynuyor"
-
-#: src/gtk/window.ui:168 src/gtk/window.ui:282
+#: src/gtk/window.ui:180
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: src/gtk/window.ui:182 src/gtk/window.ui:296
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "Durdur/Başlat"
 
-#: src/gtk/window.ui:200 src/gtk/window.ui:314
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Beyaz oyuncu zamanlayıcısı"
 
-#: src/gtk/window.ui:211 src/gtk/window.ui:326
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Siyah oyuncu zamanlayıcısı"
 
-#: src/gtk/window.ui:348
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "_Yeni Zaman Denetimi"
 
-#: src/gtk/window.ui:352
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "Zamanlayıcıyı _Yeniden Başlat"
 
-#: src/gtk/window.ui:358
+#: src/gtk/window.ui:268
 msgid "_Mute Alert Sound"
 msgstr "Alarm Sesini _Kapat"
 
-#: src/gtk/window.ui:364
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: src/gtk/window.ui:368
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "Satranç Saati _Hakkında"
 
-#: src/main.py:64
+#: src/main.py:60
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:56
 msgid "Player white timer"
 msgstr "Beyaz oyuncu zamanlayıcısı"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Siyah oyuncu zamanlayıcısı"
-
-#, fuzzy
-#~| msgid "The time control selection screen"
-#~ msgid ""
-#~ "The time control selection screen now has some explanatory text and "
-#~ "tooltips"
-#~ msgstr "Zaman seçim ekranı"
-
-#~ msgid "Custom"
-#~ msgstr "Özel"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Open Primary Menu"
-#~ msgstr "Ana Menüyü Aç"
-
-#~ msgid "Three minutes per side, plus zero seconds per turn"
-#~ msgstr "Her oyuncu için 3 dakika ve her tur için 0 saniye"
-
-#~ msgid "Three minutes per side, plus two seconds per turn"
-#~ msgstr "Her oyuncu için 3 dakika ve her tur için 2 saniye"
-
-#~ msgid "Fifteen minutes per side, plus ten seconds per turn"
-#~ msgstr "Her oyuncu için 15 dakika ve her tur için 10 saniye"
