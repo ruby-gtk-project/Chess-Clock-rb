@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-07-02 16:17+0000\n"
-"PO-Revision-Date: 2023-07-07 01:10+1000\n"
-"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
+"POT-Creation-Date: 2023-09-27 23:07+0000\n"
+"PO-Revision-Date: 2023-09-28 15:11+0300\n"
+"Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -61,7 +61,15 @@ msgstr ""
 msgid "The time control selection screen"
 msgstr "Экран выбора контроля времени"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"Главный экран в портретном соотношении сторон, показывающий один таймер, "
+"повернутый на 180 градусов"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:33
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
@@ -149,7 +157,7 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Закрыть"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Выбрать контроль времени"
@@ -182,60 +190,59 @@ msgstr "Простая задержка"
 msgid "Start Game"
 msgstr "Начать игру"
 
-#: src/gtk/window.ui:109
-msgctxt "a11y"
-msgid "Playing"
-msgstr "Игра"
-
-#: src/gtk/window.ui:168 src/gtk/window.ui:282
+#: src/gtk/window.ui:180
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: src/gtk/window.ui:182 src/gtk/window.ui:296
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "Переключить паузу"
 
-#: src/gtk/window.ui:200 src/gtk/window.ui:314
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Таймер игрока белыми"
 
-#: src/gtk/window.ui:211 src/gtk/window.ui:326
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Таймер игрока черными"
 
-#: src/gtk/window.ui:348
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "_Новый контроль времени"
 
-#: src/gtk/window.ui:352
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "_Перезапустить таймер"
 
-#: src/gtk/window.ui:358
+#: src/gtk/window.ui:268
 msgid "_Mute Alert Sound"
 msgstr "Отк_лючить звук предупреждения"
 
-#: src/gtk/window.ui:364
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбинации клавиш"
 
-#: src/gtk/window.ui:368
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "_О приложении"
 
-#: src/main.py:64
+#: src/main.py:60
 msgid "translator-credits"
 msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:56
 msgid "Player white timer"
 msgstr "Таймер игрока белыми"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Таймер игрока черными"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "Игра"
 
 #~ msgid "Custom"
 #~ msgstr "Другое"
