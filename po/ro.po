@@ -1,0 +1,244 @@
+# Romanian translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Florentina Mușat <florentina.musat.28@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-10-03 03:09+0000\n"
+"PO-Revision-Date: 2023-10-11 14:29+0300\n"
+"Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
+"gmail [dot] com>\n"
+"Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Poedit 3.4\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Ceas șah"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "chess;game;clock;timer;ceas;joc;ceas;cronometru;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Cronometrează jocuri de șah peste masă"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Ceas șah este o aplicație simplă pentru a oferi controlul timpului pentru "
+"jocurile de șah peste masă. Destinat utilizării mobile, jucătorii "
+"selectează configurările de control al timpului dorite pentru jocul lor, "
+"apoi jucătorul negru atinge ceasul pentru a începe cronometrul jucătorului "
+"alb. După rândul fiecărui jucător, aceștia ating ceasul pentru a începe "
+"tura adversarului, până când jocul se termină sau unul dintre ceasuri "
+"ajunge la zero."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Ecranul principal, care arată cronometre pentru jucătorii alb și negru ai "
+"unui joc de șah"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Ecranul de selecție a controlului de timp"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"Ecranul principal într-un raport de aspect portret, care arată un "
+"cronometru rotit la 180 de grade"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:33
+msgid "Clara Hobbs"
+msgstr "Clara Hobbs"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Un minut pe parte, plus zero secunde pe tură"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Două minute pe parte, plus o secundă pe tură"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Cinci minute pe parte, plus zero secunde pe tură"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Cinci minute pe parte, plus trei secunde pe tură"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Zece minute pe parte, plus zero secunde pe tură"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Zece minute pe parte, plus cinci secunde pe tură"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Treizeci de minute pe parte, plus zero secunde pe tură"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Treizeci de minute pe parte, plus douăzeci de secunde pe tură"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Minutele timpului principal"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Secundele timpului principal"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Incrementează secundele"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Joc"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Control de timp nou"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Repornește cronometrul"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Generale"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Deschide meniul principal"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Arată scurtăturile"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Închide fereastra"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ieși"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Selectați controalele de timp"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Bine ați venit la Ceas șah"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Selectați controale de timp de mai jos pentru a începe"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Metodă de control al timpului"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Incrementează"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Amânare Bronstein"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Amânare simplă"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Începe jocul"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Meniu principal"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Comută pauza"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Cronometru jucător alb"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Cronometru jucător negru"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "Control de timp _nou"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Repornește cronometrul"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Mută sunetul de alertă"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "Scurtături de _tastatură"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_Despre Ceas șah"
+
+#: src/main.py:60
+msgid "translator-credits"
+msgstr ""
+"Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
+"2023"
+
+#: src/timerbutton.py:56
+msgid "Player white timer"
+msgstr "Cronometru jucător alb"
+
+#: src/timerbutton.py:61
+msgid "Player black timer"
+msgstr "Cronometru jucător negru"
