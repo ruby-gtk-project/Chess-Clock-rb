@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-07-02 16:17+0000\n"
-"PO-Revision-Date: 2023-07-25 23:41+0200\n"
-"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"POT-Creation-Date: 2023-09-27 23:07+0000\n"
+"PO-Revision-Date: 2023-10-21 19:06+0200\n"
+"Last-Translator: Balázs Meskó <mesko.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 22.08.0\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -60,7 +60,15 @@ msgstr ""
 msgid "The time control selection screen"
 msgstr "Az időzítéskiválasztó képernyő"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:29
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"A főképernyő álló képaránnyal, amely egy 180°-kal elforgatott időzítőt "
+"jelenít meg"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:33
 msgid "Clara Hobbs"
 msgstr "Clara Hobbs"
 
@@ -148,7 +156,7 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Időzítés kiválasztása"
@@ -181,57 +189,56 @@ msgstr "Egyszerű késleltetés"
 msgid "Start Game"
 msgstr "Játék indítása"
 
-#: src/gtk/window.ui:109
-msgctxt "a11y"
-msgid "Playing"
-msgstr "Játékban"
-
-#: src/gtk/window.ui:168 src/gtk/window.ui:282
+#: src/gtk/window.ui:180
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: src/gtk/window.ui:182 src/gtk/window.ui:296
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "Szünet ki- és bekapcsolása"
 
-#: src/gtk/window.ui:200 src/gtk/window.ui:314
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Világos játékos időzítője"
 
-#: src/gtk/window.ui:211 src/gtk/window.ui:326
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Sötét játékos időzítője"
 
-#: src/gtk/window.ui:348
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "Ú_j időzítés"
 
-#: src/gtk/window.ui:352
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "Időzítő új_raindítása"
 
-#: src/gtk/window.ui:358
+#: src/gtk/window.ui:268
 msgid "_Mute Alert Sound"
 msgstr "Riasztási hang _némítása"
 
-#: src/gtk/window.ui:364
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
-#: src/gtk/window.ui:368
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "A Sakkóra _névjegye"
 
-#: src/main.py:64
+#: src/main.py:60
 msgid "translator-credits"
 msgstr "Meskó Balázs <mesko dot balazs at fsf dot hu>, 2023."
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:56
 msgid "Player white timer"
 msgstr "Világos játékos időzítője"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Sötét játékos időzítője"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "Játékban"
