@@ -14,7 +14,7 @@
 	  </p>
 	</description>
   <screenshots>
-    <screenshot>
+    <screenshot type="default">
       <caption>The main screen, showing timers for the white and black players of a chess game</caption>
       <image>https://clarahobbs.com/screenshots/chess-clock-0.6-1.png</image>
     </screenshot>
@@ -27,13 +27,28 @@
       <image>https://clarahobbs.com/screenshots/chess-clock-0.6-3.png</image>
     </screenshot>
   </screenshots>
+  <categories>
+    <category>GNOME</category>
+    <category>GTK</category>
+    <category>Game</category>
+    <category>BoardGame</category>
+  </categories>
+  <keywords>
+    <keyword>chess</keyword>
+    <keyword>game</keyword>
+    <keyword>clock</keyword>
+    <keyword>timer</keyword>
+  </keywords>
+  <translation type="gettext">chess-clock</translation>
   <launchable type="desktop-id">com.clarahobbs.chessclock.desktop</launchable>
   <url type="homepage">https://gitlab.gnome.org/World/chess-clock</url>
   <url type="bugtracker">https://gitlab.gnome.org/World/chess-clock/-/issues</url>
-  <developer_name>Clara Hobbs</developer_name>
+  <url type="vcs-browser">https://gitlab.gnome.org/World/chess-clock</url>
+  <url type="translate">https://l10n.gnome.org/module/chess-clock/</url>
+  <url type="contribute">https://gitlab.gnome.org/World/chess-clock/-/blob/main/CONTRIBUTING.md</url>
+  <developer_name translatable="no">Clara Hobbs</developer_name>
   <update_contact>clara_at_clarahobbs.com</update_contact>
   <custom>
-    <value key="Purism::form_factor">workstation</value>
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
