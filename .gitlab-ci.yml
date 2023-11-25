@@ -1,0 +1,23 @@
+include: https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml
+
+.vars:
+  variables:
+    MANIFEST_PATH: com.clarahobbs.chessclock.json
+    FLATPAK_MODULE: chess-clock
+    APP_ID: com.clarahobbs.chessclock
+    RUNTIME_REPO: https://nightly.gnome.org/gnome-nightly.flatpakrepo
+    BUNDLE: chess-clock.flatpak
+
+# Build Flatpak for x86_64
+flatpak@x86_64:
+  stage: build
+  extends:
+    - .flatpak@x86_64
+    - .vars
+
+# Build Flatpak for aarch64
+flatpak@aarch64:
+  stage: build
+  extends:
+    - .flatpak@aarch64
+    - .vars
