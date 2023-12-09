@@ -1,0 +1,230 @@
+# Hebrew translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-11-25 01:59+0000\n"
+"PO-Revision-Date: 2023-12-09 23:11+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: Hebrew <he@li.org>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "שעון שחמט"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "שחמט;שח;שח־מט;שח-מט;שח מט;משחק;שעון;מתזמן;טיימר;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "תזמון משחקי שחמט על גבי לוח"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"שעון שחמט הוא יישום פשוט לאספקת בקרת זמן על משחקי שחמט על גבי לוח. מיועד "
+"לשימוש נייד, שחקנים בוחרים את הגדרות בקרת הזמנים הנחוצות למשחק שלהם, לאחר "
+"מכן השחקן השחור נוגע בשעון שלו כדי להפעיל את המתזמן של השחקן הלבן. לאחר כל "
+"תור, על השחקן לגעת בשעות כדי להפעיל את השעון של היריב שלהם, עד שהמשחק "
+"מסתיים או שאחד מהשעונים מגיע לאפס."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr "המסך הראשי, מציג מתזמנים לשחקנים הלבן והשחור במשחק שחמט"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "מסך בחירת פקד זמן"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr "המסך הראשי הוא ביחס תצוגה לרוחב, מציג מתזמן אחד בהטיה של 180 מעלות"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "דקה לצד, תוספת של אפס שניות לתור"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "שתי דקות לצד, תוספת של שנייה לתור"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "חמש דקות לצד, תוספת של אפס שניות לתור"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "חמש דקות לצד, תוספת של שלוש שניות לתור"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "עשר דקות לצד, תוספת של אפס שניות לתור"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "עשר דקות לצד, תוספת של חמש שניות לתור"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "שלושים דקות לצד, תוספת של אפס שניות לתור"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "שלושים דקות לצד, תוספת של עשרים שניות לתור"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "דקות הזמן הראשי"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "שניות הזמן הראשי"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "הגדלת השניות"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "משחק"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "פקד זמן חדש"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "הפעלת מתזמן מחדש"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "כללי"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "פתיחת התפריט הראשי"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "הצגת קיצורי מקלדת"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "סגירת חלון"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "יציאה"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "בחירת פקדי זמן"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "ברוך בואך לשעון שחמט"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "נא לבחור בפקדי זמן להלן כדי להתחיל"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "שיטת בקרת זמנים"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "הגדלה"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "השהיית ברונשטיין"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "השהיה רגילה"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "התחלת משחק"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "תפריט ראשי"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "החלפת מצב עצירה"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "מתזמן שחקן לבן"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "מתזמן שחקן שחור"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "פקד זמן _חדש"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "ה_פעלת מתזמן מחדש"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "ה_שתקת צליל התראה"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_קיצורי מקלדת"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "על _שעון שחמט"
+
+#: src/main.py:60
+msgid "translator-credits"
+msgstr "ירון שהרבני <sh.yaron@gmail.com>"
+
+#: src/timerbutton.py:56
+msgid "Player white timer"
+msgstr "מתזמן שחקן לבן"
+
+#: src/timerbutton.py:61
+msgid "Player black timer"
+msgstr "מתזמן שחקן שחור"
