@@ -1,0 +1,230 @@
+# Persian translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-12-09 21:12+0000\n"
+"PO-Revision-Date: 2023-12-27 05:51+0330\n"
+"Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
+"Language-Team: Persian <fa@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "ساعت شطرنج"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "chess;game;clock;timer;شطرنج;بازی;ساعت;زمان;شمارش معکوس;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "زمان‌سنجی بازی‌های شطرنج"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"ساعت شطرنج برنامهٔ ساده‌ایست که واپایش زمان را برای بازی‌های شطرنج فراهم "
+"می‌کند. با در نظر گرفتن استفاده روی تلفن همراه،‌ بازیکنان تنظیمات واپایش زمان "
+"دلخواه برای بازیشان را برگزیده و سپس بازیکن سیاه برای آغاز زمان سفید روی "
+"ساعتش می‌زند. پس از هر نوبت بازی، بازیکن برای آغاز زمان حریف روی ساعت می‌زند "
+"تا زمانی که بازی تمام شده یا یکی از ساعت‌ها به صفر برسد."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr "صفحهٔ اصلی شمارشگرها را برای بازیکن سفید و سیاه بازی شطرنج نشان می‌دهد"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "صفحهٔ گزینش واپایش زمان"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr "صفحهٔ اصلی در حالت عمودی است.نمایش شمارشگری با ۱۸۰ درجه چرخش"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "یک دقیقه برای هر طرف. بدون وقفهٔ نوبت"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "دو دقیقه برای هر طرف. بدون وقفهٔ نوبت"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "پنج دقیقه برای هر طرف. بدون وقفهٔ نوبت"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "پنج دقیقه برای هر طرف. با سه ثانیه وقفهٔ نوبت"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "ده دقیقه برای هر طرف. بدون وقفهٔ نوبت"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "ده دقیقه برای هر طرف. با پنج ثانیه وقفهٔ نوبت"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr ""
+"پنج دقیقه برای هر طرف. بدون وقفهٔ نوبتسی دقیقه برای هر طرف. بدون وقفهٔ نوبت"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "سی دقیقه برای هر طرف. با بیست ثانیه وقفهٔ نوبت"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "دقیقه‌های زمان اصلی"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "ثانیه‌های زمان اصلی"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "افزایش ثانیه‌ها"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "بازی"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "واپایش زمان جدید"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "بارنشانی شمارش معکوس"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "عمومی"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "گشودن فهرست اصلی"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "نمایش میان‌برها"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "بستن پنجره"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "خروج"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "گزینش واپایش‌های زمانی"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "به ساعت شطرنج خوش آمدید"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "واپایش‌های زمانی زیر ر برای شروع برگزینید"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "روش واپایش زمان"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "افزایش"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "وقفهٔ برونشتین"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "وقفهٔ ساده"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "آغاز بازی"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "فهرست اصلی"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "تغییر حالت مکث"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "شمارش معکوس سفید"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "شمارش معکوس سیاه"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_واپایش زمان جدید"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_بارنشانی شمارش معکوس"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_خموشی صدای هشدار"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_میان‌برهای صفحه‌کلید"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_دربارهٔ ساعت شطرنج"
+
+#: src/main.py:60
+msgid "translator-credits"
+msgstr "دانیال بهزادی <dani.behzi@ubuntu.com>"
+
+#: src/timerbutton.py:56
+msgid "Player white timer"
+msgstr "شمارش معکوس سفید"
+
+#: src/timerbutton.py:61
+msgid "Player black timer"
+msgstr "شمارش معکوس سیاه"
