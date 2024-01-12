@@ -1,0 +1,233 @@
+# Friulian translation for chess-clock.
+# Copyright (C) 2024 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Fabio Tomat <f.t.public@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2024-01-07 12:23+0000\n"
+"PO-Revision-Date: 2024-01-12 14:53+0100\n"
+"Last-Translator: \n"
+"Language-Team: Friulian <fur@li.org>\n"
+"Language: fur\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Orloi di scacs"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "scacs;zûc;orloi;timp;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr ""
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Orloi di scacs e je une semplice aplicazion par dâ la pussibilitât di "
+"controlâ il timp tes partidis di scacs. Al è pensât pal ûs su plateformis "
+"mobilis, i zuiadôrs a selezionin lis impostazions di control dal timp "
+"desideradis pe lôr partide, po dopo il zuiadôr neri al tocje il so orloi "
+"par fâ partî il timp dal blanc. Dopo il lôr turni i zuiadôrs a tocjin il "
+"lôr orloi par inviâ chel dal aversari, fintremai che la partide e je finide "
+"o un dai doi orlois al rive a zero."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Il schermi principâl, che al mostre i cronometris pai zuiadôrs blanc e "
+"neri, di un zûc di scacs"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Schermade di selezion pal control dal timp"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr "Il schermi principâl intun"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Un minût par bande, plui zero seconts par turni"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Doi minûts par bande, plui un secont par turni"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Cinc minûts par bande, plui zero seconts par turni"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Cinc minûts par bande, plui trê seconts par ogni turni"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Dîs minûts par bande, plui zero seconts par turni"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Dîs minûts par bande, plui cinc seconts par turni"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Trente minûts par bande, plui zero seconts par turni"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Trente minûts par bande, plui vincj seconts par turni"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Minûts dal timp principâl"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Seconts dal timp principâl"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Seconts di increment"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Zûc"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Gnûf control dal timp"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Torne invie il timp"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Gjenerâl"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Vierç menù principâl"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostre scurtis"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Siere barcon"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Jes"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Selezione i controi dal timp"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Benvignûts su Orloi di scacs"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Selezione i controi dal timp chi sot par scomençâ"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Metodi di control dal timp"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Increment"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Ritart Bronstein"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Ritart sempliç"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Scomence la partide"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Menù principâl"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Ative/Disative pause"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Cronometri dal zuiadôr blanc"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Cronometri dal zuiadôr neri"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_Gnûf control dal timp"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Torne invie cronometri"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Cidine il sun di avîs"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Scurtis di tastiere"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_Informazions su Orloi di scacs"
+
+#: src/main.py:60
+msgid "translator-credits"
+msgstr "Fabio Tomat <f.t.public@gmail.com>, 2024"
+
+#: src/timerbutton.py:56
+msgid "Player white timer"
+msgstr "Cronometri dal zuiadôr blanc"
+
+#: src/timerbutton.py:61
+msgid "Player black timer"
+msgstr "Cronometri dal zuiadôr neri"
