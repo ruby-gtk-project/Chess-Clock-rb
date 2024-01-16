@@ -64,6 +64,7 @@ class ChessClockTimer(GObject.Object):
             prev_time = self.time
             tick = GLib.get_monotonic_time()
             self.time -= tick - self.last_tick
+            self.time = max(0, self.time)
             self.last_tick = tick
             self.emit("changed", self.time)
             if self.time <= 0 and prev_time > 0:
