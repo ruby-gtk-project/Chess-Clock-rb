@@ -1,15 +1,14 @@
 # French translation for chess-clock.
 # Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
 # This file is distributed under the same license as the chess-clock package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Irénée THIRION <irenee.thirion@e.email>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-04-14 02:25+0000\n"
-"PO-Revision-Date: 2023-06-06 12:08+0900\n"
+"POT-Creation-Date: 2023-08-23 11:32+0000\n"
+"PO-Revision-Date: 2023-09-09 13:41+0200\n"
 "Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -154,7 +153,7 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Sélectionner les contrôles du temps"
@@ -187,42 +186,41 @@ msgstr "Délai simple"
 msgid "Start Game"
 msgstr "Lancer la partie"
 
-#: src/gtk/window.ui:109
-msgctxt "a11y"
-msgid "Playing"
-msgstr "En train de jouer"
-
-#: src/gtk/window.ui:168 src/gtk/window.ui:282
+#: src/gtk/window.ui:180
 msgid "Main Menu"
 msgstr "Menu principal"
 
-#: src/gtk/window.ui:182 src/gtk/window.ui:296
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "Mettre en pause"
 
-#: src/gtk/window.ui:200 src/gtk/window.ui:314
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Minuteur du joueur blanc"
 
-#: src/gtk/window.ui:211 src/gtk/window.ui:326
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Minuteur du joueur noir"
 
-#: src/gtk/window.ui:348
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "_Nouveau contrôle du temps"
 
-#: src/gtk/window.ui:352
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "_Réinitialiser le minuteur"
 
-#: src/gtk/window.ui:358
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Couper le son des alertes"
+
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "Raccourcis _clavier"
 
-#: src/gtk/window.ui:362
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "À _propos de Pendule d’échecs"
 
@@ -230,13 +228,17 @@ msgstr "À _propos de Pendule d’échecs"
 msgid "translator-credits"
 msgstr "Irénée Thirion"
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:56
 msgid "Player white timer"
 msgstr "Minuteur du joueur blanc"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Minuteur du joueur noir"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "En train de jouer"
 
 #~ msgid "Custom"
 #~ msgstr "Personnalisé"
