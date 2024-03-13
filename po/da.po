@@ -1,14 +1,14 @@
 # Danish translation for chess-clock.
 # Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
 # This file is distributed under the same license as the chess-clock package.
-# Alan Mortensen <alanmortensen.am@gmail.com>, 2023.
+# Alan Mortensen <alanmortensen.am@gmail.com>, 2023-24.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-08-23 11:32+0000\n"
-"PO-Revision-Date: 2023-09-11 08:02+0200\n"
+"POT-Creation-Date: 2023-11-25 00:40+0000\n"
+"PO-Revision-Date: 2024-03-05 19:08+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -56,9 +56,11 @@ msgstr "Hovedskærmen med minuture for sort og hvid i et skakspil"
 msgid "The time control selection screen"
 msgstr "Skærmen til indstilling af tidsstyringen"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:29
-msgid "Clara Hobbs"
-msgstr "Clara Hobbs"
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr "Hovedskærmen i portrætformat der viser et minutur roteret 180 grader"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -218,7 +220,7 @@ msgstr "_Tastaturgenveje"
 msgid "_About Chess Clock"
 msgstr "_Om skakur"
 
-#: src/main.py:64
+#: src/main.py:60
 msgid "translator-credits"
 msgstr ""
 "Alan Mortensen\n"
@@ -233,6 +235,9 @@ msgstr "Hvids minutur"
 #: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Sorts minutur"
+
+#~ msgid "Clara Hobbs"
+#~ msgstr "Clara Hobbs"
 
 #~ msgid "Custom"
 #~ msgstr "Tilpasset"
