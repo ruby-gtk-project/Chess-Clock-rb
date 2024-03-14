@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2024-03-08 14:21+0000\n"
-"PO-Revision-Date: 2024-03-13 16:28+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2024-03-13 15:28+0000\n"
+"PO-Revision-Date: 2024-03-14 13:52+0100\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <nb@li.org>\n"
 "Language: nb\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
 msgid "Chess Clock"
-msgstr "Sjakkur"
+msgstr "Chess Clock"
 
 #: data/com.clarahobbs.chessclock.desktop.in:9
 msgid "chess;game;clock;timer;"
@@ -50,7 +50,7 @@ msgstr ""
 msgid ""
 "The main screen, showing timers for the white and black players of a chess "
 "game"
-msgstr "Sjakkuret i et parti"
+msgstr "Et pågående parti"
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:22
 msgid "The time control selection screen"
@@ -60,7 +60,7 @@ msgstr "Tidsinnstillinger"
 msgid ""
 "The main screen in a portrait aspect ratio, showing one timer rotated 180 "
 "degrees"
-msgstr "Sjakkuret i mobilmodus"
+msgstr "Mobilmodus"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -215,7 +215,7 @@ msgstr "_Tastatursnarveier"
 
 #: src/gtk/window.ui:278
 msgid "_About Chess Clock"
-msgstr "_Om Sjakkur"
+msgstr "_Om Chess Clock"
 
 #: src/main.py:60
 msgid "translator-credits"
