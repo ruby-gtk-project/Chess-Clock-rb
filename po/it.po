@@ -1,14 +1,14 @@
 # Italian translation for chess-clock.
 # Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
 # This file is distributed under the same license as the chess-clock package.
-# Davide Ferracin <davide.ferracin@protonmail.com>, 2023.
+# Davide Ferracin <davide.ferracin@protonmail.com>, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-04-17 02:31+0000\n"
-"PO-Revision-Date: 2023-04-29 16:53+0200\n"
+"POT-Creation-Date: 2023-11-25 00:40+0000\n"
+"PO-Revision-Date: 2024-03-22 20:31+0200\n"
 "Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
 "Language-Team: Italian <gnome-it-list@gnome.org>\n"
 "Language: it\n"
@@ -42,10 +42,10 @@ msgstr ""
 "Orologio per scacchi è una semplice app che permette di controllare il tempo "
 "nelle partite di scacchi su una scacchiera. Intesa per un uso su dispositivi "
 "mobili, i giocatori possono selezionare le impostazioni di tempo desiderate "
-"per la loro partita; a quel punto il giocatore nero tocca il proprio orologio "
-"per far partire quello del bianco. Dopo ciascun turno, ciascun giocatore "
-"tocca l'orologio per far partire quello dell'avversario, finché la partita "
-"termina oppure uno dei due orologi raggiunge lo zero."
+"per la loro partita; a quel punto il giocatore nero tocca il proprio "
+"orologio per far partire quello del bianco. Dopo ciascun turno, ciascun "
+"giocatore tocca l'orologio per far partire quello dell'avversario, finché la "
+"partita termina oppure uno dei due orologi raggiunge lo zero."
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:18
 msgid ""
@@ -59,9 +59,13 @@ msgstr ""
 msgid "The time control selection screen"
 msgstr "La schermata di impostazione dei controlli di tempo"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:29
-msgid "Clara Hobbs"
-msgstr "Clara Hobbs"
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"La schermata principale è orientata orizzontalmente, e mostra un "
+"conto alla rovescia ruotato di 180 gradi"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -147,7 +151,7 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Esce"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Seleziona i controlli di tempo"
@@ -180,53 +184,59 @@ msgstr "Ritardo semplice"
 msgid "Start Game"
 msgstr "Inizia partita"
 
-#: src/gtk/window.ui:109
-msgctxt "a11y"
-msgid "Playing"
-msgstr "Partita in corso"
-
-#: src/gtk/window.ui:168 src/gtk/window.ui:282
+#: src/gtk/window.ui:180
 msgid "Main Menu"
 msgstr "Menù principale"
 
-#: src/gtk/window.ui:182 src/gtk/window.ui:296
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "Pausa/Riprendi"
 
-#: src/gtk/window.ui:200 src/gtk/window.ui:314
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Cronometro del giocatore bianco"
 
-#: src/gtk/window.ui:211 src/gtk/window.ui:326
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Cronometro del giocatore nero"
 
-#: src/gtk/window.ui:348
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "_Nuovi controlli di tempo"
 
-#: src/gtk/window.ui:352
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "_Reimposta orologio"
 
-#: src/gtk/window.ui:358
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Silenzia il suono di notifica"
+
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "_Scorciatoie da tastiera"
 
-#: src/gtk/window.ui:362
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "_Informazioni su Orologio per scacchi"
 
-#: src/main.py:64
+#: src/main.py:60
 msgid "translator-credits"
-msgstr "Davide Ferracin <davide.ferracin@protonmail.com>, 2023"
+msgstr "Davide Ferracin <davide.ferracin@protonmail.com>"
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:56
 msgid "Player white timer"
 msgstr "Cronometro del giocatore bianco"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Cronometro del giocatore nero"
+
+#~ msgid "Clara Hobbs"
+#~ msgstr "Clara Hobbs"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "Partita in corso"
