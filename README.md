@@ -1,3 +1,9 @@
+## Notice! Seeking maintainers
+
+Chess Clock's creator has left the GNOME Foundation and is looking to step away
+from the project.  If you are interested in maintaining Chess Clock, please open
+an issue to let me know!
+
 # Chess Clock
 
 ![Application icon](./data/icons/hicolor/scalable/apps/com.clarahobbs.chessclock.svg)
