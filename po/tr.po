@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-09-27 23:07+0000\n"
-"PO-Revision-Date: 2023-10-11 15:09+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"POT-Creation-Date: 2023-11-25 00:40+0000\n"
+"PO-Revision-Date: 2024-05-09 10:30+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.3\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -27,7 +27,7 @@ msgstr "Satranç Saati"
 
 #: data/com.clarahobbs.chessclock.desktop.in:9
 msgid "chess;game;clock;timer;"
-msgstr "satranç;oyun;chess;saat;zamanlayıcı;"
+msgstr "chess;game;clock;timer;satranç;oyun;saat;zamanlayıcı;"
 
 #: data/com.clarahobbs.chessclock.appdata.xml.in:7
 msgid "Time games of over-the-board chess"
@@ -68,10 +68,6 @@ msgid ""
 msgstr ""
 "Dikey en boy oranındaki ana ekran, 180 derece döndürülmüş zamanlayıcıyı "
 "gösteriyor"
-
-#: data/com.clarahobbs.chessclock.appdata.xml.in:33
-msgid "Clara Hobbs"
-msgstr "Clara Hobbs"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -241,3 +237,6 @@ msgstr "Beyaz oyuncu zamanlayıcısı"
 #: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Siyah oyuncu zamanlayıcısı"
+
+#~ msgid "Clara Hobbs"
+#~ msgstr "Clara Hobbs"
