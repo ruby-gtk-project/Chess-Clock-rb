@@ -1,15 +1,15 @@
 # Turkish translation for chess-clock.
-# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# Copyright (C) 2023-2024 chess-clock's COPYRIGHT HOLDER
 # This file is distributed under the same license as the chess-clock package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2023.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2023.
+# Sabri Ünal <yakushabb@gmail.com>, 2023, 2024.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-11-25 00:40+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2024-07-29 20:36+0000\n"
 "PO-Revision-Date: 2024-05-09 10:30+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -227,7 +227,7 @@ msgstr "Satranç Saati _Hakkında"
 #: src/main.py:60
 msgid "translator-credits"
 msgstr ""
-"Sabri Ünal <libreajans@gmail.com>\n"
+"Sabri Ünal <yakushabb@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
 #: src/timerbutton.py:56
@@ -237,6 +237,3 @@ msgstr "Beyaz oyuncu zamanlayıcısı"
 #: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Siyah oyuncu zamanlayıcısı"
-
-#~ msgid "Clara Hobbs"
-#~ msgstr "Clara Hobbs"
