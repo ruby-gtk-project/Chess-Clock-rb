@@ -46,8 +46,8 @@
   <url type="vcs-browser">https://gitlab.gnome.org/World/chess-clock</url>
   <url type="translate">https://l10n.gnome.org/module/chess-clock/</url>
   <url type="contribute">https://gitlab.gnome.org/World/chess-clock/-/blob/main/CONTRIBUTING.md</url>
-  <developer_name translatable="no">Clara Hobbs</developer_name>
-  <update_contact>clara_at_clarahobbs.com</update_contact>
+  <developer_name translatable="no">Evangelos Ribeiro Tzaras</developer_name>
+  <update_contact>devrtz_at_fortysixandtwo.eu</update_contact>
   <custom>
     <value key="Purism::form_factor">mobile</value>
   </custom>
