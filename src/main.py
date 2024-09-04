@@ -55,7 +55,10 @@ class ChessClockApplication(Adw.Application):
         """Callback for the app.about action."""
         about = Adw.AboutWindow.new_from_appdata("/com/clarahobbs/chessclock/com.clarahobbs.chessclock.appdata.xml", "0.6.0")
         about.set_transient_for(self.props.active_window)
-        about.set_developers(['Clara Hobbs‍️', 'gregorni', 'Mariko Ueno'])
+        about.set_developers(['Clara Hobbs‍️',
+                              'Evangelos Ribeiro Tzaras',
+                              'gregorni',
+                              'Mariko Ueno'])
         about.set_artists(['Brage Fuglseth'])
         about.set_translator_credits(_("translator-credits"))
         about.present()
