@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/clarahobbs/chessclock">
+  <gresource prefix="/eu/fortysixandtwo/chessclock">
     <file alias="window.ui" preprocess="xml-stripblanks">gtk/window.ui</file>
     <file alias="timecontrolentry.ui" preprocess="xml-stripblanks">gtk/timecontrolentry.ui</file>
     <file alias="timerbutton.ui" preprocess="xml-stripblanks">gtk/timerbutton.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <file alias="style.css">gtk/style.css</file>
     <file alias="style-hc.css">gtk/style-hc.css</file>
-    <file alias="com.clarahobbs.chessclock.appdata.xml" preprocess="xml-stripblanks">../data/com.clarahobbs.chessclock.appdata.xml.in</file>
+    <file alias="eu.fortysixandtwo.chessclock.metainfo.xml" preprocess="xml-stripblanks">../data/eu.fortysixandtwo.chessclock.metainfo.xml.in</file>
   </gresource>
 </gresources>

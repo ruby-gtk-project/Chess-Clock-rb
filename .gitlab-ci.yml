@@ -2,9 +2,9 @@ include: https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_c
 
 .vars:
   variables:
-    MANIFEST_PATH: com.clarahobbs.chessclock.json
+    MANIFEST_PATH: eu.fortysixandtwo.chessclock.json
     FLATPAK_MODULE: chess-clock
-    APP_ID: com.clarahobbs.chessclock
+    APP_ID: eu.fortysixandtwo.chessclock
     RUNTIME_REPO: https://nightly.gnome.org/gnome-nightly.flatpakrepo
     BUNDLE: chess-clock.flatpak
 

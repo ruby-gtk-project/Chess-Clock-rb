@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-	<id>com.clarahobbs.chessclock</id>
+	<id>eu.fortysixandtwo.chessclock</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
   <name>Chess Clock</name>
@@ -40,7 +40,7 @@
     <keyword>timer</keyword>
   </keywords>
   <translation type="gettext">chess-clock</translation>
-  <launchable type="desktop-id">com.clarahobbs.chessclock.desktop</launchable>
+  <launchable type="desktop-id">eu.fortysixandtwo.chessclock.desktop</launchable>
   <url type="homepage">https://gitlab.gnome.org/World/chess-clock</url>
   <url type="bugtracker">https://gitlab.gnome.org/World/chess-clock/-/issues</url>
   <url type="vcs-browser">https://gitlab.gnome.org/World/chess-clock</url>

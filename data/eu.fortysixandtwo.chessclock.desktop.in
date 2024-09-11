@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Chess Clock
 Exec=chess-clock
-Icon=com.clarahobbs.chessclock
+Icon=eu.fortysixandtwo.chessclock
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Game;BoardGame;

@@ -27,7 +27,7 @@ from .statemachine import (ChessClockStateMachine,
                            ChessClockDelayStateMachine,
                            MachineState)
 
-@Gtk.Template(resource_path='/com/clarahobbs/chessclock/window.ui')
+@Gtk.Template(resource_path='/eu/fortysixandtwo/chessclock/window.ui')
 class ChessClockWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'ChessClockWindow'
 
@@ -64,7 +64,7 @@ class ChessClockWindow(Adw.ApplicationWindow):
 
         self.link_state_machine(ChessClockIncrementStateMachine(self, 300, 0))
 
-        self.settings = Gio.Settings(schema_id="com.clarahobbs.chessclock")
+        self.settings = Gio.Settings(schema_id="eu.fortysixandtwo.chessclock")
         self.settings.bind("control-method", self.method_chooser, "selected",
                            Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind("width", self, "default-width",

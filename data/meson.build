@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-        input: 'com.clarahobbs.chessclock.desktop.in',
-       output: 'com.clarahobbs.chessclock.desktop',
+        input: 'eu.fortysixandtwo.chessclock.desktop.in',
+       output: 'eu.fortysixandtwo.chessclock.desktop',
          type: 'desktop',
        po_dir: '../po',
       install: true,
@@ -13,8 +13,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-        input: 'com.clarahobbs.chessclock.appdata.xml.in',
-       output: 'com.clarahobbs.chessclock.appdata.xml',
+        input: 'eu.fortysixandtwo.chessclock.metainfo.xml.in',
+       output: 'eu.fortysixandtwo.chessclock.metainfo.xml',
        po_dir: '../po',
       install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')
@@ -25,7 +25,7 @@ if appstreamcli.found()
   test('Validate appstream file', appstreamcli, args: ['validate', '--no-net', appstream_file])
 endif
 
-install_data('com.clarahobbs.chessclock.gschema.xml',
+install_data('eu.fortysixandtwo.chessclock.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
 )
 
