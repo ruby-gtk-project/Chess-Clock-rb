@@ -1,5 +1,5 @@
 {
-    "app-id" : "com.clarahobbs.chessclock",
+    "app-id" : "eu.fortysixandtwo.chessclock",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",

@@ -21,7 +21,7 @@ from gi.repository import Adw, Gtk, GLib, GObject, Gio
 
 from math import ceil
 
-@Gtk.Template(resource_path='/com/clarahobbs/chessclock/timecontrolentry.ui')
+@Gtk.Template(resource_path='/eu/fortysixandtwo/chessclock/timecontrolentry.ui')
 class ChessClockTimeControlEntry(Gtk.Box):
     __gtype_name__ = 'ChessClockTimeControlEntry'
 
@@ -50,7 +50,7 @@ class ChessClockTimeControlEntry(Gtk.Box):
         self.thirty_zero.connect("clicked", self.set_control, 30, 0, 0)
         self.thirty_twenty.connect("clicked", self.set_control, 30, 0, 20)
 
-        self.settings = Gio.Settings(schema_id='com.clarahobbs.chessclock')
+        self.settings = Gio.Settings(schema_id='eu.fortysixandtwo.chessclock')
         self.settings.bind('custom-control-minutes', self.minutes, 'value',
                            Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('custom-control-seconds', self.seconds, 'value',

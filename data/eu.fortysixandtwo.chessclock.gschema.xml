@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="chess-clock">
-	<schema id="com.clarahobbs.chessclock" path="/com/clarahobbs/chessclock/">
+	<schema id="eu.fortysixandtwo.chessclock" path="/eu/fortysixandtwo/chessclock/">
 	  <key name="width" type="i">
       <default>640</default>
     </key>

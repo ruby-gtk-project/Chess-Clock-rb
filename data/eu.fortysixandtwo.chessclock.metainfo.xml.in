@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-	<id>com.clarahobbs.chessclock</id>
+	<id>eu.fortysixandtwo.chessclock</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
   <name>Chess Clock</name>
@@ -40,14 +40,14 @@
     <keyword>timer</keyword>
   </keywords>
   <translation type="gettext">chess-clock</translation>
-  <launchable type="desktop-id">com.clarahobbs.chessclock.desktop</launchable>
+  <launchable type="desktop-id">eu.fortysixandtwo.chessclock.desktop</launchable>
   <url type="homepage">https://gitlab.gnome.org/World/chess-clock</url>
   <url type="bugtracker">https://gitlab.gnome.org/World/chess-clock/-/issues</url>
   <url type="vcs-browser">https://gitlab.gnome.org/World/chess-clock</url>
   <url type="translate">https://l10n.gnome.org/module/chess-clock/</url>
   <url type="contribute">https://gitlab.gnome.org/World/chess-clock/-/blob/main/CONTRIBUTING.md</url>
-  <developer_name translatable="no">Clara Hobbs</developer_name>
-  <update_contact>clara_at_clarahobbs.com</update_contact>
+  <developer_name translatable="no">Evangelos Ribeiro Tzaras</developer_name>
+  <update_contact>devrtz_at_fortysixandtwo.eu</update_contact>
   <custom>
     <value key="Purism::form_factor">mobile</value>
   </custom>

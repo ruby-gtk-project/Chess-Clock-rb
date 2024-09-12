@@ -1,4 +1,4 @@
-application_id = 'com.clarahobbs.chessclock'
+application_id = 'eu.fortysixandtwo.chessclock'
 
 scalable_dir = join_paths('hicolor', 'scalable', 'apps')
 install_data(

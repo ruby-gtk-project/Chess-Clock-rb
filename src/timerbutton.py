@@ -24,7 +24,7 @@ from gi.repository import GObject, Gtk, GLib
 
 from math import ceil
 
-@Gtk.Template(resource_path='/com/clarahobbs/chessclock/timerbutton.ui')
+@Gtk.Template(resource_path='/eu/fortysixandtwo/chessclock/timerbutton.ui')
 class ChessClockTimerButton(Gtk.Button):
     __gtype_name__ = 'ChessClockTimerButton'
 

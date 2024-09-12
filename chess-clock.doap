@@ -15,12 +15,12 @@
 
   <maintainer>
     <foaf:Person>
-      <foaf:name>Clara Hobbs</foaf:name>
-      <foaf:mbox rdf:resource="mailto:clara@clarahobbs.com" />
+      <foaf:name>Evangelos Ribeiro Tzaras</foaf:name>
+      <foaf:mbox rdf:resource="mailto:devrtz@fortysixandtwo.eu" />
       <foaf:account>
         <foaf:OnlineAccount>
           <foaf:accountServiceHomepage rdf:resource="https://gitlab.gnome.org"/>
-          <foaf:accountName>cghobbs</foaf:accountName>
+          <foaf:accountName>devrtz</foaf:accountName>
         </foaf:OnlineAccount>
       </foaf:account>
     </foaf:Person>
