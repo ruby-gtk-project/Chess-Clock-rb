@@ -52,6 +52,16 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
+    <release version="0.6.1" date="2024-09-13">
+      <description>
+	<p>A bugfix release under new maintainership.</p>
+	<ul>
+	  <li>Thanks to Clara Hobbs for creating Chess Clock!</li>
+	  <li>Fixed the timer not correctly counting down to zero, thanks to Michael Evans.</li>
+	  <li>Declare as compatible with mobile and workstations.</li>
+	</ul>
+      </description>
+    </release>
     <release version="0.6.0" date="2023-09-27">
       <description>
         <p>A new release bringing adaptivity refinements and alert sounds.</p>
