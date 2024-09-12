@@ -7,3 +7,4 @@ Type=Application
 Categories=GNOME;GTK;Game;BoardGame;
 Keywords=chess;game;clock;timer;
 StartupNotify=true
+X-Purism-FormFactor=Workstation;Mobile;
