@@ -1,6 +1,6 @@
-data/com.clarahobbs.chessclock.desktop.in
-data/com.clarahobbs.chessclock.appdata.xml.in
-data/com.clarahobbs.chessclock.gschema.xml
+data/eu.fortysixandtwo.chessclock.desktop.in
+data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+data/eu.fortysixandtwo.chessclock.gschema.xml
 src/gtk/timecontrolentry.ui
 src/gtk/help-overlay.ui
 src/gtk/timerbutton.ui
