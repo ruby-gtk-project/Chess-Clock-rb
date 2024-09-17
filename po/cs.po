@@ -1,0 +1,236 @@
+# Czech translation for chess-clock.
+# Copyright (C) 2024 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+#
+# Václav Koterec <kot.va@centrum.cz>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2024-07-29 20:36+0000\n"
+"PO-Revision-Date: 2024-09-17 17:10+0200\n"
+"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
+"Language-Team: čeština\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Šachové hodiny"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "chess;šachy;hra;clock;hodiny;časovač;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Časové hry v šachu nad šachovnicí"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Šachové hodiny jsou jednoduchá aplikace pro kontrolu času při šachových "
+"partiích nad šachovnicí. Je určena pro mobilní použití, hráči si vyberou "
+"požadované nastavení kontroly času pro svou hru a poté černý hráč klepnutím "
+"na své hodiny spustí časovač bílého. Po tahu každého hráče se klepnutím na "
+"hodiny spustí soupeřovy hodiny, dokud hra neskončí nebo dokud jedny z hodin "
+"nedosáhnou nuly."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Hlavní obrazovka zobrazující časomíru pro bílého a černého hráče šachové "
+"partie"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Obrazovka pro výběr časového ovládání"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"Hlavní obrazovka v poměru stran na výšku, zobrazuje jeden časovač otočený o "
+"180 stupňů"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Jedna minuta na stranu plus nula sekund na otočení"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Dvě minuty na stranu plus jedna sekunda na otočení"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Pět minut na stranu plus nula sekund na otočení"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Pět minut na stranu plus tři sekundy na otočení"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Deset minut na stranu plus nula sekund na otočení"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Deset minut na stranu plus pět sekund na otočení"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Třicet minut na stranu plus nula sekund na otočení"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Třicet minut na stranu plus dvacet sekund na otočení"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Hlavní čas v minutách"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Hlavní čas v sekundách"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Přírůstek sekund"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Hra"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Nová kontrola času"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Restartovat časovač"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Obecné"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Otevřít hlavní nabídku"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Zobrazit zkratky"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Zavřít okno"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ukončit"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Výběr časových kontrol"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Vítejte v Šachových hodinách"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Chcete-li začít, vyberte níže uvedené časové kontroly"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Metoda časové kontroly"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Přírůstek"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Zpoždění Bronstein"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Jednoduché zpoždění"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Začít hru"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Hlavní nabídka"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Přepnout pauzu"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Časovač bílého hráče"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Časovač černého hráče"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_Nová kontrola času"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Restartovat časovač"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Ztlumit zvuk upozornění"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Klávesové zkratky"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "O _aplikaci Šachové hodiny"
+
+#: src/main.py:60
+msgid "translator-credits"
+msgstr "Václav Koterec <kot.va@centrum.cz>"
+
+#: src/timerbutton.py:56
+msgid "Player white timer"
+msgstr "Časovač bílého hráče"
+
+#: src/timerbutton.py:61
+msgid "Player black timer"
+msgstr "Časovač černého hráče"
