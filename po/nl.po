@@ -2,21 +2,22 @@
 # Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
 # This file is distributed under the same license as the chess-clock package.
 # Philip Goto <Philip.goto@gmail.com>, 2023.
+# Nathan Follens <nfollens@gnome.org>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-08-23 11:32+0000\n"
-"PO-Revision-Date: 2023-08-27 14:34+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2024-07-29 20:36+0000\n"
+"PO-Revision-Date: 2024-10-30 18:33+0100\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
-"Language-Team: GNOME-NL <https://matrix.to/#/#nl:gnome.org>\n"
+"Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/com.clarahobbs.chessclock.desktop.in:3
 #: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
@@ -59,9 +60,12 @@ msgstr ""
 msgid "The time control selection screen"
 msgstr "Het selectiescherm voor de tijdsbediening"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:29
-msgid "Clara Hobbs"
-msgstr "Clara Hobbs"
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"Het hoofdscherm in portretmodus, met een timer die 180 graden gedraaid is"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -218,10 +222,11 @@ msgstr "Snel_toetsen"
 msgid "_About Chess Clock"
 msgstr "_Over Schaakklok"
 
-#: src/main.py:64
+#: src/main.py:60
 msgid "translator-credits"
 msgstr ""
 "Philip Goto <philip.goto@gmail.com>\n"
+"Nathan Follens <nfollens@gnome.org>\n"
 "Meer info over GNOME-NL https://nl.gnome.org"
 
 #: src/timerbutton.py:56
@@ -231,6 +236,9 @@ msgstr "Timer van witte speler"
 #: src/timerbutton.py:61
 msgid "Player black timer"
 msgstr "Timer van zwarte speler"
+
+#~ msgid "Clara Hobbs"
+#~ msgstr "Clara Hobbs"
 
 #~ msgid "Custom"
 #~ msgstr "Aangepast"
