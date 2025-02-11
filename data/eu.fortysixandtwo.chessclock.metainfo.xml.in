@@ -16,15 +16,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>The main screen, showing timers for the white and black players of a chess game</caption>
-      <image>https://clarahobbs.com/screenshots/chess-clock-0.6-1.png</image>
+      <image>https://gitlab.gnome.org/World/chess-clock/raw/HEAD/data/screenshots/chess-clock-0.6-1.png</image>
     </screenshot>
     <screenshot>
       <caption>The time control selection screen</caption>
-      <image>https://clarahobbs.com/screenshots/chess-clock-0.6-2.png</image>
+      <image>https://gitlab.gnome.org/World/chess-clock/raw/HEAD/data/screenshots/chess-clock-0.6-2.png</image>
     </screenshot>
     <screenshot>
       <caption>The main screen in a portrait aspect ratio, showing one timer rotated 180 degrees</caption>
-      <image>https://clarahobbs.com/screenshots/chess-clock-0.6-3.png</image>
+      <image>https://gitlab.gnome.org/World/chess-clock/raw/HEAD/data/screenshots/chess-clock-0.6-3.png</image>
     </screenshot>
   </screenshots>
   <categories>
