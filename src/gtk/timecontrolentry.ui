@@ -124,7 +124,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="GtkBox" id="custom_control_box">
         <property name="orientation">horizontal</property>
         <property name="halign">center</property>
         <child>
