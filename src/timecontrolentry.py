@@ -34,6 +34,7 @@ class ChessClockTimeControlEntry(Gtk.Box):
     thirty_zero = Gtk.Template.Child()
     thirty_twenty = Gtk.Template.Child()
 
+    custom_control_box = Gtk.Template.Child()
     minutes = Gtk.Template.Child()
     seconds = Gtk.Template.Child()
     increment = Gtk.Template.Child()
@@ -57,6 +58,8 @@ class ChessClockTimeControlEntry(Gtk.Box):
                            Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('custom-control-increment', self.increment, 'value',
                            Gio.SettingsBindFlags.DEFAULT)
+
+        self.custom_control_box.set_direction(Gtk.TextDirection.LTR)
 
         self.minutes_adj = Gtk.Adjustment.new(self.settings['custom-control-minutes'], 0, 999, 1, 10, 0)
         self.minutes.set_adjustment(self.minutes_adj)
