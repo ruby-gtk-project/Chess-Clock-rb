@@ -28,6 +28,7 @@ from math import ceil
 class ChessClockTimerButton(Gtk.Button):
     __gtype_name__ = 'ChessClockTimerButton'
 
+    timer_box = Gtk.Template.Child()
     minutes = Gtk.Template.Child()
     seconds = Gtk.Template.Child()
 
@@ -37,6 +38,7 @@ class ChessClockTimerButton(Gtk.Button):
         self.set_css_name("button")
         self.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.add_css_class("timerbutton")
+        self.timer_box.set_direction(Gtk.TextDirection.LTR)
         self._inverted = False
 
     def on_changed(self, timer, time):
