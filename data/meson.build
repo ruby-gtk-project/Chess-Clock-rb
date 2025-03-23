@@ -17,7 +17,7 @@ appstream_file = i18n.merge_file(
        output: 'eu.fortysixandtwo.chessclock.metainfo.xml',
        po_dir: '../po',
       install: true,
-  install_dir: join_paths(get_option('datadir'), 'appdata')
+  install_dir: join_paths(get_option('datadir'), 'metainfo')
 )
 
 appstreamcli = find_program('appstreamcli', required: false)
