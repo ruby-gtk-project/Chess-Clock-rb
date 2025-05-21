@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
-"POT-Creation-Date: 2025-01-12 11:34+0000\n"
-"PO-Revision-Date: 2025-02-01 19:50-0300\n"
+"POT-Creation-Date: 2025-03-23 08:26+0000\n"
+"PO-Revision-Date: 2025-05-20 20:19-0400\n"
 "Last-Translator: Emilio Sepúlveda <emism.translations@gmail.com>\n"
 "Language-Team: Interlingua <softinterlingua@gmail.com>\n"
 "Language: ia\n"
@@ -22,7 +22,8 @@ msgstr ""
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-Generator: Gtranslator 48.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/eu.fortysixandtwo.chessclock.desktop.in:3
 #: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
@@ -146,7 +147,7 @@ msgstr "Aperir menu principal"
 #: src/gtk/help-overlay.ui:37
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Monstrar commandos curte"
+msgstr "Monstrar vias breve"
 
 #: src/gtk/help-overlay.ui:43
 msgctxt "shortcut window"
@@ -161,7 +162,7 @@ msgstr "Quitar"
 #: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
-msgstr "Selectionar controlos de tempore"
+msgstr "Seliger controlos de tempore"
 
 #: src/gtk/window.ui:44
 msgid "Welcome to Chess Clock"
@@ -169,7 +170,7 @@ msgstr "Benvenite a Horologio de chacos"
 
 #: src/gtk/window.ui:54
 msgid "Select time controls below to get started"
-msgstr "Selectiona le controlos de tempore in basso pro comenciar"
+msgstr "Selige le controlos de tempore in basso pro comenciar"
 
 #: src/gtk/window.ui:72
 msgid "Time control method"
@@ -223,7 +224,7 @@ msgstr "_Silentiar sono de alerta"
 
 #: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
-msgstr "_Commandos curte de claviero"
+msgstr "Vias breve de _claviero"
 
 #: src/gtk/window.ui:278
 msgid "_About Chess Clock"
@@ -233,10 +234,10 @@ msgstr "_A proposito de Horologio de chacos"
 msgid "translator-credits"
 msgstr "Emilio Sepúlveda <emism.translations@gmail.com>"
 
-#: src/timerbutton.py:56
+#: src/timerbutton.py:58
 msgid "Player white timer"
 msgstr "Temporisator del jocator de blanc"
 
-#: src/timerbutton.py:61
+#: src/timerbutton.py:63
 msgid "Player black timer"
 msgstr "Temporisator del jocator de nigre"
