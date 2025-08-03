@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=eu.fortysixandtwo.chessclock
+Exec=@bindir@/chess-clock --gapplication-service
