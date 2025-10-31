@@ -52,6 +52,15 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
   <releases>
+    <release version="0.6.2" date="2025-10-31">
+      <description>
+	<p>A bugfix release under new maintainership.</p>
+	<ul>
+	  <li>Fix timer display in RTL languages, thanks to Yosef Or Boczko</li>
+	  <li>New and updated translations.</li>
+	</ul>
+      </description>
+    </release>
     <release version="0.6.1" date="2024-09-13">
       <description>
 	<p>A bugfix release under new maintainership.</p>
