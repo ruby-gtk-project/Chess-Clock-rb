@@ -1,0 +1,236 @@
+# Catalan translation for chess-clock.
+# Copyright (C) 2025 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Victor Dargallo <victordargallo@disroot.org>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-11-10 11:26+0000\n"
+"PO-Revision-Date: 2025-11-23 19:46+0100\n"
+"Last-Translator: \n"
+"Language-Team: Catalan <Catalan>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Rellotge d'escacs"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
+msgid "chess;game;clock;timer;"
+msgstr "escacs;joc;rellotge;temporitzador;"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Partides de temps d'escacs sobre tauler"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"El Rellotge d'escacs és una aplicació senzilla per proporcionar control de "
+"temps per a les partides d'escacs sobre tauler. Destinada a l'ús mòbil, els "
+"jugadors seleccionen la configuració de control de temps desitjada per al "
+"seu joc, i després el jugador de peces negres toca el seu rellotge per "
+"iniciar el temporitzador de les peces blanques. Després del torn de cada "
+"jugador, premen el rellotge per començar el temps del seu oponent, fins que "
+"el joc s'acabi o un dels rellotges arribi a zero."
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"La pantalla principal, mostrant temporitzadors per als jugadors de peces "
+"blanques i negres d'una partida d'escacs"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
+msgid "The time control selection screen"
+msgstr "La pantalla de selecció del control de temps"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"La pantalla principal en una relació d'aspecte de retrat, mostrant un "
+"temporitzador girat 180 graus"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Un minut per costat, més zero segons per torn"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Dos minuts per costat, més un segon per torn"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Cinc minuts per costat, més zero segons per torn"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Cinc minuts per costat, més tres segons per torn"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Deu minuts per costat, més zero segons per torn"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Deu minuts per costat, més cinc segons per torn"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Trenta minuts per costat, més zero segons per torn"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Trenta minuts per costat, més vint segons per torn"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Minuts del temps principal"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Segons del temps principal"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Segons d'increment"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Joc"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Control de temps nou"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Reinicia el temporitzador"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Obre el menú principal"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostra les dreceres de teclat"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Tanca la finestra"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Surt"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Selecciona els controls de temps"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Us donem la benvinguda al Rellotge d'escacs"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Seleccioneu els controls de temps següents per començar"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Mètode de control de temps"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Cadència de Fisher"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Cadència de Bronstein"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Cadència simple"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Inicia el joc"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Commuta la pausa"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Temporitzador del jugador amb peces blanques"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Temporitzador del jugador amb peces negres"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_Control de temps nou"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Reinicia el temporitzador"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Silencia el so d'alerta"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Dreceres de teclat"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_Quant al Rellotge d'escacs"
+
+#: src/main.py:63
+msgid "translator-credits"
+msgstr "Victor Dargallo <victordargallo@disroot.org>"
+
+#: src/timerbutton.py:58
+msgid "Player white timer"
+msgstr "Temporitzador del jugador amb peces blanques"
+
+#: src/timerbutton.py:63
+msgid "Player black timer"
+msgstr "Temporitzador del jugador amb peces negres"
