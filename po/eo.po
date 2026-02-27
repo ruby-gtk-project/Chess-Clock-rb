@@ -1,0 +1,235 @@
+# Esperanto translation for chess-clock.
+# Copyright (C) 2026 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-02-27 10:49+0100\n"
+"Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
+"Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Ŝaka horloĝo"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
+msgid "chess;game;clock;timer;"
+msgstr "chess;game;clock;timer;"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Temporegistrado por fizika ŝakludado"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Ŝaka horloĝo estas simpla programo por provizi tempkontrolon por fizikaj "
+"ŝakludoj. Destinita por poŝtelefona uzo, la ludantoj elektas la "
+"tempkontrolan agordon deziratan por sia ludo, poste la nigra ludanto frapos "
+"sian horloĝon por komenci la tempigilon de blanka. Post la vico de ĉiu "
+"ludanto, ili frapas la horloĝon por komenci tiun de sia kontraŭulo, ĝis la "
+"ludo finiĝas aŭ unu el la horloĝoj atingas nulo."
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"La ĉefa ekrano, montrante tempigojn por la blankaj kaj nigraj ludantoj de "
+"ŝakludo"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
+msgid "The time control selection screen"
+msgstr "La ekrano de elekto de tempkontrolado"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"La ĉefa ekrano en portreta proporcio, montrante unu tempigilon rotaciitan "
+"180 gradojn"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Unu minuto po flanko, plus nul sekundoj po vico"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Du minutoj po flanko, plus unu sekundo po vico"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Kvin minutoj po flanko, plus nul sekundoj po vico"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Kvin minutoj po flanko, plus tri sekundoj po vico"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Dek minutoj po flanko, plus nul sekundoj po vico"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Dek minutoj po flanko, plus kvin sekundoj po vico"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Tridek minutoj po flanko, plus nul sekundoj po vico"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Tridek minutoj po flanko, plus dudek sekundoj po vico"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Minutoj de ĉefa tempo"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Sekundoj de ĉefa tempo"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Sekundoj de pliigo"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Ludo"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Nova tempkontrolado"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Restarigi tempigilon"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ĝenerala"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Malfermi ĉefmenuo"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Montri fuŝklavojn"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Fermi fenestron"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Eliri"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Elekti tempkontrolojn"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Bonvenon al Ŝaka horloĝo"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Elektu tempkontrolojn sube por komenci"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Metodo de tempkontrolado"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Pliigo"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Bronstein-prokrasto"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Simpla prokrasto"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Komenci ludon"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Ĉefmenuo"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Baskuligi paŭzon"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Tempigilo de blanka ludanto"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Tempigilo de nigra ludanto"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_Nova tempkontrolado"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Restarigi tempigilon"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Silentigi alarman sonon"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Klavarfuŝklavoj"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_Pri Ŝaka horloĝo"
+
+#: src/main.py:63
+msgid "translator-credits"
+msgstr "Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>"
+
+#: src/timerbutton.py:58
+msgid "Player white timer"
+msgstr "Tempigilo de blanka ludanto"
+
+#: src/timerbutton.py:63
+msgid "Player black timer"
+msgstr "Tempigilo de nigra ludanto"
