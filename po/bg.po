@@ -1,14 +1,14 @@
 # Bulgarian translation of chess-clock po-file.
-# Copyright (C) 2024 chess-clock's COPYRIGHT HOLDER
+# Copyright (C) 2024 twlvnn kraftwerk
 # This file is distributed under the same license as the chess-clock package.
-# twlvnn <kraft_werk@tutanota.com>, 2024.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
-"POT-Creation-Date: 2024-04-24 17:03+0000\n"
-"PO-Revision-Date: 2024-05-05 10:00+0300\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-03-01 10:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
@@ -18,20 +18,20 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#: data/com.clarahobbs.chessclock.desktop.in:3
-#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
 msgid "Chess Clock"
 msgstr "Шахматен часовник"
 
-#: data/com.clarahobbs.chessclock.desktop.in:9
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
 msgid "chess;game;clock;timer;"
 msgstr "шах;игра;часовник;таймер;хронометър;chess;game;clock;timer;"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
 msgid "Time games of over-the-board chess"
 msgstr "Игри на шах за време"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
 msgid ""
 "Chess Clock is a simple application to provide time control for over-the-"
 "board chess games. Intended for mobile use, players select the time control "
@@ -47,17 +47,17 @@ msgstr ""
 "белия. След ход всеки играч натиска часовника, за да стартира часовника на "
 "противника си, докато играта приключи или някой от часовниците достигне нула."
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
 msgid ""
 "The main screen, showing timers for the white and black players of a chess "
 "game"
 msgstr "Основен екран с часовници за белите и черните фигури в шахматна партия"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
 msgid "The time control selection screen"
 msgstr "Екран за контрол на времето"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
 msgid ""
 "The main screen in a portrait aspect ratio, showing one timer rotated 180 "
 "degrees"
@@ -218,14 +218,23 @@ msgstr "_Клавишни комбинации"
 msgid "_About Chess Clock"
 msgstr "_Относно „Шахматен часовник“"
 
-#: src/main.py:60
+#: src/main.py:63
 msgid "translator-credits"
-msgstr "twlvnn <kraft_werk@tutanota.com>"
+msgstr ""
+"twlvnn kraftwerk &lt;<a "
+"href='mailto:kraft_werk@tutanota.com'>kraft_werk@tutanota.com</a>&gt;\n"
+"\n"
+"\n"
+"Проектът за превод на GNOME има нужда от подкрепа.\n"
+"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</"
+"a> ни.\n"
+"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
+"newticket'>съответния раздел</a>."
 
-#: src/timerbutton.py:56
+#: src/timerbutton.py:58
 msgid "Player white timer"
 msgstr "Таймер за белите"
 
-#: src/timerbutton.py:61
+#: src/timerbutton.py:63
 msgid "Player black timer"
 msgstr "Таймер за черните"
