@@ -1,0 +1,236 @@
+# Polish translation for chess-clock.
+# Copyright (C) 2026 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Mira Luna <mlu98@proton.me>,  2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2025-10-31 12:28+0000\n"
+"Last-Translator: Mira Luna <mlu98@proton.me>\n"
+"Language-Team: Polish <Polish>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Zegar szachowy"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
+msgid "chess;game;clock;timer;"
+msgstr "chess;game;clock;timer;szachy;gra;zegar;stoper;"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Odmierzanie czasu w grze w szachy na szachownicy"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Zegar szachowy to prosta aplikacja do zapewnienia kontroli czasu w grze w "
+"szachy na szachownicy. Przeznaczona do mobilnego użytku, wystarczy wybrać "
+"pożądaną kontrolę ustawień czasu, następnie osoba grająca czarnymi naciska "
+"zegar, aby rozpocząć stoper osoby grającej białymi. Po każdej turze trzeba "
+"nacisnąć zegar, aby rozpocząć nową turę, aż gra się nie skończy lub kiedy "
+"jeden z zegarów wybije zero."
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Główny ekran, pokazujący stopery dla osób grających białymi i czarnymi w "
+"grze szachowej"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
+msgid "The time control selection screen"
+msgstr "Ekran wyboru kontroli czasu"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"Główny ekran w trybie portretowym, pokazujący jeden stoper obrócony o 180 "
+"stopni"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Minuta dla każdej strony, plus zero sekund na turę"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Dwie minuty dla każdej strony, plus jedna sekunda na turę"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Pięć minut dla każdej strony, plus zero sekund na turę"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Pięć minut dla każdej strony, plus trzy sekundy na turę"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Dziesięć minut dla każdej strony, plus zero sekund na turę"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Dziesięć minut dla każdej strony, plus pięć sekund na turę"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Trzydzieści minut dla każdej strony, plus zero sekund na turę"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Trzydzieści minut dla każdej strony, plus dwadzieścia sekund na turę"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Minuty głównego czasu"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Sekundy głównego czasu"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Dodane sekundy"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Gra"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Nowa kontrola czasu"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Zresetowanie stopera"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ogólne"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Otworzenie menu głównego"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Wyświetlenie skrótów klawiszowych"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Zamknięcie okna"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Zakończenie działania"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Wybierz kontrolę czasu"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Witaj w Zegarze szachowym"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Wybierz kontrolę czasu poniżej, aby rozpocząć"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Metoda kontroli czasu"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Dodawanie"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Opóźnienie Bronstein'a"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Proste opóźnienie"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Zacznij grę"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Menu główne"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Przełącza pauzę"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Stoper osoby grającej białymi"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Stoper osoby grającej czarnymi"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_Nowa kontrola czasu"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Zrestartuj stoper"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Wycisz dźwięki alarmów"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Skróty klawiszowe"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_O programie"
+
+#: src/main.py:63
+msgid "translator-credits"
+msgstr "Mira Luna <mlu98@proton.me>, 2023"
+
+#: src/timerbutton.py:58
+msgid "Player white timer"
+msgstr "Stoper osoby grającej białymi"
+
+#: src/timerbutton.py:63
+msgid "Player black timer"
+msgstr "Stoper osoby grającej czarnymi"
