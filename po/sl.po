@@ -7,33 +7,33 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-09-27 23:07+0000\n"
-"PO-Revision-Date: 2023-09-28 08:49+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-08-10 16:47+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/com.clarahobbs.chessclock.desktop.in:3
-#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
 msgid "Chess Clock"
 msgstr "Šahovska ura"
 
-#: data/com.clarahobbs.chessclock.desktop.in:9
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
 msgid "chess;game;clock;timer;"
 msgstr "šah;igra;ura;časovnik;"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
 msgid "Time games of over-the-board chess"
 msgstr "Časovno pogojene igre šaha na pravi šahovnici"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
 msgid ""
 "Chess Clock is a simple application to provide time control for over-the-"
 "board chess games. Intended for mobile use, players select the time control "
@@ -50,7 +50,7 @@ msgstr ""
 "nasprotnikov časovnik, vse dokler igra ni končana ali pa ena od ur doseže "
 "nič."
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
 msgid ""
 "The main screen, showing timers for the white and black players of a chess "
 "game"
@@ -58,11 +58,11 @@ msgstr ""
 "Glavni zaslon, ki prikazuje časovnike za igralca z belimi in črnimi figurami "
 "šahovske igre"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
 msgid "The time control selection screen"
 msgstr "Zaslon za izbiro kontrolnika časa"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
 msgid ""
 "The main screen in a portrait aspect ratio, showing one timer rotated 180 "
 "degrees"
@@ -70,9 +70,25 @@ msgstr ""
 "Glavni zaslon v pokončni postavitvi, ki prikazuje en časovnik, zasukan za "
 "180 stopinj"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:33
-msgid "Clara Hobbs"
-msgstr "Clara Hobbs"
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "šah"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "igra"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "ura"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "časomer"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -229,14 +245,14 @@ msgstr "_Tipke za bližnjico"
 msgid "_About Chess Clock"
 msgstr "_O Šahovski uri"
 
-#: src/main.py:60
+#: src/main.py:63
 msgid "translator-credits"
 msgstr "Martin Srebotnjak <miles@filmsi.net>"
 
-#: src/timerbutton.py:56
+#: src/timerbutton.py:58
 msgid "Player white timer"
 msgstr "Časovnik igralca z belimi figurami"
 
-#: src/timerbutton.py:61
+#: src/timerbutton.py:63
 msgid "Player black timer"
 msgstr "Časovnik igralca s črnimi figurami"
