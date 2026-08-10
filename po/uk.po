@@ -2,37 +2,37 @@
 # Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
 # This file is distributed under the same license as the chess-clock package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2023.
+# SPDX-FileCopyrightText: 2023, 2026 Yuri Chornoivan <yurchor@ukr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-09-27 23:07+0000\n"
-"PO-Revision-Date: 2023-09-28 09:16+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-08-10 15:16+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>="
+"2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 25.12.1\n"
 
-#: data/com.clarahobbs.chessclock.desktop.in:3
-#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
 msgid "Chess Clock"
 msgstr "Шаховий годинник"
 
-#: data/com.clarahobbs.chessclock.desktop.in:9
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
 msgid "chess;game;clock;timer;"
 msgstr "chess;game;clock;timer;шахи;гра;годинник;таймер;"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
 msgid "Time games of over-the-board chess"
 msgstr "Відлік часу для ігор у шахи на звичайній дошці"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
 msgid ""
 "Chess Clock is a simple application to provide time control for over-the-"
 "board chess games. Intended for mobile use, players select the time control "
@@ -48,28 +48,44 @@ msgstr ""
 "кожного ходу гравець запускає таймер для свого суперника, аж доки гру не "
 "буде завершено або відлік за годинником завершиться нульовим значенням."
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
 msgid ""
 "The main screen, showing timers for the white and black players of a chess "
 "game"
 msgstr ""
 "Головне вікно, у якому показано таймери для гравців у шахи білими і чорними"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
 msgid "The time control selection screen"
 msgstr "Сторінка вибору керування часом"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
 msgid ""
 "The main screen in a portrait aspect ratio, showing one timer rotated 180 "
 "degrees"
 msgstr ""
-"Головне вікно у книжковому режимі, показано один таймер, який обернуто на 180"
-" градусів"
+"Головне вікно у книжковому режимі, показано один таймер, який обернуто на "
+"180 градусів"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:33
-msgid "Clara Hobbs"
-msgstr "Clara Hobbs"
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "шахи"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "гра"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "годинник"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "таймер"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -226,17 +242,20 @@ msgstr "_Клавіатурні скорочення"
 msgid "_About Chess Clock"
 msgstr "_Про «Шаховий годинник»"
 
-#: src/main.py:60
+#: src/main.py:63
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2023"
 
-#: src/timerbutton.py:56
+#: src/timerbutton.py:58
 msgid "Player white timer"
 msgstr "Таймер гравця білими"
 
-#: src/timerbutton.py:61
+#: src/timerbutton.py:63
 msgid "Player black timer"
 msgstr "Таймер гравця чорними"
+
+#~ msgid "Clara Hobbs"
+#~ msgstr "Clara Hobbs"
 
 #~ msgctxt "a11y"
 #~ msgid "Playing"
