@@ -1,37 +1,37 @@
 # Chinese (China) translation for chess-clock.
 # Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
 # This file is distributed under the same license as the chess-clock package.
-# lumingzh <lumingzh@qq.com>, 2023.
+# lumingzh <lumingzh@qq.com>, 2023-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-09-27 23:07+0000\n"
-"PO-Revision-Date: 2023-09-28 16:37+0800\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-08-12 08:29+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
-"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 45.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 50.0\n"
 
-#: data/com.clarahobbs.chessclock.desktop.in:3
-#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
 msgid "Chess Clock"
 msgstr "棋赛计时器"
 
-#: data/com.clarahobbs.chessclock.desktop.in:9
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
 msgid "chess;game;clock;timer;"
 msgstr "chess;game;clock;timer;象棋;下棋;游戏;时钟;计时;"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
 msgid "Time games of over-the-board chess"
 msgstr "面对面实战的象棋游戏计时"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
 msgid ""
 "Chess Clock is a simple application to provide time control for over-the-"
 "board chess games. Intended for mobile use, players select the time control "
@@ -45,25 +45,41 @@ msgstr ""
 "在每个玩家回合之后，他们轻拍计时器开始其对手的计时，直到游戏结束或其中一方计"
 "时器到零。"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
 msgid ""
 "The main screen, showing timers for the white and black players of a chess "
 "game"
 msgstr "主屏幕，为象棋游戏的白棋和黑棋玩家显示计时"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
 msgid "The time control selection screen"
 msgstr "显示计时控制选择的屏幕"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
 msgid ""
 "The main screen in a portrait aspect ratio, showing one timer rotated 180 "
 "degrees"
 msgstr "主屏幕为竖屏比例，显示旋转了 180 度的计时器"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:33
-msgid "Clara Hobbs"
-msgstr "Clara Hobbs"
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "象棋"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "游戏"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "时钟"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "计时器"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -220,17 +236,20 @@ msgstr "键盘快捷键(_K)"
 msgid "_About Chess Clock"
 msgstr "关于棋赛计时器(_A)"
 
-#: src/main.py:60
+#: src/main.py:63
 msgid "translator-credits"
-msgstr "lumingzh <lumingzh@qq.com>, 2023"
+msgstr "lumingzh <lumingzh@qq.com>, 2023-2026"
 
-#: src/timerbutton.py:56
+#: src/timerbutton.py:58
 msgid "Player white timer"
 msgstr "白棋玩家计时"
 
-#: src/timerbutton.py:61
+#: src/timerbutton.py:63
 msgid "Player black timer"
 msgstr "黑棋玩家计时"
+
+#~ msgid "Clara Hobbs"
+#~ msgstr "Clara Hobbs"
 
 #~ msgctxt "a11y"
 #~ msgid "Playing"
