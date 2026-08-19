@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-07-02 16:17+0000\n"
-"PO-Revision-Date: 2023-08-18 19:38+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-08-19 21:29+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -16,22 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/com.clarahobbs.chessclock.desktop.in:3
-#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
 msgid "Chess Clock"
 msgstr "Šakkikello"
 
-#: data/com.clarahobbs.chessclock.desktop.in:9
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
 msgid "chess;game;clock;timer;"
 msgstr "chess;game;clock;timer;shakki;šakki;ajastin;kello;"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
 msgid "Time games of over-the-board chess"
 msgstr "Seuraa lautašakin vuorojen kestoa"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
 msgid ""
 "Chess Clock is a simple application to provide time control for over-the-"
 "board chess games. Intended for mobile use, players select the time control "
@@ -47,19 +47,41 @@ msgstr ""
 "kelloa aloittaakseen vastustajan pelivuoron, kunnes peli päättyy voittoon "
 "tai toisen pelaajan aika loppuu."
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
 msgid ""
 "The main screen, showing timers for the white and black players of a chess "
 "game"
 msgstr "Päänäkymä, ajastimet pelin valkoiselle ja mustalle pelaajalle"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
 msgid "The time control selection screen"
 msgstr "Aikamäärityksen valintanäkymä"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:29
-msgid "Clara Hobbs"
-msgstr "Clara Hobbs"
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr "Pääikkuna pystysuunnassa - yksi ajastin on käännetty 180 astetta"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "shakki"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "peli"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "kello"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "ajastin"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -146,7 +168,7 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Lopeta"
 
-#: src/gtk/window.ui:15
+#: src/gtk/window.ui:17
 msgctxt "a11y"
 msgid "Select time controls"
 msgstr "Valitse aikamääritykset"
@@ -179,60 +201,62 @@ msgstr "Yksinkertainen viive"
 msgid "Start Game"
 msgstr "Käynnistä peli"
 
-#: src/gtk/window.ui:109
-msgctxt "a11y"
-msgid "Playing"
-msgstr "Pelataan"
-
-#: src/gtk/window.ui:168 src/gtk/window.ui:282
+#: src/gtk/window.ui:180
 msgid "Main Menu"
 msgstr "Päävalikko"
 
-#: src/gtk/window.ui:182 src/gtk/window.ui:296
+#: src/gtk/window.ui:197
 msgid "Toggle Pause"
 msgstr "Keskeytä/jatka"
 
-#: src/gtk/window.ui:200 src/gtk/window.ui:314
+#: src/gtk/window.ui:214
 msgctxt "a11y"
 msgid "Player white timer"
 msgstr "Valkoisen pelaajan ajastin"
 
-#: src/gtk/window.ui:211 src/gtk/window.ui:326
+#: src/gtk/window.ui:225
 msgctxt "a11y"
 msgid "Player black timer"
 msgstr "Mustan pelaajan ajastin"
 
-#: src/gtk/window.ui:348
+#: src/gtk/window.ui:258
 msgid "_New Time Control"
 msgstr "_Uusi aikamääritys"
 
-#: src/gtk/window.ui:352
+#: src/gtk/window.ui:262
 msgid "_Restart Timer"
 msgstr "Käynnistä ajastin _uudelleen"
 
-#: src/gtk/window.ui:358
+#: src/gtk/window.ui:268
 msgid "_Mute Alert Sound"
 msgstr "_Mykistä hälytysääni"
 
-#: src/gtk/window.ui:364
+#: src/gtk/window.ui:274
 msgid "_Keyboard Shortcuts"
 msgstr "_Pikanäppäimet"
 
-#: src/gtk/window.ui:368
+#: src/gtk/window.ui:278
 msgid "_About Chess Clock"
 msgstr "Tietoja - Šakkikello"
 
-#: src/main.py:64
+#: src/main.py:63
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/timerbutton.py:55
+#: src/timerbutton.py:58
 msgid "Player white timer"
 msgstr "Valkoisen pelaajan ajastin"
 
-#: src/timerbutton.py:60
+#: src/timerbutton.py:63
 msgid "Player black timer"
 msgstr "Mustan pelaajan ajastin"
+
+#~ msgid "Clara Hobbs"
+#~ msgstr "Clara Hobbs"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "Pelataan"
 
 #~ msgid "Custom"
 #~ msgstr "Mukautettu"
