@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
 "POT-Creation-Date: 2025-10-31 12:28+0000\n"
-"PO-Revision-Date: 2026-03-29 10:23+0900\n"
-"Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
+"PO-Revision-Date: 2026-08-22 09:46+0200\n"
+"Last-Translator: Guillaume Bernard <associations@guillaume-bernard.fr>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -71,6 +71,26 @@ msgid ""
 "degrees"
 msgstr ""
 "L’écran principal en mode portrait, affichant un minuteur pivoté à 180 degrés"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "échecs"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "jeu"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "horloge"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "chronomètre"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
