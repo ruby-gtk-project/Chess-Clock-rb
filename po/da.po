@@ -1,37 +1,37 @@
 # Danish translation for chess-clock.
 # Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
 # This file is distributed under the same license as the chess-clock package.
-# Alan Mortensen <alanmortensen.am@gmail.com>, 2023-24.
+# Alan Mortensen <over.tackiness223@passinbox.com>, 2023-24,26.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
-"POT-Creation-Date: 2023-11-25 00:40+0000\n"
-"PO-Revision-Date: 2024-03-05 19:08+0100\n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
-"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-08-27 18:58+0200\n"
+"Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
+"Language-Team: Danish <danskgruppen@groups.io>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#: data/com.clarahobbs.chessclock.desktop.in:3
-#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
 msgid "Chess Clock"
 msgstr "Skakur"
 
-#: data/com.clarahobbs.chessclock.desktop.in:9
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
 msgid "chess;game;clock;timer;"
 msgstr "skak;spil;ur;minutur;timer;"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
 msgid "Time games of over-the-board chess"
 msgstr "Skakur til fysiske skakspil"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
 msgid ""
 "Chess Clock is a simple application to provide time control for over-the-"
 "board chess games. Intended for mobile use, players select the time control "
@@ -46,21 +46,41 @@ msgstr ""
 "hvids minutur. Efter hver spillers tur trykker de på uret for at starte "
 "modstanderens ur, indtil spillet er slut, eller et af urene når nul."
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
 msgid ""
 "The main screen, showing timers for the white and black players of a chess "
 "game"
 msgstr "Hovedskærmen med minuture for sort og hvid i et skakspil"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
 msgid "The time control selection screen"
 msgstr "Skærmen til indstilling af tidsstyringen"
 
-#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
 msgid ""
 "The main screen in a portrait aspect ratio, showing one timer rotated 180 "
 "degrees"
 msgstr "Hovedskærmen i portrætformat der viser et minutur roteret 180 grader"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "skak"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "spil"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "ur"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "timer"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
@@ -220,19 +240,20 @@ msgstr "_Tastaturgenveje"
 msgid "_About Chess Clock"
 msgstr "_Om skakur"
 
-#: src/main.py:60
+#: src/main.py:63
 msgid "translator-credits"
 msgstr ""
 "Alan Mortensen\n"
 "\n"
-"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
-"Mere info: http://www.dansk-gruppen.dk"
+"Dansk-gruppen\n"
+"Websted https://l10n.gnome.org/teams/da/\n"
+"E-mail <danskgruppen@groups.io>"
 
-#: src/timerbutton.py:56
+#: src/timerbutton.py:58
 msgid "Player white timer"
 msgstr "Hvids minutur"
 
-#: src/timerbutton.py:61
+#: src/timerbutton.py:63
 msgid "Player black timer"
 msgstr "Sorts minutur"
 
