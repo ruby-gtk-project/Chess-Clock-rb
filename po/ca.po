@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: chess-clock main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
-"POT-Creation-Date: 2025-11-10 11:26+0000\n"
-"PO-Revision-Date: 2025-11-23 19:46+0100\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-09-18 20:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: Catalan <Catalan>\n"
 "Language: ca\n"
@@ -67,6 +67,26 @@ msgid ""
 msgstr ""
 "La pantalla principal en una relació d'aspecte de retrat, mostrant un "
 "temporitzador girat 180 graus"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "escacs"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "joc"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "rellotge"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "temporitzador"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
 
 #: src/gtk/timecontrolentry.ui:23
 msgid "One minute per side, plus zero seconds per turn"
