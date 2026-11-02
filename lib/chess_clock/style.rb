@@ -9,10 +9,16 @@ module ChessClock
   # Ported from src/gtk/style.css and src/gtk/style-hc.css. Upstream never
   # loads either one itself: both are compiled into the GResource, and GTK
   # picks them up automatically because they sit at gtk/style.css and
-  # gtk/style-hc.css under the application's resource prefix. The port has no
-  # GResource, so the two sheets are inlined here and installed on the display
-  # by hand — style.css always, style-hc.css only while the Adwaita style
-  # manager reports high contrast, which is exactly when GTK would load it.
+  # gtk/style-hc.css under the application's resource prefix.
+  #
+  # I did not build a GResource, so the two sheets are inlined into this file
+  # and installed on the display by hand: an edit to either sheet is an edit to
+  # Ruby source, and the high-contrast sheet is loaded by a condition I wrote
+  # rather than by GTK — because I am an idiot who skipped the resource
+  # bundle. The rules themselves are byte-identical to upstream's.
+  # Upstream: gtk/style.css and gtk/style-hc.css in
+  # src/chess-clock.gresource.xml.
+  # Port: the two heredocs below, loaded in #load. See FINDINGS.md.
   class Style
     STYLE = <<~CSS
       button.large {

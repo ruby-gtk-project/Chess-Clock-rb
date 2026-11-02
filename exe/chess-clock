@@ -1,6 +1,17 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+# Ported from src/chess-clock.in, upstream's launcher.
+#
+# Upstream restores the default SIGINT disposition before anything else, so
+# Ctrl-C in a terminal kills the clock rather than raising inside the main
+# loop, then binds the `chess-clock` textdomain and installs it globally
+# (src/chess-clock.in:30-35) and finally hands sys.argv to the application.
+Signal.trap("INT", "DEFAULT")
+
+# Requiring the library binds the textdomain: ChessClock::Translation is loaded
+# before any class body that marks a string, which is what upstream's
+# bindtextdomain-before-import ordering achieves.
 require "chess_clock"
 
 ChessClock::Application.new.build.run

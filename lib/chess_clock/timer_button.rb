@@ -3,6 +3,8 @@
 require "gtk4"
 require "adwaita"
 
+require_relative "translation"
+
 module ChessClock
   # TimerButton is one player's clock face: the whole half of the window they
   # tap to hand the move over.
@@ -24,6 +26,8 @@ module ChessClock
   # enough to hold them, which upstream does with the same breakpoint setting
   # Pango size attributes on the three labels.
   class TimerButton < Gtk::Button
+    include Translation
+
     FONT_SIZE = 100
     LARGE_CONDITION = "min-width: 600px"
     MINIMUM_WIDTH = 240
@@ -31,8 +35,8 @@ module ChessClock
     COLON = "∶"
 
     ACCESSIBLE_LABELS = {
-      white: "Player white timer",
-      black: "Player black timer",
+      white: _("Player white timer"),
+      black: _("Player black timer"),
     }.freeze
 
     attr_reader :inverted

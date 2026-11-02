@@ -1,0 +1,230 @@
+# Hindi translation for chess-clock.
+# Copyright (C) 2024 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2024-03-22 20:25+0000\n"
+"PO-Revision-Date: 2024-03-29 17:30+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.0\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3
+#: data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Chess Clock"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "chess;game;clock;timer;शतरंज;खेल;घड़ी;टाइमर;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "बोर्ड-के-ऊपर शतरंज के समय के खेल"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Chess Clock बोर्ड-के-ऊपर शतरंज गेम के लिए समय नियंत्रण प्रदान करने वाला एक सरल "
+"एप्लिकेशन है। मोबाइल उपयोग के लिए, खिलाड़ी अपने खेल के लिए वांछित समय नियंत्रण सेटिंग्स का "
+"चयन करते हैं, फिर काला खिलाड़ी सफेद टाइमर शुरू करने के लिए अपनी घड़ी को टैप करता है। "
+"प्रत्येक खिलाड़ी की बारी के बाद, वे अपने प्रतिद्वंद्वी की बारी शुरू करने के लिए घड़ी को टैप "
+"करते हैं, जब तक कि खेल समाप्त न हो जाए या कोई एक घड़ी शून्य तक न पहुंच जाए।"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr "मुख्य स्क्रीन, शतरंज के खेल के सफेद और काले खिलाड़ियों के लिए टाइमर दिखाती है"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "समय नियंत्रण चयन स्क्रीन"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr "पोर्ट्रेट पहलू अनुपात में मुख्य स्क्रीन, एक टाइमर को 180 डिग्री घुमाया हुआ दिखाता है"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "प्रति पक्ष एक मिनट, साथ ही प्रति मोड़ शून्य सेकंड"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "प्रति पक्ष दो मिनट, साथ ही प्रति मोड़ एक सेकंड"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "प्रति पक्ष पाँच मिनट, साथ ही प्रति मोड़ शून्य सेकंड"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "प्रति पक्ष पांच मिनट, साथ ही प्रति मोड़ तीन सेकंड"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "प्रति पक्ष दस मिनट, साथ ही प्रति मोड़ शून्य सेकंड"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "प्रति पक्ष दस मिनट, साथ ही प्रति मोड़ पाँच सेकंड"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "प्रति पक्ष तीस मिनट, साथ ही प्रति मोड़ शून्य सेकंड"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "प्रति पक्ष तीस मिनट, साथ ही प्रति मोड़ बीस सेकंड"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "मुख्य समय मिनट"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "मुख्य समय सेकंड"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "सेकंड वृद्धि"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "खेल"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "नया समय नियंत्रण"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "टाइमर पुनः प्रारंभ करें"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "सामान्य"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "मुख्य मेनू खोलें"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "शॉर्टकट दिखाएँ"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "विंडो बंद"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "छोड़ें"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "समय नियंत्रण चुनें"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Chess Clock में आपका स्वागत है"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "आरंभ करने के लिए नीचे समय नियंत्रण चुनें"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "समय नियंत्रण विधि"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "वृद्धि"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "ब्रोंस्टीन विलंब"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "साधारण विलंब"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "खेल शुरू करें"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "मुख्य मेन्यू"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "विराम टॉगल करें"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "सफेद खिलाड़ी टाइमर"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "काला खिलाड़ी टाइमर"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "नया समय नियंत्रण (_N)"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "टाइमर पुनः प्रारंभ करें (_R)"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "चेतावनी ध्वनि मूक करें (M)"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "कीबोर्ड शॉर्टकट (_K)"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "Chess Clock के बारे में (_A)"
+
+#: src/main.py:60
+msgid "translator-credits"
+msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
+
+#: src/timerbutton.py:56
+msgid "Player white timer"
+msgstr "सफेद खिलाड़ी टाइमर"
+
+#: src/timerbutton.py:61
+msgid "Player black timer"
+msgstr "काला खिलाड़ी टाइमर"

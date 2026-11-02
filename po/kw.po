@@ -1,0 +1,242 @@
+# Cornish translation for chess-clock.
+# Copyright (C) 2026 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Flynn Peck <cirilla@tuta.io>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-01-20 18:18+0000\n"
+"Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
+"Language-Team: kw\n"
+"Language: kw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/World/chess-clock\n"
+"X-DL-Lang: kw\n"
+"X-DL-Module: chess-clock\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Klock Gwydhbol"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
+msgid "chess;game;clock;timer;"
+msgstr "gwydhbol;gwari;termynador;"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Musura gwariow gwydhbol a-ugh-an-bordh"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Klock Gwydhbol yw unn app sempel rag provia routyans termyn rag gwariow "
+"gwydhbol a-ugh-an-bordh. Yntendys rag devnydh war kellgowsoryon, gwarioryon "
+"dewis an settyansow routyans termyn hwansys rag aga gwari i, wosa henna an "
+"gwarier du tava aga klock i rag dalleth termynador gwynn. Wosa pub tro "
+"gwarier, i tava an klock rag dalleth an termynador aga erbynner i, erna an "
+"gwari yw deu po unn an klockys hedhes mann."
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"An skrin chif, ow diskwedhes termynador rag an gwarioryon gwynn ha du a an "
+"gwari gwydhbol"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
+msgid "The time control selection screen"
+msgstr "An skrin dewis routyans termyn"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"An skrin chif yn unn komparriv braster ughel, ow diskwedhes unn termynador "
+"rosellys 180 gradhow"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Unn mynysen dre parth, ha mann eylennow dre tro"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Dew mynysennow dre parth, hag unn eylen dre tro"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Pymp mynysennow dre parth, ha mann eylennow dre tro"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Pymp mynysennow dre parth, ha teyr eylennow dre tro"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Deg mynysennow dre parth, ha mann eylennow dre tro"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Deg mynysennow dre parth, ha pymp eylennow dre tro"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Deg warn ugens mynysennow dre parth, ha mann eylennow dre tro"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Deg warn ugens mynysennow dre parth, hag ugens eylennow dre tro"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Mynysennow termyn chif"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Eylennow termyn chif"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Kressya eylennow"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Gwari"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Routyans Termyn Nowydh"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Dastalleth Termynador"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ollgemmyn"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Ygeri Rol Chif"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Diskwedhes Kesunyansow Bysowek"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Degea Fenester"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Kwytya"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Dewis routyansow termyn"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Klock Gwydhbol a'gas Dynnergh"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Dewis routyansow termyn a-barth a-woles rag dalleth"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Method routyans termyn"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Gradh"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Ardak Bronstein"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Ardak sempel"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Dalleth Gwari"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Rol Chif"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Dewis Powes"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Termyn gwarier gwynn"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Termyn gwarier du"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "Routyans Termyn _Nowydh"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Dastalleth Termynador"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "Koselhe Sownd _Gwarnyans"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Kesunyansow Bysowek"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_A-dro Klock Gwydhbol"
+
+#: src/main.py:63
+msgid "translator-credits"
+msgstr "Flynn"
+
+#: src/timerbutton.py:58
+msgid "Player white timer"
+msgstr "Termyn gwarier gwynn"
+
+#: src/timerbutton.py:63
+msgid "Player black timer"
+msgstr "Termyn gwarier du"

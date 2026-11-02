@@ -1,0 +1,275 @@
+# Finnish translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-08-19 21:29+0300\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
+"Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Šakkikello"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
+msgid "chess;game;clock;timer;"
+msgstr "chess;game;clock;timer;shakki;šakki;ajastin;kello;"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Seuraa lautašakin vuorojen kestoa"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Šakkikello on sovellus lautašakin pelivuorojen keston hallintaan. Se on "
+"tarkoitettu mobiilikäyttöön, ja pelaajat voivat valita haluamansa "
+"aikamäärityksen, jonka jälkeen musta pelaaja napauttaa kelloa aloittaakseen "
+"valkoisen pelaajan ajastimen. Jokaisen vuoron jälkeen pelaaja napauttaa "
+"kelloa aloittaakseen vastustajan pelivuoron, kunnes peli päättyy voittoon "
+"tai toisen pelaajan aika loppuu."
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr "Päänäkymä, ajastimet pelin valkoiselle ja mustalle pelaajalle"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
+msgid "The time control selection screen"
+msgstr "Aikamäärityksen valintanäkymä"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr "Pääikkuna pystysuunnassa - yksi ajastin on käännetty 180 astetta"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "shakki"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "peli"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "kello"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "ajastin"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Yksi minuutti per puoli, lisäksi nolla sekuntia per vuoro"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Kaksi minuuttia per puoli, lisäksi yksi sekunti per vuoro"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Viisi minuuttia per puoli, lisäksi nolla sekuntia per vuoro"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Viisi minuuttia per puoli, lisäksi kolme sekuntia per vuoro"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Kymmenen minuuttia per puoli, lisäksi nolla sekuntia per vuoro"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Kymmenen minuuttia per puoli, lisäksi viisi sekuntia per vuoro"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Kolmekymmentä minuuttia per puoli, lisäksi nolla sekuntia per vuoro"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr ""
+"Kolmekymmentä minuuttia per puoli, lisäksi kaksikymmentä sekuntia per vuoro"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Peliajan minuutit"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Peliajan sekunnit"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Lisäsekunnit"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Peli"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Uusi aikamääritys"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Käynnistä ajastin uudelleen"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Yleiset"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Avaa päävalikko"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Näytä pikanäppäimet"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Sulje ikkuna"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Lopeta"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Valitse aikamääritykset"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Tervetuloa, tämä on šakkikello"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Valitse aikamääritys alapuolelta aloittaaksesi"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Aikamäärityksen tapa"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Lisäys"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Bronstein-viive"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Yksinkertainen viive"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Käynnistä peli"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Päävalikko"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Keskeytä/jatka"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Valkoisen pelaajan ajastin"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Mustan pelaajan ajastin"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_Uusi aikamääritys"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "Käynnistä ajastin _uudelleen"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Mykistä hälytysääni"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "Tietoja - Šakkikello"
+
+#: src/main.py:63
+msgid "translator-credits"
+msgstr "Jiri Grönroos"
+
+#: src/timerbutton.py:58
+msgid "Player white timer"
+msgstr "Valkoisen pelaajan ajastin"
+
+#: src/timerbutton.py:63
+msgid "Player black timer"
+msgstr "Mustan pelaajan ajastin"
+
+#~ msgid "Clara Hobbs"
+#~ msgstr "Clara Hobbs"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "Pelataan"
+
+#~ msgid "Custom"
+#~ msgstr "Mukautettu"
+
+#~ msgid "Three minutes per side, plus zero seconds per turn"
+#~ msgstr "Kolme minuuttia per puoli, lisäksi nolla sekuntia per vuoro"
+
+#~ msgid "Three minutes per side, plus two seconds per turn"
+#~ msgstr "Kolme minuuttia per puoli, lisäksi kaksi sekuntia per vuoro"
+
+#~ msgid "Fifteen minutes per side, plus ten seconds per turn"
+#~ msgstr ""
+#~ "Viisitoista minuuttia per puoli, lisäksi kymmenen sekuntia per vuoro"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Ensisijainen valikko"

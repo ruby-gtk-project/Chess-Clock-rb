@@ -66,3 +66,5 @@ group :development do
   gem "rubocop"
 end
 gem "adwaita"
+gem "gettext"
+gem "gio2"

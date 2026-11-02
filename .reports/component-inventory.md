@@ -201,34 +201,8 @@ Pause", the five menu items, the six shortcut titles and their two group
 titles, the two a11y timer labels, "Select time controls", and
 `translator-credits`.
 
-## Blockers
+## Engineering notes
 
-- **GSound has no ruby-gnome binding.** The alert sound needs another route —
-  `canberra-gtk-play`, a shelled-out player, or dropping to silence with the
-  mute action still honoured.
-- **`Adwaita::Application` is unusable in the Ruby bindings** (the port's
-  existing comment says as much, and it uses `Gtk::Application`). Two
-  conveniences go with it: automatic `style.css`/`style-hc.css` loading from
-  the resource path, and the automatic `help-overlay.ui` → `win.show-help-overlay`
-  wiring. Both have to be done by hand.
-- **No GResource in the port.** `Adw.AboutWindow.new_from_appdata` reads the
-  metainfo out of the resource bundle; the port must set name, version,
-  licence, developers, artists and credits explicitly.
-- **`Adw.Breakpoint` setters that carry Pango attribute strings**
-  (`0 -1 size 102400` in `timerbutton.ui`) are GtkBuilder-only syntax. The
-  font-size jump at 600 px needs real `Pango::AttrList` work on the
-  breakpoint's apply/unapply, or a CSS class swap instead.
-- **`Gtk::Widget#add_tick_callback` coverage is uncertain** in ruby-gnome. The
-  two per-frame timer ticks may have to fall back to a `GLib::Timeout`, which
-  changes the tick cadence the timers assume (they measure elapsed monotonic
-  time, so accuracy survives; smoothness may not).
-- **`Gio::Settings` needs a compiled gschema on the GSettings path.** Until the
-  port installs and compiles `eu.fortysixandtwo.chessclock.gschema.xml`, the
-  settings layer needs a file-backed shim behind the same interface.
-- **a11y property updates** (`update_property` with
-  `Gtk::AccessibleProperty::LABEL`, used to relabel each timer button as the
-  sides swap) may not be bound; the static labels from the `.ui` are
-  reachable, the dynamic update may not be.
-- **`Gtk::ShortcutsWindow` is deprecated as of GTK 4.18.** Still present, but
-  the port may prefer `Adwaita::ShortcutsDialog` where the installed libadwaita
-  has it.
+The binding limitations, substitutions and divergences this port runs into
+are in `FINDINGS.md`. They are not reasons: every behaviour they touch is
+still owed, and is still a gap in `.reports/component-parity.md`.

@@ -2,6 +2,8 @@
 
 require "gio2"
 
+require_relative "translation"
+
 module ChessClock
   # PrimaryMenu is the menu behind the circular button on the timer screen.
   #
@@ -11,17 +13,19 @@ module ChessClock
   # window.rb and application.rb install, so a menu item that does nothing is
   # a missing action rather than a missing handler.
   class PrimaryMenu
+    include Translation
+
     SECTIONS = [
       [
-        ["_New Time Control", "win.new"],
-        ["_Restart Timer", "win.restart"],
+        [_("_New Time Control"), "win.new"],
+        [_("_Restart Timer"), "win.restart"],
       ],
       [
-        ["_Mute Alert Sound", "win.muted"],
+        [_("_Mute Alert Sound"), "win.muted"],
       ],
       [
-        ["_Keyboard Shortcuts", "win.show-help-overlay"],
-        ["_About Chess Clock", "app.about"],
+        [_("_Keyboard Shortcuts"), "win.show-help-overlay"],
+        [_("_About Chess Clock"), "app.about"],
       ],
     ].freeze
 

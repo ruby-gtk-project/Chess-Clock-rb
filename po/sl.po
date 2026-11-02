@@ -1,0 +1,258 @@
+# Slovenian translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+#
+# Martin Srebotnjak <miles@filmsi.net>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-08-10 16:47+0200\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+"Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Šahovska ura"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
+msgid "chess;game;clock;timer;"
+msgstr "šah;igra;ura;časovnik;"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Časovno pogojene igre šaha na pravi šahovnici"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Šahovska ura je preprost program za zagotavljanje časovnega nadzora za "
+"šahovske igre na pravi šahovnici. Namenjena je mobilni rabi; igralci "
+"izberejo nastavitve časovnega nadzora, ki jih želijo za svojo igro, nato pa "
+"igralec s črnimi figurami tapne svojo uro za zagon časovnika igralca z "
+"belimi figurami. Po odigrani potezi se vsak igralec dotakne ure, da sproži "
+"nasprotnikov časovnik, vse dokler igra ni končana ali pa ena od ur doseže "
+"nič."
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Glavni zaslon, ki prikazuje časovnike za igralca z belimi in črnimi figurami "
+"šahovske igre"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
+msgid "The time control selection screen"
+msgstr "Zaslon za izbiro kontrolnika časa"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"Glavni zaslon v pokončni postavitvi, ki prikazuje en časovnik, zasukan za "
+"180 stopinj"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "šah"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "igra"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "ura"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "časomer"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Ena minuta na igralca, brez dodatnih sekund za menjavo igralca"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Dve minuti na igralca, dodatna ena sekunda za menjavo igralca"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Pet minut na igralca, brez dodatnih sekund za menjavo igralca"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Pet minut na igralca, dodatne tri sekunde za menjavo igralca"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Deset minut na igralca, brez dodatnih sekund za menjavo igralca"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Deset minut na igralca, dodatnih pet sekund za menjavo igralca"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "30 minut na igralca, brez dodatnih sekund za menjavo igralca"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "30 minut na igralca, dodatnih 20 sekund za menjavo igralca"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Minute glavnega časa"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Sekunde glavnega časa"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Sekunde prirastka"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Igra"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Nov časovni nadzor"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Znova zaženi časovnik"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Splošno"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Odpri osnovni meni"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Pokaže tipkovne bližnjice"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Zapre okno"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Izhod"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Izberite kontrolnike časa"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Dobrodošli v šahovski uri"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Izberite spodnje kontrolnike časa, da začnete"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Metoda nadzora časa"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Prirastek"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Bronštejnov zamik"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Enostavni zamik"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Začni igro"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Glavni meni"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Ustavi/nadaljuj"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Časovnik igralca z belimi figurami"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Časovnik igralca s črnimi figurami"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_Nov časovni nadzor"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Znova zaženi časovnik"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Izklopi zvok opozorila"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Tipke za bližnjico"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_O Šahovski uri"
+
+#: src/main.py:63
+msgid "translator-credits"
+msgstr "Martin Srebotnjak <miles@filmsi.net>"
+
+#: src/timerbutton.py:58
+msgid "Player white timer"
+msgstr "Časovnik igralca z belimi figurami"
+
+#: src/timerbutton.py:63
+msgid "Player black timer"
+msgstr "Časovnik igralca s črnimi figurami"

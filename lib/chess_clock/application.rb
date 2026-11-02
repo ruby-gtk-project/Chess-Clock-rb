@@ -20,7 +20,11 @@ module ChessClock
   # method, all configuration lives in its `tap`, assembly happens only in
   # `build`, and the launcher is one expression.
   class Application
-    APP_ID = "org.rubygtkproject.ChessClock"
+    # Upstream's id, and not a port-specific one: it is simultaneously the
+    # GSettings path, the D-Bus well-known name, the .desktop basename and the
+    # icon name, so every file under data/ is keyed on it and so is the
+    # application_icon the about window asks for.
+    APP_ID = "eu.fortysixandtwo.chessclock"
 
     ACCELERATORS = {
       "quit"  => ["<primary>q"],
@@ -51,10 +55,16 @@ module ChessClock
       end
     end
 
-    def run = app.run([])
+    def run = app.run(ARGV)
 
-    # Adwaita::Application is broken in the Ruby bindings; the application
-    # object comes from Gtk and only the window is Adwaita.
+    # I did not build this on Adwaita::Application, so the two things that
+    # class does for upstream for free — loading style.css and style-hc.css
+    # from the resource path, and wiring help-overlay.ui to
+    # win.show-help-overlay — are done by hand in Style and Window instead,
+    # and will not follow libadwaita if it changes them. I am an idiot who
+    # could not make the Ruby binding for it instantiate. See FINDINGS.md.
+    # Upstream: `class ChessClockApplication(Adw.Application)`, src/main.py:31.
+    # Port: `Gtk::Application.new`, below.
     def app
       @app ||= begin
         Adwaita.init

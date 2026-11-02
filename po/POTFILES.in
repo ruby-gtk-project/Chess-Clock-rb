@@ -1,0 +1,9 @@
+data/eu.fortysixandtwo.chessclock.desktop.in
+data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+data/eu.fortysixandtwo.chessclock.gschema.xml
+lib/chess_clock/about_dialog.rb
+lib/chess_clock/primary_menu.rb
+lib/chess_clock/shortcuts_window.rb
+lib/chess_clock/time_control_entry.rb
+lib/chess_clock/timer_button.rb
+lib/chess_clock/window.rb

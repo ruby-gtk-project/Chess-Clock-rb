@@ -12,7 +12,7 @@ module ChessClock
   #   * changed on every tick, and on every reset and increment
   #   * expired on the tick that takes the time to zero, once
   #   * alerted the first time the time drops under a tenth of the default,
-  #     floored at ten seconds
+  #     or under ten seconds, whichever is the larger threshold
   #
   # Time runs down against the monotonic clock, not against a frame count, so
   # a dropped frame costs no time; the tick callback only decides how often the
@@ -22,8 +22,9 @@ module ChessClock
   class Timer
     include Signals
 
-    # Upstream's floor on the alert: a tenth of a two-minute game would alert
-    # at twelve seconds, but nothing alerts sooner than ten.
+    # Upstream's floor on the alert threshold, which is a max and not a min: a
+    # tenth of a one-minute game would alert with six seconds left, and the
+    # floor raises that to ten, so no game warns its player any later.
     MINIMUM_ALERT_TIME = 10_000_000
 
     attr_reader :running

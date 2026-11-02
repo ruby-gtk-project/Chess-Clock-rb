@@ -53,13 +53,22 @@ Gem::Specification.new do |spec|
   end
   enumerate_package_glob = lambda do |glob|
     Dir.glob(glob, File::FNM_DOTMATCH).filter_map do |path|
-      next unless File.file?(path) && ![".", ".."].include?(File.basename(path))
+      unless File.file?(path) && ![".", ".."].include?(File.basename(path))
+        next
+      end
 
       relative_package_path.call(path)
     end
   end
   enumerate_package_files = lambda do |root|
-    enumerate_package_glob.call(File.join(gemspec_root, root, "**", "*"))
+    enumerate_package_glob.call(
+      File.join(
+        gemspec_root,
+        root,
+        "**",
+        "*",
+      ),
+    )
   end
   package_metadata_files = %w[
     CHANGELOG.md
@@ -108,6 +117,13 @@ Gem::Specification.new do |spec|
   #
   #       Development dependencies that require strictly newer Ruby versions should be in a "gemfile",
   #       and preferably a modular one (see gemfiles/modular/*.gemfile).
+
+  # Runtime: the GTK4 / Libadwaita stack the application is written against,
+  # and the gettext runtime that resolves the chess-clock textdomain in po/.
+  spec.add_dependency("adwaita", "~> 4.3")                                        # libadwaita bindings
+  spec.add_dependency("gettext", "~> 3.5")                                        # chess-clock textdomain
+  spec.add_dependency("gio2", "~> 4.3")                                           # GActions, GMenu, GVariant
+  spec.add_dependency("gtk4", "~> 4.3")                                           # GTK4 bindings
 
   # Dev, Test, & Release Tasks
   spec.add_development_dependency("kettle-dev", "~> 3.1", ">= 3.1.26")             # ruby >= 3.4

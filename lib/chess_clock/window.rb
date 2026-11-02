@@ -3,6 +3,7 @@
 require "gtk4"
 require "adwaita"
 
+require_relative "translation"
 require_relative "settings"
 require_relative "primary_menu"
 require_relative "shortcuts_window"
@@ -32,11 +33,16 @@ module ChessClock
   # The window keeps one state machine at a time. Starting a game throws the
   # old one away and builds the one the chosen method asks for, which is why
   # StateMachine#disconnect_all exists: the buttons outlive the machine driving
-  # them. Upstream also installs the timers' frame-clock callbacks here; in
-  # this port each Timer installs its own when it starts running, so there is
-  # one callback per running clock instead of two per game.
+  # them.
+  #
+  # One divergence, recorded in FINDINGS.md rather than defended here:
+  # upstream installs both timers' frame-clock callbacks in
+  # ChessClockWindow.__init__, and in this port each Timer installs its own
+  # when it starts running. Nothing on either side tests either shape.
   class Window
-    TITLE = "Chess Clock"
+    include Translation
+
+    TITLE = _("Chess Clock")
     SETUP = "setup"
     TIMER = "timer"
     MINIMUM_WIDTH = 360
@@ -57,9 +63,9 @@ module ChessClock
     ].freeze
 
     CONTROL_METHOD_NAMES = [
-      "Increment",
-      "Bronstein delay",
-      "Simple delay",
+      _("Increment"),
+      _("Bronstein delay"),
+      _("Simple delay"),
     ].freeze
 
     ACCELERATORS = {
@@ -323,7 +329,7 @@ module ChessClock
 
     def control_chooser
       @control_chooser ||= Gtk::WindowHandle.new.tap do |handle|
-        announce(handle, "Select time controls")
+        announce(handle, p_("a11y", "Select time controls"))
       end
     end
 
@@ -350,7 +356,7 @@ module ChessClock
     def welcome_box = @welcome_box ||= Gtk::Box.new(:vertical, 12)
 
     def welcome_title
-      @welcome_title ||= Gtk::Label.new("Welcome to Chess Clock").tap do |label|
+      @welcome_title ||= Gtk::Label.new(_("Welcome to Chess Clock")).tap do |label|
         label.valign = :center
         label.vexpand = false
         label.add_css_class("title-1")
@@ -358,7 +364,7 @@ module ChessClock
     end
 
     def welcome_subtitle
-      @welcome_subtitle ||= Gtk::Label.new("Select time controls below to get started")
+      @welcome_subtitle ||= Gtk::Label.new(_("Select time controls below to get started"))
     end
 
     def preferences_group = @preferences_group ||= Adwaita::PreferencesGroup.new
@@ -375,14 +381,14 @@ module ChessClock
 
     def method_chooser
       @method_chooser ||= Adwaita::ComboRow.new.tap do |row|
-        row.title = "Time control method"
+        row.title = _("Time control method")
         row.model = Gtk::StringList.new(CONTROL_METHOD_NAMES)
       end
     end
 
     def start_game
       @start_game ||= Gtk::Button.new.tap do |button|
-        button.label = "Start Game"
+        button.label = _("Start Game")
         button.halign = :center
         button.hexpand = false
         button.add_css_class("pill")
@@ -465,7 +471,7 @@ module ChessClock
         button.halign = :center
         button.valign = :start
         button.icon_name = "open-menu-symbolic"
-        button.tooltip_text = "Main Menu"
+        button.tooltip_text = _("Main Menu")
         floating(button)
       end
     end
@@ -475,7 +481,7 @@ module ChessClock
         button.halign = :center
         button.valign = :end
         button.icon_name = "media-playback-pause-symbolic"
-        button.tooltip_text = "Toggle Pause"
+        button.tooltip_text = _("Toggle Pause")
         button.add_css_class("large")
         floating(button)
       end

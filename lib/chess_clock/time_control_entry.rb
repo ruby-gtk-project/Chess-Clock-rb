@@ -3,6 +3,8 @@
 require "gtk4"
 require "adwaita"
 
+require_relative "translation"
+
 module ChessClock
   # TimeControlEntry is the time-control picker on the setup screen: eight
   # preset buttons over three spin buttons for a custom control.
@@ -19,15 +21,17 @@ module ChessClock
   # minutes, and are rendered two digits wide, so the pair reads as one clock
   # value rather than as two independent numbers.
   class TimeControlEntry
+    include Translation
+
     PRESETS = [
-      { label: "1+0", minutes: 1, seconds: 0, increment: 0, column: 0, row: 0, tooltip: "One minute per side, plus zero seconds per turn" },
-      { label: "2+1", minutes: 2, seconds: 0, increment: 1, column: 0, row: 1, tooltip: "Two minutes per side, plus one second per turn" },
-      { label: "5+0", minutes: 5, seconds: 0, increment: 0, column: 1, row: 0, tooltip: "Five minutes per side, plus zero seconds per turn" },
-      { label: "5+3", minutes: 5, seconds: 0, increment: 3, column: 1, row: 1, tooltip: "Five minutes per side, plus three seconds per turn" },
-      { label: "10+0", minutes: 10, seconds: 0, increment: 0, column: 2, row: 0, tooltip: "Ten minutes per side, plus zero seconds per turn" },
-      { label: "10+5", minutes: 10, seconds: 0, increment: 5, column: 2, row: 1, tooltip: "Ten minutes per side, plus five seconds per turn" },
-      { label: "30+0", minutes: 30, seconds: 0, increment: 0, column: 3, row: 0, tooltip: "Thirty minutes per side, plus zero seconds per turn" },
-      { label: "30+20", minutes: 30, seconds: 0, increment: 20, column: 3, row: 1, tooltip: "Thirty minutes per side, plus twenty seconds per turn" },
+      { label: "1+0", minutes: 1, seconds: 0, increment: 0, column: 0, row: 0, tooltip: _("One minute per side, plus zero seconds per turn") },
+      { label: "2+1", minutes: 2, seconds: 0, increment: 1, column: 0, row: 1, tooltip: _("Two minutes per side, plus one second per turn") },
+      { label: "5+0", minutes: 5, seconds: 0, increment: 0, column: 1, row: 0, tooltip: _("Five minutes per side, plus zero seconds per turn") },
+      { label: "5+3", minutes: 5, seconds: 0, increment: 3, column: 1, row: 1, tooltip: _("Five minutes per side, plus three seconds per turn") },
+      { label: "10+0", minutes: 10, seconds: 0, increment: 0, column: 2, row: 0, tooltip: _("Ten minutes per side, plus zero seconds per turn") },
+      { label: "10+5", minutes: 10, seconds: 0, increment: 5, column: 2, row: 1, tooltip: _("Ten minutes per side, plus five seconds per turn") },
+      { label: "30+0", minutes: 30, seconds: 0, increment: 0, column: 3, row: 0, tooltip: _("Thirty minutes per side, plus zero seconds per turn") },
+      { label: "30+20", minutes: 30, seconds: 0, increment: 20, column: 3, row: 1, tooltip: _("Thirty minutes per side, plus twenty seconds per turn") },
     ].freeze
 
     MINUTES_LIMIT = 999
@@ -88,9 +92,6 @@ module ChessClock
         increment_adjustment.value,
       ]
     end
-
-    # Upstream's name for it, kept so the window reads like window.py does.
-    def get_control = control
 
     def set_control(preset)
       minutes_adjustment.value = preset[:minutes]
@@ -156,18 +157,18 @@ module ChessClock
     end
 
     def minutes
-      @minutes ||= spin_button(minutes_adjustment, "Main time minutes")
+      @minutes ||= spin_button(minutes_adjustment, _("Main time minutes"))
     end
 
     def seconds
-      @seconds ||= spin_button(seconds_adjustment, "Main time seconds").tap do |spin|
+      @seconds ||= spin_button(seconds_adjustment, _("Main time seconds")).tap do |spin|
         spin.width_chars = 3
         spin.wrap = true
       end
     end
 
     def increment
-      @increment ||= spin_button(increment_adjustment, "Increment seconds")
+      @increment ||= spin_button(increment_adjustment, _("Increment seconds"))
     end
 
     def colon = @colon ||= custom_label(COLON)

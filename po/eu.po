@@ -1,0 +1,268 @@
+# Basque translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2023, 2024, 2026.
+#
+msgid ""
+msgstr "Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-08-24 06:47+0000\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
+"Language-Team: Basque <librezale@librezale.eus>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Xake-ordularia"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
+msgid "chess;game;clock;timer;"
+msgstr "xakea;jokoa;ordularia;tenporizadorea;"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Aurrez aurreko xakerako denbora-jokoak"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr "Xake-ordulari aurrez aurreko xake-jokoetan denbora kontsolatzeko aplikazio sinple bat da. Mugikorrarekin erabiltzeko pentsatuta dago. Jokalariek jokoaren denborako kontrolatzeko ezarpenak hautatu behar dituzte, eta ondoren, jokalari beltzak bere ordularia sakatzen du zuriaren tenporizadorea abiarazteko. Jokalari bakoitzaren txandaren ondoren, aurkariaren ordularia sakatzen dute denbora abiarazteko, jokoa amaitu arte edo ordularietako bat zerora iritsi arte."
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr "Pantaila nagusia, xake-joko bateko jokalari zuriaren eta beltzaren tenporizadoreak erakusten dituena"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
+msgid "The time control selection screen"
+msgstr "Denboraren kontrola hautatzeko pantaila"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr "Pantaila nagusia bertikalean, tenporizadore bat 180 gradutan biratuta erakusten duena"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "xakea"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "jokoa"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "ordularia"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "kronometroa"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Evangelos Ribeiro Tzaras"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Minutu bat alde bakoitzeko, gehi zero segundo txandako"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Bi minutu alde bakoitzeko, gehi segundo bat txandako"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Bost minutu alde bakoitzeko, gehi zero segundo txandako"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Bost minutu alde bakoitzeko, gehi hiru segundo txandako"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Hamar minutu alde bakoitzeko, gehi zero segundo txandako"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Hamar minutu alde bakoitzeko, gehi bost segundo txandako"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Hogeita hamar minutu alde bakoitzeko, gehi zero segundo txandako"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Hogeita hamar minutu alde bakoitzeko, gehi hogei segundo txandako"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Denbora nagusiaren minutuak"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Denbora nagusiaren segundoak"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Gehikuntza-segundoak"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Jokoa"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Denbora-kontrol berria"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Berrabiarazi tenporizadorea"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Orokorra"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Ireki menu nagusia"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Erakutsi lasterbideak"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Itxi leihoa"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Irten"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Hautatu denbora-kontrolak"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Ongi etorri xake-ordularira"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Hautatu denbora-kontrolak, behean, jokoa abiarazteko"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Denbora-kontroleko metodoa"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Gehikuntza"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Bronstein atzerapena"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Atzerapen sinplea"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Hasi jokoa"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Menu nagusia"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Txandakatu pausatzea"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Jokalariaren tenporizadore zuria"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Jokalariaren tenporizadore beltza"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "Denbora-kontrol _berria"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "Berrabiarazi _tenporizadorea"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Mututu alertako soinua"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Laster-teklak"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_Xake-ordularia aplikazioari buruz"
+
+#: src/main.py:63
+msgid "translator-credits"
+msgstr "translator-credits"
+
+#: src/timerbutton.py:58
+msgid "Player white timer"
+msgstr "Jokalariaren tenporizadore zuria"
+
+#: src/timerbutton.py:63
+msgid "Player black timer"
+msgstr "Jokalariaren tenporizadore beltza"
+
+#~ msgid "Clara Hobbs"
+#~ msgstr "Clara Hobbs"
+
+#~ msgid "Custom"
+#~ msgstr "Pertsonalizatua"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Open Primary Menu"
+#~ msgstr "Ireki menu nagusia"
+
+#~ msgid "Three minutes per side, plus zero seconds per turn"
+#~ msgstr "Hiru minutu alde bakoitzeko, gehi zero segundo txandako"
+
+#~ msgid "Three minutes per side, plus two seconds per turn"
+#~ msgstr "Hiru minutu alde bakoitzeko, gehi bi segundo txandako"
+
+#~ msgid "Fifteen minutes per side, plus ten seconds per turn"
+#~ msgstr "Hamabost minutu alde bakoitzeko, gehi hamar segundo txandako"
+
+#~ msgctxt "a11y"
+#~ msgid "Playing"
+#~ msgstr "Jokatzen"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Menu nagusia"

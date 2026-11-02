@@ -1,0 +1,259 @@
+# Serbian translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2023.
+# Марко Костић <marko.m.kostic@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/-/issues/\n"
+"POT-Creation-Date: 2025-10-31 12:28+0000\n"
+"PO-Revision-Date: 2026-03-21 12:39+0100\n"
+"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
+"Language-Team: Serbian <gnome-sr@googlegroups.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:2
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Шаховски сат"
+
+#: data/eu.fortysixandtwo.chessclock.desktop.in:8
+msgid "chess;game;clock;timer;"
+msgstr "шах;игра;сат;одбројавач;chess;game;clock;timer;"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Временске игре шаха на табли"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-"
+"board chess games. Intended for mobile use, players select the time control "
+"settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start "
+"their opponent's, until the game is finished or one of the clocks reaches "
+"zero."
+msgstr ""
+"Шаховски сат је једноставан програм који обезбеђује управљање временом за "
+"шаховске игре на табли. Замишљен за мобилно коришћење, играчи бирају жељене "
+"поставке управљања временом за њихову игру, затим црни играч лупне сат да би "
+"започео одбројавач белог. Након сваког потеза, играчи лупну сат да би "
+"започело одбројавање противнику, све док се игра не заврши или један од "
+"сатова не заврши са одбројавањем."
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:18
+msgid ""
+"The main screen, showing timers for the white and black players of a chess "
+"game"
+msgstr ""
+"Главни екран, приказује одбројаваче за белог и црног играча шаховске игре"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:22
+msgid "The time control selection screen"
+msgstr "Екран избора управљања временом"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:26
+msgid ""
+"The main screen in a portrait aspect ratio, showing one timer rotated 180 "
+"degrees"
+msgstr ""
+"Главни екран у усправном односу, који приказује један одбројавач ротиран за "
+"180 степени"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:37
+msgid "chess"
+msgstr "шах"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:38
+msgid "game"
+msgstr "игрица"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:39
+msgid "clock"
+msgstr "часовник"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:40
+msgid "timer"
+msgstr "одбројавач"
+
+#: data/eu.fortysixandtwo.chessclock.metainfo.xml.in:49
+msgid "Evangelos Ribeiro Tzaras"
+msgstr "Евангелос Риберо Царас"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Један минут по играчу, плус нула секунди по потезу"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Два минута по играчу, плус једна секунда по потезу"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Пет минута по играчу, плус нула секунди по потезу"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Пет минута по играчу, плус три секунде по потезу"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Десет минута по играчу, плус нула секунди по потезу"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Десет минута по играчу, плус пет секунди по потезу"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Тридесет минута по играчу, плус нула секунди по потезу"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Тридесет минута по играчу, плус двадесет секунди по потезу"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Минути главног времена"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Секунде главног времена"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Повећај секунде"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Игра"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Ново управљање временом"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Поново покрени одбројавач"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Опште"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Отвара главни мени"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Прикажи пречице"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Затвара прозор"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Излази"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Изаберите управљање временом"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Добро дошли у шаховски сат"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Изаберите управљање временом испод да започнете"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Начин управљања временом"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Повећавање"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Бројнштајново кашњење"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Једноставно кашњење"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Започни игру"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Главни мени"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Окини паузирање"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Одбројавач белог играча"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Одбројавач црног играча"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_Ново управљање временом"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Поново покрени одбројавач"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Утишај звук упозорења"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Пречице тастатуре"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "О Шаховском сату"
+
+#: src/main.py:63
+msgid "translator-credits"
+msgstr ""
+"Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Марко Костић <marko.m.kostic@gmail.com>\n"
+"Превод на српски језик https://гном.срб"
+
+#: src/timerbutton.py:58
+msgid "Player white timer"
+msgstr "Одбројавач белог играча"
+
+#: src/timerbutton.py:63
+msgid "Player black timer"
+msgstr "Одбројавач црног играча"

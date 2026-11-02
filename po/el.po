@@ -1,0 +1,228 @@
+# Greek translation for chess-clock.
+# Copyright (C) 2023 chess-clock's COPYRIGHT HOLDER
+# This file is distributed under the same license as the chess-clock package.
+# Efstathios Iosifidis <eiosifidis@gnome.org>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chess-clock main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/chess-clock/issues\n"
+"POT-Creation-Date: 2023-12-27 02:22+0000\n"
+"PO-Revision-Date: 2023-12-31 23:33+0200\n"
+"Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
+"Language-Team: Greek <gnome-el-list@gnome.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4\n"
+
+#: data/com.clarahobbs.chessclock.desktop.in:3 data/com.clarahobbs.chessclock.appdata.xml.in:6 src/gtk/window.ui:6
+msgid "Chess Clock"
+msgstr "Χρονόμετρο Σκάκι"
+
+#: data/com.clarahobbs.chessclock.desktop.in:9
+msgid "chess;game;clock;timer;"
+msgstr "σκάκι;παιχνίδι;χρονόμετρο;χρονόμετρο;"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:7
+msgid "Time games of over-the-board chess"
+msgstr "Χρονometrίστε παιχνίδια σκακιού πάνω στο ταμπλό"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:9
+msgid ""
+"Chess Clock is a simple application to provide time control for over-the-board chess games. Intended for mobile "
+"use, players select the time control settings desired for their game, then the black player taps their clock to "
+"start white's timer. After each player's turn, they tap the clock to start their opponent's, until the game is "
+"finished or one of the clocks reaches zero."
+msgstr ""
+"Το Chess Clock είναι μια απλή εφαρμογή που παρέχει έλεγχο χρόνου για παιχνίδια σκακιού πάνω στο ταμπλό."
+"Προορίζεται για χρήση σε φορητές συσκευές. Οι παίκτες επιλέγουν τις ρυθμίσεις έλεγχου χρόνου που επιθυμούν για "
+"το παιχνίδι τους, και στη συνέχεια, ο παίκτης που παίζει με τα μαύρα πατά το χρονόμετρό του για να ξεκινήσει το "
+"χρονόμετρο του λευκού. Μετά από κάθε σειρά κινήσεων του παίκτη, αυτός πατά το χρονόμετρο για να ξεκινήσει το "
+"χρονόμετρο του αντιπάλου του, μέχρι να τελειώσει το παιχνίδι ή ένα από τα χρονόμετρα φτάσει στο μηδέν."
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:18
+msgid "The main screen, showing timers for the white and black players of a chess game"
+msgstr "Η κύρια οθόνη, που δείχνει τα χρονόμετρα για τους παίκτες με τα λευκά και τα μαύρα στο παιχνίδι σκακιού"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:22
+msgid "The time control selection screen"
+msgstr "Η οθόνη επιλογής ελέγχου χρόνου"
+
+#: data/com.clarahobbs.chessclock.appdata.xml.in:26
+msgid "The main screen in a portrait aspect ratio, showing one timer rotated 180 degrees"
+msgstr "Η κύρια οθόνη σε πορτραίτο προβάλλει ένα χρονόμετρο περιστραμμένο κατά 180 μοίρες"
+
+#: src/gtk/timecontrolentry.ui:23
+msgid "One minute per side, plus zero seconds per turn"
+msgstr "Ένα λεπτό ανά πλευρά, συν μηδέν δευτερόλεπτα ανά κίνηση"
+
+#: src/gtk/timecontrolentry.ui:36
+msgid "Two minutes per side, plus one second per turn"
+msgstr "Δύο λεπτά ανά πλευρά, συν ένα δευτερόλεπτο ανά κίνηση"
+
+#: src/gtk/timecontrolentry.ui:49
+msgid "Five minutes per side, plus zero seconds per turn"
+msgstr "Πέντε λεπτά ανά πλευρά, συν μηδέν δευτερόλεπτα ανά κίνηση"
+
+#: src/gtk/timecontrolentry.ui:62
+msgid "Five minutes per side, plus three seconds per turn"
+msgstr "Πέντε λεπτά ανά πλευρά, συν τρία δευτερόλεπτα ανά κίνηση"
+
+#: src/gtk/timecontrolentry.ui:75
+msgid "Ten minutes per side, plus zero seconds per turn"
+msgstr "Δέκα λεπτά ανά πλευρά, συν μηδέν δευτερόλεπτα ανά κίνηση"
+
+#: src/gtk/timecontrolentry.ui:88
+msgid "Ten minutes per side, plus five seconds per turn"
+msgstr "Δέκα λεπτά ανά πλευρά, συν πέντε δευτερόλεπτα ανά κίνηση"
+
+#: src/gtk/timecontrolentry.ui:101
+msgid "Thirty minutes per side, plus zero seconds per turn"
+msgstr "Τριάντα λεπτά ανά πλευρά, συν μηδέν δευτερόλεπτα ανά κίνηση"
+
+#: src/gtk/timecontrolentry.ui:114
+msgid "Thirty minutes per side, plus twenty seconds per turn"
+msgstr "Τριάντα λεπτά ανά πλευρά, συν είκοσι δευτερόλεπτα ανά κίνηση"
+
+#: src/gtk/timecontrolentry.ui:134
+msgid "Main time minutes"
+msgstr "Κύριος χρόνος σε λεπτά"
+
+#: src/gtk/timecontrolentry.ui:153
+msgid "Main time seconds"
+msgstr "Κύριος χρόνος σε δευτερόλεπτα"
+
+#: src/gtk/timecontrolentry.ui:171
+msgid "Increment seconds"
+msgstr "Αύξηση δευτερολέπτων"
+
+#: src/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "Game"
+msgstr "Παιχνίδι"
+
+#: src/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "New Time Control"
+msgstr "Νέος Έλεγχος Χρόνου"
+
+#: src/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Restart Timer"
+msgstr "Επανεκκίνηση Χρονομέτρου"
+
+#: src/gtk/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Γενικά"
+
+#: src/gtk/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "Open Main Menu"
+msgstr "Άνοιγμα Κυρίως Μενού"
+
+#: src/gtk/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Εμφάνιση Συντομεύσεων"
+
+#: src/gtk/help-overlay.ui:43
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Κλείσιμο Παραθύρου"
+
+#: src/gtk/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Έξοδος"
+
+#: src/gtk/window.ui:17
+msgctxt "a11y"
+msgid "Select time controls"
+msgstr "Επιλογή χρονικών ελέγχων"
+
+#: src/gtk/window.ui:44
+msgid "Welcome to Chess Clock"
+msgstr "Καλώς ήρθατε στο Ρολόι Σκακιού"
+
+#: src/gtk/window.ui:54
+msgid "Select time controls below to get started"
+msgstr "Επιλέξτε τους ελέγχους χρόνου παρακάτω για να ξεκινήσετε"
+
+#: src/gtk/window.ui:72
+msgid "Time control method"
+msgstr "Μέθοδος ελέγχου χρόνου"
+
+#: src/gtk/window.ui:76
+msgid "Increment"
+msgstr "Αύξηση"
+
+#: src/gtk/window.ui:77
+msgid "Bronstein delay"
+msgstr "Καθυστέρηση Bronstein"
+
+#: src/gtk/window.ui:78
+msgid "Simple delay"
+msgstr "Απλή καθυστέρηση"
+
+#: src/gtk/window.ui:90
+msgid "Start Game"
+msgstr "Έναρξη Παιχνιδιού"
+
+#: src/gtk/window.ui:180
+msgid "Main Menu"
+msgstr "Κυρίως Μενού"
+
+#: src/gtk/window.ui:197
+msgid "Toggle Pause"
+msgstr "Εναλλαγή Παύσης"
+
+#: src/gtk/window.ui:214
+msgctxt "a11y"
+msgid "Player white timer"
+msgstr "Χρονόμετρο λευκού παίκτη"
+
+#: src/gtk/window.ui:225
+msgctxt "a11y"
+msgid "Player black timer"
+msgstr "Χρονόμετρο μαύρου παίκτη"
+
+#: src/gtk/window.ui:258
+msgid "_New Time Control"
+msgstr "_Νέος Έλεγχος Χρόνου"
+
+#: src/gtk/window.ui:262
+msgid "_Restart Timer"
+msgstr "_Επανεκκίνηση Χρονομέτρου"
+
+#: src/gtk/window.ui:268
+msgid "_Mute Alert Sound"
+msgstr "_Σίγαση Ήχου Ειδοποίησης"
+
+#: src/gtk/window.ui:274
+msgid "_Keyboard Shortcuts"
+msgstr "_Συντομεύσεις Πληκτρολογίου"
+
+#: src/gtk/window.ui:278
+msgid "_About Chess Clock"
+msgstr "_Περί με το Ρολόι Σκακιού"
+
+#: src/main.py:60
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα GNOME\n"
+" Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>\n"
+"\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
+"http://gnome.gr/"
+
+#: src/timerbutton.py:56
+msgid "Player white timer"
+msgstr "Χρονόμετρο λευκού παίκτη"
+
+#: src/timerbutton.py:61
+msgid "Player black timer"
+msgstr "Χρονόμετρο λευκού μαύρου"

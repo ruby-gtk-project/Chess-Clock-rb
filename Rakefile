@@ -55,7 +55,9 @@
 #
 
 # simplecov:disable
-require "bundler/gem_tasks" if !Dir[File.join(__dir__, "*.gemspec")].empty?
+if !Dir[File.join(__dir__, "*.gemspec")].empty?
+  require "bundler/gem_tasks"
+end
 # simplecov:enable
 
 # Define a base default task early so other files can enhance it.
@@ -74,14 +76,26 @@ task docs: "yard"
 ### MONOREPO FAMILY TASKS
 if Dir.exist?(File.join(__dir__, "gems"))
   def family_gem_dirs
-    Dir.glob(File.join(__dir__, "gems", "*", "*.gemspec"))
+    Dir.glob(
+      File.join(
+        __dir__,
+        "gems",
+        "*",
+        "*.gemspec",
+      ),
+    )
       .map { |path| File.dirname(path) }
       .uniq
       .sort_by { |path| File.basename(path) }
   end
 
   def run_kettle_family(*args)
-    sh("bundle", "exec", "kettle-family", *args)
+    sh(
+      "bundle",
+      "exec",
+      "kettle-family",
+      *args,
+    )
   end
 
   namespace :family do
@@ -131,7 +145,9 @@ end
 # External gems that define tasks - add here!
 begin
   require "kettle/dev"
-  Kettle::Dev.install_tasks unless Kettle::Dev::RUNNING_AS == "rake"
+  unless Kettle::Dev::RUNNING_AS == "rake"
+    Kettle::Dev.install_tasks
+  end
 rescue LoadError
   warn("NOTE: kettle-dev isn't installed, or is disabled for #{RUBY_VERSION} in the current environment")
 end
@@ -170,3 +186,108 @@ rescue LoadError
     warn("NOTE: stone_checksums isn't installed, or is disabled for #{RUBY_VERSION} in the current environment")
   end
 end
+
+# kettle-jem:freeze
+### DESKTOP INTEGRATION TASKS
+# The port's equivalent of upstream's data/meson.build and po/meson.build.
+# Upstream's build system compiles the GSettings schema, validates the desktop
+# entry and the metainfo, compiles one .mo per language and installs the four
+# icons; meson is not available here, so the same work is done by these tasks.
+#
+#   rake locale          # po/*.po  -> locale/<lang>/LC_MESSAGES/chess-clock.mo
+#   rake gschema         # data/*.gschema.xml -> data/schemas/gschemas.compiled
+#   rake install:data    # desktop entry, D-Bus service, metainfo, icons, schema
+#   rake data            # locale + gschema
+require "fileutils"
+
+CHESS_CLOCK_APP_ID = "eu.fortysixandtwo.chessclock"
+CHESS_CLOCK_TEXTDOMAIN = "chess-clock"
+
+# Where `rake install:data` writes. DESTDIR and PREFIX follow the GNU
+# conventions upstream's meson install obeys.
+def chess_clock_destdir = ENV.fetch("DESTDIR", "")
+def chess_clock_prefix = ENV.fetch("PREFIX", File.join(Dir.home, ".local"))
+def chess_clock_datadir = File.join(chess_clock_destdir, chess_clock_prefix, "share")
+
+def chess_clock_languages = File.read("po/LINGUAS").split("\n").map(&:strip).reject { |line| line.empty? || line.start_with?("#") }
+
+desc("Compile po/*.po into locale/<lang>/LC_MESSAGES/#{CHESS_CLOCK_TEXTDOMAIN}.mo")
+task("locale") do
+  require "gettext/tools/msgfmt"
+  chess_clock_languages.each do |language|
+    File.join("locale", language, "LC_MESSAGES").tap do |dir|
+      FileUtils.mkdir_p(dir)
+      GetText::Tools::MsgFmt.run(
+        File.join("po", "#{language}.po"),
+        "--output-file",
+        File.join(dir, "#{CHESS_CLOCK_TEXTDOMAIN}.mo"),
+      )
+    end
+  end
+end
+
+desc("Compile data/#{CHESS_CLOCK_APP_ID}.gschema.xml into data/schemas")
+task("gschema") do
+  FileUtils.mkdir_p("data/schemas")
+  FileUtils.cp("data/#{CHESS_CLOCK_APP_ID}.gschema.xml", "data/schemas/")
+  sh("glib-compile-schemas", "data/schemas")
+end
+
+desc("Compile the catalogues and the GSettings schema")
+task("data" => ["locale", "gschema"])
+
+namespace("install") do
+  desc("Install the desktop entry, D-Bus service, metainfo, icons, schema and catalogues under PREFIX")
+  task("data" => ["locale", "gschema"]) do
+    # The two .in files carry no substitutions of their own except @bindir@ in
+    # the service file, which is what meson fills in.
+    bindir = File.join(chess_clock_prefix, "bin")
+
+    {
+      "applications/#{CHESS_CLOCK_APP_ID}.desktop"    => File.read("data/#{CHESS_CLOCK_APP_ID}.desktop.in"),
+      "dbus-1/services/#{CHESS_CLOCK_APP_ID}.service" => File.read("data/#{CHESS_CLOCK_APP_ID}.service.in").gsub("@bindir@", bindir),
+      "metainfo/#{CHESS_CLOCK_APP_ID}.metainfo.xml"   => File.read("data/#{CHESS_CLOCK_APP_ID}.metainfo.xml.in"),
+    }.each do |relative, contents|
+      File.join(chess_clock_datadir, relative).tap do |target|
+        FileUtils.mkdir_p(File.dirname(target))
+        File.write(target, contents)
+      end
+    end
+
+    {
+      "icons/hicolor/scalable/apps/#{CHESS_CLOCK_APP_ID}.svg"          => "data/icons/hicolor/scalable/apps/#{CHESS_CLOCK_APP_ID}.svg",
+      "icons/hicolor/scalable/apps/#{CHESS_CLOCK_APP_ID}.Devel.svg"    => "data/icons/hicolor/scalable/apps/#{CHESS_CLOCK_APP_ID}.Devel.svg",
+      "icons/hicolor/symbolic/apps/#{CHESS_CLOCK_APP_ID}-symbolic.svg" => "data/icons/hicolor/symbolic/apps/#{CHESS_CLOCK_APP_ID}-symbolic.svg",
+      "glib-2.0/schemas/#{CHESS_CLOCK_APP_ID}.gschema.xml"             => "data/#{CHESS_CLOCK_APP_ID}.gschema.xml",
+    }.each do |relative, source|
+      File.join(chess_clock_datadir, relative).tap do |target|
+        FileUtils.mkdir_p(File.dirname(target))
+        FileUtils.cp(source, target)
+      end
+    end
+
+    chess_clock_languages.each do |language|
+      File.join(
+        chess_clock_datadir,
+        "locale",
+        language,
+        "LC_MESSAGES",
+      ).tap do |dir|
+        FileUtils.mkdir_p(dir)
+        FileUtils.cp(
+          File.join(
+            "locale",
+            language,
+            "LC_MESSAGES",
+            "#{CHESS_CLOCK_TEXTDOMAIN}.mo",
+          ),
+          dir,
+        )
+      end
+    end
+
+    sh("glib-compile-schemas", File.join(chess_clock_datadir, "glib-2.0", "schemas"))
+    sh("gtk4-update-icon-cache", "-qtf", File.join(chess_clock_datadir, "icons", "hicolor"))
+  end
+end
+# kettle-jem:unfreeze

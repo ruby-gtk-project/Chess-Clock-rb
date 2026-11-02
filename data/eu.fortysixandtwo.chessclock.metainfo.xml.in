@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+	<id>eu.fortysixandtwo.chessclock</id>
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license>GPL-3.0-or-later</project_license>
+  <name>Chess Clock</name>
+  <summary>Time games of over-the-board chess</summary>
+	<description>
+	  <p>Chess Clock is a simple application to provide time control for over-the-board
+	    chess games.  Intended for mobile use, players select the time control settings
+	    desired for their game, then the black player taps their clock to start white's
+	    timer.  After each player's turn, they tap the clock to start their opponent's,
+	    until the game is finished or one of the clocks reaches zero.
+	  </p>
+	</description>
+  <screenshots>
+    <screenshot type="default">
+      <caption>The main screen, showing timers for the white and black players of a chess game</caption>
+      <image>https://gitlab.gnome.org/World/chess-clock/raw/HEAD/data/screenshots/chess-clock-0.6-1.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The time control selection screen</caption>
+      <image>https://gitlab.gnome.org/World/chess-clock/raw/HEAD/data/screenshots/chess-clock-0.6-2.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The main screen in a portrait aspect ratio, showing one timer rotated 180 degrees</caption>
+      <image>https://gitlab.gnome.org/World/chess-clock/raw/HEAD/data/screenshots/chess-clock-0.6-3.png</image>
+    </screenshot>
+  </screenshots>
+  <categories>
+    <category>GNOME</category>
+    <category>GTK</category>
+    <category>Game</category>
+    <category>BoardGame</category>
+  </categories>
+  <keywords>
+    <keyword>chess</keyword>
+    <keyword>game</keyword>
+    <keyword>clock</keyword>
+    <keyword>timer</keyword>
+  </keywords>
+  <translation type="gettext">chess-clock</translation>
+  <launchable type="desktop-id">eu.fortysixandtwo.chessclock.desktop</launchable>
+  <url type="homepage">https://gitlab.gnome.org/World/chess-clock</url>
+  <url type="bugtracker">https://gitlab.gnome.org/World/chess-clock/-/issues</url>
+  <url type="vcs-browser">https://gitlab.gnome.org/World/chess-clock</url>
+  <url type="translate">https://l10n.gnome.org/module/chess-clock/</url>
+  <url type="contribute">https://gitlab.gnome.org/World/chess-clock/-/blob/main/CONTRIBUTING.md</url>
+  <developer_name translatable="no">Evangelos Ribeiro Tzaras</developer_name>
+  <update_contact>devrtz_at_fortysixandtwo.eu</update_contact>
+  <custom>
+    <value key="Purism::form_factor">mobile</value>
+  </custom>
+  <releases>
+    <release version="0.6.2" date="2025-10-31">
+      <description>
+	<p>A bugfix release under new maintainership.</p>
+	<ul>
+	  <li>Fix timer display in RTL languages, thanks to Yosef Or Boczko</li>
+	  <li>New and updated translations.</li>
+	</ul>
+      </description>
+    </release>
+    <release version="0.6.1" date="2024-09-13">
+      <description>
+	<p>A bugfix release under new maintainership.</p>
+	<ul>
+	  <li>Thanks to Clara Hobbs for creating Chess Clock!</li>
+	  <li>Fixed the timer not correctly counting down to zero, thanks to Michael Evans.</li>
+	  <li>Declare as compatible with mobile and workstations.</li>
+	</ul>
+      </description>
+    </release>
+    <release version="0.6.0" date="2023-09-27">
+      <description>
+        <p>A new release bringing adaptivity refinements and alert sounds.</p>
+        <ul>
+          <li>Thanks to Mariko Ueno, we now have alert sounds when a player's timer runs low.  These can be muted if desired via the menu.</li>
+          <li>The window adapts better to portrait aspect ratios and large screen sizes, enabling improved tablet support.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.5.0" date="2023-04-06">
+      <description>
+        <p>A new release focusing on UX enhancements.</p>
+        <ul>
+          <li>The time control selection screen got a major overhaul, with a bigger focus on the time entry, and a single button to start the game</li>
+          <li>The main screen now dims slightly when the window is unfocused</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.4.1" date="2023-03-26">
+      <description>
+        <ul>
+          <li>Minor bugfix release, fixing the broken about window in 0.4.0</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.4.0" date="2023-03-26">
+      <description>
+        <ul>
+          <li>Added Bronstein and simple delay timing methods</li>
+          <li>We now support 16 languages!  Big thanks to all the translators for this release</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.1" date="2023-02-19">
+      <description>
+        <p>The first release as a member of GNOME Circle!</p>
+        <ul>
+          <li>Chess Clock has a shiny new icon, courtesy of Brage Fuglseth</li>
+          <li>The time control selection screen now has some explanatory text and tooltips</li>
+          <li>Fixes for screen readers, so they read out which player's button is selected</li>
+          <li>All the standard keyboard shortcuts now work</li>
+          <li>Focus indicators for the timer buttons are much more obvious</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0" date="2023-02-11">
+      <description>
+        <p>A new release focusing on UI enhancements.</p>
+        <ul>
+          <li>Dragging the timer buttons counts as a click, so no more missed presses on a phone screen!</li>
+          <li>Clicking one button now gives the other focus, so pressing space toggles which timer is running</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.2.0" date="2023-01-15">
+      <description>
+        <p>A new beta release, with a few useful additions:</p>
+        <ul>
+          <li>New portrait mode, intended for a phone laid flat on a table next to the board</li>
+          <li>Increment is given at the <em>end</em> of each player's turn, rather than the beginning</li>
+          <li>Screen blanking is inhibited when the timers are running</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.1.0" date="2023-01-02">
+      <description>
+        <p>Initial release, implementing a basic chess clock.</p>
+      </description>
+    </release>
+  </releases>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+  <kudos>
+    <kudo>ModernToolkit</kudo>
+  </kudos>
+  <content_rating type="oars-1.1" />
+</component>

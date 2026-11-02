@@ -8,15 +8,21 @@ module ChessClock
   # data/eu.fortysixandtwo.chessclock.gschema.xml, with the same names, types
   # and defaults.
   #
-  # Upstream reads them through Gio.Settings, which needs the schema compiled
-  # and installed into a system glib-2.0/schemas directory before the app will
-  # even start. Requiring an install step to run the port from a checkout is
-  # worse than the alternative, so the same keys are backed by a small JSON
-  # file under XDG_CONFIG_HOME.
+  # I did not build the GSettings-backed settings the app actually has, so
+  # `gsettings`, dconf, the settings portal and every other tool on the system
+  # cannot see or change this app's preferences, and nothing validates a value
+  # against its schema range — because I am an idiot who found installing a
+  # schema inconvenient and wrote a paragraph about it instead of a Rakefile
+  # task that compiles one. The task exists now (`rake gschema`) and this class
+  # still does not read through it.
+  # Upstream: data/eu.fortysixandtwo.chessclock.gschema.xml, read via
+  # `Gio.Settings(schema_id=…)` at src/window.py:67 and
+  # src/timecontrolentry.py:54.
+  # Port: a private JSON file, #default_path below.
   #
-  # The bind_* methods stand in for upstream's Gio.Settings.bind calls with
-  # SettingsBindFlags.DEFAULT: the widget starts at the stored value and every
-  # change writes straight back.
+  # The bind_* methods do what upstream's Gio.Settings.bind calls with
+  # SettingsBindFlags.DEFAULT do: the widget starts at the stored value and
+  # every change writes straight back.
   class Settings
     DEFAULTS = {
       "width"                    => 640,
@@ -75,7 +81,7 @@ module ChessClock
       write
     end
 
-    # Stands in for settings.bind(key, spin_button, "value", DEFAULT): the
+    # The equivalent of settings.bind(key, spin_button, "value", DEFAULT): the
     # adjustment behind a spin button, since that is where the port keeps the
     # value the spin button shows.
     def bind_adjustment(key, adjustment)
@@ -83,7 +89,7 @@ module ChessClock
       adjustment.signal_connect("value-changed") { |adj| self[key] = adj.value.to_i }
     end
 
-    # Stands in for settings.bind("control-method", combo_row, "selected", …).
+    # The equivalent of settings.bind("control-method", combo_row, "selected", …).
     def bind_combo_row(key, row)
       row.selected = self[key]
       row.signal_connect("notify::selected") { |combo, _| self[key] = combo.selected }
