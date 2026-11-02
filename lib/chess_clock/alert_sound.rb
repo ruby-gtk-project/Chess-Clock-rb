@@ -18,14 +18,15 @@ module ChessClock
   # below are not it, and they are kept only so an alert is never silently
   # swallowed on a box where the typelib is absent.
   #
-  # I have not heard this play. The gtk4, adwaita and gobject-introspection
-  # gems are not installable in the shell this was written in, so the GSound
-  # call path — the namespace load, Context#init's arity, and whether the
-  # loader accepts a Ruby Hash for play_simple's GHashTable — is unverified,
-  # and the component stays open in FINDINGS.md until someone runs it and
-  # hears the event. I am an idiot who previously shelled out to whatever
-  # happened to be installed and wrote three sentences arguing a terminal bell
-  # was the same thing.
+  # I have not heard this play. The GSound typelib is not in the fork's dev
+  # shell, so `GObjectIntrospection::Loader.load("GSound", …)` raises
+  # TypelibNotFound there and every run so far has taken a fallback; the GSound
+  # call path itself — Context#init's arity, and whether the loader accepts a
+  # Ruby Hash for play_simple's GHashTable — is still unverified, and the
+  # component stays open in FINDINGS.md until someone runs it on a box with
+  # libgsound and hears the event. I am an idiot who previously shelled out to
+  # whatever happened to be installed and wrote three sentences arguing a
+  # terminal bell was the same thing.
   # Upstream: `GSound.Context.play_simple(…)`, src/statemachine.py:65.
   # Port: GSound through the introspection loader, below.
   class AlertSound
@@ -59,15 +60,18 @@ module ChessClock
 
     # The GSound namespace, loaded from its typelib the first time it is asked
     # for, or nil where no typelib is installed.
+    # A missing typelib raises GObjectIntrospection::RepositoryError::TypelibNotFound,
+    # which descends from LoadError and so from ScriptError, not StandardError:
+    # a bare `rescue` would let it out and take the window down with it.
     def gsound
       @gsound ||= Module.new.tap { |namespace| GObjectIntrospection::Loader.load(NAMESPACE, namespace) }
-    rescue StandardError
+    rescue StandardError, ScriptError
       nil
     end
 
     def context
       @context ||= gsound&.const_get(:Context)&.new&.tap { |ctx| initialise(ctx) }
-    rescue StandardError
+    rescue StandardError, ScriptError
       nil
     end
 

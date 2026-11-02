@@ -18,16 +18,25 @@ and on every `alerted` signal plays
 GSound ships a GIR typelib but has no ruby-gnome binding gem.
 `lib/chess_clock/alert_sound.rb` therefore loads the namespace through
 `GObjectIntrospection::Loader.load("GSound", …)`, which is the documented route
-for a namespace with a typelib and no gem. Three things about that route are
-unverified, because the `gtk4`, `adwaita` and `gobject-introspection` gems are
-not installable in the shell the port was written in:
+for a namespace with a typelib and no gem.
 
-1. whether the loader resolves the `GSound` namespace at all on a box that has
-   `libgsound` and its typelib installed;
-2. the arity `GSound::Context#init` is exposed with — GInitable's `init` takes a
+The fork's dev shell has no GSound typelib, so every run so far has raised
+`GObjectIntrospection::RepositoryError::TypelibNotFound` and taken a fallback.
+That raise was itself a crash until this round: `TypelibNotFound` descends from
+`LoadError`, so from `ScriptError` and not `StandardError`, and the two
+`rescue StandardError` clauses in `AlertSound` let it straight out — the first
+timer to reach its warning threshold on a box without libgsound took the window
+down with it. Both clauses now name `ScriptError` too, and
+`test/drive_countdown.rb` runs a clock through the `alerted` signal with the
+alert unmuted, which is the path that used to abort.
+
+Two things about the GSound route itself are still unverified, because the
+typelib is not there to exercise them:
+
+1. the arity `GSound::Context#init` is exposed with — GInitable's `init` takes a
    cancellable, and whether the loader makes it optional cannot be read off the
    C declaration;
-3. whether the loader accepts a Ruby `Hash` where `gsound_context_play_simple`
+2. whether the loader accepts a Ruby `Hash` where `gsound_context_play_simple`
    wants a `GHashTable` of string to string.
 
 `canberra-gtk-play` and `Gdk::Display#beep` are kept behind it so an alert is
@@ -35,38 +44,91 @@ never silently swallowed, and neither is the freedesktop event: the bell is a
 different sound, at a different volume, through a different device, and on a
 bell-disabled session it is silence.
 
-**This row stays open until someone runs the app, lets a clock reach its
-warning threshold, and hears `dialog-warning`.** Rendering and driving did not
-happen this round either, for the same missing gems.
+**This row stays open until someone runs the app on a box with libgsound and
+its typelib, lets a clock reach its warning threshold, and hears
+`dialog-warning`.**
 
-## Open: nothing has been rendered or driven
+## Resolved: the port runs, and four bugs it was hiding
 
-`test/drive_window.rb` exists and exercises both screens, both breakpoints, the
-six machine signals and the five window actions, but it has never been run —
-the gems are not installed. Three binding-risk points are unverified as a
-result:
+`test/drive_window.rb` and the new `test/drive_countdown.rb` both run green
+under the fork's dev shell:
 
-- `Gtk::Widget#add_tick_callback`'s block arity (`lib/chess_clock/timer.rb:48`).
-- `Adwaita::BreakpointCondition.parse` plus `add_breakpoint`
-  (`lib/chess_clock/window.rb`, `lib/chess_clock/timer_button.rb`).
-- `update_property` with a `GLib::Value` for accessible labels
-  (`lib/chess_clock/window.rb`, `lib/chess_clock/timer_button.rb`).
+    nix develop --command xvfb-run -a ruby test/drive_window.rb      # 32/32
+    nix develop --command xvfb-run -a ruby test/drive_countdown.rb   # 21/21
 
-The breakpoint steps in the driver resize the window by assigning
-`default_width`, which is the one step whose *trigger* is itself in doubt: GTK
-ignores a default size on a window that is already mapped, so if the narrow
-layout does not apply, suspect the driver before the breakpoint.
+Screenshots land in `tmp/shots`. `drive_window.rb` covers both screens, both
+breakpoints, the six machine signals and the five window actions;
+`drive_countdown.rb` runs a two-second game down to zero, which is the only
+thing that exercises `Gtk::Widget#add_tick_callback`, the alert threshold, the
+`expired` signal and the red expired styling — every check in `drive_window.rb`
+would pass against a frozen clock.
 
-## Substitution: GSettings replaced by a JSON file
+The first run of either found four crashes, all of them in binding calls that
+`ruby -c` and a successful `require` are blind to:
+
+- **`Gtk::Accessible#update_property` cannot be called from Ruby at all.** The
+  introspection loader has no marshaller for a C array of
+  `GtkAccessibleProperty` and raises `NotImplementedError: TODO: in Ruby ->
+  GIArgument(array/C)[interface(enum)](GtkAccessibleProperty)` for every
+  argument shape — enum constants, bare integers, a single unwrapped enum. The
+  three accessible names the port sets now go through
+  `lib/chess_clock/accessible_label.rb`, which writes the LABELLED_BY relation
+  with `gtk_widget_add_mnemonic_label` instead; see the substitution note below.
+- **`Gtk::WindowControls.new` takes its side positionally**, and refuses both a
+  bare `new` and the `side:` keyword the loader's own error message advertises.
+- **`Gio::SimpleAction#state` and the `change-state` argument arrive already
+  unwrapped** from their `GLib::Variant`, while `state=` and `change_state`
+  still want one; upstream's `get_boolean()`/`new_boolean()` pairs assume a
+  variant on both sides, and the direct translation raised `undefined method
+  'value' for false` the first time `win.muted` was activated.
+- **`AlertSound` let `TypelibNotFound` escape**, as above.
+
+One quirk the drivers themselves had to learn: `Gtk::Button#activate` does not
+emit `clicked` inline. GtkButton's activate handler runs the pressed animation
+and emits on a timeout, so a driver step that clicks and then reads the result
+in the same step reads the state from before the click.
+
+## Resolved: GSettings, with a file store behind it
 
 Upstream reads eight keys through `Gio.Settings` against
 `data/eu.fortysixandtwo.chessclock.gschema.xml`. `lib/chess_clock/settings.rb`
-keeps the same eight keys, types and defaults in a JSON file under
-`XDG_CONFIG_HOME`, so `gsettings`, dconf and the settings portal cannot see
-them and nothing range-checks a value.
+now does the same: `Settings::SchemaStore` is a `Gio::Settings` on that schema
+id, so `gsettings get eu.fortysixandtwo.chessclock muted`, dconf and the
+settings portal read and write exactly what the app does, and GSettings types
+and range-checks every write.
 
-The schema itself is now carried in `data/`, and `rake gschema` compiles it;
-the application does not yet read through it. This is a gap, not a design.
+The schema has to be found before the `Gio::Settings` is constructed —
+constructing one for a schema that is not installed is a fatal `g_error` in
+GLib, not an exception Ruby can catch — so `SchemaStore.open` looks the id up
+in `Gio::SettingsSchemaSource.default` first and returns nil when it is absent.
+What is left in that case is `Settings::FileStore`, the JSON file under
+`XDG_CONFIG_HOME` the port used to have, with the same eight keys and defaults:
+an uninstalled checkout still remembers its geometry and its custom control.
+`Settings#store_kind` says which is live, and an explicit `path:` asks for the
+file store by name, which is what the specs and the drivers use so a test run
+never writes into the session's dconf.
+
+`rake gschema` compiles the schema into `data/schemas` for a
+`GSETTINGS_SCHEMA_DIR` run; `rake install:data` installs it under PREFIX.
+
+## Substitution: accessible names through LABELLED_BY
+
+`src/gtk/window.ui` gives `control_chooser` an
+`<accessibility><property name="label">` block, and
+`ChessClockTimerButton.on_white`/`on_black` call
+`update_property([Gtk.AccessibleProperty.LABEL], [...])` to rename a clock face
+when the sides swap. Neither route is open in Ruby: the first needs a
+GtkBuilder template, and the second needs the `update_property` marshaller the
+bindings do not have.
+
+`lib/chess_clock/accessible_label.rb` sets the name through the LABELLED_BY
+relation instead, with `gtk_widget_add_mnemonic_label` and a `Gtk::Label` that
+is never put in the widget tree. GTK's ATContext resolves that relation to the
+accessible name when no explicit LABEL property is set, so a screen reader gets
+the same words — but it gets them as a *relation to a label widget* rather than
+as a label property, and a tool that reads the property directly will find it
+unset. Renaming means dropping the previous carrier from the relation, which is
+why the carrier per widget is remembered.
 
 ## Substitution: no GResource
 

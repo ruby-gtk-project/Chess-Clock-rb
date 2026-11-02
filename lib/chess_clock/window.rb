@@ -4,6 +4,7 @@ require "gtk4"
 require "adwaita"
 
 require_relative "translation"
+require_relative "accessible_label"
 require_relative "settings"
 require_relative "primary_menu"
 require_relative "shortcuts_window"
@@ -41,6 +42,7 @@ module ChessClock
   # when it starts running. Nothing on either side tests either shape.
   class Window
     include Translation
+    include AccessibleLabel
 
     TITLE = _("Chess Clock")
     SETUP = "setup"
@@ -242,14 +244,16 @@ module ChessClock
     # The mute toggle is stateful: activating it flips the state, and the
     # change-state handler is the one place the new value is written down.
     def toggle_muted(action)
-      @state_machine.muted = !action.state.value
+      @state_machine.muted = !unwrap(action.state)
       action.change_state(GLib::Variant.new(@state_machine.muted))
     end
 
     def change_muted(action, new_state)
-      action.state = new_state
-      @settings["muted"] = new_state.value
-      @state_machine.muted = new_state.value
+      unwrap(new_state).then do |muted|
+        action.state = GLib::Variant.new(muted)
+        @settings["muted"] = muted
+        @state_machine.muted = muted
+      end
     end
 
     # --- State machine signal handlers ----------------------------------------
@@ -521,6 +525,12 @@ module ChessClock
         end
       end
 
+    # `Gio::SimpleAction#state` and the `change-state` argument both arrive
+    # already unwrapped from their GLib::Variant in the Ruby bindings, while the
+    # `state=` setter and `change_state` still want one; upstream's
+    # `get_boolean()`/`new_boolean()` pairs assume a variant on both sides.
+      def unwrap(state) = state.is_a?(GLib::Variant) ? state.value : state
+
       def paint_controls(start_colour, end_colour)
         [windowcontrols_start, windowcontrols_start_end].each do |controls|
           controls.add_css_class(start_colour)
@@ -530,9 +540,11 @@ module ChessClock
         windowcontrols_end.remove_css_class(start_colour)
       end
 
+    # `Gtk::WindowControls.new` takes its side positionally and refuses both a
+    # bare `new` and a `side:` keyword, so the side cannot be left to the
+    # `side=` setter here.
       def window_controls(side)
-        Gtk::WindowControls.new.tap do |controls|
-          controls.side = side
+        Gtk::WindowControls.new(side).tap do |controls|
           controls.valign = :start
           controls.margin_top = 6
         end
@@ -547,13 +559,6 @@ module ChessClock
         button.add_css_class("image-button")
         button.add_css_class("circular")
         button.add_css_class("osd")
-      end
-
-      def announce(widget, label)
-        widget.update_property(
-          [Gtk::AccessibleProperty::LABEL],
-          [GLib::Value.new(GLib::Type::STRING, label)],
-        )
       end
   end
 end

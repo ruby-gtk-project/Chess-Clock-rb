@@ -7,18 +7,20 @@ move.
 
 Port target: branch `ruby`, namespace directory `lib/chess_clock/`. Every
 component below now has its `lib/*.rb` file: `lib/chess_clock.rb` requires
-`translation` then `application`, and the seventeen files under
-`lib/chess_clock/` carry the whole app (2 394 lines). `data/` and `po/` are
+`translation` then `application`, and the eighteen files under
+`lib/chess_clock/` carry the whole app (2494 lines). `data/` and `po/` are
 ported too — the four `data/*.in`/schema files, the icons, the screenshots and
 all 42 catalogues. Nothing in this inventory is missing a file; whether each
 file is at *behavioural* parity is the question `.reports/component-parity.md`
 answers, and `FINDINGS.md` records the binding substitutions.
 
-Two port files have no single upstream file of their own:
+Three port files have no single upstream file of their own:
 `lib/chess_clock/signals.rb` stands in for the `@GObject.Signal` plumbing of
-`src/timer.py` and `src/statemachine.py`, and `lib/chess_clock/translation.rb`
-for the `bindtextdomain`/`textdomain`/`gettext.install` calls in
-`src/chess-clock.in`.
+`src/timer.py` and `src/statemachine.py`, `lib/chess_clock/translation.rb` for
+the `bindtextdomain`/`textdomain`/`gettext.install` calls in
+`src/chess-clock.in`, and `lib/chess_clock/accessible_label.rb` for the
+accessible names `src/gtk/window.ui` and `src/timerbutton.py` set three
+different ways, none of which the Ruby bindings expose.
 
 ## Summary
 
@@ -40,6 +42,7 @@ for the `bindtextdomain`/`textdomain`/`gettext.install` calls in
 | `data/…chessclock.gschema.xml` | `lib/chess_clock/settings.rb` | settings | yes |
 | `src/gtk/style.css` + `style-hc.css` | `lib/chess_clock/style.rb` | stylesheet | yes |
 | `src/timer.py`, `src/statemachine.py` (signals) | `lib/chess_clock/signals.rb` | support | yes |
+| `src/gtk/window.ui`, `src/timerbutton.py` (a11y labels) | `lib/chess_clock/accessible_label.rb` | support | yes |
 | `src/chess-clock.in` (gettext setup) | `lib/chess_clock/translation.rb` | support | yes |
 
 Upstream splits most components across two files (the `.py` subclass and its

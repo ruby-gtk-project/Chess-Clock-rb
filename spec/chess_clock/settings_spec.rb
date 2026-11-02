@@ -4,9 +4,10 @@ require "tmpdir"
 
 require "chess_clock/settings"
 
-# The only persistence the app has. Upstream gets the round trip for free from
-# GSettings; the port writes the file itself, so the round trip is the thing
-# most worth pinning.
+# The only persistence the app has. With the schema installed the store is
+# GSettings, exactly as upstream; these examples pass an explicit `path:`, which
+# asks for the JSON fallback by name, so a test run never writes into the
+# session's dconf and the fallback's round trip stays pinned.
 RSpec.describe ChessClock::Settings do
   subject(:settings) { described_class.new(path: path) }
 
@@ -37,6 +38,14 @@ RSpec.describe ChessClock::Settings do
     written.each { |key, value| settings[key] = value }
     reread = described_class.new(path: path)
     expect(written.keys.to_h { |key| [key, reread[key]] }).to eq(written)
+  end
+
+  it "uses the file store when asked for one by path" do
+    expect(settings.store_kind).to eq(:file)
+  end
+
+  it "reports the file it is backed by" do
+    expect(settings.location).to eq(path)
   end
 
   it "exposes a named accessor per key, hyphens as underscores" do

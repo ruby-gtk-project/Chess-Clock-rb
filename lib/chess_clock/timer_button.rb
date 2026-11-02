@@ -4,6 +4,7 @@ require "gtk4"
 require "adwaita"
 
 require_relative "translation"
+require_relative "accessible_label"
 
 module ChessClock
   # TimerButton is one player's clock face: the whole half of the window they
@@ -27,6 +28,7 @@ module ChessClock
   # Pango size attributes on the three labels.
   class TimerButton < Gtk::Button
     include Translation
+    include AccessibleLabel
 
     FONT_SIZE = 100
     LARGE_CONDITION = "min-width: 600px"
@@ -50,7 +52,7 @@ module ChessClock
       add_css_class("timerbutton")
       add_css_class("opaque")
       add_css_class(colour.to_s)
-      announce(colour)
+      name_face(colour)
     end
 
     def build
@@ -94,13 +96,13 @@ module ChessClock
     def on_white(*_args)
       add_css_class("white")
       remove_css_class("black")
-      announce(:white)
+      name_face(:white)
     end
 
     def on_black(*_args)
       add_css_class("black")
       remove_css_class("white")
-      announce(:black)
+      name_face(:black)
     end
 
     # active is "this button can be tapped", current is "this is the clock that
@@ -177,11 +179,8 @@ module ChessClock
 
     # The face shows digits, so the accessible name has to say whose clock it
     # is; it changes with the colour, because the sides swap between games.
-      def announce(colour)
-        update_property(
-          [Gtk::AccessibleProperty::LABEL],
-          [GLib::Value.new(GLib::Type::STRING, ACCESSIBLE_LABELS.fetch(colour))],
-        )
+      def name_face(colour)
+        announce(self, ACCESSIBLE_LABELS.fetch(colour))
       end
   end
 end

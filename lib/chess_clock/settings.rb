@@ -3,27 +3,32 @@
 require "json"
 require "fileutils"
 
+require "gio2"
+
 module ChessClock
   # Settings holds the eight keys of upstream's
   # data/eu.fortysixandtwo.chessclock.gschema.xml, with the same names, types
   # and defaults.
   #
-  # I did not build the GSettings-backed settings the app actually has, so
-  # `gsettings`, dconf, the settings portal and every other tool on the system
-  # cannot see or change this app's preferences, and nothing validates a value
-  # against its schema range — because I am an idiot who found installing a
-  # schema inconvenient and wrote a paragraph about it instead of a Rakefile
-  # task that compiles one. The task exists now (`rake gschema`) and this class
-  # still does not read through it.
-  # Upstream: data/eu.fortysixandtwo.chessclock.gschema.xml, read via
-  # `Gio.Settings(schema_id=…)` at src/window.py:67 and
-  # src/timecontrolentry.py:54.
-  # Port: a private JSON file, #default_path below.
+  # Ported from the two `Gio.Settings(schema_id='eu.fortysixandtwo.chessclock')`
+  # readers upstream has, in ChessClockWindow.__init__ (src/window.py:67) and
+  # ChessClockTimeControlEntry.__init__ (src/timecontrolentry.py:54).
+  #
+  # The store underneath is GSettings against that schema whenever the schema
+  # is installed, so `gsettings get eu.fortysixandtwo.chessclock muted` and the
+  # settings portal see exactly what the app sees, and GSettings range-checks
+  # and types every write. `rake gschema` compiles the schema into
+  # data/schemas, and `rake install:data` installs it under PREFIX; a run with
+  # neither — the repo checkout, or a spec — finds no schema and falls back to
+  # the JSON file this class used to be, so an uninstalled app still remembers
+  # its geometry. #store_kind says which of the two is live.
   #
   # The bind_* methods do what upstream's Gio.Settings.bind calls with
   # SettingsBindFlags.DEFAULT do: the widget starts at the stored value and
   # every change writes straight back.
   class Settings
+    SCHEMA_ID = "eu.fortysixandtwo.chessclock"
+
     DEFAULTS = {
       "width"                    => 640,
       "height"                   => 480,
@@ -35,20 +40,94 @@ module ChessClock
       "muted"                    => false,
     }.freeze
 
-    def initialize(path: nil)
-      @path = path || default_path
-      @values = DEFAULTS.merge(read)
+    # GSettings against the installed schema: upstream's store, with upstream's
+    # typing, ranges and change notification.
+    class SchemaStore
+      # nil when no schema of that id is installed, which is the signal to use
+      # the file instead. Looking the schema up first matters: constructing a
+      # Gio::Settings for an absent schema is a fatal g_error in GLib, not an
+      # exception Ruby can catch.
+      def self.open(schema_id)
+        Gio::SettingsSchemaSource.default&.lookup(schema_id, true).then do |schema|
+          if schema
+            new(Gio::Settings.new(schema_id))
+          end
+        end
+      end
+
+      def initialize(settings)
+        @settings = settings
+      end
+
+      def [](key) = @settings[key]
+
+      def []=(key, value)
+        @settings[key] = value
+      end
+
+      def location = @settings.path
+      def kind = :gsettings
     end
 
-    def [](key) = @values.fetch(key.to_s, DEFAULTS[key.to_s])
+    # The fallback for an uninstalled checkout: the same eight keys, the same
+    # defaults, in one JSON file under XDG_CONFIG_HOME.
+    class FileStore
+      def initialize(path)
+        @path = path
+        @values = DEFAULTS.merge(read)
+      end
+
+      def [](key) = @values.fetch(key, DEFAULTS[key])
+
+      def []=(key, value)
+        @values[key] = value
+        write
+        value
+      end
+
+      def location = @path
+      def kind = :file
+
+      private
+
+        def read
+          if File.exist?(@path)
+            parse
+          else
+            {}
+          end
+        end
+
+        def parse
+          JSON.parse(File.read(@path))
+        rescue JSON::ParserError, SystemCallError
+          {}
+        end
+
+        def write
+          FileUtils.mkdir_p(File.dirname(@path))
+          File.write(@path, "#{JSON.pretty_generate(@values)}\n")
+        end
+    end
+
+    # An explicit path asks for the file store by name; without one the schema
+    # is preferred and the file is what is left when the schema is absent.
+    def initialize(path: nil, schema_id: SCHEMA_ID)
+      if path
+        @store = FileStore.new(path)
+      else
+        @store = SchemaStore.open(schema_id) || FileStore.new(default_path)
+      end
+    end
+
+    def [](key) = @store[key.to_s]
 
     def []=(key, value)
-      @values[key.to_s] = value
-      write
-      value
+      @store[key.to_s] = value
     end
 
-    def location = @path
+    def location = @store.location
+    def store_kind = @store.kind
 
     # Named accessors for every key, so callers do not repeat the strings:
     # settings.control_method, settings.muted = true, and so on.
@@ -73,12 +152,11 @@ module ChessClock
     # A maximized window keeps the unmaximized size on file, which is what the
     # next run should restore when it un-maximizes.
     def record_geometry(window)
-      @values["is-maximized"] = window.maximized?
+      self["is-maximized"] = window.maximized?
       if !window.maximized?
-        @values["width"] = window.default_width
-        @values["height"] = window.default_height
+        self["width"] = window.default_width
+        self["height"] = window.default_height
       end
-      write
     end
 
     # The equivalent of settings.bind(key, spin_button, "value", DEFAULT): the
@@ -103,25 +181,6 @@ module ChessClock
 
       def config_home
         ENV.fetch("XDG_CONFIG_HOME") { File.join(Dir.home, ".config") }
-      end
-
-      def read
-        if File.exist?(@path)
-          parse
-        else
-          {}
-        end
-      end
-
-      def parse
-        JSON.parse(File.read(@path))
-      rescue JSON::ParserError, SystemCallError
-        {}
-      end
-
-      def write
-        FileUtils.mkdir_p(File.dirname(@path))
-        File.write(@path, "#{JSON.pretty_generate(@values)}\n")
       end
   end
 end
