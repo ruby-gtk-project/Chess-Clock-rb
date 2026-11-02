@@ -228,8 +228,8 @@ Target: `lib/chess_clock/alert_sound.rb` (exists).
 ## Translations
 
 The port carries all 42 locales under `po/` (`lib/chess_clock/translation.rb`
-binds the `chess-clock` textdomain). Upstream's `po/` carries the same 42 and and `po/POTFILES.in` lists both the `.py` sources and
-all four `.ui` files. Translatable strings: the window title, the two welcome
+binds the `chess-clock` textdomain). Upstream's `po/` carries the same 42, and `po/POTFILES.in` lists the
+four `data/` files, all four `.ui` files and all six `.py` sources. Translatable strings: the window title, the two welcome
 labels, "Time control method" and its three methods, "Start Game", the eight
 time-control tooltips, the three spin-button tooltips, "Main Menu", "Toggle
 Pause", the five menu items, the six shortcut titles and their two group
