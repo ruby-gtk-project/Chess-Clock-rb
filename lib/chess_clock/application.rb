@@ -3,52 +3,85 @@
 require "gtk4"
 require "adwaita"
 
+require_relative "settings"
+require_relative "style"
+require_relative "about_dialog"
+require_relative "window"
+
 module ChessClock
-  # The port's application: one window, and a status page saying the port has
-  # not been written yet. Everything else grows from here — replace the status
-  # page with the real content, keep the shape.
+  # Application is the application singleton.
+  #
+  # Ported from ChessClockApplication in src/main.py: two application actions,
+  # quit and about, and one window raised on activate. Upstream's style sheets
+  # come out of its GResource; here Style installs them on the display as the
+  # application starts.
   #
   # House style (see .claude/skills/ruby-gtk): every widget is a memoized
   # method, all configuration lives in its `tap`, assembly happens only in
   # `build`, and the launcher is one expression.
   class Application
+    APP_ID = "org.rubygtkproject.ChessClock"
+
+    ACCELERATORS = {
+      "quit"  => ["<primary>q"],
+      "about" => [],
+    }.freeze
+
+    def initialize(app_id: APP_ID, flags: :default_flags, settings: nil, present: true)
+      @app_id = app_id
+      @flags = flags
+      @settings = settings
+      @present = present
+    end
+
     def build
-      app.tap do
-        app.signal_connect("activate") do
-          window.tap do |win|
-            win.content = toolbar_view
-          end
+      app.tap do |a|
+        a.signal_connect("activate") do
+          style.load
 
-          toolbar_view.tap do |view|
-            view.add_top_bar(header_bar)
-            view.content = status_page
-          end
+          ACCELERATORS.each { |name, accelerators| create_action(name, accelerators) }
 
-          window.present
+          main_window.tap do |win|
+            win.build
+            if @present
+              win.present
+            end
+          end
         end
       end
     end
 
+    def run = app.run([])
+
     # Adwaita::Application is broken in the Ruby bindings; the application
     # object comes from Gtk and only the window is Adwaita.
-    def app = @app ||= Gtk::Application.new("org.rubygtkproject.ChessClock", :default_flags)
-
-    def window
-      @window ||= Adwaita::ApplicationWindow.new(app).tap do |win|
-        win.title = "Chess-Clock"
-        win.set_default_size(800, 600)
+    def app
+      @app ||= begin
+        Adwaita.init
+        Gtk::Application.new(@app_id, @flags)
       end
     end
 
-    def toolbar_view = @toolbar_view ||= Adwaita::ToolbarView.new
-    def header_bar = @header_bar ||= Adwaita::HeaderBar.new
+    def main_window = @main_window ||= Window.new(app, settings: settings)
+    def settings = @settings ||= Settings.new
+    def style = @style ||= Style.new
+    def about_dialog = @about_dialog ||= AboutDialog.new
 
-    def status_page
-      @status_page ||= Adwaita::StatusPage.new.tap do |page|
-        page.title = "Chess-Clock"
-        page.description = "The Ruby port has not been written yet."
-        page.icon_name = "applications-engineering-symbolic"
+    private
+
+      def create_action(name, accelerators)
+        Gio::SimpleAction.new(name).tap do |action|
+          action.signal_connect("activate") { activate(name) }
+          app.add_action(action)
+          app.set_accels_for_action("app.#{name}", accelerators)
+        end
       end
-    end
+
+      def activate(name)
+        case name
+        when "quit" then app.quit
+        when "about" then about_dialog.present(main_window.window)
+        end
+      end
   end
 end
