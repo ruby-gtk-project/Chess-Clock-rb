@@ -130,6 +130,31 @@ as a label property, and a tool that reads the property directly will find it
 unset. Renaming means dropping the previous carrier from the relation, which is
 why the carrier per widget is remembered.
 
+## Substitution: the shortcuts window's accelerators are resolved by hand
+
+`src/gtk/help-overlay.ui` gives each `GtkShortcutsShortcut` an `action-name`
+and no accelerator, and GTK is supposed to ask the application what that action
+is bound to and show the key combination beside the title. It does that in the
+widget's `root` vfunc, which has already run by the time a Ruby caller holds
+the window: `Gtk::Builder` roots every child as it parses, when no application
+is reachable yet, and nothing re-resolves afterwards.
+
+Measured on GTK 4.22.4 (where GtkShortcutsWindow and its parts are
+deprecated), with `test/drive_components.rb` reading the labels back: setting
+the window's `application` after the build, setting it as a builder property so
+it is in place before the children exist, setting `transient-for`, and
+re-assigning each shortcut's `action-name` all leave every accelerator empty.
+Writing the `accelerator` property directly does reach the label.
+
+`ShortcutsWindow#resolve_accelerators` therefore does the lookup GTK would have
+done — `gtk_application_get_accels_for_action`, joined with a space — and sets
+`accelerator` on each shortcut as the window is presented. The words and the
+key combinations shown are upstream's, and they still come from the
+accelerators `window.rb` and `application.rb` install rather than from a second
+hand-written list, so they cannot drift from the real bindings. What differs is
+only who performs the lookup. Without it the window listed six shortcuts and
+not one key combination, which is most of the point of the window.
+
 ## Substitution: no GResource
 
 Upstream compiles `src/gtk/*.css`, the four `.ui` templates and the metainfo

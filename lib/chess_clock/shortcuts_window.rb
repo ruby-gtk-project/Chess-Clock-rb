@@ -10,9 +10,11 @@ module ChessClock
   #
   # Ported from src/gtk/help-overlay.ui: two groups, Game and General, with six
   # shortcuts between them. Each shortcut names an action rather than an
-  # accelerator, and GtkShortcutsShortcut asks the application what that action
-  # is bound to — so this window shows the accelerators window.rb and
-  # application.rb actually install, and cannot drift from them.
+  # accelerator, and the key combination shown beside it is looked up from what
+  # that action is bound to — so this window shows the accelerators window.rb
+  # and application.rb actually install, and cannot drift from them. Upstream
+  # has GTK do that lookup; here #resolve_accelerators does, for the reason
+  # written above it.
   #
   # This one widget is built from a GtkBuilder description rather than
   # declaratively: GtkShortcutsWindow takes its sections through GtkBuildable's
@@ -106,10 +108,58 @@ module ChessClock
     def present(parent)
       window.tap do |win|
         win.transient_for = parent
+        resolve_accelerators(parent.application)
         win.present
       end
     end
 
+    # GTK turns a GtkShortcutsShortcut's action-name into the key combination
+    # shown beside its title in that widget's `root` vfunc, by asking the
+    # application what the action is bound to. By the time a Ruby caller holds
+    # the window, that has already happened: GtkBuilder roots every child as it
+    # parses, when no application is reachable yet, and nothing re-resolves
+    # afterwards. Re-assigning action-name, setting the window's application
+    # (even as a builder property, so it is in place before the children
+    # exist) and setting transient-for all leave every accelerator empty on
+    # GTK 4.22, which is where GtkShortcutsWindow is deprecated.
+    #
+    # So the lookup GTK would have done is done here, out of the same
+    # gtk_application_get_accels_for_action, and written to the `accelerator`
+    # property — which does reach the label. Without it this window lists six
+    # shortcuts and not one key combination, which is most of the point of it.
+    def resolve_accelerators(application)
+      application.then do |app|
+        if app
+          shortcuts.each { |shortcut| name_accelerator(app, shortcut) }
+        end
+      end
+    end
+
+    # Every GtkShortcutsShortcut in the window, including the copies GTK keeps
+    # on its own search page.
+    def shortcuts = descendants(window).grep(Gtk::ShortcutsShortcut)
+
     def window = @window ||= Gtk::Builder.new(string: UI)["help_overlay"]
+
+    private
+
+      def name_accelerator(application, shortcut)
+        application.get_accels_for_action(shortcut.action_name.to_s).then do |accelerators|
+          if !accelerators.empty?
+            shortcut.accelerator = accelerators.join(" ")
+          end
+        end
+      end
+
+      def descendants(widget)
+        [].tap do |found|
+          child = widget.first_child
+          while child
+            found << child
+            found.concat(descendants(child))
+            child = child.next_sibling
+          end
+        end
+      end
   end
 end
