@@ -2,15 +2,35 @@
 
 | | |
 |---|---|
-| Upstream | `origin/main` (Python 3 + PyGObject, GTK 4 / libadwaita 1.4) |
-| Port | `ruby` @ `2ccf565` |
+| Upstream | `origin/main` @ `775f046` (2026-09-20), Python 3 + PyGObject, GTK 4 / libadwaita 1.4 |
+| Port | `ruby` @ `5457099` |
 | Scope | whole app |
-| Tooling | `component-identification/scripts/component-scan.sh` over both trees |
+| Tooling | `component-identification/scripts/component-scan.sh` over both trees; every row then read in the file |
+| Environment | `nix develop`, GTK 4.22.4, ruby 3.4.9, `xvfb-run -a` |
 
 Upstream splits almost every component across a `.py` subclass and its `.ui`
-template, so the component is the *pair*. The unit map below is what
-`component-parity.md` joins on; the rows of every upstream file on the left of
-an arrow are unioned before anything is compared.
+template, so the component is the **pair**, and the rows of every upstream file
+on the left of an arrow are unioned before anything is compared. The port has
+no `.ui` files except one heredoc (`shortcuts_window.rb`), which carries
+upstream's `help-overlay.ui` verbatim because `GtkShortcutsWindow` takes its
+sections only through GtkBuildable.
+
+## Step 1 — the declarative UI
+
+Upstream has four `.ui` files and one of them holds two roots:
+
+```
+src/gtk/window.ui             <template class="ChessClockWindow" parent="AdwApplicationWindow">
+                              <menu id="primary_menu">          (3 sections, 5 items)
+src/gtk/timerbutton.ui        <template class="ChessClockTimerButton" parent="GtkButton">
+src/gtk/timecontrolentry.ui   <template class="ChessClockTimeControlEntry" parent="GtkBox">
+src/gtk/help-overlay.ui       <object class="GtkShortcutsWindow" id="help_overlay">   (no backing .py)
+```
+
+Three app-defined template classes are instantiated from `window.ui`
+(`ChessClockTimeControlEntry`, two `ChessClockTimerButton`s), so the hierarchy
+is real and the port has to reproduce it: it does, as
+`TimeControlEntry#build` and two `TimerButton`s.
 
 ## Unit map
 
@@ -24,180 +44,193 @@ an arrow are unioned before anything is compared.
 | `src/timerbutton.py` + `src/gtk/timerbutton.ui` | `lib/chess_clock/timer_button.rb` |
 | `src/timecontrolentry.py` + `src/gtk/timecontrolentry.ui` | `lib/chess_clock/time_control_entry.rb` |
 | `src/timer.py` | `lib/chess_clock/timer.rb` |
-| `src/statemachine.py` (`MachineState` + base class) | `lib/chess_clock/state_machine.rb` |
+| `src/statemachine.py` (`MachineState` + base) | `lib/chess_clock/state_machine.rb` |
 | `src/statemachine.py` (3 subclasses) | `increment_state_machine.rb`, `bronstein_state_machine.rb`, `delay_state_machine.rb` |
 | `src/statemachine.py` (`GSound.Context`) | `lib/chess_clock/alert_sound.rb` |
-| `src/gtk/style.css` + `src/gtk/style-hc.css` | `lib/chess_clock/style.rb` (heredocs) |
-| `data/…gschema.xml` | `lib/chess_clock/settings.rb` (JSON shim) |
+| `src/gtk/style.css` + `src/gtk/style-hc.css` | `lib/chess_clock/style.rb` (two heredocs) |
+| `data/…gschema.xml` | `lib/chess_clock/settings.rb` (GSettings, file fallback) |
 | GObject signal plumbing in `timer.py` / `statemachine.py` | `lib/chess_clock/signals.rb` |
+| `src/gtk/window.ui` `<accessibility>` + `timerbutton.py` `update_property` | `lib/chess_clock/accessible_label.rb` |
+| `src/chess-clock.in` (`bindtextdomain`) | `lib/chess_clock/translation.rb` |
 | `src/chess-clock.in` | `exe/chess-clock` |
-| `data/…desktop.in`, `…metainfo.xml.in`, `…service.in`, `…gschema.xml`, `data/icons/**`, `data/screenshots/**` | the same paths, **byte-identical** |
-| `po/*.po` (42), `po/LINGUAS` | the same paths, **byte-identical** |
-| `po/POTFILES.in` | retargeted at `lib/` |
+| `data/…desktop.in`, `…metainfo.xml.in`, `…service.in`, `…gschema.xml`, `data/icons/**` (4), `data/screenshots/**` (3) | the same paths — **verified byte-identical, 11/11** |
+| `po/*.po` (42) + `po/LINGUAS` | the same paths — **verified byte-identical** |
+| `po/POTFILES.in` | retargeted at `lib/` and `data/` |
 | **`src/chess-clock.gresource.xml`** | **nothing** |
-| **`meson.build`, `src/meson.build`, `data/meson.build`, `data/icons/meson.build`, `po/meson.build`** | `Rakefile` tasks `locale`, `gschema`, `install:data` — partial (see parity G10) |
+| **`meson.build`, `src/meson.build`, `data/meson.build`, `data/icons/meson.build`, `po/meson.build`** | `Rakefile` tasks `locale`, `gschema`, `install:data` — partial |
 | **`COPYING`** | **nothing** |
 | **`CONTRIBUTING.md`** | **nothing** |
 | **`chess-clock.doap`** | **nothing** |
-| **`eu.fortysixandtwo.chessclock.json`** (Flatpak manifest) | **nothing** |
-| **`.gitlab-ci.yml`** | **nothing** |
+| **`eu.fortysixandtwo.chessclock.json`** (Flatpak) | **nothing** |
 
-Five upstream files on the left of an arrow have nothing opposite them. Those
-are found here, not in any diff, and they are carried into
-`component-parity.md` as G8–G10.
+Eighteen Ruby units, listed in the order a user meets them below.
 
-## Whole-app scan totals
+## Step 3/4 — scan totals, after reading every row
 
-Only the `widget` stream's counts are per-instance; `css`, `signal` and
-`action` counts are attachment sites in the text, so a port that factors
-upstream's repeats into a helper legitimately reads lower.
+```
+component-scan.sh <upstream>  → 103 rows
+component-scan.sh <port>      → 101 rows
+```
 
-| Stream | Upstream rows | Port rows | Distinct upstream | Distinct port |
-|---|---:|---:|---:|---:|
-| `widget` | 60 | 47 | 24 | 25 |
-| `controller` | 1 | 1 | 1 | 1 |
-| `type` | 15 | 26 | 9 | 16 |
-| `css` | 55 | 28 | 20 | 20 |
-| `css-name` | 1 | **0** | 1 | **0** |
-| `signal` | 37 | 23 | 16 | 14 |
-| `action` | 12 | 7 | 12 | 7 |
-
-The distinct CSS-class sets are equal, which is the shape of a UI laid out from
-the inventory rather than guessed. Two totals are real findings and not scan
-artefacts:
-
-- **`css-name` 1 → 0.** `src/timerbutton.py:38` calls `set_css_name("button")`
-  and `:39` `set_accessible_role(Gtk.AccessibleRole.BUTTON)`. The port's
-  `TimerButton` does neither (parity G6).
-- **`signal` "only upstream"** is `a-active`, `b-active`, `pause`, `awbb`,
-  `abbw`, `changed`, `expired`, `alerted` — upstream's eight `@GObject.Signal`
-  declarations. All eight exist in the port as `ChessClock::Signals` symbols,
-  which the scan cannot see. Not a gap, but see parity G4: they are not GObject
-  signals, so nothing can bind them.
-
-`signal` "only port" is `apply`, `unapply`, `notify::selected`,
-`notify::high-contrast`, `value-changed` — the breakpoint, settings-binding and
-style-manager connections the port makes by hand because it has no `.ui`
-`<setter>`s, no `Gio.Settings.bind` and no `AdwApplication`. Each is explained
-below in the file it belongs to.
-
-## Widget counts, reconciled
-
-| Type | up | port | Reconciliation |
+| Axis | Upstream distinct | Port distinct | In upstream, not in port |
 |---|---:|---:|---|
-| `Gtk.Button` | 12 | 4 | port builds the 8 presets in a loop over `PRESETS` — 4 literal sites + 8 instances. ✅ |
-| `Gtk.SpinButton` | 3 | 1 | `#spin_button` helper, 3 call sites. ✅ |
-| `Gtk.WindowControls` | 3 | 1 | `#window_controls` helper, 3 call sites. ✅ |
-| `Gtk.Label` | 7 | 6 | `#custom_label` helper, 2 call sites. ✅ |
-| `Gtk.Box` | 8 | 7 | upstream's 8th row is `parent="GtkBox"` on the `timecontrolentry` template root — the same box counted twice. ✅ |
-| `Adw.ApplicationWindow` | 2 | 1 | upstream's 2nd row is the `.ui` `<template parent=…>` for the same window. ✅ |
-| `Adw.AboutWindow` | 1 | 2 | port rows are prose references; the port builds `Adw.AboutDialog` instead (parity G7). ⚠️ |
+| Widget types | 24 | 25 | **0** |
+| CSS classes | 20 | 20 | **0** — the sets are identical |
+| `css-name` | 1 (`button`) | 0 | `button`, set by `set_css_name` in `timerbutton.py:54` |
+| Signals | 16 | 13 | none by *set* once factories and loops are resolved |
+| Actions | 7 literal | 1 literal | none — the port builds all seven from `ACCELERATORS` hashes |
 
-Every other widget type matches 1:1. No upstream widget type is absent from the
-port.
+The signal and action streams differ only because the port installs its actions
+from two hashes (`Application::ACCELERATORS`, `Window::ACCELERATORS`) and
+connects buttons in loops, which is exactly the repeater case the skill warns
+about. Read off the install sites, the action sets are equal:
+`app.quit`, `app.about`, `win.new`, `win.restart`, `win.close`, `win.menu`,
+`win.muted`, plus `win.show-help-overlay` which libadwaita installs for
+upstream and `window.rb:78` installs by hand here.
 
-## Port inventory, in the order a user meets the app
+Widget-count differences, all resolved by reading:
+
+| Type | Up | Port | Reading |
+|---|---:|---:|---|
+| `Adw.ApplicationWindow` | 2 | 1 | the template root counted twice upstream (`window.py` class + `window.ui` template); strike one → 1 = 1 |
+| `Gtk.Box` | 8 | 7 | the `TimeControlEntry` template root is itself a `GtkBox`, counted in both upstream files → 7 = 7 |
+| `Gtk.Button` | 12 | 4 | 8 of upstream's are the presets; the port builds them from one `preset_button` factory over `PRESETS` — a repeater, 8 at runtime |
+| `Gtk.SpinButton` | 3 | 1 | one `spin_button` factory, 3 call sites |
+| `Gtk.WindowControls` | 3 | 2 | one `window_controls(side)` factory, 3 call sites |
+| `Gtk.Label` | 7 | 8 | 7 = 7, plus the never-parented `Gtk::Label` that `AccessibleLabel#announce` uses as a LABELLED_BY carrier — an explained extra |
+| `Gtk.ShortcutsShortcut` | 6 | 7 | 6 in the heredoc; the 7th row is the `grep Gtk::ShortcutsShortcut` line in `shortcuts_window.rb:140` — a scan artefact |
+| `Adw.AboutWindow` | 1 | 2 | both port rows are in a comment; the widget is `Adwaita::AboutDialog` (substitution, recorded in parity) |
+
+## The inventory, in the order a user meets it
 
 ### `lib/chess_clock/application.rb` — the application singleton
 
-| Widget / item | × | CSS | Signals / actions | Notes |
+| Widget / object | × | CSS | Signals / actions | Notes |
 |---|---:|---|---|---|
-| `Gtk::Application` | 1 | — | `activate` | id `eu.fortysixandtwo.chessclock`, `:default_flags`. `Adwaita::Application` not used, so `Adwaita.init` is called by hand |
-| action `app.quit` | 1 | — | `<primary>q` | built in a loop over `ACCELERATORS`, so the name is a variable the scan cannot see |
-| action `app.about` | 1 | — | no accel | opens `AboutDialog` |
-| `Style#load` | — | — | `notify::high-contrast` | installs both stylesheets on the default display; upstream gets this free from `AdwApplication` |
+| `Gtk::Application` | 1 | — | `activate`; installs `app.quit` (`<primary>q`), `app.about` | upstream is an `Adw.Application`; `Adwaita.init` stands in |
 
-Repeaters: the two actions, from `ACCELERATORS`. Conditional: `@present`
-suppresses `window.present` — a test seam with no upstream counterpart.
-**The activate handler is unconditional** — it has no `if not win` guard
-(parity G1).
+Repeaters: the two actions, from `ACCELERATORS`. Conditional: `present:` gates
+`win.present` for the drivers.
 
-### `lib/chess_clock/window.rb` — the application window
+### `lib/chess_clock/window.rb` — the window and its two screens
 
-| Widget | × | CSS | Signals / actions | Notes |
+Setup screen (stack page `setup`):
+
+| Widget | × | CSS | Signals | Notes |
 |---|---:|---|---|---|
-| `Adwaita::ApplicationWindow` | 1 | — | actions `win.new` `<primary>n`, `win.restart` `<primary>r`, `win.close` `<primary>w`, `win.menu` `F10`, `win.show-help-overlay` `<primary>question`, stateful `win.muted` | title, 360×294 size request, geometry from `Settings#apply_to`; takes `content=` |
-| `Gtk::Stack` | 1 | — | — | `:slide_left_right`; pages `setup` / `timer` |
-| `Adwaita::Breakpoint` | 1 | — | `apply`, `unapply` | `max-aspect-ratio: 1/1 or max-width: 520px`; upstream's eight `<setter>`s run imperatively in `apply_narrow` / `unapply_narrow` |
-| `Gtk::WindowHandle` | 1 | — | — | a11y label `p_("a11y", "Select time controls")` |
-| `Adwaita::ToolbarView` + `Adwaita::HeaderBar` | 1 + 1 | — | — | setup header |
-| `Gtk::ScrolledWindow` | 1 | — | — | `hscrollbar_policy = :never`; `win.new` zeroes its vadjustment |
-| `Gtk::Box` | 4 | `linked` (timer_box) | — | setup box (24, margins 42/36/12/12), welcome box (12), headerbar box, timer box (homogeneous) |
-| `Gtk::Label` | 2 | `title-1` (1st) | — | "Welcome to Chess Clock", "Select time controls below to get started" |
-| `Adwaita::PreferencesGroup` | 1 | — | — | — |
-| `Adwaita::PreferencesRow` | 1 | — | — | `activatable = false`, hosts `TimeControlEntry` |
-| `Adwaita::ComboRow` | 1 | — | `notify::selected` → `control-method` | model `Gtk::StringList` of the three method names |
-| `Gtk::Button` (`start_game`) | 1 | `pill`, `suggested-action` | `clicked` → `on_start_game` | — |
-| `Gtk::Overlay` | 1 | — | — | the timer screen |
-| `Gtk::Revealer` | 1 | — | — | `crossfade`, `overflow visible`, revealed initially |
-| `Gtk::EventControllerMotion` | 1 | — | `enter`, `motion`, `leave` | reveals/hides the floating headerbar |
-| `Adwaita::HeaderBar` (timer) | 1 | `transparent` | — | there for the drag area, not to be seen |
-| `Gtk::WindowControls` | 3 | `white` ×2, `black` ×1 | — | start, start-end (hidden), end; repainted by `awbb`/`abbw` |
-| `Gtk::MenuButton` | 1 | `image-button`, `circular`, `osd` | menu model `PrimaryMenu` | tooltip "Main Menu" |
-| `Gtk::Button` (`play_pause`) | 1 | `image-button`, `circular`, `osd`, `large` | `clicked` → machine `on_pause_clicked` | icon swapped by the `pause` signal |
-| `TimerButton` | 2 | `white` / `black` | — | the two clock faces |
+| `Gtk::Stack` | 1 | — | — | `slide_left_right` |
+| `Gtk::WindowHandle` | 1 | — | — | a11y name `p_("a11y", "Select time controls")` |
+| `Adwaita::ToolbarView` | 1 | — | — | |
+| `Adwaita::HeaderBar` | 1 | — | — | the setup header |
+| `Gtk::ScrolledWindow` | 1 | — | — | `hscrollbar_policy = :never` |
+| `Gtk::Box` | 2 | — | — | setup box (24), welcome box (12) |
+| `Gtk::Label` | 2 | `title-1` (1st) | — | `_("Welcome to Chess Clock")`, `_("Select time controls below to get started")` |
+| `Adwaita::PreferencesGroup` | 1 | — | — | |
+| `Adwaita::PreferencesRow` | 1 | — | — | `activatable = false` |
+| `Adwaita::ComboRow` | 1 | — | `notify::selected` → `control-method` | `_("Time control method")`, 3-item `Gtk::StringList` |
+| `Gtk::Button` | 1 | `pill`, `suggested-action` | `clicked` → `on_start_game` | `_("Start Game")` |
 
-Repeaters: the five accelerator actions, and `paint_controls` applying
-`white`/`black` to three controls from one helper. Conditional: `apply_narrow`
-sets eight properties only while the breakpoint holds.
+Timer screen (stack page `timer`):
+
+| Widget | × | CSS | Signals | Notes |
+|---|---:|---|---|---|
+| `Gtk::Overlay` | 1 | — | — | 6 overlays over the faces |
+| `Gtk::Box` | 2 | `linked` (timer box) | — | timer box (homogeneous), headerbar box |
+| `Gtk::Revealer` | 1 | — | — | `crossfade`, `overflow = :visible` |
+| `Adwaita::HeaderBar` | 1 | `transparent` | — | |
+| `Gtk::EventControllerMotion` | 1 (controller) | — | `enter`, `motion`, `leave` | on the revealer, as upstream |
+| `Gtk::WindowControls` | 3 | `white` ×2, `black` ×1 — swapped by `awbb`/`abbw` | — | start, start-end (hidden), end |
+| `Gtk::MenuButton` | 1 | `image-button`, `circular`, `osd` | `menu_model` = `PrimaryMenu` | `_("Main Menu")` |
+| `Gtk::Button` | 1 | `image-button`, `circular`, `osd`, `large` | `clicked` → `on_pause_clicked` | `_("Toggle Pause")`; icon swaps start/pause |
+| `Adwaita::Breakpoint` | 1 | — | `apply`, `unapply` | `max-aspect-ratio: 1/1 or max-width: 520px` |
+
+Actions: `win.new` (`<primary>n`), `win.restart` (`<primary>r`),
+`win.close` (`<primary>w`), `win.menu` (`F10`),
+`win.show-help-overlay` (`<primary>question`), `win.muted` (stateful boolean).
+
+Repeaters: five actions from `ACCELERATORS`; three window-controls from one
+factory. Conditional: the whole narrow layout, behind the breakpoint.
+Dynamic CSS: `white`/`black` on all three window-controls.
 
 ### `lib/chess_clock/timer_button.rb` — one player's clock face
 
 | Widget | × | CSS | Signals | Notes |
 |---|---:|---|---|---|
-| `Gtk::Button` (self) | 1 | `timerbutton`, `opaque`, `white`/`black`, `running`, `expired`, `inverted` | `on_changed`, `on_white`, `on_black`, `on_active` from the machine | `Gtk::BinLayout`, `hexpand`. **No `set_css_name`, no `set_accessible_role`** |
+| `Gtk::Button` (subclass) | 1 | `timerbutton`, `opaque`, `white`\|`black`, `running`, `expired`, `inverted` | `clicked` (by the machine) | a11y name swaps with the colour |
 | `Adwaita::BreakpointBin` | 1 | — | — | 240×130 request |
-| `Adwaita::Breakpoint` | 1 | — | `apply`, `unapply` | `min-width: 600px` → Pango size 100pt on all three labels |
-| `Gtk::Box` | 1 | — | — | `halign center`, direction forced LTR |
-| `Gtk::Label` | 3 | `colon` (2nd) | — | minutes, U+2236, seconds |
+| `Adwaita::Breakpoint` | 1 | — | `apply`, `unapply` | `min-width: 600px` → 100pt `Pango::AttrSize` |
+| `Gtk::Box` | 1 | — | — | forced `TextDirection::LTR` |
+| `Gtk::Label` | 3 | `colon` (middle) | — | minutes, `∶`, seconds |
 
-Dynamic CSS, every value it can take: `white`, `black`, `running`, `expired`,
-`inverted`. a11y label alternates between the two no-context msgids.
+Dynamic CSS, every value: `white`, `black`, `running`, `expired`, `inverted`.
+Not set: `css-name` (`button`) and `Gtk::AccessibleRole::BUTTON`, both of which
+`timerbutton.py:53-55` sets.
 
 ### `lib/chess_clock/time_control_entry.rb` — the time-control picker
 
 | Widget | × | CSS | Signals | Notes |
 |---|---:|---|---|---|
-| `Gtk::Box` | 2 | — | — | container (vertical 6, margins 6), custom box (LTR) |
-| `Gtk::Grid` | 1 | — | — | row/column spacing 6, column-homogeneous |
-| `Gtk::Button` | 8 | `time-button` | `clicked` → `set_control` | the presets, column-first, each with upstream's tooltip |
-| `Gtk::SpinButton` | 3 | `custom-spin` | `wrapped`, `output` (seconds only) | vertical; limits 999 / 59 / 999 |
-| `Gtk::Label` | 2 | `custom-label` | — | U+2236 and `+` |
-| `Gtk::Adjustment` | 3 | — | `value-changed` → settings | the stored custom control |
-
-Repeaters: the 8 presets from `PRESETS`, the 3 spin buttons from
-`#spin_button`, the 2 labels from `#custom_label`.
+| `Gtk::Box` | 2 | — | — | container (6, margins 6), custom-control box (LTR) |
+| `Gtk::Grid` | 1 | — | — | 4×2, column-homogeneous, spacing 6 |
+| `Gtk::Button` | 8 | `time-button` | `clicked` → `set_control` | repeater over `PRESETS`; 8 translated tooltips |
+| `Gtk::SpinButton` | 3 | `custom-spin` | `wrapped`, `output` (seconds only) | vertical; `_("Main time minutes"/"seconds"/"Increment seconds")` |
+| `Gtk::Label` | 2 | `custom-label` | — | `∶`, `+` |
+| `Gtk::Adjustment` | 3 (type) | — | `value-changed` → GSettings | upper 999 / 59 / 999 |
 
 ### `lib/chess_clock/primary_menu.rb` — the menu behind the circular button
 
-Three sections, five items: `win.new`, `win.restart` | `win.muted` |
-`win.show-help-overlay`, `app.about`. Mnemonics preserved. A `Gio::Menu` is not
-a widget, so it produces no widget rows on either side; the count is item-for-item.
+Three `Gio::Menu` sections, five items, mnemonics intact:
+`_("_New Time Control")` → `win.new`, `_("_Restart Timer")` → `win.restart`;
+`_("_Mute Alert Sound")` → `win.muted`; `_("_Keyboard Shortcuts")` →
+`win.show-help-overlay`, `_("_About Chess Clock")` → `app.about`.
 
 ### `lib/chess_clock/shortcuts_window.rb` — the shortcuts window
 
-`Gtk::ShortcutsWindow` 1, `Gtk::ShortcutsSection` 1, `Gtk::ShortcutsGroup` 2,
-`Gtk::ShortcutsShortcut` 6 — identical to `help-overlay.ui`. Built from a
-GtkBuilder string, because `GtkShortcutsWindow` takes its sections only through
-`GtkBuildable`. Each shortcut names an action, not an accelerator, so the window
-cannot drift from what is installed.
+| Widget | × | Notes |
+|---|---:|---|
+| `Gtk::ShortcutsWindow` | 1 | `modal`, from a GtkBuilder string |
+| `Gtk::ShortcutsSection` | 1 | `section-name shortcuts`, `max-height 10` |
+| `Gtk::ShortcutsGroup` | 2 | `p_("shortcut window", "Game"/"General")` |
+| `Gtk::ShortcutsShortcut` | 6 | `win.new`, `win.restart`, `win.menu`, `win.show-help-overlay`, `win.close`, `app.quit` |
+
+`#resolve_accelerators` does the `action-name` → key-combination lookup GTK's
+`root` vfunc would have done, because by the time Ruby holds the window that
+vfunc has already run with no application reachable.
 
 ### `lib/chess_clock/about_dialog.rb` — the About window
 
-`Adwaita::AboutDialog` 1, where upstream builds an `Adw.AboutWindow` from
-`new_from_appdata`. Fields hand-set: name, icon, developer name, version 0.6.2,
-comments, website, issue url, copyright, GPL-3.0, 4 developers, 1 artist,
-translator credits, release notes, 2 extra links.
+`Adwaita::AboutDialog` ×1, with name, icon, developer name, version, comments,
+website, issue URL, copyright, licence, 4 developers, 1 artist, translator
+credits, release notes, and two `add_link` rows (`Translate`, `Contribute`).
+Upstream builds an `Adw.AboutWindow` from the appdata instead.
 
 ### Non-widget units
 
-`timer.rb`, `state_machine.rb` and its three subclasses, `signals.rb`,
-`settings.rb`, `alert_sound.rb`, `style.rb`, `translation.rb` build no widgets.
-They are compared on the `type` and `signal` axes in `component-parity.md`.
+`timer.rb` (3 signals: `changed`, `expired`, `alerted`),
+`state_machine.rb` + three subclasses (5 states, 5 signals: `a_active`,
+`b_active`, `pause`, `awbb`, `abbw`), `signals.rb` (the connect/emit/disconnect
+stand-in), `alert_sound.rb` (GSound through `GObjectIntrospection::Loader`),
+`settings.rb` (8 keys, `SchemaStore` or `FileStore`), `style.rb` (two
+providers, high-contrast watcher), `translation.rb` (textdomain `chess-clock`),
+`accessible_label.rb` (LABELLED_BY carriers), `exe/chess-clock`.
 
-## Identification-side gaps
+## Repeaters and conditionals, collected
 
-The inventory itself is complete: every upstream widget type, every CSS class
-and every menu item has a located counterpart. The two holes the inventory
-*finds* are the five unmapped upstream files above and the missing `css-name`
-row, and both are carried as parity gaps rather than closed here.
+- 8 preset buttons from `PRESETS` (`time_control_entry.rb:53`).
+- 3 spin buttons from `spin_button` (`time_control_entry.rb:204`).
+- 3 window-controls from `window_controls(side)` (`window.rb:546`).
+- 2 clock faces from `TimerButton.new(:white|:black)`.
+- 5 window actions + 2 app actions from `ACCELERATORS` hashes.
+- 5 menu items from `PrimaryMenu::SECTIONS`.
+- 8 shortcut titles from `ShortcutsWindow.title` — and so invisible to any
+  extractor; see `translation-parity.md` **T2**.
+- Conditional: the entire narrow layout; the 100pt face; the high-contrast
+  stylesheet; `AlertSound`'s three routes.
+
+## Where the inventory is thin, and it is not the port's fault
+
+`Adwaita::Breakpoint` setters carrying Pango attribute strings
+(`0 -1 size 102400`) are GtkBuilder-only syntax, so upstream's declarative
+font-size jump has no setter equivalent; the port reproduces it with
+`apply`/`unapply` handlers building a real `Pango::AttrList`. Recorded as a
+correspondence in `component-parity.md`, not a gap.

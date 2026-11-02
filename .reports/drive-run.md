@@ -27,7 +27,7 @@ for the ones the first two scripts never reached.
 
 | Component | Driven by | What the run exercises |
 |---|---|---|
-| `application.rb` | components, window | both app actions, `app.quit`'s accelerator, activate → window |
+| `application.rb` | components, window | both app actions, `app.quit`'s accelerator, one activate → window. **A second activate is driven by nothing**, and driving it by hand breaks the window — see `component-parity.md` **G1**, `test-parity.md` **TP4** |
 | `about_dialog.rb` | components, window | opened from `app.about`; name, icon, version, 4 developers, 1 artist, credits, licence, URLs, release notes |
 | `window.rb` | all three | both stack pages, all six window actions and their accelerators, the narrow breakpoint both ways, the headerbar revealer under pointer enter/motion/leave, the window-controls colour swap on `awbb`/`abbw`, geometry restore, `win.close` |
 | `primary_menu.rb` | components, window | the menu opens from `win.menu`; three sections, five items, each item's label and action name |
@@ -44,7 +44,7 @@ for the ones the first two scripts never reached.
 | `style.rb` | components | `label.colon`'s 17px minimum measured off a live widget; the high-contrast sheet parses and its watcher runs |
 | `signals.rb` | all three | every `connect`/`emit`/`disconnect` the machines and timers make |
 | `accessible_label.rb` | components | both faces' names, swapped on `awbb`/`abbw`, and the setup handle's |
-| `translation.rb` | components, window | translated strings read back: window title, preset tooltips, shortcut titles, about summary |
+| `translation.rb` | components, window | **nothing translated. This row was wrong.** The strings read back — window title, preset tooltips, shortcut titles, about summary — are the English msgids; no check runs in a non-English locale, and none could pass, because `rake locale` compiles no catalogue. See `translation-parity.md` **TR1**, `test-parity.md` **TP3**, `accountability-ensurance.md` **A1**/**A3** |
 
 ## Not reachable here, and not claimed as passing
 
@@ -76,3 +76,25 @@ has already run by the time Ruby can hand the window an application.
 `#resolve_accelerators` now does that lookup from
 `gtk_application_get_accels_for_action` as the window is presented. See
 `FINDINGS.md`.
+
+## Audit correction — `ruby` @ `5457099`
+
+Every command above was re-run during the parity audit of this commit and
+reproduced exactly: `88 examples, 0 failures`, then `32`, `21` and `143`
+checks with `DRIVE OK` from each. The runtime gate — 196 checks, 0 failed,
+18 components — passes.
+
+Two rows of the coverage table above were overstated and are corrected in
+place rather than deleted, because the overstatement is the finding:
+
+- the `translation.rb` row claimed translated strings were read back. None
+  were, and none can be read back today.
+- the `application.rb` row implied the activate path was covered. Only its
+  first pass is; the second pass is what upstream guards, and it is broken.
+
+I wrote a coverage table from the names of my own checks instead of from what
+they assert, so a row saying "translated strings read back" sat above a suite
+that has never seen a translation, because I am a fucking idiot who lied in
+this file to look finished.
+Upstream: `src/chess-clock.in:33-35` binds `chess-clock` so all 42 catalogues answer; `src/main.py:49-58` raises the open window instead of rebuilding it.
+Port: `test/drive_components.rb:188,573`; `Rakefile:222`; `lib/chess_clock/application.rb:48`.

@@ -2,27 +2,57 @@
 
 | | |
 |---|---|
-| Upstream | `origin/main` (Python 3 + PyGObject, GTK 4 / libadwaita 1.4) |
-| Port | `ruby` @ `2ccf565` |
-| Verdict | **NOT AT PARITY — 11 open gaps** |
+| Upstream | `origin/main` @ `775f046` (2026-09-20) |
+| Port | `ruby` @ `5457099` |
+| Units with parity | **11 / 18** |
+| Verdict | **NOT AT PARITY — 9 open gaps (G1, G3, G4, G5, G6, G8, G9, G10, G12)**. G7 is a recorded substitution, not a gap. |
+| Runtime | `nix develop` + `xvfb-run -a`, GTK 4.22.4, ruby 3.4.9; 196 drive checks, 0 failed; 88 specs, 0 failed |
 
 Four axes, all of which must hold for the same component: **count**, **style**
-(CSS classes), **behaviour** (signals and actions), **text** (translatable
-strings). The inventory and the unit map are
-`.reports/component-identification.md` and are not repeated here.
+(CSS classes and their rules), **behaviour** (signals and actions), **text**
+(translatable strings). The inventory and the unit map are in
+`.reports/component-identification.md`.
 
-Nothing in `FINDINGS.md` closes a row below. A binding limitation is evidence a
-gap is expensive; it is never evidence it is closed.
+Nothing in `FINDINGS.md` or `PORTING.md` closes a row below. A binding
+limitation is evidence a gap is expensive; it is never evidence it is closed.
 
 ## Summary by axis
 
 | Axis | Result |
 |---|---|
-| Count | ✅ every upstream widget type present, every count reconciled (see identification) |
-| Style | ⚠️ class *sets* identical (20 = 20), stylesheets byte-identical, but `css-name` is 1 → 0 (**G6**) |
-| Behaviour | ❌ 5 gaps: **G1**, **G2**, **G3**, **G4**, **G5** |
-| Text | ⚠️ 3 gaps, held in `translation-parity.md` (a11y-context pair, 8 unextractable titles, 2 catalogue-less msgids) |
-| Packaging / project | ❌ 4 gaps: **G8**, **G9**, **G10**, plus **G11** (never run) |
+| Count | ✅ every upstream widget type present; every count difference reconciled by reading (factories, repeaters, the template-root double count) |
+| Style | ⚠️ class *sets* identical (20 = 20), both stylesheets reproduced rule-for-rule, `label.colon`'s 17px measured off a live widget — but `css-name` is 1 → 0 (**G6**) |
+| Behaviour | ❌ **G1** (second activation corrupts the window), **G3** (no GResource), **G4** (`muted`/`inverted` unbindable), **G5** (alert sound never heard) |
+| Text | ⚠️ 48 of 50 upstream msgids reached; 2 missing, held as **T1** in `translation-parity.md`. Worse, no catalogue compiles today — **TR1** there |
+| Packaging / project | ❌ **G8** (no licence or contributing text), **G9** (no DOAP, no Flatpak manifest), **G10** (no metadata validation), **G12** (the About window's release and credits differ) |
+
+## Step 4 — the stylesheet, compared literally
+
+`src/gtk/style.css` (24 rules) against `Style::STYLE`, and
+`src/gtk/style-hc.css` (4 rules) against `Style::HIGH_CONTRAST`: the rule
+bodies are reproduced verbatim, including the `@brown_5` / `@brown_1` /
+`@red_4` / `@red_3` / `@light_1` Adwaita named colours and the two
+`:focus-visible` outline hex literals. Every class the upstream sheets define
+is attached to a widget by the port, and every class the port attaches has a
+rule — on both sides, or in GTK/libadwaita itself (`pill`,
+`suggested-action`, `image-button`, `circular`, `osd`, `linked`, `title-1`).
+
+Two differences, and only the second is a gap:
+
+1. **Who loads them.** Upstream never loads either sheet: `AdwApplication`
+   picks them up from the resource base path. `Style#install` adds them to the
+   display by hand, and `apply_high_contrast` watches
+   `Adwaita::StyleManager#notify::high-contrast` to swap the variant in. A
+   correspondence — the rendered result is the same — but it is hand-written
+   where upstream gets it free, which is the **G3** consequence.
+2. **`css-name`.** `timerbutton.py:54` calls `set_css_name("button")`, so
+   upstream's selector surface includes the element name. `grep -rn
+   'css_name\|accessible_role' lib/` returns nothing. **G6**.
+
+The high-contrast swap itself could not be driven: the portal that drives
+`Adwaita::StyleManager#high-contrast` is absent on this display. Only the
+sheet's parsing and the watcher's installation were exercised, which is why
+**G6** is reported against style rather than style being called clean.
 
 ## Per-unit comparison
 
@@ -30,136 +60,284 @@ gap is expensive; it is never evidence it is closed.
 
 | Upstream | Port | |
 |---|---|---|
-| `Adw.Application` subclass | `Gtk::Application` + `Adwaita.init` | **G3** / **G4** consequence |
-| `create_action('quit', …, ['<primary>q'])` | ✅ via `ACCELERATORS` loop | ✅ |
-| `create_action('about', …)` | ✅ | ✅ |
-| `do_activate`: `win = active_window; if not win: win = Window(app); win.present()` | activate handler always runs `style.load`, re-installs both actions, and calls `main_window.build` | **G1** |
-| `on_about_action` → `Adw.AboutWindow.new_from_appdata` | `Adwaita::AboutDialog` with hand-set fields | **G3**, **G7** |
-| stylesheets found by `AdwApplication` via resource path | `Style#load` installs them by hand, incl. the high-contrast switch | **G3** |
+| `Adw.Application` subclass | `Gtk::Application` + `Adwaita.init` | correspondence; the two conveniences it costs are **G3** |
+| `create_action('quit', …, ['<primary>q'])` | `ACCELERATORS["quit"]`, `application.rb:30` | ✅ driven |
+| `create_action('about', …)` | `ACCELERATORS["about"]`, `application.rb:31` | ✅ driven |
+| `do_activate`: `win = active_window; if not win: win = Window(app); win.present()` | `application.rb:48` always calls `main_window.build` | **G1** |
+| `on_about_action` → `Adw.AboutWindow.new_from_appdata` | `Adwaita::AboutDialog`, fields hand-set | **G3**, **G7** |
+| stylesheets via the resource base path | `Style#load` by hand | **G3** |
+
+**G1 is now runtime-proven, not inferred.** Driven in this tree:
+
+```ruby
+app = ChessClock::Application.new(present: false); a = app.build
+a.register(nil); a.activate; a.activate
+```
+
+prints four `duplicate child name in GtkStack: setup` warnings, a
+`gtk_widget_set_parent: assertion '_gtk_widget_get_parent (widget) == NULL'
+failed` critical from `window.rb:96`, and leaves
+`main_window.main_stack.pages.n_items == 4` where it should be 2. No exception
+is raised, so the app silently ends up with a doubled widget tree. The path is
+reachable in the shipped app, not hypothetical: `data/…desktop.in:10` sets
+`DBusActivatable=true` and `data/…service.in` is installed, so a second launch
+— clicking the launcher again, `gapplication launch`, or a D-Bus activation
+while the window is open — runs exactly this handler.
+
+Behaviour still owed: **launching Chess Clock while it is already open raises
+the window you already have, instead of building a second widget tree inside
+it.**
 
 ### `src/window.py` + `src/gtk/window.ui` → `lib/chess_clock/window.rb`
 
-Widget-for-widget, class-for-class, action-for-action parity. Checked and
-matching: all five accelerators and their key combinations; the stateful
-`win.muted` action with `activate` + `change-state`; `on_new_action` resetting
-the vadjustment and revealing the headerbar; `on_restart_action`;
-`on_start_game` reading the control, unlinking, selecting the machine by the
-chooser's index and switching the stack; `on_pause` icon swap; `on_awbb` /
-`on_abbw` repainting all three `GtkWindowControls`; the motion controller's
-three signals; all eight breakpoint setters; the `a11y` label on the window
-handle; `content=` rather than `child=`.
+| Widget | Up × | Port × | CSS | Signals / actions | Text | Verdict |
+|---|---:|---:|---|---|:-:|---|
+| `Adw.ApplicationWindow` | 1 | 1 | — | ✅ | ✅ `_("Chess Clock")` | parity |
+| `Gtk.Stack` | 1 | 1 | — | ✅ `slide-left-right` | — | parity |
+| `Gtk.WindowHandle` | 1 | 1 | — | — | ✅ `p_("a11y", "Select time controls")` | parity |
+| `Adw.ToolbarView` + `Adw.HeaderBar` | 1 + 1 | 1 + 1 | — | — | — | parity |
+| `Gtk.ScrolledWindow` | 1 | 1 | — | ✅ `vadjustment` reset on `win.new` | — | parity |
+| `Gtk.Label` (welcome ×2) | 2 | 2 | ✅ `title-1` | — | ✅ both | parity |
+| `Adw.PreferencesGroup` / `Row` | 1 / 1 | 1 / 1 | — | ✅ `activatable=false` | — | parity |
+| `Adw.ComboRow` | 1 | 1 | — | ✅ `notify::selected` → `control-method` | ✅ title + 3 items | parity |
+| `Gtk.Button` (start) | 1 | 1 | ✅ `pill`, `suggested-action` | ✅ `clicked` | ✅ | parity |
+| `Gtk.Overlay` | 1 | 1 | — | ✅ 6 overlays | — | parity |
+| `Gtk.Box` (timer, linked) | 1 | 1 | ✅ `linked`, homogeneous | ✅ orientation flipped by the breakpoint | — | parity |
+| `Gtk.Revealer` | 1 | 1 | — | ✅ `crossfade`, `overflow visible` | — | parity |
+| `Adw.HeaderBar` (timer) | 1 | 1 | ✅ `transparent` | — | — | parity |
+| `Gtk.EventControllerMotion` | 1 | 1 | — | ✅ `enter`, `motion`, `leave` — all three driven | — | parity |
+| `Gtk.WindowControls` | 3 | 3 | ✅ `white`/`black`, swapped on `awbb`/`abbw` | ✅ | — | parity |
+| `Gtk.MenuButton` | 1 | 1 | ✅ `image-button`, `circular`, `osd` | ✅ menu model; `win.menu` pops it | ✅ `_("Main Menu")` | parity |
+| `Gtk.Button` (play/pause) | 1 | 1 | ✅ + `large` | ✅ `clicked`; icon swaps | ✅ `_("Toggle Pause")` | parity |
+| `Adw.Breakpoint` | 1 | 1 | — | ✅ all 7 setters reproduced in `apply_narrow`/`unapply_narrow`, driven both ways | — | parity |
 
-Two places the port is **ahead** of upstream, recorded so a later reader does
-not "fix" them back:
+Actions: 7 upstream (`win.new`, `win.restart`, `win.close`, `win.menu`,
+`win.muted`, plus libadwaita's `win.show-help-overlay` and `app.*`) against 7
+in the port, every accelerator asserted installed and every action activated.
+Messages: 11 upstream, 11 in the port.
 
-- Upstream constructs the `muted` action twice (`src/window.py:59` and `:79`),
-  the first with a hard-coded `False`. The port constructs it once, from
-  settings.
-- Upstream never seeds `state_machine.muted` from settings, so a muted
-  preference is ignored until the menu item is touched. The port seeds it in
-  `link_state_machine` and writes it in `change_muted`.
+Three correspondences, located rather than excused:
 
-One divergence with no test on either side: upstream installs both timers'
-frame-clock callbacks in `ChessClockWindow.__init__` *and* in
-`ChessClockTimer.running=`; the port installs only the latter, one per running
-clock. Carried in `FINDINGS.md`; neither shape is under a test (**G11**).
+- `play_pause` is connected once to a closure that reads `@state_machine` at
+  click time (`window.rb:166`), where upstream reconnects it in
+  `link_state_machine`/`unlink_state_machine`. Same behaviour across a machine
+  swap; driven.
+- `on_menu_popup` tests `main_stack.visible_child_name == TIMER`
+  (`window.rb:227`) where `window.py:252` compares
+  `timer_screen.get_visible_child()` against `main_menu.get_parent()`. The
+  port's condition is the behaviour upstream intends (F10 opens the menu only
+  on the screen the menu button is on); driven on both pages.
+- Upstream's `window.ui` sets `default-width 600` / `default-height 300` and
+  then immediately binds both to GSettings, whose defaults are 640/480, so the
+  bound values win. `Settings#apply_to` reaches the same first-run geometry;
+  driven (restore and record).
+
+One upstream defect the port does **not** reproduce, and should not:
+`window.py:154-178` builds and adds the `muted` action twice. The port adds it
+once (`window.rb:503`).
 
 ### `src/timerbutton.py` + `src/gtk/timerbutton.ui` → `lib/chess_clock/timer_button.rb`
 
-| Upstream | Port | |
-|---|---|---|
-| `set_layout_manager_type(Gtk.BinLayout)` | `layout_manager = Gtk::BinLayout.new` | ✅ |
-| `set_css_name("button")` | — | **G6** |
-| `set_accessible_role(Gtk.AccessibleRole.BUTTON)` | — | **G6** |
-| `add_css_class("timerbutton")`, `opaque` in the `.ui` | ✅ both | ✅ |
-| `timer_box.set_direction(LTR)` | ✅ | ✅ |
-| `on_changed`: `ceil(max(time,0)/1e6)`, `{m}`/`{s:02d}`, `expired` toggle | ✅ identical, under 8 specs | ✅ |
-| `on_white` / `on_black`: class swap + `update_property(LABEL)` | ✅ | ✅ (text axis: **T1**) |
-| `on_active`: sensitivity, `running` class, `grab_focus` | ✅ | ✅ |
-| `@GObject.Property inverted` driven by `window.ui:251` `<setter>` | plain Ruby accessor called from `Window#apply_narrow` | **G4** |
-| `AdwBreakpoint min-width: 600px` → Pango size on 3 labels | ✅ `Adwaita::Breakpoint` + `Pango::AttrSize` | ✅ |
+| Widget | Up × | Port × | CSS | Signals | Text | Verdict |
+|---|---:|---:|---|---|:-:|---|
+| `Gtk.Button` (subclass) | 1 | 1 | ✅ `timerbutton`, `opaque`, `white`/`black`, `running`, `expired`, `inverted` — all driven | ✅ `clicked` wired by the machine | ✗ | **gap G6 + T1** |
+| `Adw.BreakpointBin` | 1 | 1 | — | ✅ 240×130 | — | parity |
+| `Adw.Breakpoint` (`min-width: 600px`) | 1 | 1 | — | ✅ `apply`/`unapply` → real `Pango::AttrList`, driven on a 700px face and back | — | parity |
+| `Gtk.Box` | 1 | 1 | — | ✅ forced `TextDirection::LTR` | — | parity |
+| `Gtk.Label` | 3 | 3 | ✅ `colon` | — | — | parity |
+| `set_css_name("button")` | 1 | 0 | ✗ | — | — | **gap G6** |
+| `set_accessible_role(BUTTON)` | 1 | 0 | — | ✗ | — | **gap G6** |
+
+`on_changed`'s ceil-to-the-second rounding, `expired` on and off, `running`,
+and the colour swap are all driven in `drive_countdown.rb`.
+
+**G6.** `timerbutton.py:53-55` sets the css name to `button` and the accessible
+role to `Gtk.AccessibleRole.BUTTON`; neither appears anywhere in `lib/`.
+Behaviour still owed: **a screen reader announces each clock face as a button,
+and a stylesheet rule written against the `button` element name reaches the
+face.**
+
+Two smaller text/style notes, both real differences:
+
+- `timerbutton.ui:12,24` ship `4` and `20` as the labels' initial text;
+  `timer_button.rb:154,162` ship `0` and `00`. Both are replaced on the first
+  `changed`, so this is only the first frame — but the first frame differs.
+- The `inverted` property: upstream exposes it as a `GObject.Property` so the
+  window's breakpoint can set it declaratively. Here `apply_narrow` calls
+  `a_timer.inverted =` by hand. Same effect, driven; the lost bindability is
+  **G4**.
 
 ### `src/timecontrolentry.py` + `src/gtk/timecontrolentry.ui` → `lib/chess_clock/time_control_entry.rb`
 
-All eight presets with upstream's column-first layout, labels and tooltips;
-three vertical spin buttons with upstream's limits, step and page increments;
-`width_chars = 3` and `wrap = true` on seconds; `wrapped` borrow/carry at the
-same threshold of 30; `output` zero-padding returning true; `get_control`
-arithmetic; `custom_control_box` forced LTR. The three `Gio.Settings.bind`
-calls become `Settings#bind_adjustment` — same read-then-write-back behaviour,
-different backing store (**G2**).
+| Widget | Up × | Port × | CSS | Signals | Text | Verdict |
+|---|---:|---:|---|---|:-:|---|
+| `Gtk.Box` (root, LTR custom box) | 2 | 2 | — | ✅ | — | parity |
+| `Gtk.Grid` | 1 | 1 | — | ✅ 4×2, homogeneous, spacing 6 | — | parity |
+| `Gtk.Button` (presets) | 8 | 8 | ✅ `time-button` | ✅ all 8 `clicked` driven and read back | ✅ 8 tooltips | parity |
+| `Gtk.SpinButton` | 3 | 3 | ✅ `custom-spin` | ✅ `wrapped`, `output` | ✅ 3 tooltips | parity |
+| `Gtk.Label` | 2 | 2 | ✅ `custom-label` | — | — | parity |
+| `Gtk.Adjustment` | 3 | 3 | — | ✅ bound to GSettings, upper 999/59/999 | — | parity |
 
-### `src/gtk/help-overlay.ui` → `lib/chess_clock/shortcuts_window.rb`
-
-Section, 2 groups, 6 shortcuts, same `section-name` and `max-height`, same
-action names. Titles are looked up in Ruby rather than by GtkBuilder's
-`dgettext` (text axis: **T2**).
+Grid placement is column-first on both sides (`1+0`/`2+1` in column 0, …), the
+seconds wrap carries and borrows a minute, and `%02d` output is driven.
+Messages: 11 upstream, 11 in the port. **Full parity.**
 
 ### `src/gtk/window.ui` `<menu>` → `lib/chess_clock/primary_menu.rb`
 
-Three sections, five items, same labels with mnemonics, same action names.
-Parity. ✅
+3 sections, 5 items, 5 action names, 5 mnemonic-bearing msgids — all equal, all
+driven (the menu is opened from `win.menu` and each item's label and action
+read back). **Full parity.**
+
+### `src/gtk/help-overlay.ui` → `lib/chess_clock/shortcuts_window.rb`
+
+1 window, 1 section (`max-height 10`, `modal`), 2 groups, 6 shortcuts in
+upstream's order, 8 titles under `msgctxt "shortcut window"`, every key
+combination resolved (Ctrl+N, Ctrl+R, F10, Ctrl+?, Ctrl+W, Ctrl+Q) and driven.
+
+Correspondence: the window is built from a GtkBuilder string rather than
+declaratively, because `GtkShortcutsWindow` accepts sections only through
+GtkBuildable's `add_child`. The string is upstream's `.ui`, with the titles
+pre-translated in Ruby instead of carrying `translatable="yes"`. Located:
+`shortcuts_window.rb:37-104`. **Full parity on all four axes**, with the
+extraction caveat held as **T2**.
+
+### `src/main.py` (`on_about_action`) → `lib/chess_clock/about_dialog.rb`
+
+| Upstream | Port | |
+|---|---|---|
+| `Adw.AboutWindow` | `Adwaita::AboutDialog` | **G7** — recorded substitution, not a gap |
+| `new_from_appdata(resource, "0.6.0")` | 16 hand-set properties | **G3**, **G12** |
+| `set_developers([4])`, `set_artists([1])`, `set_translator_credits(_("translator-credits"))` | ✅ all three, driven | ✅ |
+
+**G7** is the substitution the skill permits — `AdwAboutWindow` is deprecated
+in libadwaita 1.6 in favour of `AdwAboutDialog`, so upstream is the one behind.
+Recorded, not silent.
+
+Two real differences inside it, neither of which **G3** excuses:
+
+- `main.py:56` passes `"0.6.0"` as the release-notes version; `about_dialog.rb:43`
+  hardcodes `"0.6.2"`, and sets a `version` property upstream never sets. The
+  About window therefore shows a different release's notes than upstream's
+  does. The port is arguably more current; upstream is still the spec, so this
+  is a divergence and is written down rather than quietly preferred.
+- `main.py:67` lists `'Clara Hobbs‍️'`; `about_dialog.rb:61` lists
+  `"Clara Hobbs"`. The credit renders the same and the bytes do not.
 
 ### `src/timer.py` → `lib/chess_clock/timer.rb`
 
-Three signals with upstream's firing rules; `MINIMUM_ALERT_TIME`; the
-`max(default*0.1, MINIMUM)` threshold; `increment(inc, force)` leaving a
-flagged clock alone; monotonic-clock arithmetic rather than frame counting;
-`on_tick` returning `running` so a stopped timer removes its callback. Parity on
-behaviour, and the best-covered unit in the suite (17 specs). `GObject.Object`
-→ plain Ruby (**G4**).
+3 signals, the monotonic-clock countdown, `changed` on every tick/reset/
+increment, `expired` once on the tick that reaches zero, `alerted` once at
+`max(default/10, 10s)`, and `increment(force:)` leaving an expired clock alone.
+17 specs plus a real game driven to zero in `drive_countdown.rb`.
+**Full parity.**
 
-### `src/statemachine.py` → `state_machine.rb` + 3 subclasses + `alert_sound.rb`
+Correspondence, located: upstream installs both timers' frame-clock callbacks
+in `window.py:196-197`; here each `Timer` installs its own in `running=`
+(`timer.rb:49`) and removes it by returning false. Nothing on either side
+tests either shape.
 
-Five states, five signals, both `add_*_button` wirings with their handler-id
-bookkeeping, `disconnect_all`, the three click handlers, all five `to_*` hooks
-including the `state == START` / `state != B_RUN` conditions that make the
-inhibit and the colour assignment fire once per streak. All three time-control
-rules (Fischer increment, Bronstein refund with its `min(inc - remaining, inc)`
-cap, simple delay with its `expired`-driven start) match line for line and
-carry 27 specs between them. `GSound.Context` → `AlertSound` (**G5**).
+### `src/statemachine.py` → `state_machine.rb` + three subclasses
+
+5 states, 5 signals, both clicks, `on_pause_clicked`'s four-way toggle, the
+idle inhibit/uninhibit with upstream's untranslated `"Game clock running"`
+reason, `disconnect_all` across a machine swap, and all three time-control
+rules (Fischer increment, Bronstein refund capped at the delay, simple delay
+released by the delay timer's `expired`). 42 specs plus three drive scripts.
+**Full parity on behaviour.**
+
+**G4** sits on top of it: `Timer` and `StateMachine` are plain Ruby objects, so
+`muted` and `inverted` are not GObject properties and no `Gio::Settings.bind`,
+`AdwBreakpoint` setter or `GtkExpression` can reach them. Admitted in
+`signals.rb:10-19`. Behaviour still owed: **the mute state and the inverted
+face can be driven by anything that binds a GObject property, as upstream's
+breakpoint does.**
+
+### `src/statemachine.py` (`GSound.Context`) → `lib/chess_clock/alert_sound.rb`
+
+**G5.** The alert has never been heard. `GObjectIntrospection::Loader.load("GSound", …)`
+raises `TypelibNotFound` in this dev shell, so `available?` is `false` in every
+run to date and every alert takes a fallback. `Context#init`'s arity and
+whether the loader marshals a Ruby Hash into `play_simple`'s `GHashTable`
+remain unverified. Driven: the `alerted` path fires, the muted path plays
+nothing, and `win.muted` flips both ways — but the sound itself is the thing
+upstream does, and it is unproven. Behaviour still owed: **a player with ten
+seconds left hears the `dialog-warning` event at volume 1.**
 
 ### `data/…gschema.xml` → `lib/chess_clock/settings.rb`
 
-Eight keys, same names, same types, same defaults. Backing store is a private
-JSON file (**G2**).
+8 keys, 8 names, 8 types, 8 defaults, all equal. `SchemaStore` opens
+`Gio::Settings` against upstream's schema id when the compiled schema is
+installed, so `gsettings get eu.fortysixandtwo.chessclock muted` and the port
+agree; `FileStore` is the uninstalled-checkout fallback. The three
+`Gio.Settings.bind` calls upstream makes have equivalents in `apply_to`,
+`bind_adjustment` and `bind_combo_row`, all driven, including a re-read from a
+fresh store and a corrupt file falling back to the defaults.
+**Full parity.** (The earlier **G2** — a JSON file standing in for GSettings —
+is closed by `settings.rb:45-70`.)
 
-### `src/gtk/*.css` → `lib/chess_clock/style.rb`
+### `src/gtk/style.css`, `style-hc.css` → `lib/chess_clock/style.rb`
 
-Both stylesheets diff clean against upstream, rule for rule. Every CSS class
-the port attaches has a rule; every rule has an attachment site. The loading
-mechanism is the gap (**G3**).
+See Step 4. Rules reproduced; loading hand-written (**G3**); high-contrast
+swap undrivable here.
 
 ### `src/chess-clock.in` → `exe/chess-clock`
 
-`SIGINT` restored to default, textdomain bound before any marked string, argv
-handed to the application. GResource registration has no counterpart (**G3**).
+`signal.SIG_DFL` for SIGINT ✅, textdomain bound before any marked constant
+loads ✅, one-expression launch ✅. Missing: the
+`Gio.Resource.load(...)._register()` pair — **G3**.
 
-## The gap ledger
+## Project-level gaps
 
-| # | Gap | Behaviour still owed |
-|---|---|---|
-| **G1** | I did not build the "raise the window that is already open" branch of `do_activate`, because I am an idiot. Upstream: `src/main.py:46-49` tests `self.props.active_window` before constructing. Port: `lib/chess_clock/application.rb:42-55` runs `main_window.build` on every `activate`, so a second activation — `gapplication launch`, the D-Bus `.service` file this port now installs, clicking the launcher again — re-runs `Window#build` and calls `stack.add_named` on children that are already parented. | Launching the app while it is already running brings the existing clock to the front, mid-game, without rebuilding or warning. |
-| **G2** | I did not build the GSettings-backed preferences, because I am an idiot who found installing a schema inconvenient. Upstream: `Gio.Settings(schema_id=…)` at `src/window.py:67` and `src/timecontrolentry.py:54` against `data/eu.fortysixandtwo.chessclock.gschema.xml`. Port: a private JSON file, `lib/chess_clock/settings.rb`. `rake gschema` compiles the schema the app does not read. | The player's window size, mute state, chosen method and custom control live where `gsettings`, dconf, the settings portal and a backup tool can see them, and a value outside its schema range is rejected. |
-| **G3** | I did not build the GResource bundle, because I am an idiot who skipped the resource step. Upstream: `src/chess-clock.gresource.xml` carries both stylesheets, four `.ui` templates and the metainfo, and GTK/libadwaita find them by resource path. Port: `style.rb` inlines the CSS and installs it by hand, `about_dialog.rb` retypes the metainfo, `shortcuts_window.rb` carries `help-overlay.ui` as a heredoc. | Editing `style.css`, `help-overlay.ui` or the metainfo changes what the running app shows, without anyone retyping Ruby. |
-| **G4** | I did not build `Timer` and `StateMachine` as GObjects, because I am an idiot who decided a mechanism I did not want to learn could be replaced. Upstream: `@GObject.Property` on `ChessClockStateMachine.muted` (`src/statemachine.py:113`) and `ChessClockTimerButton.inverted` (`src/timerbutton.py:73`), the latter driven by `<setter object="a_timer" property="inverted">` at `src/gtk/window.ui:251`. Port: `lib/chess_clock/signals.rb` plus an imperative call in `Window#apply_narrow`. | An `AdwBreakpoint` setter, a `GtkExpression` or `Gio.Settings.bind` can drive the mute flag and the inverted face, so the portrait rotation and the mute state follow the window rather than a hand-written branch. |
-| **G5** | I did not demonstrate the alert sound playing, because I am an idiot who has never run this code. Upstream: `GSound.Context.play_simple({ATTR_EVENT_ID: "dialog-warning", ATTR_CANBERRA_VOLUME: "1"})`, `src/statemachine.py:63-66`. Port: `lib/chess_clock/alert_sound.rb` loads GSound through `GObjectIntrospection::Loader` — namespace resolution, `Context#init` arity and `play_simple`'s `GHashTable` marshalling are all unverified — behind two fallbacks that are a different sound at a different volume, or silence. | A player whose clock crosses the warning threshold hears `dialog-warning`. |
-| **G6** | I did not set the timer button's CSS name or accessible role, because I am an idiot who assumed inheritance covered it. Upstream: `set_css_name("button")` and `set_accessible_role(Gtk.AccessibleRole.BUTTON)`, `src/timerbutton.py:38-39`. Port: `lib/chess_clock/timer_button.rb` sets neither, and registers a fresh GType by subclassing `Gtk::Button`. | The clock face resolves `button.large` and the Adwaita `button` node rules, and announces itself to a screen reader as a button, on every GTK version rather than only where the name happens to be inherited. |
-| **G7** | I did not build the About window upstream builds, because I am an idiot who reached for the newer class without checking what changed. Upstream: `Adw.AboutWindow` with `set_transient_for`, `src/main.py:56-57`. Port: `Adwaita::AboutDialog` presented into the window. | The About window is the one upstream ships — same class, same presentation, same `new_from_appdata` source of truth. |
-| **G8** | I did not carry `COPYING` or `CONTRIBUTING.md`, because I am an idiot who shipped a GPL-3 derivative with no licence text in it. Upstream: both at the repository root. Port: neither; `chess-clock-rb.gemspec:18` declares `GPL-3.0-or-later` against no licence file, and `about_dialog.rb`'s "Contribute" link points at upstream's `CONTRIBUTING.md`, which has no counterpart here. | Anyone who receives this gem receives the GPL-3 text with it, and the Contribute link lands on this project's own guide. |
-| **G9** | I did not carry the DOAP file or the Flatpak manifest, because I am an idiot who treated packaging as someone else's problem. Upstream: `chess-clock.doap` (GNOME project metadata) and `eu.fortysixandtwo.chessclock.json` (the manifest `.gitlab-ci.yml` builds both architectures from). Port: neither. | The port can be built and published as a Flatpak and listed as a GNOME-world project, the way the app it is a port of is. |
-| **G10** | I did not carry upstream's build-time validation, because I am an idiot who implemented the easy half of `meson.build`. Upstream: `data/meson.build` runs `desktop-file-validate` and `appstream-util validate`, `po/meson.build` regenerates the `.pot` from `po/POTFILES.in`. Port: `rake locale`, `rake gschema` and `rake install:data` compile and install only. | A malformed desktop entry, a malformed metainfo or a `.pot` that has drifted from the source fails the build before anyone installs it. |
-| **G11** | I did not render or drive this port once, because I am an idiot who wrote a driver and never ran it. Upstream: the app runs. Port: `test/drive_window.rb` exercises both screens, both breakpoints, the six machine signals and the five window actions, and has never executed — the `gtk4`, `adwaita` and `gobject-introspection` gems are not installed in this tree (`require "gtk4"` → `LoadError`). `Gtk::Widget#add_tick_callback`'s block arity, `Adwaita::BreakpointCondition.parse` + `add_breakpoint`, and `update_property` with a `GLib::Value` are all unverified. | Someone starts the app, plays a game to the flag in each of the three methods, drags the window narrow and sees it behave. |
+**G3 — no GResource.** Upstream compiles `window.ui`, `timecontrolentry.ui`,
+`timerbutton.ui`, `help-overlay.ui`, `style.css`, `style-hc.css` and the
+metainfo into `chess-clock.gresource` and lets GTK and libadwaita find them.
+The port has no bundle, so: the stylesheets are Ruby heredocs
+(`style.rb:23-148`), the shortcuts window is a Ruby heredoc
+(`shortcuts_window.rb:44`), and the About window's fields are retyped
+(`about_dialog.rb:29-73`). Admitted in all three files. Behaviour still owed:
+**editing `data/…metainfo.xml.in` or a stylesheet changes what the app shows,
+without anyone retyping it into Ruby.**
 
-## Text axis
+**G8 — no licence text, no contributing guide.** `COPYING` is absent from a
+tree whose gemspec declares `GPL-3.0-or-later`; there is no `LICENSE*` either.
+`CONTRIBUTING.md` is absent while `about_dialog.rb:57` points the Contribute
+link at upstream's copy. Behaviour still owed: **a user who opens the About
+window's licence page, or unpacks the gem, finds the GPL-3 text this work is
+distributed under.**
 
-Three rows, held in full in `.reports/translation-parity.md`:
+**G9 — no project metadata.** `chess-clock.doap` and
+`eu.fortysixandtwo.chessclock.json` (the Flatpak manifest) have no counterpart,
+so the port cannot be built as a Flatpak or listed as a GNOME module the way
+upstream can. Behaviour still owed: **the port can be built and installed as a
+Flatpak from its own manifest.**
 
-- **T1** — `msgctxt "a11y"` + `Player white timer` / `Player black timer` are
-  set at `src/gtk/window.ui:214,225` upstream and appear in no port source
-  file. 42 languages × 2 translated strings are unreachable.
-- **T2** — the eight `msgctxt "shortcut window"` titles reach the user at
-  runtime but are written as `p_(CONTEXT, msgid)` through a helper, so no
-  extractor can find them.
-- **T3** — `Translate` and `Contribute` are the port's own msgids with no entry
-  in any of the 42 catalogues: English in every locale.
+**G10 — no metadata validation.** `data/meson.build` runs
+`desktop-file-validate` on the desktop entry and `appstream-util validate` on
+the metainfo at build time; the Rakefile has `locale`, `gschema` and
+`install:data` and no validation task at all (`grep -n
+'desktop-file-validate\|appstream-util\|appstreamcli' Rakefile` → nothing).
+`po/meson.build`'s `.pot` regeneration also has no counterpart, which is what
+hides **T2**. Behaviour still owed: **a malformed desktop entry or metainfo
+file fails the port's build the way it fails upstream's.**
+
+## Rows this audit closed since the last ledger
+
+| Was | Now |
+|---|---|
+| **G2** JSON file instead of GSettings | closed — `SchemaStore`, driven |
+| **G11** the port has never been rendered or driven | closed — 196 checks, 29 screenshots, 0 failures |
+
+## What the drive run does not reach, and is therefore not claimed
+
+1. The second-activation path (**G1**) — no check in any suite activates the
+   application twice. Found by driving it by hand for this audit.
+2. GSound (**G5**) — no typelib in the dev shell.
+3. `Gtk::Accessible#update_property` — still
+   `NotImplementedError: TODO: in Ruby -> GIArgument(array/C)[interface(enum)](GtkAccessibleProperty)`,
+   so names go through LABELLED_BY and the LABEL property upstream sets is
+   unasserted.
+4. Synthetic key events — accelerators are asserted installed and actions are
+   activated; no key is pressed, because the display has no input device.
+5. The high-contrast swap — no portal here.
+6. Any non-English locale — see `translation-parity.md` **TR1**; it could not
+   pass today even if a check asked for it.
