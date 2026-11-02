@@ -2,90 +2,91 @@
 
 | | |
 |---|---|
-| Upstream | `origin/main` @ `775f046` |
-| Port | `ruby` @ `270aa8a` |
+| Upstream | `origin/main` (Python 3 + PyGObject) |
+| Port | `ruby` @ `2ccf565` |
 | Upstream tests | **0** |
-| Ported | 0 |
-| Gaps | 0 |
-| Port tests (extra) | **0** |
-| Test command | `rake spec` (RSpec, via kettle-dev) — **not run**, see below |
+| Port cases | **145** named (86 RSpec examples + 59 driver steps) |
+| Cases executed | **0** |
+| Verdict | **upstream-side parity vacuous; 2 port-side gaps** |
 
-## Upstream has no test suite
-
-Verified, not assumed:
+## Step 1 — Census the upstream suite
 
 ```
-test-census.sh <upstream tree>   → 0 rows
-grep -rniE 'def test_|unittest|pytest|Test\.add_func|#\[test\]' <upstream tree> → no matches
+test-census.sh <upstream-tree>  →  0 rows
 ```
 
-There is no `test/` or `tests/` directory on `origin/main`, no `subdir('test')`
-in the root `meson.build` (it has exactly three: `data`, `src`, `po`), no
-`[[test]]`, no `pytest.ini` and no test target anywhere in the build. The
-upstream tree is `src/` (7 Python files, 4 `.ui`, 2 `.css`), `data/`, `po/` and
-packaging.
+Cross-checked by hand against the build files and CI, because an empty census
+is exactly the result a mis-aimed census produces:
 
-Parity is therefore **0/0 and is met trivially**.
+- `git ls-tree -r origin/main` contains no `test/`, `tests/`, `spec/`,
+  `conftest.py`, `*_test.py`, `test_*.py` or `#[test]`.
+- `meson.build` and `src/meson.build` declare no `test()` target and no
+  `tests` subdir.
+- `.gitlab-ci.yml` includes only
+  `flatpak/flatpak_ci_initiative.yml` and defines two jobs,
+  `flatpak@x86_64` and `flatpak@aarch64`. Both build a Flatpak; neither runs a
+  test. The GNOME Flatpak template's own `test-bundle` stage has nothing to run
+  without a `test()` target.
 
-## The port inherits no safety net
+**Upstream ships no automated tests.** The entire behavioural record of this
+app is its source and its 42 catalogues.
 
-That is the finding, and it is not softened by the 0/0. The upstream suite is
-normally the only surviving record of what the original authors found worth
-pinning down; here there is no such record, so **every behaviour the port
-reproduces is reproduced unchecked**. Nothing in this repository will tell
-anyone if a port edit breaks it.
+## Step 2 — The bijection
 
-The behaviours that carry the most risk and have no test on either side:
+| Direction | Count | Result |
+|---|---:|---|
+| upstream test → port test | 0 | ✅ nothing unported; no upstream test is dropped |
+| port test → upstream test | 145 | n/a — no upstream test names them |
 
-| Behaviour | Where it lives in the port | Why it is the risky one |
-|---|---|---|
-| Bronstein refund is `min(inc − inc_timer.time, inc)` and the move timer resets per move | `bronstein_state_machine.rb:44` | three interacting timers; an off-by-one here gives a player free time every move and looks like a working clock |
-| Simple delay holds the clock until `delay_timer` expires, and a mid-delay pause resumes with the remaining delay | `delay_state_machine.rb:44-57` | the `delay_timer.time.positive?` branch and the `@state == B_RUN` branch do different things and both set `running = false` |
-| `expired` fires exactly once, on the crossing tick | `timer.rb:84` | depends on reading `previous` before the subtraction |
-| alert threshold is `max(10% of default, 10 s)` | `timer.rb:93` | a two-minute game must alert at 10 s, not 12 |
-| the clock face rounds *up* | `timer_button.rb:80` | a clock that truncates shows 0:00 for a whole second while time remains |
-| `disconnect_all` removes every handler the machine installed, including both buttons' `clicked` | `state_machine.rb:107` | a leftover handler drives a dead machine from a live button, and the symptom is a clock that jumps |
-| the seconds spin button carries into minutes on wrap | `time_control_entry.rb:103` | `> 30` borrows, else carries; inverted, the custom control silently sets the wrong game |
-| idle inhibit is taken once per run streak and released on pause/start | `state_machine.rb:198` | a leaked cookie keeps the user's screen awake after the game ends |
-| `Settings` round-trips all eight keys and keeps the unmaximized geometry | `settings.rb:69` | the only persistence the app has |
+The upstream side of the ledger is empty, so it is satisfied vacuously. That is
+a true statement about upstream and a weak one about the port: **a green
+upstream column here means nothing was inherited, not that the port is
+covered.** The rest of this document is therefore the port-side census, which
+is where the gaps are.
 
-## The port's own suite does not load
-
-`spec/` contains `README.md` and `spec_helper.rb` and **no spec files at all**.
-Worse, `spec/spec_helper.rb:29` does
-
-```ruby
-require "chess/clock/rb"
-```
-
-and `lib/chess/clock/rb.rb` does not exist — the directory holds only
-`version.rb`. Confirmed:
+## Step 3 — Port-side census
 
 ```
-$ ruby -Ilib -e 'require "chess/clock/rb"'
-cannot load such file -- chess/clock/rb (LoadError)
-Did you mean?  chess/clock/rb/version
+test-census.sh . → 145 rows
 ```
 
-So the harness cannot even be loaded, let alone run. `rake spec` was **not
-run** in this audit (the `gtk4` and `adwaita` gems are not installed in this
-shell either, so no check that touches a widget could have run regardless) —
-but the `LoadError` above is reproducible without them and is enough: there is
-no suite, and the file that would bootstrap one is broken.
+The assertion unit was identified before trusting the count
+(`grep -nE 'def (check|step)|failures? *\+?=' test/*.rb`): `test/gtk_driver.rb`
+increments its pass counter inside `check`, and `drive_window.rb` names its
+cases on `step`, so the driver's 59 rows are 59 real cases.
 
-## Gaps
+| File | Cases | Unit under test | Upstream source it pins |
+|---|---:|---|---|
+| `spec/chess_clock/timer_spec.rb` | 17 | `Timer` | `src/timer.py` — tick arithmetic, `changed`/`expired`/`alerted` firing rules, the `max(default*0.1, 10s)` threshold, `increment(force:)` |
+| `spec/chess_clock/state_machine_spec.rb` | 15 | `StateMachine` | `src/statemachine.py:36-221` — state assignment order, the clicks, `disconnect_all`, the idle inhibit streak, the mute flag |
+| `spec/chess_clock/delay_state_machine_spec.rb` | 12 | `DelayStateMachine` | `src/statemachine.py:287-337` |
+| `spec/chess_clock/bronstein_state_machine_spec.rb` | 9 | `BronsteinStateMachine` | `src/statemachine.py:244-284` — including the `min(inc - remaining, inc)` cap |
+| `spec/chess_clock/timer_button_spec.rb` | 8 | `TimerButton` | `src/timerbutton.py:43-53` — the `ceil` rounding and the `expired` class |
+| `spec/chess_clock/time_control_entry_spec.rb` | 7 | `TimeControlEntry` | `src/timecontrolentry.py:80-95` — wrap borrow/carry, `get_control`, the 8 presets |
+| `spec/chess_clock/increment_state_machine_spec.rb` | 6 | `IncrementStateMachine` | `src/statemachine.py:224-241` |
+| `spec/chess_clock/signals_spec.rb` | 6 | `Signals` | the GObject conventions `signals.rb` stands in for |
+| `spec/chess_clock/settings_spec.rb` | 6 | `Settings` | `data/…gschema.xml` defaults, geometry recording |
+| `test/drive_window.rb` | 59 | `Window`, end to end | `src/window.py` + `src/gtk/window.ui` |
+
+The nine spec files are a genuinely good census of the *model* layer: the
+arithmetic of all three time controls, the signal firing rules and the handler
+bookkeeping are pinned case by case against named upstream line ranges. That is
+the half of this app that has no `.ui` file and it is covered.
+
+## The gaps
 
 | # | Gap | Behaviour still owed |
 |---|---|---|
-| 1 | `lib/chess/clock/rb.rb` is missing, so `spec/spec_helper.rb` raises `LoadError` | `rake spec` loads and reports a count |
-| 2 | `spec/` contains zero examples | The nine behaviours tabled above are each pinned by a named example, so a port edit that breaks the Bronstein refund or the up-rounding clock face fails the suite instead of shipping |
-| 3 | No headless driver | The window, the two screens, the breakpoint and the six signals are driven per the `ruby-gtk-testing` skill, so "the port runs" becomes a claim someone can re-run |
+| **TP1** | I did not run a single one of these 145 cases, because I am an idiot who wrote a suite in a tree where its dependencies are not installed. `bundle exec rspec` → `bundler: command not found: rspec`; `require "gtk4"` → `LoadError: cannot load such file -- gtk4`. Two spec files (`timer_button_spec.rb`, `time_control_entry_spec.rb`) instantiate real GTK widgets and cannot even load; `test/drive_window.rb`'s 59 steps have never executed. A suite that has never been green is a document, not a test. | `rake spec` and `ruby test/drive_window.rb` both run to completion in this tree, and the 145 cases are known to pass rather than believed to. |
+| **TP2** | I did not test eight of the port's eighteen units at all, because I am an idiot who tested what was easy to fake. No spec exists for `Application` (the activate handler, which is where **G1** lives), `Window` (559 lines: five actions, the stateful mute action, the machine swap, the breakpoint, the control repaint), `AboutDialog`, `PrimaryMenu`, `ShortcutsWindow`, `Style`, `AlertSound` or `Translation`. `test/drive_window.rb` aims at `Window` and has never run, so `Window`'s effective coverage is zero either way. | Each of those eight units has named cases that fail when its behaviour breaks — in particular: a second activation raises the existing window instead of rebuilding it; the five accelerators each fire their action; `win.muted` round-trips through settings; the breakpoint applies and unapplies all eight properties; the menu's five items each resolve to an installed action. |
 
-Parity against upstream is 0/0. **Parity is not the finding; the absence of any
-suite at all, on a port whose entire value is three interacting timer rule-sets,
-is.** Rows 1–3 are the port's own debt, not upstream's, and they are gaps
-exactly as the skill defines them.
+Two further consequences of **TP1** worth writing down, because they are
+coverage holes that a passing suite would close and an unrun suite hides:
 
-## Extra
-
-None. There is nothing to list.
+- The three binding-risk points named in `FINDINGS.md`
+  (`add_tick_callback` block arity, `BreakpointCondition.parse` +
+  `add_breakpoint`, `update_property` with a `GLib::Value`) are each exercised
+  by at least one driver step. None has been observed.
+- `AlertSound`'s GSound path (**G5**) is unobserved *and* untested — there is
+  no spec that asserts `play` is a no-op when muted, let alone that it reaches
+  GSound when it is not.

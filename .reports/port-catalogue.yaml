@@ -4,7 +4,7 @@ tree:
   role: port
   path: "."
   ref: ruby
-  sha: 270aa8a
+  sha: 2ccf565
   scanned: '2026-11-02'
 domain:
 domain_source:
