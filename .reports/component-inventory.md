@@ -5,11 +5,42 @@ Upstream: `origin/main`, Python 3 + PyGObject (GTK4 / libadwaita 1.4), GtkBuilde
 pick a time control, then tap each player's half of the screen to hand over the
 move.
 
-Port target: branch `ruby`, namespace directory `lib/chess_clock/`. Today `lib/`
-holds three files — `lib/chess_clock.rb` (one `require_relative`),
-`lib/chess_clock/application.rb` (a blank Adwaita window with a "not written
-yet" status page) and `lib/chess/clock/rb/version.rb`. That is skeleton only;
-nothing below except the application shell exists.
+Port target: branch `ruby`, namespace directory `lib/chess_clock/`. Every
+component below now has its `lib/*.rb` file: `lib/chess_clock.rb` requires
+`translation` then `application`, and the seventeen files under
+`lib/chess_clock/` carry the whole app (2 394 lines). `data/` and `po/` are
+ported too — the four `data/*.in`/schema files, the icons, the screenshots and
+all 42 catalogues. Nothing in this inventory is missing a file; whether each
+file is at *behavioural* parity is the question `.reports/component-parity.md`
+answers, and `FINDINGS.md` records the binding substitutions.
+
+Two port files have no single upstream file of their own:
+`lib/chess_clock/signals.rb` stands in for the `@GObject.Signal` plumbing of
+`src/timer.py` and `src/statemachine.py`, and `lib/chess_clock/translation.rb`
+for the `bindtextdomain`/`textdomain`/`gettext.install` calls in
+`src/chess-clock.in`.
+
+## Summary
+
+| Upstream | Port file | Kind | Exists |
+|---|---|---|:-:|
+| `src/main.py` | `lib/chess_clock/application.rb` | application singleton | yes |
+| `src/main.py` (`on_about_action`) | `lib/chess_clock/about_dialog.rb` | dialog | yes |
+| `src/window.py` + `src/gtk/window.ui` | `lib/chess_clock/window.rb` | window (2 stack pages) | yes |
+| `src/gtk/window.ui` (`menu primary_menu`) | `lib/chess_clock/primary_menu.rb` | menu | yes |
+| `src/gtk/help-overlay.ui` | `lib/chess_clock/shortcuts_window.rb` | shortcuts window | yes |
+| `src/timerbutton.py` + `src/gtk/timerbutton.ui` | `lib/chess_clock/timer_button.rb` | widget (clock face) | yes |
+| `src/timecontrolentry.py` + `src/gtk/timecontrolentry.ui` | `lib/chess_clock/time_control_entry.rb` | widget (picker) | yes |
+| `src/timer.py` | `lib/chess_clock/timer.rb` | model | yes |
+| `src/statemachine.py` (base) | `lib/chess_clock/state_machine.rb` | model | yes |
+| `src/statemachine.py` (increment) | `lib/chess_clock/increment_state_machine.rb` | model | yes |
+| `src/statemachine.py` (Bronstein) | `lib/chess_clock/bronstein_state_machine.rb` | model | yes |
+| `src/statemachine.py` (simple delay) | `lib/chess_clock/delay_state_machine.rb` | model | yes |
+| `src/statemachine.py` (`GSound.Context`) | `lib/chess_clock/alert_sound.rb` | service | yes |
+| `data/…chessclock.gschema.xml` | `lib/chess_clock/settings.rb` | settings | yes |
+| `src/gtk/style.css` + `style-hc.css` | `lib/chess_clock/style.rb` | stylesheet | yes |
+| `src/timer.py`, `src/statemachine.py` (signals) | `lib/chess_clock/signals.rb` | support | yes |
+| `src/chess-clock.in` (gettext setup) | `lib/chess_clock/translation.rb` | support | yes |
 
 Upstream splits most components across two files (the `.py` subclass and its
 `.ui` template). The component is the pair.
@@ -23,9 +54,9 @@ Upstream splits most components across two files (the `.py` subclass and its
 | action `app.quit` | 1 | — | `<primary>q` | |
 | action `app.about` | 1 | — | — | opens the About window |
 
-Target: `lib/chess_clock/application.rb` (exists, skeleton) and
-`lib/chess_clock/about_dialog.rb` (new — the port has no GResource, so the About
-window must be populated field by field instead of from appdata).
+Target: `lib/chess_clock/application.rb` (exists) and
+`lib/chess_clock/about_dialog.rb` (exists — the port has no GResource, so the
+About window is populated field by field instead of from appdata).
 
 ## src/window.py + src/gtk/window.ui — the main window: setup screen and timer screen
 
@@ -72,7 +103,7 @@ tear down every signal between the window, the two timer buttons and the state
 machine, including two `add_tick_callback` registrations; `win.muted` is a
 stateful action persisted to GSettings `muted`.
 
-Target: `lib/chess_clock/window.rb`.
+Target: `lib/chess_clock/window.rb` (exists).
 
 ## src/gtk/window.ui — `menu primary_menu`
 
@@ -86,7 +117,7 @@ Three sections, five items, no backing source file.
 | _Keyboard Shortcuts | `win.show-help-overlay` |
 | _About Chess Clock | `app.about` |
 
-Target: `lib/chess_clock/primary_menu.rb`.
+Target: `lib/chess_clock/primary_menu.rb` (exists).
 
 ## src/gtk/help-overlay.ui — keyboard shortcuts window
 
@@ -99,7 +130,7 @@ GtkApplication's resource convention.
 | Game | New Time Control (`win.new`), Restart Timer (`win.restart`) |
 | General | Open Main Menu (`win.menu`), Show Shortcuts (`win.show-help-overlay`), Close Window (`win.close`), Quit (`app.quit`) |
 
-Target: `lib/chess_clock/shortcuts_window.rb`.
+Target: `lib/chess_clock/shortcuts_window.rb` (exists).
 
 ## src/timerbutton.py + src/gtk/timerbutton.ui — one player's clock face
 
@@ -113,7 +144,7 @@ Target: `lib/chess_clock/shortcuts_window.rb`.
 | `Gtk.Box` `timer_box` | 1 | — | — | forced LTR so the digits never mirror |
 | `Gtk.Label` | 3 | `colon` (middle) | — | `minutes`, `∶`, `seconds` (`%02d`); time ceil'd from microseconds |
 
-Target: `lib/chess_clock/timer_button.rb`.
+Target: `lib/chess_clock/timer_button.rb` (exists).
 
 ## src/timecontrolentry.py + src/gtk/timecontrolentry.ui — time control picker
 
@@ -129,7 +160,7 @@ Target: `lib/chess_clock/timer_button.rb`.
 
 `get_control` returns `(minutes*60 + seconds, increment)` in seconds.
 
-Target: `lib/chess_clock/time_control_entry.rb`.
+Target: `lib/chess_clock/time_control_entry.rb` (exists).
 
 ## src/timer.py — one countdown (model)
 
@@ -139,7 +170,7 @@ Target: `lib/chess_clock/time_control_entry.rb`.
 `max(10% of default time, 10 s)`. `increment(inc, force:)` adds time, skipping
 an already-expired clock unless forced.
 
-Target: `lib/chess_clock/timer.rb`.
+Target: `lib/chess_clock/timer.rb` (exists).
 
 ## src/statemachine.py — the game rules (model)
 
@@ -152,10 +183,10 @@ timer button in and `disconnect_all` unwires it.
 
 | Class | Rule | Target |
 |---|---|---|
-| `ChessClockStateMachine` | base transitions, sound, idle inhibit, button wiring | `lib/chess_clock/state_machine.rb` |
-| `ChessClockIncrementStateMachine` | Fischer increment: add `inc` on handover and at start | `lib/chess_clock/increment_state_machine.rb` |
-| `ChessClockBronsteinStateMachine` | Bronstein delay via a third `inc_timer`: give back only the time used, capped at `inc` | `lib/chess_clock/bronstein_state_machine.rb` |
-| `ChessClockDelayStateMachine` | Simple (US) delay: a `delay_timer` holds the main clock until it expires | `lib/chess_clock/delay_state_machine.rb` |
+| `ChessClockStateMachine` | base transitions, sound, idle inhibit, button wiring | `lib/chess_clock/state_machine.rb` (exists) |
+| `ChessClockIncrementStateMachine` | Fischer increment: add `inc` on handover and at start | `lib/chess_clock/increment_state_machine.rb` (exists) |
+| `ChessClockBronsteinStateMachine` | Bronstein delay via a third `inc_timer`: give back only the time used, capped at `inc` | `lib/chess_clock/bronstein_state_machine.rb` (exists) |
+| `ChessClockDelayStateMachine` | Simple (US) delay: a `delay_timer` holds the main clock until it expires | `lib/chess_clock/delay_state_machine.rb` (exists) |
 
 ## data/eu.fortysixandtwo.chessclock.gschema.xml — settings
 
@@ -163,7 +194,7 @@ Eight keys: `width` (640), `height` (480), `is-maximized` (false),
 `custom-control-minutes` (5), `custom-control-seconds` (0),
 `custom-control-increment` (0), `control-method` (0), `muted` (false).
 
-Target: `lib/chess_clock/settings.rb`.
+Target: `lib/chess_clock/settings.rb` (exists).
 
 ## src/gtk/style.css + src/gtk/style-hc.css — stylesheet
 
@@ -181,7 +212,7 @@ Every one of these classes is applied somewhere above; none is dead. The port
 has no GResource, so they must be loaded through a `Gtk::CssProvider` with a
 high-contrast variant switched off `Adwaita::StyleManager`.
 
-Target: `lib/chess_clock/style.rb`.
+Target: `lib/chess_clock/style.rb` (exists).
 
 ## Alert sound
 
@@ -189,11 +220,12 @@ Target: `lib/chess_clock/style.rb`.
 `dialog-warning` at volume 1, suppressed when `muted`. Worth its own file in
 the port because GSound has no Ruby binding.
 
-Target: `lib/chess_clock/alert_sound.rb`.
+Target: `lib/chess_clock/alert_sound.rb` (exists).
 
 ## Translations
 
-`po/` carries 42 locales and `po/POTFILES.in` lists both the `.py` sources and
+The port carries all 42 locales under `po/` (`lib/chess_clock/translation.rb`
+binds the `chess-clock` textdomain). Upstream's `po/` carries the same 42 and and `po/POTFILES.in` lists both the `.py` sources and
 all four `.ui` files. Translatable strings: the window title, the two welcome
 labels, "Time control method" and its three methods, "Start Game", the eight
 time-control tooltips, the three spin-button tooltips, "Main Menu", "Toggle
