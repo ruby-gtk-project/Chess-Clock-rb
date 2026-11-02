@@ -1,0 +1,657 @@
+---
+version: 1
+upstream:
+  role: upstream
+  path: "/tmp/claude-1001/-home-nathan-src-github-ruby-gtk-project/9e6adaef-98a4-4c7a-bedc-91433423f878/scratchpad/up"
+  scanned: '2026-11-02'
+  domain: chess-clock
+  messages: 50
+  occurrences: 52
+  reused: 1
+  plural: 0
+  with_context: 11
+  unresolved: 0
+port:
+  role: port
+  path: "."
+  ref: ruby
+  sha: 270aa8a
+  scanned: '2026-11-02'
+  domain:
+  messages: 0
+  occurrences: 0
+  reused: 0
+  plural: 0
+  with_context: 0
+  unresolved: 0
+summary:
+  ported: 0
+  gaps: 50
+  extra: 0
+  kind_mismatch: 0
+  uses_mismatch: 0
+  occurrences:
+    upstream: 52
+    port: 0
+  languages:
+    upstream: 42
+    port: 0
+  languages_missing:
+  - az
+  - bg
+  - ca
+  - cs
+  - da
+  - de
+  - el
+  - en_GB
+  - eo
+  - es
+  - eu
+  - fa
+  - fi
+  - fr
+  - fur
+  - gl
+  - he
+  - hi
+  - hr
+  - hu
+  - ia
+  - id
+  - it
+  - ka
+  - kk
+  - kw
+  - nb
+  - nl
+  - oc
+  - pl
+  - pt
+  - pt_BR
+  - ro
+  - ru
+  - sl
+  - sr
+  - sv
+  - tr
+  - uk
+  - uz
+  - vi
+  - zh_CN
+  domain_matches: false
+  parity: false
+messages:
+- id: Bronstein delay
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:77
+  text_owed: Bronstein delay
+- id: Chess Clock
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 3
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.desktop.in:2
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  - src/gtk/window.ui:6
+  text_owed: Chess Clock
+- id: Chess Clock is a simple application to provide time control for over-the-board
+    chess games. Intended for mobile use, players select the time control settings
+    desired for their game, then the black player taps their clock to start white's
+    timer. After each player's turn, they tap the clock to start their opponent's,
+    until the game is finished or one of the clocks reaches zero.
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  text_owed: Chess Clock is a simple application to provide time control for over-the-board
+    chess games. Intended for mobile use, players select the time control settings
+    desired for their game, then the black player taps their clock to start white's
+    timer. After each player's turn, they tap the clock to start their opponent's,
+    until the game is finished or one of the clocks reaches zero.
+- id: Five minutes per side, plus three seconds per turn
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:62
+  text_owed: Five minutes per side, plus three seconds per turn
+- id: Five minutes per side, plus zero seconds per turn
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:49
+  text_owed: Five minutes per side, plus zero seconds per turn
+- id: Increment
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:76
+  text_owed: Increment
+- id: Increment seconds
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:171
+  text_owed: Increment seconds
+- id: Main Menu
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:180
+  text_owed: Main Menu
+- id: Main time minutes
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:134
+  text_owed: Main time minutes
+- id: Main time seconds
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:153
+  text_owed: Main time seconds
+- id: One minute per side, plus zero seconds per turn
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:23
+  text_owed: One minute per side, plus zero seconds per turn
+- id: Player black timer
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/timerbutton.py:63
+  text_owed: Player black timer
+- id: Player white timer
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/timerbutton.py:58
+  text_owed: Player white timer
+- id: Select time controls below to get started
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:54
+  text_owed: Select time controls below to get started
+- id: Simple delay
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:78
+  text_owed: Simple delay
+- id: Start Game
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:90
+  text_owed: Start Game
+- id: Ten minutes per side, plus five seconds per turn
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:88
+  text_owed: Ten minutes per side, plus five seconds per turn
+- id: Ten minutes per side, plus zero seconds per turn
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:75
+  text_owed: Ten minutes per side, plus zero seconds per turn
+- id: The main screen in a portrait aspect ratio, showing one timer rotated 180 degrees
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  text_owed: The main screen in a portrait aspect ratio, showing one timer rotated
+    180 degrees
+- id: The main screen, showing timers for the white and black players of a chess game
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  text_owed: The main screen, showing timers for the white and black players of a
+    chess game
+- id: The time control selection screen
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  text_owed: The time control selection screen
+- id: Thirty minutes per side, plus twenty seconds per turn
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:114
+  text_owed: Thirty minutes per side, plus twenty seconds per turn
+- id: Thirty minutes per side, plus zero seconds per turn
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:101
+  text_owed: Thirty minutes per side, plus zero seconds per turn
+- id: Time control method
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:72
+  text_owed: Time control method
+- id: Time games of over-the-board chess
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  text_owed: Time games of over-the-board chess
+- id: Toggle Pause
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:197
+  text_owed: Toggle Pause
+- id: Two minutes per side, plus one second per turn
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/timecontrolentry.ui:36
+  text_owed: Two minutes per side, plus one second per turn
+- id: Welcome to Chess Clock
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:44
+  text_owed: Welcome to Chess Clock
+- id: _About Chess Clock
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:278
+  text_owed: _About Chess Clock
+- id: _Keyboard Shortcuts
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:274
+  text_owed: _Keyboard Shortcuts
+- id: _Mute Alert Sound
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:268
+  text_owed: _Mute Alert Sound
+- id: _New Time Control
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:258
+  text_owed: _New Time Control
+- id: _Restart Timer
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:262
+  text_owed: _Restart Timer
+- id: chess
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  text_owed: chess
+- id: chess;game;clock;timer;
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.desktop.in:8
+  text_owed: chess;game;clock;timer;
+- id: clock
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  text_owed: clock
+- id: game
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  text_owed: game
+- id: timer
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  text_owed: timer
+- id: translator-credits
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/main.py:63
+  text_owed: translator-credits
+- ctxt: a11y
+  id: Player black timer
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:225
+  text_owed: Player black timer
+- ctxt: a11y
+  id: Player white timer
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:214
+  text_owed: Player white timer
+- ctxt: a11y
+  id: Select time controls
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/window.ui:17
+  text_owed: Select time controls
+- ctxt: shortcut window
+  id: Close Window
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/help-overlay.ui:43
+  text_owed: Close Window
+- ctxt: shortcut window
+  id: Game
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/help-overlay.ui:11
+  text_owed: Game
+- ctxt: shortcut window
+  id: General
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/help-overlay.ui:28
+  text_owed: General
+- ctxt: shortcut window
+  id: New Time Control
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/help-overlay.ui:14
+  text_owed: New Time Control
+- ctxt: shortcut window
+  id: Open Main Menu
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/help-overlay.ui:31
+  text_owed: Open Main Menu
+- ctxt: shortcut window
+  id: Quit
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/help-overlay.ui:49
+  text_owed: Quit
+- ctxt: shortcut window
+  id: Restart Timer
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/help-overlay.ui:20
+  text_owed: Restart Timer
+- ctxt: shortcut window
+  id: Show Shortcuts
+  state: gap
+  kind:
+    upstream: single
+    port:
+  uses:
+    upstream: 1
+    port: 0
+  upstream_sites:
+  - src/gtk/help-overlay.ui:37
+  text_owed: Show Shortcuts

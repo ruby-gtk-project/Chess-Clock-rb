@@ -1,0 +1,333 @@
+---
+version: 1
+tree:
+  role: upstream
+  path: "/tmp/claude-1001/-home-nathan-src-github-ruby-gtk-project/9e6adaef-98a4-4c7a-bedc-91433423f878/scratchpad/up"
+  scanned: '2026-11-02'
+domain: chess-clock
+domain_source: po/meson.build
+totals:
+  messages: 50
+  occurrences: 52
+  reused: 1
+  plural: 0
+  with_context: 11
+  unresolved: 0
+languages:
+  count: 42
+  translated_strings: 2004
+  untranslated_strings: 32
+  fuzzy_strings: 0
+  list:
+  - az
+  - bg
+  - ca
+  - cs
+  - da
+  - de
+  - el
+  - en_GB
+  - eo
+  - es
+  - eu
+  - fa
+  - fi
+  - fr
+  - fur
+  - gl
+  - he
+  - hi
+  - hr
+  - hu
+  - ia
+  - id
+  - it
+  - ka
+  - kk
+  - kw
+  - nb
+  - nl
+  - oc
+  - pl
+  - pt
+  - pt_BR
+  - ro
+  - ru
+  - sl
+  - sr
+  - sv
+  - tr
+  - uk
+  - uz
+  - vi
+  - zh_CN
+  linguas_matches_files: true
+unresolved: []
+messages:
+- id: Bronstein delay
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:77
+- id: Chess Clock
+  kind: single
+  uses: 3
+  sites:
+  - data/eu.fortysixandtwo.chessclock.desktop.in:2
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+  - src/gtk/window.ui:6
+- id: Chess Clock is a simple application to provide time control for over-the-board
+    chess games. Intended for mobile use, players select the time control settings
+    desired for their game, then the black player taps their clock to start white's
+    timer. After each player's turn, they tap the clock to start their opponent's,
+    until the game is finished or one of the clocks reaches zero.
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+- id: Five minutes per side, plus three seconds per turn
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:62
+- id: Five minutes per side, plus zero seconds per turn
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:49
+- id: Increment
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:76
+- id: Increment seconds
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:171
+- id: Main Menu
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:180
+- id: Main time minutes
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:134
+- id: Main time seconds
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:153
+- id: One minute per side, plus zero seconds per turn
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:23
+- id: Player black timer
+  kind: single
+  uses: 1
+  sites:
+  - src/timerbutton.py:63
+- id: Player white timer
+  kind: single
+  uses: 1
+  sites:
+  - src/timerbutton.py:58
+- id: Select time controls below to get started
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:54
+- id: Simple delay
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:78
+- id: Start Game
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:90
+- id: Ten minutes per side, plus five seconds per turn
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:88
+- id: Ten minutes per side, plus zero seconds per turn
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:75
+- id: The main screen in a portrait aspect ratio, showing one timer rotated 180 degrees
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+- id: The main screen, showing timers for the white and black players of a chess game
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+- id: The time control selection screen
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+- id: Thirty minutes per side, plus twenty seconds per turn
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:114
+- id: Thirty minutes per side, plus zero seconds per turn
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:101
+- id: Time control method
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:72
+- id: Time games of over-the-board chess
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+- id: Toggle Pause
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:197
+- id: Two minutes per side, plus one second per turn
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/timecontrolentry.ui:36
+- id: Welcome to Chess Clock
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:44
+- id: _About Chess Clock
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:278
+- id: _Keyboard Shortcuts
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:274
+- id: _Mute Alert Sound
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:268
+- id: _New Time Control
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:258
+- id: _Restart Timer
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:262
+- id: chess
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+- id: chess;game;clock;timer;
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.desktop.in:8
+- id: clock
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+- id: game
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+- id: timer
+  kind: single
+  uses: 1
+  sites:
+  - data/eu.fortysixandtwo.chessclock.metainfo.xml.in
+- id: translator-credits
+  kind: single
+  uses: 1
+  sites:
+  - src/main.py:63
+- ctxt: a11y
+  id: Player black timer
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:225
+- ctxt: a11y
+  id: Player white timer
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:214
+- ctxt: a11y
+  id: Select time controls
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/window.ui:17
+- ctxt: shortcut window
+  id: Close Window
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/help-overlay.ui:43
+- ctxt: shortcut window
+  id: Game
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/help-overlay.ui:11
+- ctxt: shortcut window
+  id: General
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/help-overlay.ui:28
+- ctxt: shortcut window
+  id: New Time Control
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/help-overlay.ui:14
+- ctxt: shortcut window
+  id: Open Main Menu
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/help-overlay.ui:31
+- ctxt: shortcut window
+  id: Quit
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/help-overlay.ui:49
+- ctxt: shortcut window
+  id: Restart Timer
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/help-overlay.ui:20
+- ctxt: shortcut window
+  id: Show Shortcuts
+  kind: single
+  uses: 1
+  sites:
+  - src/gtk/help-overlay.ui:37
