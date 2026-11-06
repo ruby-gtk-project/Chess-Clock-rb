@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `origin/main` @ `775f046` (2026-09-20) |
-| Port | `ruby` @ `5457099` |
+| Port | `ruby` @ `68fd69d` |
 | Textdomain | `chess-clock` on both sides |
 | Catalogues in tree | 42 `.po` + `LINGUAS`, **byte-identical to upstream** |
 | Catalogues the app can use | **0** |
@@ -14,8 +14,28 @@
 
 ## TR1 — nothing compiles, so nothing is translated
 
-**This is the finding, and it reverses a `✅` the previous edition of this file
-printed.** The last ledger said:
+**Re-checked this round, unchanged.** The commit between the previous audit and
+this one (`68fd69d`) touched `application.rb`, `timer_button.rb`,
+`about_dialog.rb`, and added `COPYING`/`CONTRIBUTING.md`. It did not touch
+`Rakefile`. Re-run fresh for this audit, in the fork's dev shell:
+
+```
+$ nix develop --command rake locale
+invalid option: --output-file
+Did you mean?  output
+$ find locale -type f | wc -l
+0
+```
+
+Same failure, same line (`Rakefile:222`), same result: **0 of 42 `.mo` files**.
+This is still the single worst open gap in the port — every other finding in
+every one of these five reports is cosmetic by comparison, because none of it
+matters to a player whose desktop is not in English, and today none of them
+get anything but English. The rest of this section is the finding as it was
+first written, which is the finding today.
+
+**This is the finding, and it reverses a `✅` an earlier edition of this file
+printed.** That ledger said:
 
 > | `.mo` compilation | ✅ `rake locale` → `locale/<lang>/LC_MESSAGES/chess-clock.mo` for every entry in `LINGUAS` |
 

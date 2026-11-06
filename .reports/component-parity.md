@@ -3,10 +3,11 @@
 | | |
 |---|---|
 | Upstream | `origin/main` @ `775f046` (2026-09-20) |
-| Port | `ruby` (round 1 follow-up, this audit) |
+| Port | `ruby` @ `68fd69d` |
 | Units with parity | **13 / 18** |
-| Verdict | **NOT AT PARITY — 6 open gaps (G3, G4, G5, G9, G10, G12-partial)**. G7 is a recorded substitution, not a gap. G1, G6 and G8 are closed this round (see below); the stray-byte half of G12 (the "Clara Hobbs" credit) is also closed, leaving only the release-notes-version divergence, which is a documented improvement over upstream rather than owed work. |
-| Runtime | `nix develop` + `xvfb-run -a`, GTK 4.22.4, ruby 3.4.9; 196 drive checks, 0 failed; 88 specs, 0 failed |
+| Verdict | **NOT AT PARITY — 6 open gaps (G3, G4, G5, G9, G10, G12-partial)**. G7 is a recorded substitution, not a gap. G1, G6 and G8 are closed in the commit at the head of this round; the stray-byte half of G12 (the "Clara Hobbs" credit) is also closed, leaving only the release-notes-version divergence, which is a documented improvement over upstream rather than owed work. |
+| Runtime | `nix develop` + `xvfb-run -a`, GTK 4.22.4, ruby 3.4.9; re-run fresh for this audit: 196 drive checks, 0 failed; 88 specs, 0 failed |
+| Caveat on G1 / G6 | both closures are real code changes, verified by hand this round and the previous one, **but neither is exercised by any check in the 196/88 above** — see `.reports/accountability-ensurance.md` **A5**. Per this skill's own rule, a component no check exercises is unverified, not done; these two rows are recorded as closed on that understanding, not as proven by the suite. |
 
 Four axes, all of which must hold for the same component: **count**, **style**
 (CSS classes and their rules), **behaviour** (signals and actions), **text**

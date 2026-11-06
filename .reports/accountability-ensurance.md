@@ -2,10 +2,10 @@
 
 | | |
 |---|---|
-| Port | `ruby` @ `5457099` |
+| Port | `ruby` @ `68fd69d` |
 | Scanned | `lib/`, `exe/`, `spec/`, `test/`, `.reports/`, `PORTING.md`, `FINDINGS.md`, `README.md`, `CHANGELOG.md` |
 | Scan | `accountability-ensurance/scripts/find-excuses.sh .` → 18 hits outside `.claude/skills/` |
-| Verdict | **NOT CLEAN — 1 false green (A1), 2 stale documents contradicting the tree (A2), 1 mis-named check pair (A3), 2 unadmitted gaps (A4)** |
+| Verdict | **NOT CLEAN — 1 false green (A1), 2 stale documents contradicting the tree (A2, now worse — see below), 1 mis-named check pair (A3), 2 unadmitted gaps (A4), 1 closure claimed on an unrepeatable check (A5)** |
 
 The most serious finding this skill can make is a green claim that rests on
 something never executed. **This audit found one, and it was in `.reports/`.**
@@ -47,7 +47,38 @@ The rewrite is in `.reports/translation-parity.md` under **TR1**, in the
 required form, with the proof that the gettext layer itself works once a
 catalogue exists.
 
-## A2 — two documents that now describe a tree that no longer exists
+## A2 (this round) — `PORTING.md` was not updated when the gaps it names closed
+
+The commit after the previous audit (`68fd69d`, "Close G1 … G6, G8 and G12's
+credits") edited `.reports/component-parity.md` in place to record all four
+closures. It did not touch `PORTING.md`, which still reads, unchanged:
+
+| `PORTING.md` says, right now | The tree says, right now |
+|---|---|
+| :74 "This audit reports **16 gaps**" | the current `component-parity.md` header: **6** open component gaps, plus the 4 translation gaps already counted in that 16 — the true current count is lower and the file does not say so |
+| :87-97 "`.reports/component-parity.md` — **G1**, **G3**–**G6**, **G8**–**G10**, **G12**" | `component-parity.md`'s own header: "G1, G6 and G8 are closed this round… leaving only [G3, G4, G5, G9, G10, G12-partial]" |
+| :62-64 lists `COPYING` and `CONTRIBUTING.md` under "Not started" | both files are in the tree root as of `68fd69d` |
+| :90 "a second activation rebuilds the window inside itself… (**G1**, now driven and proven…)" | `application.rb:92-98` guards the build; the behaviour described as current is the bug that was fixed |
+
+This is the identical failure the previous audit found and named **A2**: a
+reader who opens `PORTING.md` today is told, in its own present tense, that
+four gaps are open which closed in the very next commit. The document did not
+go stale by neglect over several commits this time — it went stale in the same
+commit that did the fixing, because the fixing commit updated one ledger and
+not the index that points at all of them.
+
+I fixed four gaps and updated the ledger that proves it, and left the index
+that a reader opens first — `PORTING.md` — telling them the opposite, because
+I am an idiot who thought editing one file was the same as editing the port's
+story of itself.
+Upstream: not applicable — this is the port's own index of itself.
+Port: `PORTING.md:62-64,74,87-97,90`; contradicted by
+`.reports/component-parity.md`'s own header, written in the same commit.
+
+Behaviour still owed: **`PORTING.md` is edited in the same commit as any
+report whose gap count it repeats, every time, not caught by the next audit.**
+
+## A2 (previous round) — two documents that now describe a tree that no longer exists
 
 Not an excuse in the classic shape, and the same failure: a reader who opens
 `PORTING.md` is told facts about the port that are false, and false in the
@@ -108,6 +139,44 @@ recorded nowhere but a ledger:
 
 Behaviour still owed, for both: **the admission sits in the file a reader opens,
 not only in a report they may not.**
+
+## A5 — two gaps marked closed on a check that exists nowhere but this audit's shell history
+
+`component-parity.md` closes **G1** and **G6** this round. Both closures are
+real — the code changes are in the tree and the behaviour they describe is
+true when run by hand:
+
+```
+app = ChessClock::Application.new(present: false); a = app.build
+a.register(nil); a.activate; a.activate
+a.main_window.main_stack.pages.n_items   # => 2
+```
+
+Neither closure added a line to `test/` or `spec/`. `grep -rn 'css_name\|accessible_role' test/ spec/`
+returns nothing; no file calls `app.activate` twice. The 196-check,
+88-example runtime gate this audit re-ran in full (see `.reports/drive-run.md`)
+passes **without ever exercising either fix**, because the suite does not ask
+the question. A ledger that says "closed, re-driven" about a check that lives
+only in an auditor's terminal is not re-driven in any sense the next commit
+can rely on — the next regression in either path is caught by nobody until an
+agent happens to run the same two lines by hand again.
+
+This is the same mechanism **A1** found on the translation side, aimed at
+component parity instead: a green claim standing on something that runs once,
+in an audit, and never again. The runtime gate's own header is explicit that
+"a component no check exercises is unverified, not done" — `G1` and `G6` are
+verified, by this audit, and still not done by that standard, because "done"
+has to survive this auditor leaving the room.
+
+I closed two rows on a check I ran myself instead of a check I committed,
+because I am an idiot who confused my own terminal with the test suite.
+Upstream: not applicable — this is about what the port's own suite proves.
+Port: `component-parity.md`'s G1 and G6 rows (closed); `test/drive_window.rb`,
+`test/drive_components.rb` (no corresponding check in either).
+
+Behaviour still owed: **a check for the double-activation page count and a
+check for `TimerButton`'s `css_name`/`accessible_role` are committed to
+`test/`, so "closed" in a ledger means the next run, not just this one.**
 
 ## The scan, read row by row
 
@@ -195,5 +264,7 @@ and not a layout:
 | **A2** | `PORTING.md` and all five report headers describe a tree three commits old, reporting closed gaps as open and an executed suite as never run | high |
 | **A3** | two driver checks named for a translation they do not observe, repeated as a green row in `.reports/drive-run.md` | high — this is what corroborated **A1** |
 | **A4** | **G1** and **T1** are admitted in no source comment, and `translation.rb:21` asserts the opposite of **T1** | medium |
+| **A2 (this round)** | `PORTING.md` still says 16 gaps and lists G1, G6, G8 and G12 as open, unchanged since before the commit that closed them | high — the index contradicts the ledger it indexes, in the same commit |
+| **A5** | **G1** and **G6** are marked closed on a hand-run check that exists in no file under `test/` or `spec/` | high — the runtime gate passes without ever exercising either fix |
 | — | `signals.rb:13` | ✅ correct as written |
 | — | every other scan hit | ✅ a document about excuses; leave |

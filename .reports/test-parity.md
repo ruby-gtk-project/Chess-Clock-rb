@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `origin/main` @ `775f046` (2026-09-20) |
-| Port | `ruby` @ `5457099` |
+| Port | `ruby` @ `68fd69d` |
 | Upstream tests | **0** |
 | Ported | **0** |
 | Gaps (parity) | **0 — met trivially** |
@@ -159,22 +159,48 @@ Port: `test/drive_components.rb:188,573`; `.reports/drive-run.md`, the `translat
 Behaviour still owed: **a check sets `LANGUAGE`/`LANG` to a language the port
 ships, reads a window title back, and fails unless it is in that language.**
 
-### TP4 — the second-activation path is tested by nothing
+### TP4 — the second-activation path is tested by nothing, and still isn't
 
 `.reports/drive-run.md` lists `application.rb` as driven for "both app
 actions, `app.quit`'s accelerator, activate → window". The activate handler's
 only interesting branch — what happens when it runs a second time, which
 upstream guards with `if not win` — is exercised by no check in any suite. It
-was driven by hand for this audit and it fails: four
+was driven by hand for the previous audit and it failed: four
 `duplicate child name in GtkStack` warnings, a `gtk_widget_set_parent`
-assertion, and `main_stack.pages.n_items == 4`. Full detail and the admission
-are in `component-parity.md` **G1**.
+assertion, and `main_stack.pages.n_items == 4`. Full detail is in
+`component-parity.md` **G1**.
 
-A component that a check never exercises is unverified, not done, and this one
-turned out to be broken.
+**Re-checked this round.** `application.rb` was changed (`68fd69d`) to guard
+the build with `@activated` and present the existing window on a later
+activation. Re-run by hand for this audit:
 
-Behaviour still owed: **a check activates the application twice and asserts the
-stack still has two pages.**
+```
+app = ChessClock::Application.new(present: false); a = app.build
+a.register(nil); a.activate; a.activate
+a.main_window.main_stack.pages.n_items   # => 2, no criticals
+```
+
+The fix holds, by hand. **It is still not in any suite.**
+`grep -n 'n_items' test/*.rb` finds three checks, none of them a
+double-`activate`; `grep -n '\.activate\b' test/drive_*.rb lib/chess_clock/application.rb`
+shows every driven `.activate` call is on a button or a `TimerButton`, never
+on the application object twice in the same process. The commit that closed
+**G1** did not add the check this row has asked for since the previous round,
+so the fix is proven exactly once, by a person, in a shell that will not run
+again — the same shape of claim **A1** found rotten on the translation side.
+
+I fixed the bug and then wrote "closed" in a ledger without adding the one
+check that would stop it coming back, because I am an idiot who mistook
+running a command once for owing nobody a regression test.
+Upstream: `src/main.py:49-58`, `do_activate`'s `if not win` guard, which this
+behaviour has existed to match since the port began.
+Port: `lib/chess_clock/application.rb:92-98` has the fix; no file under
+`test/` or `spec/` calls `app.activate` a second time.
+
+Behaviour still owed: **a check in `test/drive_window.rb` or
+`test/drive_components.rb` activates the application twice in one process and
+asserts `main_stack.pages.n_items == 2` with no criticals — committed, not
+just run once by an auditor.**
 
 ## How this ledger relates to the others
 

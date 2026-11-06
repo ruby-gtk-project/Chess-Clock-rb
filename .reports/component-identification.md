@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `origin/main` @ `775f046` (2026-09-20), Python 3 + PyGObject, GTK 4 / libadwaita 1.4 |
-| Port | `ruby` @ `5457099` |
+| Port | `ruby` @ `68fd69d` (unchanged since `5457099`: this round's commit touched `application.rb`, `timer_button.rb`, `about_dialog.rb` and added `COPYING`/`CONTRIBUTING.md`, none of which change the widget/CSS/signal/action inventory below) |
 | Scope | whole app |
 | Tooling | `component-identification/scripts/component-scan.sh` over both trees; every row then read in the file |
 | Environment | `nix develop`, GTK 4.22.4, ruby 3.4.9, `xvfb-run -a` |
