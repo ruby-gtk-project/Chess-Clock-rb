@@ -26,6 +26,15 @@ module ChessClock
   # The BreakpointBin is what jumps the digits to 100pt once the button is wide
   # enough to hold them, which upstream does with the same breakpoint setting
   # Pango size attributes on the three labels.
+  #
+  # timerbutton.py:53-55 calls set_css_name("button") and
+  # set_accessible_role(BUTTON) on its own GType, because a GtkWidget
+  # subclass otherwise takes a css name derived from its own class. Neither
+  # call has a counterpart here, and none is needed: subclassing Gtk::Button
+  # itself (rather than Gtk::Widget, as upstream's ChessClockTimerButton
+  # does) keeps both the "button" css node name and the BUTTON accessible
+  # role, inherited rather than restated. Verified live: a built TimerButton's
+  # `css_name` is "button" and `accessible_role` is `:button`.
   class TimerButton < Gtk::Button
     include Translation
     include AccessibleLabel

@@ -57,8 +57,12 @@ module ChessClock
       [_("Contribute"), "https://gitlab.gnome.org/World/chess-clock/-/blob/main/CONTRIBUTING.md"],
     ].freeze
 
+    # Upstream (main.py:51) writes "Clara Hobbs" followed by a stray
+    # ZWJ + variation-selector-16 pair (U+200D U+FE0F) — an editing
+    # artifact, not intentional styling, but it is what renders, so the
+    # byte-for-byte credit is reproduced here rather than cleaned up.
     DEVELOPERS = [
-      "Clara Hobbs",
+      "Clara Hobbs‍️",
       "Evangelos Ribeiro Tzaras",
       "gregorni",
       "Mariko Ueno",

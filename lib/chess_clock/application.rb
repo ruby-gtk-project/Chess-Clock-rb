@@ -40,18 +40,7 @@ module ChessClock
 
     def build
       app.tap do |a|
-        a.signal_connect("activate") do
-          style.load
-
-          ACCELERATORS.each { |name, accelerators| create_action(name, accelerators) }
-
-          main_window.tap do |win|
-            win.build
-            if @present
-              win.present
-            end
-          end
-        end
+        a.signal_connect("activate") { on_activate }
       end
     end
 
@@ -91,6 +80,27 @@ module ChessClock
         case name
         when "quit" then app.quit
         when "about" then about_dialog.present(main_window.window)
+        end
+      end
+
+      # Upstream: `do_activate` in src/main.py raises `self.props.active_window`
+      # when one already exists, and only builds a window the first time
+      # through. A second activation — a second launch while the app is
+      # already running, which `DBusActivatable=true` in the installed
+      # .desktop file makes reachable — must present the existing window
+      # rather than build a second widget tree inside it.
+      def on_activate
+        if @activated
+          main_window.present
+        else
+          @activated = true
+          style.load
+          ACCELERATORS.each { |name, accelerators| create_action(name, accelerators) }
+
+          main_window.build
+          if @present
+            main_window.present
+          end
         end
       end
   end

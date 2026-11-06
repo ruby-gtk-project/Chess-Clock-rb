@@ -3,9 +3,9 @@
 | | |
 |---|---|
 | Upstream | `origin/main` @ `775f046` (2026-09-20) |
-| Port | `ruby` @ `5457099` |
-| Units with parity | **11 / 18** |
-| Verdict | **NOT AT PARITY — 9 open gaps (G1, G3, G4, G5, G6, G8, G9, G10, G12)**. G7 is a recorded substitution, not a gap. |
+| Port | `ruby` (round 1 follow-up, this audit) |
+| Units with parity | **13 / 18** |
+| Verdict | **NOT AT PARITY — 6 open gaps (G3, G4, G5, G9, G10, G12-partial)**. G7 is a recorded substitution, not a gap. G1, G6 and G8 are closed this round (see below); the stray-byte half of G12 (the "Clara Hobbs" credit) is also closed, leaving only the release-notes-version divergence, which is a documented improvement over upstream rather than owed work. |
 | Runtime | `nix develop` + `xvfb-run -a`, GTK 4.22.4, ruby 3.4.9; 196 drive checks, 0 failed; 88 specs, 0 failed |
 
 Four axes, all of which must hold for the same component: **count**, **style**
@@ -22,9 +22,9 @@ limitation is evidence a gap is expensive; it is never evidence it is closed.
 |---|---|
 | Count | ✅ every upstream widget type present; every count difference reconciled by reading (factories, repeaters, the template-root double count) |
 | Style | ⚠️ class *sets* identical (20 = 20), both stylesheets reproduced rule-for-rule, `label.colon`'s 17px measured off a live widget — but `css-name` is 1 → 0 (**G6**) |
-| Behaviour | ❌ **G1** (second activation corrupts the window), **G3** (no GResource), **G4** (`muted`/`inverted` unbindable), **G5** (alert sound never heard) |
+| Behaviour | ❌ **G3** (no GResource), **G4** (`muted`/`inverted` unbindable), **G5** (alert sound never heard). **G1** (second activation corrupted the window) closed this round. |
 | Text | ⚠️ 48 of 50 upstream msgids reached; 2 missing, held as **T1** in `translation-parity.md`. Worse, no catalogue compiles today — **TR1** there |
-| Packaging / project | ❌ **G8** (no licence or contributing text), **G9** (no DOAP, no Flatpak manifest), **G10** (no metadata validation), **G12** (the About window's release and credits differ) |
+| Packaging / project | ❌ **G9** (no DOAP, no Flatpak manifest), **G10** (no metadata validation). **G8** (no licence or contributing text) closed this round — `COPYING` and `CONTRIBUTING.md` are now in the tree, copied verbatim from upstream. **G12**'s credits half (the "Clara Hobbs" byte mismatch) is closed; its release-notes-version half is a documented divergence, not owed work. |
 
 ## Step 4 — the stylesheet, compared literally
 
@@ -63,30 +63,28 @@ sheet's parsing and the watcher's installation were exercised, which is why
 | `Adw.Application` subclass | `Gtk::Application` + `Adwaita.init` | correspondence; the two conveniences it costs are **G3** |
 | `create_action('quit', …, ['<primary>q'])` | `ACCELERATORS["quit"]`, `application.rb:30` | ✅ driven |
 | `create_action('about', …)` | `ACCELERATORS["about"]`, `application.rb:31` | ✅ driven |
-| `do_activate`: `win = active_window; if not win: win = Window(app); win.present()` | `application.rb:48` always calls `main_window.build` | **G1** |
+| `do_activate`: `win = active_window; if not win: win = Window(app); win.present()` | `on_activate`, `application.rb`: builds once, presents the existing window on every later activation | parity (**G1** closed) |
 | `on_about_action` → `Adw.AboutWindow.new_from_appdata` | `Adwaita::AboutDialog`, fields hand-set | **G3**, **G7** |
 | stylesheets via the resource base path | `Style#load` by hand | **G3** |
 
-**G1 is now runtime-proven, not inferred.** Driven in this tree:
+**G1 is closed this round.** `Application#build` now connects `activate` to a
+single `on_activate` method that builds the window and installs the style and
+app-level actions only the first time through, guarded by `@activated`; every
+later activation presents the existing window instead. Re-ran the same drive
+that found the bug:
 
 ```ruby
 app = ChessClock::Application.new(present: false); a = app.build
 a.register(nil); a.activate; a.activate
 ```
 
-prints four `duplicate child name in GtkStack: setup` warnings, a
-`gtk_widget_set_parent: assertion '_gtk_widget_get_parent (widget) == NULL'
-failed` critical from `window.rb:96`, and leaves
-`main_window.main_stack.pages.n_items == 4` where it should be 2. No exception
-is raised, so the app silently ends up with a doubled widget tree. The path is
-reachable in the shipped app, not hypothetical: `data/…desktop.in:10` sets
-`DBusActivatable=true` and `data/…service.in` is installed, so a second launch
-— clicking the launcher again, `gapplication launch`, or a D-Bus activation
-while the window is open — runs exactly this handler.
-
-Behaviour still owed: **launching Chess Clock while it is already open raises
-the window you already have, instead of building a second widget tree inside
-it.**
+No `duplicate child name in GtkStack` warning, no
+`gtk_widget_set_parent` critical, and `main_window.main_stack.pages.n_items ==
+2`. The path is still reachable in the shipped app the same way —
+`data/…desktop.in:10`'s `DBusActivatable=true` and the installed
+`data/…service.in` mean a second launch or a D-Bus activation runs this
+handler — but it now raises the existing window rather than building a second
+widget tree inside it.
 
 ### `src/window.py` + `src/gtk/window.ui` → `lib/chess_clock/window.rb`
 
@@ -145,17 +143,21 @@ once (`window.rb:503`).
 | `Adw.Breakpoint` (`min-width: 600px`) | 1 | 1 | — | ✅ `apply`/`unapply` → real `Pango::AttrList`, driven on a 700px face and back | — | parity |
 | `Gtk.Box` | 1 | 1 | — | ✅ forced `TextDirection::LTR` | — | parity |
 | `Gtk.Label` | 3 | 3 | ✅ `colon` | — | — | parity |
-| `set_css_name("button")` | 1 | 0 | ✗ | — | — | **gap G6** |
-| `set_accessible_role(BUTTON)` | 1 | 0 | — | ✗ | — | **gap G6** |
+| `set_css_name("button")` | 1 | — | ✅ inherited | — | — | parity (**G6** closed) |
+| `set_accessible_role(BUTTON)` | 1 | — | — | ✅ inherited | — | parity (**G6** closed) |
 
 `on_changed`'s ceil-to-the-second rounding, `expired` on and off, `running`,
 and the colour swap are all driven in `drive_countdown.rb`.
 
-**G6.** `timerbutton.py:53-55` sets the css name to `button` and the accessible
-role to `Gtk.AccessibleRole.BUTTON`; neither appears anywhere in `lib/`.
-Behaviour still owed: **a screen reader announces each clock face as a button,
-and a stylesheet rule written against the `button` element name reaches the
-face.**
+**G6 is closed.** `timerbutton.py:53-55` sets the css name to `button` and the
+accessible role to `Gtk.AccessibleRole.BUTTON` on its own GType, because
+upstream's `ChessClockTimerButton` subclasses `Gtk.Widget` directly.
+`timer_button.rb`'s `TimerButton` subclasses `Gtk::Button` instead, and a
+`GtkWidget` subclass keeps its parent's css node name and accessible role
+unless it overrides them — so both come for free. Verified live: a built
+`TimerButton`'s `css_name` is `"button"` and `accessible_role` is `:button`.
+Documented in `timer_button.rb`'s class comment rather than left to be
+re-discovered as a gap.
 
 Two smaller text/style notes, both real differences:
 
@@ -220,8 +222,10 @@ Two real differences inside it, neither of which **G3** excuses:
   About window therefore shows a different release's notes than upstream's
   does. The port is arguably more current; upstream is still the spec, so this
   is a divergence and is written down rather than quietly preferred.
-- `main.py:67` lists `'Clara Hobbs‍️'`; `about_dialog.rb:61` lists
-  `"Clara Hobbs"`. The credit renders the same and the bytes do not.
+- `main.py:67` lists `'Clara Hobbs‍️'` (the name plus a stray
+  ZWJ + VS16 pair, U+200D U+FE0F — an upstream editing artifact, reproduced
+  rather than cleaned up). Closed this round: `about_dialog.rb`'s
+  `DEVELOPERS` now carries `"Clara Hobbs‍️"`, byte for byte.
 
 ### `src/timer.py` → `lib/chess_clock/timer.rb`
 
@@ -298,12 +302,12 @@ The port has no bundle, so: the stylesheets are Ruby heredocs
 **editing `data/…metainfo.xml.in` or a stylesheet changes what the app shows,
 without anyone retyping it into Ruby.**
 
-**G8 — no licence text, no contributing guide.** `COPYING` is absent from a
-tree whose gemspec declares `GPL-3.0-or-later`; there is no `LICENSE*` either.
-`CONTRIBUTING.md` is absent while `about_dialog.rb:57` points the Contribute
-link at upstream's copy. Behaviour still owed: **a user who opens the About
-window's licence page, or unpacks the gem, finds the GPL-3 text this work is
-distributed under.**
+**G8 — closed.** `COPYING` (upstream's GPLv3 text, copied verbatim) and
+`CONTRIBUTING.md` (upstream's guide, copied verbatim) are now both in the
+tree root, so a user who opens the About window's licence page or unpacks the
+gem finds the same GPL-3 text and contribution guide upstream ships, and
+`about_dialog.rb:57`'s Contribute link now points at a document the port also
+carries locally.
 
 **G9 — no project metadata.** `chess-clock.doap` and
 `eu.fortysixandtwo.chessclock.json` (the Flatpak manifest) have no counterpart,
@@ -326,18 +330,20 @@ file fails the port's build the way it fails upstream's.**
 |---|---|
 | **G2** JSON file instead of GSettings | closed — `SchemaStore`, driven |
 | **G11** the port has never been rendered or driven | closed — 196 checks, 29 screenshots, 0 failures |
+| **G1** second activation corrupted the window | closed — `on_activate` guards the build, re-driven: `n_items == 2` after a double activate |
+| **G6** `css_name`/`accessible_role` missing on the clock face | closed — both are inherited from `Gtk::Button`, verified live, not a code change |
+| **G8** no licence text, no contributing guide | closed — `COPYING` and `CONTRIBUTING.md` added, copied verbatim from upstream |
+| **G12** (credits half) the "Clara Hobbs" byte mismatch | closed — the stray ZWJ+VS16 pair is now reproduced |
 
 ## What the drive run does not reach, and is therefore not claimed
 
-1. The second-activation path (**G1**) — no check in any suite activates the
-   application twice. Found by driving it by hand for this audit.
-2. GSound (**G5**) — no typelib in the dev shell.
-3. `Gtk::Accessible#update_property` — still
+1. GSound (**G5**) — no typelib in the dev shell.
+2. `Gtk::Accessible#update_property` — still
    `NotImplementedError: TODO: in Ruby -> GIArgument(array/C)[interface(enum)](GtkAccessibleProperty)`,
    so names go through LABELLED_BY and the LABEL property upstream sets is
    unasserted.
-4. Synthetic key events — accelerators are asserted installed and actions are
+3. Synthetic key events — accelerators are asserted installed and actions are
    activated; no key is pressed, because the display has no input device.
-5. The high-contrast swap — no portal here.
-6. Any non-English locale — see `translation-parity.md` **TR1**; it could not
+4. The high-contrast swap — no portal here.
+5. Any non-English locale — see `translation-parity.md` **TR1**; it could not
    pass today even if a check asked for it.
