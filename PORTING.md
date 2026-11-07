@@ -22,9 +22,10 @@ written from scratch against it.
 
 Components implemented, and every one of them executed: 99 RSpec examples and
 196 driver checks run green in the fork's dev shell under `xvfb-run -a`
-(`.reports/drive-run.md`). "Implemented and driven" is not "at parity" — five
-component gaps are open below; all four translation gaps from the previous
-audit (**TR1**, **T1**, **T2**, **T3**) are closed this round.
+(`.reports/drive-run.md`). "Implemented and driven" is not "at parity" — four
+component gaps are open below (**G9** closes this round, see **Open gaps**);
+all four translation gaps from the previous audit (**TR1**, **T1**, **T2**,
+**T3**) are closed this round.
 
 | Port | Upstream |
 |---|---|
@@ -49,6 +50,8 @@ audit (**TR1**, **T1**, **T2**, **T3**) are closed this round.
 | `exe/chess-clock` | `src/chess-clock.in` |
 | `data/` (4 files) | `data/` — byte-identical to upstream |
 | `po/` (42 locales + `LINGUAS`, `POTFILES.in`) | `po/` |
+| `chess-clock.doap` | `chess-clock.doap` — byte-identical to upstream |
+| `eu.fortysixandtwo.chessclock.json` | `eu.fortysixandtwo.chessclock.json` — byte-identical to upstream |
 
 Specs exist for 11 of the 18 units (99 examples, after this round added
 `application_spec.rb`, `translation_spec.rb` and `pot_spec.rb`); the other
@@ -64,8 +67,6 @@ Upstream components with no Ruby counterpart at all.
 | `src/chess-clock.gresource.xml` | no resource bundle on the port; CSS, the help overlay and the metainfo are retyped in Ruby instead (**G3**) |
 | `COPYING` | GPL-3 licence text, absent from a GPL-3 derivative (**G8**) |
 | `CONTRIBUTING.md` | absent; the About window's Contribute link points at upstream's (**G8**) |
-| `chess-clock.doap` | GNOME project metadata (**G9**) |
-| `eu.fortysixandtwo.chessclock.json` | Flatpak manifest (**G9**) |
 | `data/meson.build` validation | `desktop-file-validate`, `appstream-util validate` — no Rake equivalent, and neither binary is in the dev shell to validate against (**G10**) |
 | `src/meson.build`, `meson.build` | build system replaced by `Rakefile` + gemspec; compile/install only, no validation |
 
@@ -91,11 +92,16 @@ Breakdown by report, as of this round's commit:
   (the invented `Translate`/`Contribute` links are removed — libadwaita's own
   `new_from_appdata` never reads those two `<url>` types at all, so upstream's
   dialog never showed them either).
-- `.reports/component-parity.md` — **G3**–**G5**, **G9**, **G10** (5; **G7**
+- `.reports/component-parity.md` — **G3**–**G5**, **G10** (4; **G7**
   is a recorded substitution, not a gap): no GResource (**G3**);
   `Timer`/`StateMachine` are plain Ruby so `muted` and `inverted` are
   unbindable (**G4**); the alert sound has never been heard, no GSound
-  typelib in this shell (**G5**); no DOAP or Flatpak manifest (**G9**); no
+  typelib in this shell (**G5**). **G9** is closed this round —
+  `chess-clock.doap` and `eu.fortysixandtwo.chessclock.json` are now in the
+  tree, copied verbatim from `origin/main` (byte-identical, diffed against
+  `git show origin/main:<path>`). No `rake` or gemspec task packages or
+  installs either file; they exist as project metadata only, same as
+  `COPYING`/`CONTRIBUTING.md` under **G8**. No
   metadata validation, and neither `desktop-file-validate` nor
   `appstream-util`/`appstreamcli` is in this dev shell to validate against
   (**G10**). **G1**, **G6**, **G8** and **G12**'s credits half are closed,
