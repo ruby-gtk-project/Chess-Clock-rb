@@ -56,6 +56,26 @@ All 18 units now have a dedicated spec file (174 examples), closing **TP2**;
 `test/drive_{window,countdown,components}.rb` add 197 more driver checks.
 All 371 cases have been run, 0 failed — see `.reports/test-parity.md`.
 
+## Runtime
+
+Re-run fresh this round, in the fork's dev shell under a virtual display:
+
+```
+nix develop --command xvfb-run -a bash -c '
+  for f in test/drive_window.rb test/drive_countdown.rb test/drive_components.rb; do
+    ruby "$f"
+  done
+'
+nix develop --command xvfb-run -a ruby -e '\''require "rspec/core"; exit RSpec::Core::Runner.run(["--format", "progress", "--require", "spec_helper", "spec"])'\''
+```
+
+- **Drivers**: `test/drive_window.rb` 32/32, `test/drive_countdown.rb`
+  21/21, `test/drive_components.rb` 144/144 — **197 passed / 0 failed**,
+  `DRIVE OK` on every file, covering **18 components**.
+- **Specs**: `174 examples, 0 failures` (RSpec, seed-randomized), one spec
+  file per `lib/chess_clock/*.rb` unit (18/18).
+- `drive_ok=true`.
+
 ## Not started
 
 Upstream components with no Ruby counterpart at all.
@@ -72,31 +92,40 @@ work.
 
 ## Open gaps
 
-Breakdown by report, as of this round's commit (`9b4b7a4`):
+The last audit (`.reports/`, re-run fresh at commit `c25ff92`) flags **4**
+items this round, of which **3 are open** and **1 closed with no
+recurrence**; `.reports/accountability-ensurance.md`'s own verdict is
+**NOT CLEAN — clean=false**:
 
-- `.reports/translation-parity.md` — **none open**. **TR1**, **T1**, **T2**,
-  **T3** are all closed (see the report for detail).
-- `.reports/component-parity.md` — **G3**, **G4** only (**G7** is a recorded
+- `.reports/component-parity.md` — **2 open: G3, G4** (**G7** is a recorded
   substitution, not a gap): no GResource (**G3**); `Timer`/`StateMachine`
   are plain Ruby so `muted` and `inverted` are unbindable (**G4**). **G5**
-  (alert sound) and **G10** (metadata validation) both close this round —
-  `flake.nix` now carries the `gsound` typelib and the
+  (alert sound) and **G10** (metadata validation) are closed —
+  `flake.nix` carries the `gsound` typelib and the
   `desktop-file-validate`/`appstreamcli` binaries, `rake validate` runs all
   three checks for real, and `AlertSound` reaches a live GSound context
   (still never heard by a human — no sound server in this shell, see the
   report). **G1**, **G6**, **G8**, **G9**, **G12** stay closed.
-- `.reports/test-parity.md` — **TP2** closes this round: all 18
-  `lib/chess_clock/*.rb` units now have a dedicated spec file (previous
-  gap: `about_dialog`, `accessible_label`, `alert_sound`, `primary_menu`,
-  `shortcuts_window`, `style` and `window` had none). **TP1**, **TP3**,
-  **TP4** stay closed. Test parity: **0/0 open gaps.**
-- `.reports/accountability-ensurance.md` — **A7** (new): the committed
-  `.reports/` and this file were two commits stale when this audit opened
-  them — they still named **G5**, **G10** and **TP2** as open after the
-  commits that closed each. Closed by this round's rewrite, re-verified
-  against the tree rather than carried forward. **A1–A6** stay closed.
+- `.reports/test-parity.md` — **0 open.** All 18 `lib/chess_clock/*.rb`
+  units have a dedicated spec file (**TP2** closed); **TP1**, **TP3**,
+  **TP4** stay closed.
+- `.reports/translation-parity.md` — **0 open.** **TR1**, **T1**, **T2**,
+  **T3** are all closed.
+- `.reports/accountability-ensurance.md` — **2 new findings this round, 1
+  open:**
+  - **A7 (open)** — the committed `.reports/` and this file were two
+    commits stale when the previous audit opened them: they still named
+    **G5**, **G10** and **TP2** as open after the commits that had already
+    closed each. Rewritten this round, re-verified against the tree rather
+    than carried forward.
+  - **A6 (closed, no recurrence)** — flagged as a check this round (an
+    uncommitted draft asserting a closed gap was still open); the tree was
+    clean at the start of this audit, so it did not recur.
+  - **A1–A5** stay closed.
 
-`FINDINGS.md` carries the long-form admissions. Nothing in it closes a gap.
+So: **3 genuinely open items** (G3, G4, A7) plus one re-checked-and-clear
+finding (A6) make up the audit's 4-item tally. `FINDINGS.md` carries the
+long-form admissions; nothing in it closes a gap on its own say-so.
 
 ## Blockers
 
