@@ -44,11 +44,22 @@ RSpec.describe ChessClock::Translation do
 
   it "reads a translated string back through the compiled catalogue" do
     compile_de
+    # `bindtextdomain` only ever creates a `GetText::TextDomain` the first
+    # time a given domain name is bound (`TextDomainManager#
+    # create_or_find_text_domain` returns the existing one, silently
+    # discarding the new `path:`); `lib/chess_clock/translation.rb` has
+    # already bound "chess-clock" once at require time, so rebinding here
+    # with the same name would be a no-op pointed at the real locale
+    # directory, and the lookup below would see the English fallback
+    # instead of this example's temporary catalogue. Clearing the pool
+    # first forces a fresh `TextDomain` at `@locale_dir`.
+    GetText::TextDomainManager.clear_all_text_domains
     described_class.bindtextdomain(described_class::TEXTDOMAIN, path: @locale_dir)
     GetText.locale = "de"
     expect(described_class._("Chess Clock")).to eq("Schachuhr")
   ensure
     GetText.locale = "en"
+    GetText::TextDomainManager.clear_all_text_domains
     described_class.bindtextdomain(described_class::TEXTDOMAIN, path: described_class.locale_path)
   end
 end
