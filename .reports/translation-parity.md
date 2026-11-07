@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `origin/main` @ `775f046` |
-| Port | `ruby` @ `28007cd` |
+| Port | `ruby` @ `9b4b7a4` — re-verified fresh at this commit; no translation-affecting file changed since `28007cd` |
 | Textdomain | `chess-clock` on both sides |
 | Catalogues in tree | 42 `.po` + `LINGUAS`, byte-identical to upstream (re-diffed this round) |
 | Catalogues the app can use | **42 — re-verified this round** |

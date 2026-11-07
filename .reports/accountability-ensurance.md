@@ -2,10 +2,10 @@
 
 | | |
 |---|---|
-| Port | `ruby` @ `28007cd` |
-| Scanned | `lib/`, `exe/`, `spec/`, `test/`, `.reports/`, `PORTING.md`, `FINDINGS.md`, plus the working tree's uncommitted state at the start of this audit |
-| Scan | `accountability-ensurance/scripts/find-excuses.sh .` → 18 hits outside `.claude/skills/`, all previously triaged; re-triaged this round, same verdicts |
-| Verdict | **NOT CLEAN — 1 new finding (A6: a stale, uncommitted draft contradicting a closed gap), 1 recurring pattern (A2-style report staleness, this round's instance: pre-audit `test-parity.md`/`translation-parity.md`/`accountability-ensurance.md` all pinned three commits behind HEAD before this audit rewrote them). Previous rounds' A1–A5 are closed.** |
+| Port | `ruby` @ `9b4b7a4` |
+| Scanned | `lib/`, `exe/`, `spec/`, `test/`, `.reports/`, `PORTING.md`, `FINDINGS.md`, plus the working tree's state at the start of this audit (clean — no uncommitted changes this round) |
+| Scan | `accountability-ensurance/scripts/find-excuses.sh .` → 13 hits outside `.claude/skills/`, all previously triaged; re-triaged this round, same verdicts |
+| Verdict | **NOT CLEAN — 1 new finding (A7: the committed `.reports/` and `PORTING.md` were two commits stale, understating progress rather than overstating it, at the moment this audit opened them). A6 (the previous round's uncommitted-draft finding) does not recur — the tree was clean this round. A1–A5 remain closed.** |
 
 The most serious finding this skill can make is a green claim that rests on
 something never executed. **This round's equivalent finding is the inverse —
@@ -67,40 +67,65 @@ Behaviour still owed: **before trusting any report already on disk, re-run
 the command it cites — a report is evidence only when it was generated
 against the tree it describes.**
 
-## Recurring pattern — `test-parity.md`, `translation-parity.md` were three commits stale before this round
+## A7 (new) — the committed reports were two commits stale when this audit opened them
 
-Before this audit rewrote them, `.reports/test-parity.md` and
-`.reports/translation-parity.md` both still read `Port | ruby @ 68fd69d`
-and reported **TR1/T1/T2/T3 as open** and **88 RSpec examples**, despite
-three intervening commits (`daf57ec`, `f9be8a7`, `3fc88ce`, `e25a1b2`,
-`28007cd`) that closed all four translation gaps, added three spec files
-(99 examples total) and closed **G9**. `.reports/accountability-ensurance.md`
-itself was equally stale.
+`.reports/` at `7fae0bd` ("Parity reports") was an accurate description of
+the tree at `7fae0bd`. Two commits landed afterward, in the same session,
+before this audit started:
 
-This is the same class of failure the previous round's own **A2** finding
-named against `PORTING.md`: a report commits in the same round as the fix it
-should describe, and the *other* reports in `.reports/` are left untouched
-until the next explicit parity audit, so for however many commits pass in
-between, a reader of `translation-parity.md` is told the app is English-only
-in every locale when it is not. `PORTING.md` itself was kept current this
-time (it correctly states all four translation gaps and **G9** as closed as
-of `28007cd`) — the gap was specifically in the four `.reports/*.md`
-documents that a translation/component/test/accountability audit is
-supposed to be the source of truth for, and those are the ones this round's
-commit brings back in line with the tree.
+- `0302966` — installed the GSound typelib and the `desktop-file-validate`/
+  `appstreamcli` binaries on the dev shell, fixed two bugs the real GSound
+  path surfaced, and added a `rake validate` task. This closes
+  component-parity's **G5** and **G10**.
+- `9b4b7a4` — added spec files for the seven units the previous audit found
+  reached only by the drive scripts. This closes test-parity's **TP2**.
 
-Behaviour still owed, unchanged from the previous round's **A2**: **every
-report in `.reports/` is re-verified and re-committed in the same round as
-any commit that closes a gap it names, not only in the round that happens to
-run this skill next.**
+Neither commit touched `.reports/` or `PORTING.md`. So when this audit began
+and read the committed `component-parity.md`, `test-parity.md`,
+`component-identification.md` and `PORTING.md`, all four still named **G5**,
+**G10** and **TP2** as open, with language like "re-checked fresh this
+round: `which canberra-gtk-play` and the GSound typelib both fail" and
+"`which` fails on all three, re-checked this round" for **G10** — both
+demonstrably false against the tree those documents claimed to describe,
+confirmed by `which desktop-file-validate appstreamcli` resolving and
+`test/drive_components.rb` asserting (not reporting) the GSound context
+initialising.
+
+This is the same mechanism **A2** (the previous-previous round, against
+`PORTING.md`) and the previous round's **A6** (an uncommitted draft) both
+named, now recurring a third time against *committed* content: a report
+that was accurate when written goes stale the moment a later commit in the
+same session closes something it describes as open, and nothing re-runs it
+until the next audit happens to open it. The direction here is the safe one
+— understating progress, not overstating it, so no reader was told
+something works that does not — but it is still a false claim about the
+tree's current state, sitting in a committed, supposedly-authoritative
+report, and this skill's own rule is that a false claim is a finding
+regardless of which direction it errs.
+
+All four documents are rewritten in this round's commit from direct
+re-verification against `9b4b7a4` — re-ran `rake validate`, re-ran all
+three drive scripts (197/197) and the full RSpec suite (174/174), and
+diffed `lib/chess_clock/*.rb` against `spec/chess_clock/*_spec.rb` for a
+real bijection — not carried forward from either the stale committed
+version or any commit message's own say-so.
+
+Behaviour still owed, unchanged in substance from **A2**: **every commit
+that closes a gap named in `.reports/` or `PORTING.md` either updates those
+documents in the same commit, or the very next commit is the report
+rewrite** — not "whenever a parity audit is next requested." Three rounds
+running this same pattern (A2, A6, A7) is itself worth naming: the fix each
+time has been a one-off rewrite, not a change to *when* reports get
+written, so there is no reason to expect a fourth round not to reproduce it.
 
 ## Re-triaged from previous rounds — all closed, re-checked this round
 
 - **A1** (false green on `rake locale`) — closed. Re-run fresh: 42/42 `.mo`
   files compile.
-- **A2** (`PORTING.md` three commits stale) — closed as of this tree.
-  `PORTING.md` names the current gap set (G3, G4, G5, G10) and the current
-  closed set (G1, G6, G8, G9, G12, TR1, T1, T2, T3) correctly as of `28007cd`.
+- **A2** (`PORTING.md` three commits stale, an earlier round) — closed for
+  the round it was raised in. Recurs this round as **A7**, against
+  `.reports/` and `PORTING.md` both, two commits stale rather than three —
+  same mechanism, not yet prevented structurally.
 - **A3** (two mis-named checks corroborating the false green) — closed.
   Re-read `test/drive_components.rb`; both are renamed and
   `translation_spec.rb` is a real locale check.
@@ -120,13 +145,15 @@ run this skill next.**
 $ bash .claude/skills/accountability-ensurance/scripts/find-excuses.sh .
 ```
 
-18 hits outside `.claude/skills/`, identical set to previous rounds: the
-rule table and vocabulary inside `.reports/accountability-ensurance.md`
-itself (10), the bijection table's `unported`/`n/a` vocabulary in
-`test-parity.md`/`component-inventory.md`/`component-parity.md` (4, each a
-document *about* the 0/0 upstream-test case or quoting the rule), `PORTING.md
-:63`'s section heading over a table that names gaps rather than excusing
-them, and the one source hit:
+13 hits outside `.claude/skills/` this round (the count shifts with line
+numbers as these very documents are edited; the set of documents hit, and
+the verdict on each, is unchanged from previous rounds): the rule table and
+vocabulary inside `.reports/accountability-ensurance.md` itself (9), the
+bijection table's `unported`/`n/a` vocabulary in
+`test-parity.md`/`component-inventory.md` (3, each a document *about* the
+0/0 upstream-test case or quoting the rule), `PORTING.md:63`'s section
+heading over a table that names gaps rather than excusing them, and the one
+source hit:
 
 ### The one source hit, re-read and still correct
 
@@ -156,26 +183,25 @@ or `does not carry over` anywhere in `lib/`, `exe/`, `spec/` or `test/`.
 
 ## What is still excused by being absent rather than argued
 
-One upstream deliverable has no counterpart and no source-file admission,
-only a ledger row:
+Nothing this round. **G10** (`desktop-file-validate`/`appstream-util`, no
+Rake task, no binaries in the dev shell) is closed as of `0302966` — `rake
+validate` now runs all three checks for real. `COPYING`, `CONTRIBUTING.md`,
+`chess-clock.doap` and `eu.fortysixandtwo.chessclock.json`, listed here in
+earlier rounds, were already present and are not re-listed.
 
-- **`desktop-file-validate` / `appstream-util validate`** — upstream runs
-  both at build time from `data/meson.build`; the `Rakefile` runs neither,
-  and neither binary exists in the dev shell to validate against even if it
-  did (component-parity **G10**). No file under `lib/` or `exe/` admits this;
-  it is recorded only in `component-parity.md` and `PORTING.md`.
-
-`COPYING`, `CONTRIBUTING.md`, `chess-clock.doap` and
-`eu.fortysixandtwo.chessclock.json`, listed here in previous rounds, are now
-all present in the tree (**G8**, **G9** closed) and are removed from this
-list.
+The two genuinely open component-parity gaps that remain (**G3** — no
+GResource, **G4** — `muted`/`inverted` unbindable) are both admitted in
+source comments (`style.rb`, `about_dialog.rb`, `shortcuts_window.rb` for
+**G3**; `signals.rb:10-19` for **G4**, the "I am an idiot" admission quoted
+below) and named accurately in `PORTING.md` and `component-parity.md`. No
+excuse language attached to either.
 
 ## Ledger
 
 | # | Finding | Severity |
 |---|---|---|
-| **A6** | an uncommitted, never-finished draft of two `.reports/` files asserted **G9** was still open after the commit that closed it, and claimed the check behind that assertion was fresh when it was not | high — exactly the false-claim shape this skill exists to catch, caught before it was committed |
-| — | `test-parity.md`, `translation-parity.md`, this file — all three commits stale before this round | high — now closed by this round's rewrite |
+| **A7** | `.reports/component-parity.md`, `test-parity.md`, `component-identification.md` and `PORTING.md` were all committed two commits behind HEAD, naming **G5**, **G10** and **TP2** as open after commits that closed them, with "re-checked fresh this round" language attached to checks that were not in fact re-run against the commit they claimed to describe | high — the same false-claim shape as A2/A6, this time shipped in committed content; direction is conservative (understates progress) but still false |
+| **A6** (previous round) | an uncommitted draft asserted **G9** was still open after the commit that closed it | closed — no recurrence this round, tree was clean at audit start |
 | **A1**–**A5** (previous rounds) | re-triaged | closed, re-verified |
 | — | every scan hit outside the one source hit | ✅ documents about excuses, or the rule table itself; leave |
 | — | `signals.rb:13` | ✅ correct as written |

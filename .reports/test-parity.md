@@ -3,14 +3,14 @@
 | | |
 |---|---|
 | Upstream | `origin/main` @ `775f046` |
-| Port | `ruby` @ `28007cd` |
+| Port | `ruby` @ `9b4b7a4` |
 | Upstream tests | **0** |
 | Ported | **0** |
 | Gaps (parity) | **0 — met trivially** |
-| Port cases | **99 RSpec examples** + 196 driver checks |
-| Cases executed, re-run fresh this round | **295, all of them, 0 failures** |
+| Port cases | **174 RSpec examples** + 197 driver checks |
+| Cases executed, re-run fresh this round | **371, all of them, 0 failures** |
 | Test commands | `ruby -e 'require "rspec/core"; exit RSpec::Core::Runner.run(["--format","progress","--require","spec_helper","spec"])'` and `ruby test/drive_{window,countdown,components}.rb`, each under `nix develop --command xvfb-run -a` |
-| Verdict | **parity 0/0, met trivially — and 1 port-side gap (TP2); TP1, TP3, TP4 are closed** |
+| Verdict | **parity 0/0, met trivially — TP1, TP2, TP3, TP4 all closed** |
 
 ## Step 1 — census the upstream suite
 
@@ -31,71 +31,78 @@ was written for the port, pinning no property upstream itself ever pinned.
 | Direction | Count | Result |
 |---|---:|---|
 | upstream test → port test | 0 | ✅ nothing unported |
-| port test → upstream test | 295 | n/a by definition — all 295 are `## Extra` |
+| port test → upstream test | 371 | n/a by definition — all 371 are `## Extra` |
 
 ## Step 3 — the suite actually runs, re-verified fresh this round
 
 ```
 $ nix develop --command xvfb-run -a ruby -e 'require "rspec/core"; …'
-99 examples, 0 failures
+174 examples, 0 failures
 
 $ nix develop --command xvfb-run -a ruby test/drive_window.rb
 32 of 32 checks passed     DRIVE OK
 $ nix develop --command xvfb-run -a ruby test/drive_countdown.rb
 21 of 21 checks passed     DRIVE OK
 $ nix develop --command xvfb-run -a ruby test/drive_components.rb
-143 of 143 checks passed   DRIVE OK
+144 of 144 checks passed   DRIVE OK
 ```
 
-196 driver checks + 99 RSpec examples = 295, 0 failed, 18 components named in
-`.reports/drive-run.md` — matching the round's stated runtime gate exactly.
-`GtkDriver::Session#check` (`test/gtk_driver.rb`) counts every call, fails on
-a falsey block and on a raised `StandardError`, and exits non-zero on any
-failure; a green run here is a real green run.
+197 driver checks + 174 RSpec examples = 371, 0 failed, 18 components —
+matching the round's stated runtime gate exactly (197 checks, 0 failed, 18
+components). `GtkDriver::Session#check` (`test/gtk_driver.rb`) counts every
+call, fails on a falsey block and on a raised `StandardError`, and exits
+non-zero on any failure; a green run here is a real green run.
 
-## `## Extra` — spec files, by unit (12 files, 99 examples)
+## `## Extra` — spec files, by unit (18 files, 174 examples)
 
-`application_spec.rb`, `bronstein_state_machine_spec.rb`,
-`delay_state_machine_spec.rb`, `increment_state_machine_spec.rb`,
-`pot_spec.rb`, `settings_spec.rb`, `signals_spec.rb`,
-`state_machine_spec.rb`, `time_control_entry_spec.rb`,
-`timer_button_spec.rb`, `timer_spec.rb`, `translation_spec.rb`.
+Every one of the 18 `lib/chess_clock/*.rb` units now has a dedicated spec
+file: `about_dialog_spec.rb`, `accessible_label_spec.rb`,
+`alert_sound_spec.rb`, `application_spec.rb`,
+`bronstein_state_machine_spec.rb`, `delay_state_machine_spec.rb`,
+`increment_state_machine_spec.rb`, `primary_menu_spec.rb`, `settings_spec.rb`,
+`shortcuts_window_spec.rb`, `signals_spec.rb`, `state_machine_spec.rb`,
+`style_spec.rb`, `time_control_entry_spec.rb`, `timer_button_spec.rb`,
+`timer_spec.rb`, `translation_spec.rb`, `window_spec.rb`, plus `pot_spec.rb`
+(extraction path, not a `lib/` unit).
 
-`application_spec.rb`, `translation_spec.rb` and `pot_spec.rb` are new since
-the previous audit (which counted 88 examples across 9 files); they are what
-closes **TP4** (a committed check for double-activation) and give **TR1**/
-**T1**/**T2**'s closures in `translation-parity.md` a check in `spec/`
-rather than only a hand-run probe.
+`about_dialog_spec.rb`, `accessible_label_spec.rb`, `alert_sound_spec.rb`,
+`primary_menu_spec.rb`, `shortcuts_window_spec.rb`, `style_spec.rb` and
+`window_spec.rb` are new this round (commit `9b4b7a4`) — these are the seven
+units the previous audit found reached only by the drive scripts. This
+closes **TP2**. `window_spec.rb` builds through a real
+`ChessClock::Application` with an isolated per-example `Settings` file
+(the default `FileStore` path is shared process-wide and would otherwise
+leak `control-method`/`muted` between examples) and covers the two-page
+stack, the setup↔timer transition, machine-class selection, the mute
+action's activate/change-state roundtrip, `on_pause`'s icon/sensitivity,
+window-control repainting on `awbb`/`abbw`, and the narrow breakpoint's four
+checks — the largest file in the port (564 lines) had no spec at all before
+this round.
 
 ## TP1 — closed
 
 The suite had never been executed as of the oldest round's audit. Re-run
-fresh every round since, including this one: 295/295 pass.
+fresh every round since, including this one: 371/371 pass.
 
-## TP2 — partial, still open
+## TP2 — closed this round
 
-11 of the 18 `lib/chess_clock/*.rb` units have a dedicated spec file (listed
-above, counting `translation.rb` and the pot-extraction path). The other 7
-are reached only by the three drive scripts, never by a committed RSpec
-example:
+The previous audit found 11 of 18 `lib/chess_clock/*.rb` units specced, with
+`about_dialog`, `accessible_label`, `alert_sound`, `primary_menu`,
+`shortcuts_window`, `style` and `window` reached only by the three drive
+scripts. Re-checked fresh this round:
 
 ```
-$ ls lib/chess_clock/ | sed 's/\.rb$//'  minus the 11 with specs above
-about_dialog
-accessible_label
-alert_sound
-primary_menu
-shortcuts_window
-style
-window
+$ ls lib/chess_clock/*.rb | xargs -n1 basename | sed 's/\.rb$//' | sort > /tmp/units
+$ ls spec/chess_clock/*_spec.rb | xargs -n1 basename | sed 's/_spec\.rb$//' | sort > /tmp/specced
+$ comm -23 /tmp/units /tmp/specced
 ```
 
-This is unchanged from the previous audit except that `application` moved
-from this list to the specced list. `window.rb` is the largest file in the
-port by a wide margin and has no spec at all — it is driven, but only by
-the three scripts, none of which is run on every commit the way `rspec`
-would be in CI. **Open, not excused**: nothing in `lib/` or `.reports/`
-claims these 7 are specced; `PORTING.md` names the gap accurately.
+produces no output — all 18 units now have a dedicated spec file (commit
+`9b4b7a4`, landed after the previous round's reports and not yet reflected
+in them when this audit opened them; see `accountability-ensurance.md`).
+`window_spec.rb` in particular covers the file that was the largest in the
+port (564 lines) and previously had no spec at all. **Closed, and verified
+by a bijection, not by reading the commit message.**
 
 ## TP3 — closed
 
@@ -119,7 +126,7 @@ finding against **G1**'s closure.
 
 | # | Gap | Status |
 |---|---|---|
-| **TP1** | suite never executed | closed — 295/295, re-run fresh this round |
-| **TP2** | 7/18 units reached only by drive scripts, not `spec/` | **open** |
+| **TP1** | suite never executed | closed — 371/371, re-run fresh this round |
+| **TP2** | 7/18 units reached only by drive scripts, not `spec/` | closed — bijection re-run this round, no unspecced unit remains |
 | **TP3** | two checks named for a property they do not observe | closed — renamed, real check added |
 | **TP4** | double-activation closure had no committed check | closed — `application_spec.rb` |

@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Upstream | `origin/main` @ `775f046` |
-| Port | `ruby` @ `28007cd` |
+| Port | `ruby` @ `9b4b7a4` |
 | Scope | whole app |
 | Tooling | `component-identification/scripts/component-scan.sh` over an `origin/main` export and the working tree, every raw-count difference then resolved by reading the files |
 | Environment | `nix develop`, GTK 4.22.4, ruby 3.4.9, `xvfb-run -a` |
@@ -43,7 +43,7 @@ only through GtkBuildable.
 | `COPYING` | `COPYING` — byte-identical |
 | `CONTRIBUTING.md` | `CONTRIBUTING.md` — byte-identical |
 | **`src/chess-clock.gresource.xml`** | **nothing** |
-| **`meson.build`, `src/meson.build`, `data/meson.build`, `data/icons/meson.build`, `po/meson.build`** | `Rakefile` tasks `locale`, `pot`, `gschema`, `install:data` — partial (no validation task; see component-parity **G10**) |
+| **`meson.build`, `src/meson.build`, `data/meson.build`, `data/icons/meson.build`, `po/meson.build`** | `Rakefile` tasks `locale`, `pot`, `gschema`, `install:data`, **`validate`** (new this round, closing **G10** — runs `desktop-file-validate`, `appstreamcli validate --no-net` and `glib-compile-schemas --strict --dry-run`, all three binaries now in the dev shell) |
 
 ## Scan totals
 
@@ -120,7 +120,10 @@ over `PRESETS`), 3 `Gtk::SpinButton` (`custom-spin`), 2 `Gtk::Label`
 
 `timer.rb` (3 signals), `state_machine.rb` + 3 subclasses (5 states, 5
 signals), `signals.rb` (connect/emit/disconnect mixin), `alert_sound.rb`
-(GSound via `GObjectIntrospection::Loader`), `settings.rb` (8 keys,
+(GSound via `GObjectIntrospection::Loader` — the dev shell now carries the
+`gsound` typelib, so `Context#init` and `play_simple` are reachable and
+exercised; still never heard, since the shell has no sound server, see
+component-parity **G5**), `settings.rb` (8 keys,
 `SchemaStore`/`FileStore`), `style.rb` (2 stylesheets, high-contrast
 watcher), `translation.rb` (textdomain `chess-clock`), `accessible_label.rb`
 (LABELLED_BY carriers), `exe/chess-clock`.
@@ -144,17 +147,23 @@ Recorded as a correspondence in `component-parity.md`, not a gap.
 ## What this does not settle
 
 Identification alone does not establish behavioural parity — see
-`.reports/component-parity.md` for the four genuinely open gaps (**G3**,
-**G4**, **G5**, **G10**) that a type/CSS/signal scan cannot surface by
-construction, because the port *has* the widget and the class; what it
-lacks is a GResource, bindable GObject properties on two classes, an
-audible alert, and build-time metadata validation.
+`.reports/component-parity.md` for the two genuinely open gaps (**G3**,
+**G4**) that a type/CSS/signal scan cannot surface by construction, because
+the port *has* the widget and the class; what it lacks is a GResource and
+bindable GObject properties on two classes. **G5** and **G10** closed since
+the previous audit (re-verified fresh this round, see
+`component-parity.md`); **G5** still has a residual, honestly-documented
+limitation — the alert has still never been heard by a human ear, because
+the dev shell has no sound server, not because GSound is unreachable.
 
-**Correction to the previous working-tree draft of this file**: an earlier,
-never-committed edit of this document (visible in `git diff` before this
-round) cited the port at `e25a1b2`, one commit behind `28007cd`
-("Add DOAP and Flatpak manifest, closing G9"), and so never reflects that
-`chess-clock.doap` and `eu.fortysixandtwo.chessclock.json` exist in the tree.
-That draft is superseded by this document. See
-`.reports/accountability-ensurance.md` for why a stale draft sitting in the
-working tree is treated as a finding in its own right.
+**Correction, this round**: the committed `.reports/` as of commit `7fae0bd`
+("Parity reports") were pinned two commits behind the tree this audit
+inspects. `0302966` (installing the GSound/validator binaries, closing
+G5/G10) and `9b4b7a4` (specs for the remaining 7 units, closing TP2) both
+landed after `7fae0bd` and before this audit started, and neither touched
+`.reports/` or `PORTING.md`. The committed reports therefore still listed
+G5, G10 and TP2 as open at the moment this audit opened them. That is a real
+finding in `.reports/accountability-ensurance.md`, not a correction of a
+previous round's error — the previous round's reports were accurate for the
+commit they described, they were simply never updated for the two commits
+that followed in the same session.

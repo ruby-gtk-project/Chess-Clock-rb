@@ -20,12 +20,11 @@ written from scratch against it.
 
 ## Done
 
-Components implemented, and every one of them executed: 99 RSpec examples and
-196 driver checks run green in the fork's dev shell under `xvfb-run -a`
-(`.reports/drive-run.md`). "Implemented and driven" is not "at parity" — four
-component gaps are open below (**G9** closes this round, see **Open gaps**);
-all four translation gaps from the previous audit (**TR1**, **T1**, **T2**,
-**T3**) are closed this round.
+Components implemented, and every one of them executed: 174 RSpec examples
+(one spec file per `lib/chess_clock/*.rb` unit, 18/18) and 197 driver checks
+run green in the fork's dev shell under `xvfb-run -a`. "Implemented and
+driven" is not "at parity" — two component gaps are open below (**G3**,
+**G4**); all translation gaps and all test-parity gaps are closed.
 
 | Port | Upstream |
 |---|---|
@@ -53,10 +52,9 @@ all four translation gaps from the previous audit (**TR1**, **T1**, **T2**,
 | `chess-clock.doap` | `chess-clock.doap` — byte-identical to upstream |
 | `eu.fortysixandtwo.chessclock.json` | `eu.fortysixandtwo.chessclock.json` — byte-identical to upstream |
 
-Specs exist for 11 of the 18 units (99 examples, after this round added
-`application_spec.rb`, `translation_spec.rb` and `pot_spec.rb`); the other
-seven are reached only by the three drive scripts (196 checks). All 295 cases
-have been run — see **TP2** for the shape gap that leaves.
+All 18 units now have a dedicated spec file (174 examples), closing **TP2**;
+`test/drive_{window,countdown,components}.rb` add 197 more driver checks.
+All 371 cases have been run, 0 failed — see `.reports/test-parity.md`.
 
 ## Not started
 
@@ -65,63 +63,38 @@ Upstream components with no Ruby counterpart at all.
 | Upstream | Note |
 |---|---|
 | `src/chess-clock.gresource.xml` | no resource bundle on the port; CSS, the help overlay and the metainfo are retyped in Ruby instead (**G3**) |
-| `COPYING` | GPL-3 licence text, absent from a GPL-3 derivative (**G8**) |
-| `CONTRIBUTING.md` | absent; the About window's Contribute link points at upstream's (**G8**) |
-| `data/meson.build` validation | `desktop-file-validate`, `appstream-util validate` — no Rake equivalent, and neither binary is in the dev shell to validate against (**G10**) |
-| `src/meson.build`, `meson.build` | build system replaced by `Rakefile` + gemspec; compile/install only, no validation |
 
-`rake locale` and `rake pot` now exist and work — see **Closed this round**
-below; they used to be rows in this table.
+`COPYING`, `CONTRIBUTING.md` (**G8**) and metadata validation (**G10**,
+`rake validate` now runs `desktop-file-validate`, `appstreamcli validate
+--no-net` and `glib-compile-schemas --strict --dry-run`) used to be rows in
+this table; both are closed. `rake locale` and `rake pot` also exist and
+work.
 
 ## Open gaps
 
-Breakdown by report, as of this round's commit:
+Breakdown by report, as of this round's commit (`9b4b7a4`):
 
-- `.reports/translation-parity.md` — **none open**. All four of the previous
-  round's gaps are closed this round: **TR1** (`Rakefile`'s `locale` task
-  passed `--output-file` to a `MsgFmt` that wants `--output`; fixed, and all
-  42 `.mo` files now compile, verified by `spec/chess_clock/translation_spec.rb`
-  reading `"Chess Clock"` back as `"Schachuhr"` under `de`); **T1** (the two
-  `msgctxt "a11y"` clock-face names are now built at `TimerButton`
-  construction via `p_("a11y", …)`, matching window.ui's static initial
-  label, with `translation.rb:21`'s comment corrected); **T2** (the eight
-  `msgctxt "shortcut window"` titles are now literal `p_` calls the
-  extractor can see, a `rake pot` task exists, and
-  `spec/chess_clock/pot_spec.rb` asserts all eight plus the three `a11y`
-  labels come back out of a real extraction over `po/POTFILES.in`); **T3**
-  (the invented `Translate`/`Contribute` links are removed — libadwaita's own
-  `new_from_appdata` never reads those two `<url>` types at all, so upstream's
-  dialog never showed them either).
-- `.reports/component-parity.md` — **G3**–**G5**, **G10** (4; **G7**
-  is a recorded substitution, not a gap): no GResource (**G3**);
-  `Timer`/`StateMachine` are plain Ruby so `muted` and `inverted` are
-  unbindable (**G4**); the alert sound has never been heard, no GSound
-  typelib in this shell (**G5**). **G9** is closed this round —
-  `chess-clock.doap` and `eu.fortysixandtwo.chessclock.json` are now in the
-  tree, copied verbatim from `origin/main` (byte-identical, diffed against
-  `git show origin/main:<path>`). No `rake` or gemspec task packages or
-  installs either file; they exist as project metadata only, same as
-  `COPYING`/`CONTRIBUTING.md` under **G8**. No
-  metadata validation, and neither `desktop-file-validate` nor
-  `appstream-util`/`appstreamcli` is in this dev shell to validate against
-  (**G10**). **G1**, **G6**, **G8** and **G12**'s credits half are closed,
-  now with checks that exercise them (`application_spec.rb` for G1,
-  `timer_button_spec.rb` for G6); **G12**'s release-notes-version half is
-  closed too — `about_dialog.rb`'s `RELEASE_NOTES_VERSION` now matches
-  `main.py`'s literal `"0.6.0"` exactly rather than the metainfo's newest
-  release. **G7** — `Adwaita::AboutDialog` for the deprecated
-  `Adw.AboutWindow` — is a recorded substitution and is not counted.
-- `.reports/test-parity.md` — **TP2** (partial: `application`, `translation`
-  and the pot-extraction path now have specs; `about_dialog`, `primary_menu`,
-  `shortcuts_window`, `style`, `accessible_label` and `alert_sound` still do
-  not); **TP3** (closed — the two tautological checks in
-  `test/drive_components.rb` are renamed to describe wiring, and
-  `translation_spec.rb` is the real locale-switching check); **TP4** (closed
-  — `application_spec.rb` activates twice and asserts
-  `main_stack.pages.n_items == 2`). **TP1** is closed.
-- `.reports/accountability-ensurance.md` — **A2**, **A5** (closed by this
-  edit and by the two specs above landing in the same commit as the reports
-  they corroborate).
+- `.reports/translation-parity.md` — **none open**. **TR1**, **T1**, **T2**,
+  **T3** are all closed (see the report for detail).
+- `.reports/component-parity.md` — **G3**, **G4** only (**G7** is a recorded
+  substitution, not a gap): no GResource (**G3**); `Timer`/`StateMachine`
+  are plain Ruby so `muted` and `inverted` are unbindable (**G4**). **G5**
+  (alert sound) and **G10** (metadata validation) both close this round —
+  `flake.nix` now carries the `gsound` typelib and the
+  `desktop-file-validate`/`appstreamcli` binaries, `rake validate` runs all
+  three checks for real, and `AlertSound` reaches a live GSound context
+  (still never heard by a human — no sound server in this shell, see the
+  report). **G1**, **G6**, **G8**, **G9**, **G12** stay closed.
+- `.reports/test-parity.md` — **TP2** closes this round: all 18
+  `lib/chess_clock/*.rb` units now have a dedicated spec file (previous
+  gap: `about_dialog`, `accessible_label`, `alert_sound`, `primary_menu`,
+  `shortcuts_window`, `style` and `window` had none). **TP1**, **TP3**,
+  **TP4** stay closed. Test parity: **0/0 open gaps.**
+- `.reports/accountability-ensurance.md` — **A7** (new): the committed
+  `.reports/` and this file were two commits stale when this audit opened
+  them — they still named **G5**, **G10** and **TP2** as open after the
+  commits that closed each. Closed by this round's rewrite, re-verified
+  against the tree rather than carried forward. **A1–A6** stay closed.
 
 `FINDINGS.md` carries the long-form admissions. Nothing in it closes a gap.
 
@@ -129,13 +102,16 @@ Breakdown by report, as of this round's commit:
 
 Things that cannot be ported as upstream writes them, and why.
 
-- **GSound has no ruby-gnome binding.** Upstream plays `dialog-warning` at
-  volume 1 when a clock drops under 10% of its default (floor 10 s).
-  `lib/chess_clock/alert_sound.rb` reaches GSound through
-  `GObjectIntrospection::Loader`; namespace resolution, `Context#init` arity
-  and `play_simple`'s `GHashTable` marshalling are all unverified. The routes
-  are `canberra-gtk-play`, a shelled-out player, or silence with the mute
-  action still honoured.
+- **GSound has no ruby-gnome binding, but the GI route is now live.**
+  Upstream plays `dialog-warning` at volume 1 when a clock drops under 10%
+  of its default (floor 10 s). `lib/chess_clock/alert_sound.rb` reaches
+  GSound through `GObjectIntrospection::Loader`; the dev shell now carries
+  the `gsound` typelib, so namespace resolution, `Context#init` and
+  `play_simple`'s `GHashTable` marshalling are all verified to work.
+  No sound server exists in this Xvfb shell, so `play_simple` itself raises
+  `GLib::Error` ("Not available"), rescued and falling back to
+  `canberra-gtk-play`, a shelled-out player, or the display bell. The event
+  has still never been heard by a human.
 - **`Adwaita::Application` is unusable in the Ruby bindings.** The port uses
   `Gtk::Application`, which costs two conveniences libadwaita gives upstream
   for free: automatic `style.css` / `style-hc.css` loading from the resource
