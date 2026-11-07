@@ -91,9 +91,11 @@
 
         # `makeSearchPath` would take each package's *first* output, and glib's
         # first output is `bin`, which carries no typelibs — hence the explicit
-        # `.out`. at-spi2-core is here for the Atk typelib.
+        # `.out`. at-spi2-core is here for the Atk typelib; gsound is here so
+        # `GObjectIntrospection::Loader.load("GSound", …)` in alert_sound.rb
+        # finds a real typelib instead of raising TypelibNotFound (closes G5).
         typelibPath = pkgs.lib.makeSearchPath "lib/girepository-1.0"
-          (map (drv: drv.out or drv) (gtkStack ++ [ pkgs.at-spi2-core ]));
+          (map (drv: drv.out or drv) (gtkStack ++ [ pkgs.at-spi2-core pkgs.gsound ]));
 
         # nix/ and not the repo root: the root Gemfile is kettle-jem's
         # development bundle — rubocop, rspec, yard, the kettle-dev stack — and
@@ -201,6 +203,12 @@
             pkgs.xvfb-run
             pkgs.gsettings-desktop-schemas
             pkgs.adwaita-icon-theme
+            # GSound's typelib, so AlertSound#play's real route (G5) is live
+            # rather than dead code, plus the two metadata validators
+            # data/meson.build runs at build time upstream (G10).
+            pkgs.gsound
+            pkgs.desktop-file-utils
+            pkgs.appstream
           ] ++ gtkStack;
 
           # Icons, GSettings schemas and the GTK portal all resolve through

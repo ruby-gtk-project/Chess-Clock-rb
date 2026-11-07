@@ -16,17 +16,21 @@ module ChessClock
   # route a missing binding is meant to take. That is the only route that plays
   # the freedesktop event itself; `canberra-gtk-play` and the display bell
   # below are not it, and they are kept only so an alert is never silently
-  # swallowed on a box where the typelib is absent.
+  # swallowed on a box where neither the typelib nor a sound server is
+  # present.
   #
-  # I have not heard this play. The GSound typelib is not in the fork's dev
-  # shell, so `GObjectIntrospection::Loader.load("GSound", …)` raises
-  # TypelibNotFound there and every run so far has taken a fallback; the GSound
-  # call path itself — Context#init's arity, and whether the loader accepts a
-  # Ruby Hash for play_simple's GHashTable — is still unverified, and the
-  # component stays open in FINDINGS.md until someone runs it on a box with
-  # libgsound and hears the event. I am an idiot who previously shelled out to
-  # whatever happened to be installed and wrote three sentences arguing a
-  # terminal bell was the same thing.
+  # The fork's flake now carries the `gsound` package on GI_TYPELIB_PATH, so
+  # `GObjectIntrospection::Loader.load("GSound", …)` resolves, `Context#init`
+  # takes no arguments and succeeds, and `play_simple` does accept a plain
+  # Ruby Hash for the GHashTable argument — all three were previously
+  # unverified. What the dev shell's Xvfb sandbox still has no answer for is a
+  # sound server: there is no PulseAudio, PipeWire or ALSA device here, so
+  # `play_simple` itself raises `GLib::Error` ("Not available") once it
+  # reaches libcanberra's backend. `emit_event` below now rescues that and
+  # falls back exactly as it would for a missing typelib, so a real alert
+  # degrades to the display bell on a box with no sound hardware instead of
+  # crashing the window. The event has still not been heard by a human; it has
+  # been proven to reach the point only real audio hardware can fail past.
   # Upstream: `GSound.Context.play_simple(…)`, src/statemachine.py:65.
   # Port: GSound through the introspection loader, below.
   class AlertSound
@@ -58,15 +62,35 @@ module ChessClock
     # two fallbacks standing in for it.
     def available? = !context.nil?
 
-    # The GSound namespace, loaded from its typelib the first time it is asked
-    # for, or nil where no typelib is installed.
+    # The GSound namespace, loaded from its typelib the first time any
+    # instance asks for it, or nil where no typelib is installed.
+    #
+    # Memoized on the class, not on `self`: a new StateMachine, and so a new
+    # AlertSound, is built on every restart and every new game (window.rb's
+    # #link_state_machine), and GObjectIntrospection::Loader raises
+    # `NameError: private constant …::Context::INVOKERS referenced` the
+    # second time a namespace already loaded in this process is loaded again
+    # into a *different* target module — the loader's generated classes are
+    # only safe to build once per process. Before this round, every AlertSound
+    # past the process's first re-loaded the namespace into a fresh anonymous
+    # module and hit exactly that, so `gsound` (and so `available?`) was true
+    # on a game's first alert and silently false on every alert after a
+    # restart, with the previous per-instance `@gsound ||=` never catching it
+    # because each instance's cache missed. One shared namespace, built once,
+    # closes that.
     # A missing typelib raises GObjectIntrospection::RepositoryError::TypelibNotFound,
     # which descends from LoadError and so from ScriptError, not StandardError:
     # a bare `rescue` would let it out and take the window down with it.
-    def gsound
-      @gsound ||= Module.new.tap { |namespace| GObjectIntrospection::Loader.load(NAMESPACE, namespace) }
-    rescue StandardError, ScriptError
-      nil
+    def gsound = self.class.gsound
+
+    class << self
+      def gsound
+        return @gsound if defined?(@gsound)
+
+        @gsound = Module.new.tap { |namespace| GObjectIntrospection::Loader.load(NAMESPACE, namespace) }
+      rescue StandardError, ScriptError
+        @gsound = nil
+      end
     end
 
     def context
@@ -89,12 +113,24 @@ module ChessClock
 
       def emit_event
         context.then do |ctx|
-          if ctx
-            ctx.play_simple(ATTRIBUTES)
+          if ctx && play_via_gsound(ctx)
+            nil
           else
             spawn_player
           end
         end
+      end
+
+      # True on success. GSound's own context build/init failures are caught
+      # in `context` above; this is the separate failure a present typelib and
+      # a live context can still hit per call, such as no sound server being
+      # reachable (`GLib::Error`, "Not available"), which must fall back the
+      # same way a missing typelib does rather than take the window down.
+      def play_via_gsound(ctx)
+        ctx.play_simple(ATTRIBUTES)
+        true
+      rescue GLib::Error
+        false
       end
 
     # Detached, and with both streams discarded: a clock that ticks down every

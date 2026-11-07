@@ -304,4 +304,48 @@ namespace("install") do
     sh("gtk4-update-icon-cache", "-qtf", File.join(chess_clock_datadir, "icons", "hicolor"))
   end
 end
+
+# The port's equivalent of the three `test(...)` checks data/meson.build runs
+# at build time (closes G10): desktop-file-validate on the rendered desktop
+# entry, `appstreamcli validate --no-net` on the rendered metainfo, and
+# `glib-compile-schemas --strict --dry-run` on the schema directory. Each
+# check is skipped with a warning, not failed, when its binary is missing —
+# the same `find_program(..., required: false)` leniency meson's own checks
+# use — so a dev shell without one validator still runs the other two.
+def chess_clock_which(name) = ENV.fetch("PATH", "").split(File::PATH_SEPARATOR).any? { |dir| File.executable?(File.join(dir, name)) }
+
+desc("Validate the desktop entry, metainfo and GSettings schema")
+task("validate") do
+  require "tmpdir"
+
+  desktop_file = File.read("data/#{CHESS_CLOCK_APP_ID}.desktop.in")
+  metainfo_file = File.read("data/#{CHESS_CLOCK_APP_ID}.metainfo.xml.in")
+
+  Dir.mktmpdir("chess-clock-validate") do |dir|
+    desktop_path = File.join(dir, "#{CHESS_CLOCK_APP_ID}.desktop")
+    metainfo_path = File.join(dir, "#{CHESS_CLOCK_APP_ID}.metainfo.xml")
+    File.write(desktop_path, desktop_file)
+    File.write(metainfo_path, metainfo_file)
+
+    if chess_clock_which("desktop-file-validate")
+      sh("desktop-file-validate", desktop_path)
+    else
+      warn("NOTE: desktop-file-validate is not installed; skipping desktop entry validation")
+    end
+
+    if chess_clock_which("appstreamcli")
+      sh("appstreamcli", "validate", "--no-net", metainfo_path)
+    elsif chess_clock_which("appstream-util")
+      sh("appstream-util", "validate", metainfo_path)
+    else
+      warn("NOTE: appstreamcli/appstream-util is not installed; skipping metainfo validation")
+    end
+
+    if chess_clock_which("glib-compile-schemas")
+      sh("glib-compile-schemas", "--strict", "--dry-run", "data")
+    else
+      warn("NOTE: glib-compile-schemas is not installed; skipping schema validation")
+    end
+  end
+end
 # kettle-jem:unfreeze

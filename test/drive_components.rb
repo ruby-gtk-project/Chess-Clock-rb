@@ -512,10 +512,14 @@ GtkDriver.drive(application, shots: "tmp/shots") do |d, app|
       ChessClock::AlertSound.new.play
       true
     end
-    # Reported rather than asserted either way: the GSound typelib is not in
-    # this dev shell, so what is being exercised is the fallback and not the
-    # freedesktop event itself. See FINDINGS.md.
-    puts("    note GSound available? #{ChessClock::AlertSound.new.available?}")
+    # The fork's flake now carries the GSound typelib, so this is a real
+    # assertion rather than a report: `available?` must be true, which only
+    # holds once the loader resolves the namespace and Context#init succeeds.
+    # Playing it here still falls back past GSound's own call, because this
+    # sandbox's Xvfb display has no sound server for libcanberra to reach.
+    d.check("GSound's typelib resolves and its context inits") do
+      ChessClock::AlertSound.new.available?
+    end
 
     app.main_window.then do |win|
       win.window.activate_action("muted", nil)

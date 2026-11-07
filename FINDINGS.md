@@ -20,33 +20,47 @@ GSound ships a GIR typelib but has no ruby-gnome binding gem.
 `GObjectIntrospection::Loader.load("GSound", …)`, which is the documented route
 for a namespace with a typelib and no gem.
 
-The fork's dev shell has no GSound typelib, so every run so far has raised
-`GObjectIntrospection::RepositoryError::TypelibNotFound` and taken a fallback.
-That raise was itself a crash until this round: `TypelibNotFound` descends from
-`LoadError`, so from `ScriptError` and not `StandardError`, and the two
-`rescue StandardError` clauses in `AlertSound` let it straight out — the first
-timer to reach its warning threshold on a box without libgsound took the window
-down with it. Both clauses now name `ScriptError` too, and
-`test/drive_countdown.rb` runs a clock through the `alerted` signal with the
-alert unmuted, which is the path that used to abort.
+The fork's flake now carries the `gsound` package on `GI_TYPELIB_PATH`
+(`flake.nix`'s `typelibPath` and devShell `packages`), closing the half of this
+gap that was about the typelib being absent. Re-run fresh: in `nix develop`,
+`GObjectIntrospection::Loader.load("GSound", …)` resolves, `Context.new.init`
+succeeds with no arguments (`GInitable#init`'s cancellable is optional through
+the loader, settling the first previously-unverified question), and
+`Context#play_simple` does accept a plain Ruby `Hash` where
+`gsound_context_play_simple` wants a `GHashTable` (settling the second) — it
+gets as far as calling into libcanberra and only then raises `GLib::Error`
+("Not available"), because this sandbox's Xvfb display has no PulseAudio,
+PipeWire or ALSA device for libcanberra to open. `AlertSound#emit_event` now
+rescues that `GLib::Error` specifically and falls back the same way a missing
+typelib does, rather than let it crash the window — before this round that
+exception was unhandled and would have taken a live game down the first time
+a box with the typelib but no sound hardware hit a warning threshold.
 
-Two things about the GSound route itself are still unverified, because the
-typelib is not there to exercise them:
+Making the typelib reachable also surfaced a second, previously-silent bug of
+its own: `GObjectIntrospection::Loader` raises `NameError: private constant
+…::Context::INVOKERS referenced` the second time GSound's namespace is loaded
+into a *different* anonymous module in the same process, and `AlertSound`
+built a fresh one per instance. Because `window.rb` builds a new
+`StateMachine`, and so a new `AlertSound`, on every restart and every new
+game, the real GSound route worked on a session's first alert and silently
+fell back to the bell on every alert after a restart — invisible before this
+round because no run had the typelib to reach that code at all. `gsound` is
+now memoized on the class rather than per instance, so the namespace is built
+once per process and every `AlertSound` shares it.
 
-1. the arity `GSound::Context#init` is exposed with — GInitable's `init` takes a
-   cancellable, and whether the loader makes it optional cannot be read off the
-   C declaration;
-2. whether the loader accepts a Ruby `Hash` where `gsound_context_play_simple`
-   wants a `GHashTable` of string to string.
+What is still true: the freedesktop `dialog-warning` event has not been heard
+by a human from this port, because no environment this port has run in has
+had both the typelib and working audio hardware at once. The call path into
+GSound is now proven correct up to the sound server boundary; only "is there a
+sound server, and does it actually make noise" remains unverified, which is a
+property of the machine running it, not of the Ruby binding code.
 
-`canberra-gtk-play` and `Gdk::Display#beep` are kept behind it so an alert is
-never silently swallowed, and neither is the freedesktop event: the bell is a
-different sound, at a different volume, through a different device, and on a
-bell-disabled session it is silence.
-
-**This row stays open until someone runs the app on a box with libgsound and
-its typelib, lets a clock reach its warning threshold, and hears
-`dialog-warning`.**
+**This row is substantially closed: the typelib gap and both previously-named
+unknowns about the call path are resolved and committed
+(`test/drive_components.rb`'s "GSound's typelib resolves and its context
+inits" check, no longer a report). It stays open only in the narrow sense that
+no one has run this on a box with real sound hardware and heard
+`dialog-warning` play.**
 
 ## Resolved: the port runs, and four bugs it was hiding
 
