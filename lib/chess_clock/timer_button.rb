@@ -45,9 +45,21 @@ module ChessClock
     MINIMUM_HEIGHT = 130
     COLON = "∶"
 
+    # timerbutton.py:58/63's on_white/on_black calls, reached whenever the
+    # sides swap (the awbb/abbw signals).
     ACCESSIBLE_LABELS = {
       white: _("Player white timer"),
       black: _("Player black timer"),
+    }.freeze
+
+    # window.ui:214/225's static `<accessibility><property name="label"
+    # context="a11y">` on the a_timer/b_timer children — the name a freshly
+    # built window gives each clock face before any swap has happened. Same
+    # English text as ACCESSIBLE_LABELS, different msgctxt, so both need their
+    # own catalogue entry.
+    INITIAL_ACCESSIBLE_LABELS = {
+      white: p_("a11y", "Player white timer"),
+      black: p_("a11y", "Player black timer"),
     }.freeze
 
     attr_reader :inverted
@@ -61,7 +73,7 @@ module ChessClock
       add_css_class("timerbutton")
       add_css_class("opaque")
       add_css_class(colour.to_s)
-      name_face(colour)
+      announce(self, INITIAL_ACCESSIBLE_LABELS.fetch(colour))
     end
 
     def build

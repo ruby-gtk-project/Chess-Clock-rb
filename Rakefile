@@ -219,11 +219,25 @@ task("locale") do
       FileUtils.mkdir_p(dir)
       GetText::Tools::MsgFmt.run(
         File.join("po", "#{language}.po"),
-        "--output-file",
+        "--output",
         File.join(dir, "#{CHESS_CLOCK_TEXTDOMAIN}.mo"),
       )
     end
   end
+end
+
+def chess_clock_potfiles = File.read("po/POTFILES.in").split("\n").map(&:strip).reject { |line| line.empty? || line.start_with?("#") }
+
+desc("Extract translatable strings from po/POTFILES.in into po/#{CHESS_CLOCK_TEXTDOMAIN}.pot")
+task("pot") do
+  require "gettext/tools/xgettext"
+  GetText::Tools::XGetText.run(
+    *chess_clock_potfiles,
+    "--output",
+    File.join("po", "#{CHESS_CLOCK_TEXTDOMAIN}.pot"),
+    "--package-name",
+    "Chess Clock",
+  )
 end
 
 desc("Compile data/#{CHESS_CLOCK_APP_ID}.gschema.xml into data/schemas")

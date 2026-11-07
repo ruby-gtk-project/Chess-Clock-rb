@@ -56,5 +56,29 @@ RSpec.describe ChessClock::TimerButton do
       labels = described_class::ACCESSIBLE_LABELS
       expect([labels.keys, labels[:white] == labels[:black]]).to eq([[:white, :black], false])
     end
+
+    # window.ui:214/225's static <accessibility> labels (T1), carried with
+    # their own msgctxt "a11y" entries, set once at construction rather than
+    # through on_white/on_black.
+    it "carries a separate, distinct label per side at construction" do
+      labels = described_class::INITIAL_ACCESSIBLE_LABELS
+      expect([labels.keys, labels[:white] == labels[:black]]).to eq([[:white, :black], false])
+    end
+  end
+
+  describe "css_name and accessible_role" do
+    # timerbutton.py:53-55 calls set_css_name("button") and
+    # set_accessible_role(BUTTON) on ChessClockTimerButton's own GType,
+    # because a GtkWidget subclass otherwise takes a css name derived from
+    # its own class. TimerButton subclasses Gtk::Button rather than
+    # Gtk::Widget, so both are inherited rather than restated (G6) — pinned
+    # here rather than only verified by hand, once, outside the suite (A5).
+    it "has the button css name" do
+      expect(button.css_name).to eq("button")
+    end
+
+    it "has the button accessible role" do
+      expect(button.accessible_role).to eq(:button)
+    end
   end
 end

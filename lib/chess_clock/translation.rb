@@ -19,8 +19,11 @@ module ChessClock
   # this module.
   #
   # The eight `msgctxt "shortcut window"` titles and the three `msgctxt "a11y"`
-  # labels are reached with `p_`, so the context upstream's .ui files set is
-  # part of the lookup key here too.
+  # labels are reached with `p_` — "Select time controls" in window.rb, and
+  # "Player white timer"/"Player black timer" at TimerButton construction
+  # time in timer_button.rb (window.ui:214/225's static initial label, before
+  # any colour swap has run on_white/on_black) — so the context upstream's
+  # .ui files set is part of the lookup key here too.
   module Translation
     TEXTDOMAIN = "chess-clock"
 

@@ -27,15 +27,36 @@ module ChessClock
   # looked up here instead, with upstream's `msgctxt "shortcut window"`, and
   # interpolated into the description already translated, so the same .po entry
   # answers for them.
+  #
+  # Each `p_` call below takes two string literals rather than a shared
+  # helper fed a variable msgid: ruby-gettext's own extractor
+  # (GetText::Tools::XGetText, lib/gettext/tools/parser/ruby.rb) walks the
+  # Ruby source statically and only records a call whose context and msgid are
+  # literal strings, the same restriction GNU xgettext places on C. A single
+  # `title(msgid)` method that called `p_(CONTEXT, msgid)` with a local
+  # variable, as an earlier round of this port did, is invisible to it — the
+  # eight titles that round shipped reach the window at run time but could
+  # never be regenerated into a `.pot` (T2).
   class ShortcutsWindow
     include Translation
 
     CONTEXT = "shortcut window"
 
+    TITLES = {
+      "Game" => p_("shortcut window", "Game"),
+      "New Time Control" => p_("shortcut window", "New Time Control"),
+      "Restart Timer" => p_("shortcut window", "Restart Timer"),
+      "General" => p_("shortcut window", "General"),
+      "Open Main Menu" => p_("shortcut window", "Open Main Menu"),
+      "Show Shortcuts" => p_("shortcut window", "Show Shortcuts"),
+      "Close Window" => p_("shortcut window", "Close Window"),
+      "Quit" => p_("shortcut window", "Quit"),
+    }.freeze
+
     # GtkBuilder parses the description as XML, so a translation carrying an
     # ampersand or an angle bracket has to arrive escaped.
     def self.title(msgid)
-      p_(CONTEXT, msgid)
+      TITLES.fetch(msgid)
         .gsub("&", "&amp;")
         .gsub("<", "&lt;")
         .gsub(">", "&gt;")

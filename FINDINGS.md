@@ -196,21 +196,37 @@ starts running and removes it by returning false when it stops, so there is one
 callback per running clock. Upstream's second registration looks redundant;
 "looks redundant" is not a test, and neither shape is under one.
 
-## Divergence: the About window's release notes version
+## Resolved: the About window's release notes version (was a divergence; G12)
 
 `src/main.py:56` passes `"0.6.0"` to `Adw.AboutWindow.new_from_appdata`, so
-upstream shows the 0.6.0 release notes although the newest `<release>` in the
-metainfo is 0.6.2. The port sets `release_notes_version` to `"0.6.2"` and
-carries that release's notes, which matches the metainfo rather than upstream's
-stale argument.
+upstream shows the 0.6.0 release notes even though the newest `<release>` in
+the metainfo is 0.6.2. An earlier round of this port set
+`release_notes_version` to `"0.6.2"` instead, reasoning that it matched the
+metainfo rather than upstream's apparently-stale argument — but that made the
+port's About window show different release notes than upstream's own, which
+is the wrong kind of "more correct" for a port whose job is to match upstream,
+not to patch it. `about_dialog.rb`'s `RELEASE_NOTES_VERSION` and
+`RELEASE_NOTES` now reproduce upstream's `"0.6.0"` and its notes byte for
+byte; `AboutDialog::VERSION` (what `new_from_appdata` sets from the metainfo's
+*newest* release) is unaffected and stays `"0.6.2"`.
 
-## Divergence: two link titles with no msgid
+## Resolved: two invented link titles with no msgid (T3)
 
-`AdwAboutDialog` has properties for the homepage, the issue tracker and
-support, and none for `<url type="translate">` or `<url type="contribute">`, so
-the port adds those two as links. Their titles — "Translate" and "Contribute" —
-are the port's own strings: they are marked for translation but have no msgid
-in any of the 42 catalogues, because upstream never needed one.
+A previous round read `AdwAboutDialog` as having no property for
+`<url type="translate">` or `<url type="contribute">`, and added the two as
+links titled `_("Translate")` / `_("Contribute")` — English literals with no
+msgid in any of the 42 catalogues. That diagnosis was half right: libadwaita's
+`new_from_appdata` genuinely has no way to set those two URLs. But its own
+documentation (`Adw-1.gir`, `adw-about-dialog.c:2131`) says exactly which five
+things it reads from the appdata file — `<name>`, `<id>`, `<developer>`, the
+latest release's version, `<url type="homepage">`, `<url type="help">` and
+`<url type="bugtracker">`, plus release notes — and neither `translate` nor
+`contribute` is among them. There is no "Other Links" section built from
+appdata at all in this libadwaita. So upstream's own About window, built
+through this same constructor, never shows a Translate or Contribute link
+either; the port wasn't missing a feature of `new_from_appdata`, it was
+adding one upstream doesn't have. Both links are removed rather than
+retitled.
 
 ## Resolved: the application id
 
@@ -224,6 +240,29 @@ carries the files keyed on it.
 ## Still to carry over from upstream's build
 
 `meson.build`'s `data` and `po` subdirs do more than `rake data` does:
-`desktop-file-validate`, `appstream-util validate`, and the gettext
-`.pot` regeneration from `po/POTFILES.in`. `rake locale`, `rake gschema` and
-`rake install:data` cover compilation and installation only.
+`desktop-file-validate` and `appstream-util validate` (**G10**). The gettext
+`.pot` regeneration from `po/POTFILES.in` is no longer on this list — `rake
+pot` now does it, for every `.rb` file in that list
+(`spec/chess_clock/pot_spec.rb` pins the eight shortcut titles and three
+a11y labels it extracts). `rake locale`, `rake gschema`, `rake pot` and `rake
+install:data` cover extraction, compilation and installation; validation
+does not exist, and this dev shell has neither `desktop-file-validate` nor
+`appstream-util`/`appstreamcli` to run it against even if a Rake task
+shelled out to them.
+
+## Environment limitation: no GNU gettext for the two non-Ruby POTFILES.in entries
+
+`po/POTFILES.in` names `data/eu.fortysixandtwo.chessclock.desktop.in` and the
+metainfo's `.xml.in` alongside the `.rb` files. `rake pot`'s extractor
+(`GetText::Tools::XGetText`, the pure-Ruby gem) falls through to its Ruby
+source parser for any file none of its other parsers claim, which is
+harmless — it finds no `_()`-shaped calls in a `.desktop.in` or an AppStream
+`.xml.in` and extracts nothing from them — but it is not what those two files
+actually need: GNU `msgfmt --desktop` and `msgfmt --xml` are the tools that
+read their translatable fields (the `.desktop` `Keywords`, the metainfo's
+developer credit and screenshot caption). Neither `msgfmt` (the real GNU one,
+as opposed to the gem's pure-Ruby `rmsgfmt`/`GetText::Tools::MsgFmt`) nor
+`intltool-extract` is in this dev shell's `PATH`; `which msgfmt
+desktop-file-validate appstreamcli appstream-util intltool-extract` all fail.
+Those few msgids stay uncaptured by `rake pot` until one of those tools is
+added to the flake — the same shape of gap as **G10**.

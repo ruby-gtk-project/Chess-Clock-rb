@@ -5,11 +5,13 @@ require "gtk4"
 module ChessClock
   # AccessibleLabel gives a widget an accessible name.
   #
-  # Ported from the three places upstream sets one: the
+  # Ported from the four places upstream sets one: the
   # `<accessibility><property name="label">` block on `control_chooser` in
-  # src/gtk/window.ui, and the two `update_property([Gtk.AccessibleProperty.
-  # LABEL], [_("Player white timer")])` calls in
-  # ChessClockTimerButton.on_white/on_black (src/timerbutton.py:60-70).
+  # src/gtk/window.ui, the same block (context "a11y") on the a_timer/b_timer
+  # children in that same file (window.ui:214/225), and the two
+  # `update_property([Gtk.AccessibleProperty.LABEL], [_("Player white
+  # timer")])` calls in ChessClockTimerButton.on_white/on_black
+  # (src/timerbutton.py:60-70).
   #
   # `Gtk::Accessible#update_property` cannot be called from Ruby: the
   # introspection loader has no marshaller for a C array of GtkAccessibleProperty,

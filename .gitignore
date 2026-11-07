@@ -51,6 +51,8 @@ Appraisal.*.gemfile.lock
 # gemset committed or the app cannot be built reproducibly.
 !nix/Gemfile.lock
 
-# Compiled gettext catalogues (rake locale) and GSettings schema (rake gschema)
+# Compiled gettext catalogues (rake locale), the extracted template
+# (rake pot) and GSettings schema (rake gschema)
 locale/
+po/*.pot
 data/schemas/

@@ -17,10 +17,20 @@ module ChessClock
   # retyped here, and a change to the metainfo will not reach this window until
   # someone retypes them again. I am an idiot who hand-copied an XML file
   # instead of loading it. The values below are that file's, field for field —
-  # the summary, the homepage, the issue tracker, the licence, the release
-  # notes of the newest `<release>`, and the translate and contribute URLs,
-  # which AdwAboutDialog has no property for and which are therefore added as
-  # links.
+  # the summary, the homepage, the issue tracker, the licence and the release
+  # notes for the version main.py passes.
+  #
+  # `AdwAboutDialog.new_from_appdata` (libadwaita's own Adw-1.gir documents
+  # this exactly) only ever reads `<name>`, `<id>`, `<developer>`, the latest
+  # release's version, `<url type="homepage">`, `<url type="help">` and
+  # `<url type="bugtracker">`, plus the requested release's notes. It does not
+  # read `<url type="translate">` or `<url type="contribute">` at all — there
+  # is no "Other Links" section built from appdata. A previous round of this
+  # port invented "Translate" and "Contribute" links from those two URLs with
+  # English literal titles that appear in none of upstream's 42 catalogues
+  # (T3). That was wrong twice over: the titles were invented, and upstream's
+  # own dialog does not show these links in the first place. Both are removed
+  # here instead of retitled.
   # Upstream: `Adw.AboutWindow.new_from_appdata(…)`, src/main.py:56.
   # Port: the hand-set fields below. See FINDINGS.md.
   class AboutDialog
@@ -39,23 +49,20 @@ module ChessClock
     ISSUE_URL = "https://gitlab.gnome.org/World/chess-clock/-/issues"
     COPYRIGHT = "© 2022-2025 the Chess Clock contributors"
 
-    # <releases>' newest entry in data/eu.fortysixandtwo.chessclock.metainfo.xml.in.
-    RELEASE_NOTES_VERSION = "0.6.2"
+    # Upstream's on_about_action (src/main.py:56) passes the literal "0.6.0" to
+    # new_from_appdata, not the metainfo's newest <release> (0.6.2) — so the
+    # About window shows the 0.6.0 entry's notes even though the app itself
+    # ships 0.6.2's catalogues and gschema. That is upstream's own apparent
+    # staleness, not a port invention, and is reproduced byte for byte here so
+    # the two dialogs match rather than one of them being "more correct".
+    RELEASE_NOTES_VERSION = "0.6.0"
     RELEASE_NOTES = <<~XML
-      <p>A bugfix release under new maintainership.</p>
+      <p>A new release bringing adaptivity refinements and alert sounds.</p>
       <ul>
-        <li>Fix timer display in RTL languages, thanks to Yosef Or Boczko</li>
-        <li>New and updated translations.</li>
+        <li>Thanks to Mariko Ueno, we now have alert sounds when a player's timer runs low.  These can be muted if desired via the menu.</li>
+        <li>The window adapts better to portrait aspect ratios and large screen sizes, enabling improved tablet support.</li>
       </ul>
     XML
-
-    # <url type="translate"> and <url type="contribute">. AdwAboutDialog has
-    # properties for the homepage, the issue tracker and support, and none for
-    # these two, so they go in its "Other links" section.
-    LINKS = [
-      [_("Translate"), "https://l10n.gnome.org/module/chess-clock/"],
-      [_("Contribute"), "https://gitlab.gnome.org/World/chess-clock/-/blob/main/CONTRIBUTING.md"],
-    ].freeze
 
     # Upstream (main.py:51) writes "Clara Hobbs" followed by a stray
     # ZWJ + variation-selector-16 pair (U+200D U+FE0F) — an editing
@@ -98,7 +105,6 @@ module ChessClock
         about.translator_credits = TRANSLATOR_CREDITS
         about.release_notes_version = RELEASE_NOTES_VERSION
         about.release_notes = RELEASE_NOTES
-        LINKS.each { |title, url| about.add_link(title, url) }
       end
     end
   end

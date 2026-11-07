@@ -185,7 +185,11 @@ GtkDriver.drive(application, shots: "tmp/shots") do |d, app|
         d.check("#{preset[:label]} reads as #{(preset[:minutes] * 60) + preset[:seconds]}+#{preset[:increment]}") do
           entry.control == [(preset[:minutes] * 60) + preset[:seconds], preset[:increment]]
         end
-        d.check("#{preset[:label]}'s tooltip is the translated one") do
+        # Not a translation check: preset[:tooltip] is the same PRESETS
+        # entry the button's own tooltip was built from, so this only proves
+        # the button is wired to that table, under whatever locale this
+        # process runs in. See TP3.
+        d.check("#{preset[:label]}'s tooltip is wired from TimeControlEntry::PRESETS") do
           entry.preset_buttons.fetch(preset[:label]).tooltip_text == preset[:tooltip]
         end
       end
@@ -570,7 +574,13 @@ GtkDriver.drive(application, shots: "tmp/shots") do |d, app|
 
   d.step("the about window carries the metainfo fields") do
     app.about_dialog.dialog.then do |about|
-      d.check("the application name is translated") { about.application_name == "Chess Clock" }
+      # Not a translation check: under the English locale this process runs
+      # in, `_("Chess Clock")` returns "Chess Clock" regardless of whether
+      # gettext is wired correctly at all. It only proves the dialog's
+      # application_name is AboutDialog::APPLICATION_NAME. The real
+      # translation check — that a non-English locale actually changes the
+      # string — is spec/chess_clock/translation_spec.rb (TR1/TP3).
+      d.check("the application name is wired from AboutDialog::APPLICATION_NAME") { about.application_name == "Chess Clock" }
       d.check("the icon is the app id") { about.application_icon == ChessClock::Application::APP_ID }
       d.check("the version is 0.6.2") { about.version == "0.6.2" }
       d.check("the four developers are listed") { about.developers.length == 4 }

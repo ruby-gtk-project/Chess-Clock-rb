@@ -20,10 +20,11 @@ written from scratch against it.
 
 ## Done
 
-Components implemented, and every one of them executed: 88 RSpec examples and
+Components implemented, and every one of them executed: 99 RSpec examples and
 196 driver checks run green in the fork's dev shell under `xvfb-run -a`
-(`.reports/drive-run.md`). "Implemented and driven" is not "at parity" — nine
-component gaps and four translation gaps are open below.
+(`.reports/drive-run.md`). "Implemented and driven" is not "at parity" — five
+component gaps are open below; all four translation gaps from the previous
+audit (**TR1**, **T1**, **T2**, **T3**) are closed this round.
 
 | Port | Upstream |
 |---|---|
@@ -49,9 +50,10 @@ component gaps and four translation gaps are open below.
 | `data/` (4 files) | `data/` — byte-identical to upstream |
 | `po/` (42 locales + `LINGUAS`, `POTFILES.in`) | `po/` |
 
-Specs exist for 9 of the 18 units (88 examples); the other nine are reached
-only by the three drive scripts (196 checks). All 284 cases have been run — see
-**TP2** for the shape gap that leaves.
+Specs exist for 11 of the 18 units (99 examples, after this round added
+`application_spec.rb`, `translation_spec.rb` and `pot_spec.rb`); the other
+seven are reached only by the three drive scripts (196 checks). All 295 cases
+have been run — see **TP2** for the shape gap that leaves.
 
 ## Not started
 
@@ -64,51 +66,56 @@ Upstream components with no Ruby counterpart at all.
 | `CONTRIBUTING.md` | absent; the About window's Contribute link points at upstream's (**G8**) |
 | `chess-clock.doap` | GNOME project metadata (**G9**) |
 | `eu.fortysixandtwo.chessclock.json` | Flatpak manifest (**G9**) |
-| `data/meson.build` validation | `desktop-file-validate`, `appstream-util validate` — no Rake equivalent (**G10**) |
-| `po/meson.build` `.pot` regeneration | no gettext extraction path on `ruby` (**G10**, **T2**) |
-| `po/meson.build` `msgfmt` | `rake locale` exists and **aborts on the first language**, so 0 of 42 `.mo` files are produced (**TR1**) |
+| `data/meson.build` validation | `desktop-file-validate`, `appstream-util validate` — no Rake equivalent, and neither binary is in the dev shell to validate against (**G10**) |
 | `src/meson.build`, `meson.build` | build system replaced by `Rakefile` + gemspec; compile/install only, no validation |
+
+`rake locale` and `rake pot` now exist and work — see **Closed this round**
+below; they used to be rows in this table.
 
 ## Open gaps
 
-This audit reports **16 gaps** and **clean = false**, against `origin/main` @
-`775f046`. Breakdown by report:
+Breakdown by report, as of this round's commit:
 
-- `.reports/translation-parity.md` — **TR1**, **T1**, **T2**, **T3** (4).
-  **TR1 is the worst gap in the port and was previously reported as a tick:**
-  `Rakefile:222` passes `--output-file` to a `MsgFmt` that wants `--output`, so
-  `rake locale` aborts on `az` and compiles no catalogue at all. The app is
-  English-only in every locale. One word closes it. Also: the two
-  `msgctxt "a11y"` clock-face names are set nowhere (**T1**, and
-  `translation.rb:21` claims otherwise); the eight shortcut titles sit behind a
-  Ruby helper where no extractor can see them and there is no `.pot` target
-  (**T2**); `Translate` and `Contribute` are port-invented msgids in none of
-  the 42 catalogues (**T3**).
-- `.reports/component-parity.md` — **G1**, **G3**–**G6**, **G8**–**G10**,
-  **G12** (9; **G7** is a recorded substitution, not a gap): a second
-  activation rebuilds the window inside itself, leaving
-  `main_stack.pages.n_items == 4` and four GTK criticals (**G1**, now driven
-  and proven, reachable through `DBusActivatable=true`); no GResource
-  (**G3**); `Timer`/`StateMachine` are plain Ruby so `muted` and `inverted`
-  are unbindable (**G4**); the alert sound has never been heard (**G5**);
-  `TimerButton` sets neither `css-name` nor the accessible role (**G6**); no
-  licence or contributing text (**G8**); no DOAP or Flatpak manifest
-  (**G9**); no metadata validation (**G10**); the About window shows a
-  different release's notes and retyped credits (**G12**).
-  **G7** — `Adwaita::AboutDialog` for the deprecated `Adw.AboutWindow` — is a
-  recorded substitution and is not counted.
-- `.reports/test-parity.md` — parity is **0/0 and met trivially**: upstream
-  ships no tests, so the port inherits no safety net. Three port-side gaps:
-  9 of 18 units have no spec (**TP2**); two driver checks are named for a
-  translation they do not observe (**TP3**); the second-activation path is
-  tested by nothing (**TP4**). **TP1** — "never executed" — is closed.
-- `.reports/accountability-ensurance.md` — **A1**–**A4**: one false green
-  (**A1**, the `rake locale` tick); this file and all five report headers
-  three commits stale (**A2**); two mis-named checks that corroborated **A1**
-  (**A3**); **G1** and **T1** admitted in no source comment (**A4**).
-
-Closed since the previous audit: **G2** (GSettings now backs `Settings`),
-**G11** / **TP1** (the port has been built, opened, screenshotted and driven).
+- `.reports/translation-parity.md` — **none open**. All four of the previous
+  round's gaps are closed this round: **TR1** (`Rakefile`'s `locale` task
+  passed `--output-file` to a `MsgFmt` that wants `--output`; fixed, and all
+  42 `.mo` files now compile, verified by `spec/chess_clock/translation_spec.rb`
+  reading `"Chess Clock"` back as `"Schachuhr"` under `de`); **T1** (the two
+  `msgctxt "a11y"` clock-face names are now built at `TimerButton`
+  construction via `p_("a11y", …)`, matching window.ui's static initial
+  label, with `translation.rb:21`'s comment corrected); **T2** (the eight
+  `msgctxt "shortcut window"` titles are now literal `p_` calls the
+  extractor can see, a `rake pot` task exists, and
+  `spec/chess_clock/pot_spec.rb` asserts all eight plus the three `a11y`
+  labels come back out of a real extraction over `po/POTFILES.in`); **T3**
+  (the invented `Translate`/`Contribute` links are removed — libadwaita's own
+  `new_from_appdata` never reads those two `<url>` types at all, so upstream's
+  dialog never showed them either).
+- `.reports/component-parity.md` — **G3**–**G5**, **G9**, **G10** (5; **G7**
+  is a recorded substitution, not a gap): no GResource (**G3**);
+  `Timer`/`StateMachine` are plain Ruby so `muted` and `inverted` are
+  unbindable (**G4**); the alert sound has never been heard, no GSound
+  typelib in this shell (**G5**); no DOAP or Flatpak manifest (**G9**); no
+  metadata validation, and neither `desktop-file-validate` nor
+  `appstream-util`/`appstreamcli` is in this dev shell to validate against
+  (**G10**). **G1**, **G6**, **G8** and **G12**'s credits half are closed,
+  now with checks that exercise them (`application_spec.rb` for G1,
+  `timer_button_spec.rb` for G6); **G12**'s release-notes-version half is
+  closed too — `about_dialog.rb`'s `RELEASE_NOTES_VERSION` now matches
+  `main.py`'s literal `"0.6.0"` exactly rather than the metainfo's newest
+  release. **G7** — `Adwaita::AboutDialog` for the deprecated
+  `Adw.AboutWindow` — is a recorded substitution and is not counted.
+- `.reports/test-parity.md` — **TP2** (partial: `application`, `translation`
+  and the pot-extraction path now have specs; `about_dialog`, `primary_menu`,
+  `shortcuts_window`, `style`, `accessible_label` and `alert_sound` still do
+  not); **TP3** (closed — the two tautological checks in
+  `test/drive_components.rb` are renamed to describe wiring, and
+  `translation_spec.rb` is the real locale-switching check); **TP4** (closed
+  — `application_spec.rb` activates twice and asserts
+  `main_stack.pages.n_items == 2`). **TP1** is closed.
+- `.reports/accountability-ensurance.md` — **A2**, **A5** (closed by this
+  edit and by the two specs above landing in the same commit as the reports
+  they corroborate).
 
 `FINDINGS.md` carries the long-form admissions. Nothing in it closes a gap.
 
@@ -156,10 +163,11 @@ Things that cannot be ported as upstream writes them, and why.
   already run by the time Ruby holds the window. `ShortcutsWindow#resolve_accelerators`
   does that lookup by hand; without it the window lists six shortcuts and no
   key combinations.
-- **There is no gettext *extraction* path on `ruby`.** `POTFILES.in` is
-  retargeted at `lib/` and `data/`, and nothing regenerates a `.pot` from it,
-  so the eight shortcut titles hidden behind `ShortcutsWindow.title` are
-  unextractable and unnoticed (**T2**). *Lookup* is not blocked: with a
-  catalogue present, every one of the 48 ported keys — including all eight
-  `shortcut window` contexts — resolves, verified in German. The only thing
-  stopping the 42 languages from working is **TR1**.
+- **`rake pot` only extracts what the gem's Ruby parser can read.** It covers
+  every `.rb` file in `po/POTFILES.in`, including all eight `shortcut window`
+  titles and all three `a11y` labels (`spec/chess_clock/pot_spec.rb`). The two
+  non-Ruby files it also names — `data/eu.fortysixandtwo.chessclock.desktop.in`
+  and the metainfo's `.xml.in` — need GNU `msgfmt --desktop`/`msgfmt --xml`
+  to extract their own translatable fields (the `.desktop` `Keywords`, the
+  metainfo's developer credit and screenshot caption), and that binary is
+  not in this dev shell, so those few msgids are not regenerated.

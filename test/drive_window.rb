@@ -180,7 +180,10 @@ GtkDriver.drive(application, shots: "tmp/shots") do |d, app|
 
   d.step("the about window carries the metainfo fields") do
     d.check("the release notes are set") { !app.about_dialog.dialog.release_notes.to_s.empty? }
-    d.check("the release notes name a version") { app.about_dialog.dialog.release_notes_version == "0.6.2" }
+    # Upstream's on_about_action (src/main.py:56) passes the literal "0.6.0"
+    # to new_from_appdata, not the metainfo's newest release (0.6.2) — see
+    # AboutDialog::RELEASE_NOTES_VERSION (G12).
+    d.check("the release notes name upstream's literal version, 0.6.0") { app.about_dialog.dialog.release_notes_version == "0.6.0" }
     d.check("the summary has no trailing full stop") { !app.about_dialog.dialog.comments.end_with?(".") }
     d.shot("13-about", app.about_dialog.dialog)
   end
