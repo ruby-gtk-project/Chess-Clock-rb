@@ -9,4 +9,6 @@
 source "https://rubygems.org"
 
 gem "adwaita"
+gem "gettext"
+gem "gio2"
 gem "gtk4"
