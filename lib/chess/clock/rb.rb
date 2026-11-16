@@ -7,6 +7,7 @@
 # requirable, and so it carries nothing but the version. Requiring it does not
 # pull in GTK, which is what lets the plain-Ruby parts of the suite run without
 # a display or the gtk4 gem.
+
 require_relative "rb/version"
 
 module Chess
